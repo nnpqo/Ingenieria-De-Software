@@ -1,4 +1,4 @@
-//import logo from './logoProducto.svg';
+import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 import RegistrarModelo from './componentes/RegistrarModelo';
@@ -9,11 +9,14 @@ function App() {
       <header className="JDK-header">
         <title>venta</title>
         <button id='logo'>JDKCELL</button>
-        <button className='seccion'>producto</button>
+        <button className='seccion'>
+          <img src={logo} alt="productoIMG"/>
+          <span>producto</span>
+        </button>
       </header>
       <body>
         <div id='izq'>
-          
+
         </div>
         <RegistrarModelo/>
       </body>

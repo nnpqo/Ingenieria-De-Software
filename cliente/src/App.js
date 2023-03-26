@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+//import logo from './logoProducto.svg';
 import './App.css';
+import { Component } from 'react';
+import RegistrarModelo from './componentes/RegistrarModelo';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="JDKCELL">
+      <header className="JDK-header">
+        <title>venta</title>
+        <button id='logo'>JDKCELL</button>
+        <button className='seccion'>producto</button>
       </header>
+      <body>
+        <div id='izq'>
+          
+        </div>
+        <RegistrarModelo/>
+      </body>
+      
     </div>
   );
 }

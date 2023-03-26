@@ -17,8 +17,8 @@ const RegistrarModelo =()=>{
                     <option value='Xiaomi'>Xiaomi</option>
                     <option value='Samsumg'>Samsung</option>
                 </select>
-                <input type="submit"></input>
-                <input type="reset"></input>
+                <input type="submit" className="botonFormulario"></input>
+                <input type="reset" className="botonFormulario"></input>
             </form>
 
         </div>

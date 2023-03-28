@@ -6,21 +6,18 @@ import RegistrarModelo from './componentes/RegistrarModelo';
 function App() {
   return (
     <div className="JDKCELL">
-      <header className="JDK-header">
-        <title>venta</title>
-        <button id='logo'>JDKCELL</button>
-        <button className='seccion'>
-          <img src={logo} alt="productoIMG"/>
-          <span>producto</span>
-        </button>
-      </header>
-      <body>
+        <header className="JDK-header">
+          <button id='logo'>JDKCELL</button>
+          <button className='seccion'>
+            <img src={logo} alt="productoIMG" />
+            <span>producto</span>
+          </button>
+        </header>
         <div id='izq'>
 
         </div>
-        <RegistrarModelo/>
-      </body>
-      
+        <RegistrarModelo />
+
     </div>
   );
 }

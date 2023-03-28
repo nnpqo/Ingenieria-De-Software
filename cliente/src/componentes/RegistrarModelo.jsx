@@ -5,10 +5,10 @@ const RegistrarModelo =()=>{
             <p>REGISTRAR MODELO DE DISPOSITIVO</p>
             <form>
                 <div id="huImagen">
-
+                
                 </div>
                 <p>Nombre</p>
-                <input type="Text" required minLength="2" maxLength="30" pattern="^[A-Z]+$" />
+                <input type="Text" required minLength="2" maxLength="30" />
                 <p>Descripcion</p>
                 <input type="Text"required minLength="10" maxLength="200"/>
                 <p>Etiquetas</p>

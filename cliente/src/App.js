@@ -1,28 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import { Component } from 'react';
-import RegistrarModelo from './componentes/RegistrarModelo';
+import { Cabezera } from "./componentes/Cabecera";
+import { Menu } from "./componentes/Menu";
+import { Ventana } from "./componentes/Ventana";
+import { Component } from "react";
 
-function App() {
+export const App = () => {
   return (
-    <div className="JDKCELL">
-      <header className="JDK-header">
-        <title>venta</title>
-        <button id='logo'>JDKCELL</button>
-        <button className='seccion'>
-          <img src={logo} alt="productoIMG"/>
-          <span>producto</span>
-        </button>
-      </header>
-      <body>
-        <div id='izq'>
-
-        </div>
-        <RegistrarModelo/>
-      </body>
-      
+    <div>
+      <Cabezera />
+      <div>
+        <Menu />
+        <Ventana />
+      </div>
     </div>
   );
-}
-
-export default App;
+};

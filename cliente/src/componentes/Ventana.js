@@ -1,6 +1,3 @@
-export const Ventana =()=>{
-
-    return <div>
-        
-    </div>
-}
+export const Ventana = () => {
+  return <div></div>;
+};

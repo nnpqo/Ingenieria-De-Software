@@ -22,11 +22,11 @@ CREATE TABLE categorias (
 CREATE TABLE etiquetas (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(100) NOT NULL,
-  id_categoria INT UNSIGNED NOT NULL,
+  id_categoria MEDIUMINT UNSIGNED NOT NULL,
   ultima_actualizacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY  (id),
   KEY idx_fk_id_categoria (id_categoria),
-  CONSTRAINT fk_etiqueta_categoria FOREIGN KEY (id_categoria) REFERENCES categora (id) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT fk_etiqueta_categoria FOREIGN KEY (id_categoria) REFERENCES categorias (id) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------------
@@ -63,4 +63,3 @@ CREATE TABLE modelos_dispositivos_moviles (
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-

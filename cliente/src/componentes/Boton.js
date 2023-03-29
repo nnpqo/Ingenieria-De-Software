@@ -1,11 +1,11 @@
 import Icon from "@mdi/react";
-import { mdiArchiveOutline } from "@mdi/js";
 
 export const Boton = (props) => {
   return (
-    <buttom>
+    <buttom onClick={props.funcion}>
         <h2>{props.nombre}</h2>
-        <>{props.ico}</>
+        <Icon path={props.ico} size={1}/>
+        <image src={props.image}></image>
     </buttom>
   );
 };

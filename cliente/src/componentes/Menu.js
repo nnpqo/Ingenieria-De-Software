@@ -5,7 +5,7 @@ import { mdiArchiveOutline } from "@mdi/js";
 
 export const Menu = () => {
   return (
-    <div>
+    <div className="menu">
       <Boton nombre={"Registar modelo"} ico={mdiArchiveOutline}/>
       <Boton nombre={"Modificar modelo"} />
     </div>

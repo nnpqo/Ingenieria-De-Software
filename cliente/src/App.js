@@ -6,7 +6,7 @@ import "./estilos/app.css";
 export const App = () => {
   return (
     <div className="body">
-      <div className="cabecera-container">
+      <div>
         <Cabezera />
       </div>
       <div className="ventana-principal">

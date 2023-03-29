@@ -1,11 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import { App } from "./App";
+import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom/client";
+import { Router } from "./Router";
 import './estilos/index.css'
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+//const root = ReactDOM.createRoot(document.getElementById("root"));
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Router />
+  </React.StrictMode>,
+  document.getElementById("root")
 );

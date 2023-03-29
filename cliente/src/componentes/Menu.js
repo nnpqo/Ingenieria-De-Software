@@ -1,18 +1,19 @@
 import { Boton } from "./Boton";
 import { Categoria } from "./Categoria";
+import '../estilos/menu.css'
 
 export const Menu = () => {
   return (
-    <div>
+    <div className="menu-container">
       <Boton />
-      <Boton />
+      <Boton /> 
     </div>
   );
 };
 export const MenuEtiquetas = () => {
   return (
     <div>
-      <h1>Categorias</h1>
+      <span>Categorias</span>
       <Categoria />
     </div>
   );

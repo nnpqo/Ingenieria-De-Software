@@ -1,10 +1,11 @@
 import Icon from "@mdi/react";
 import { mdiArchiveOutline } from "@mdi/js";
 
-export const Boton = () => {
+export const Boton = (props) => {
   return (
     <buttom>
-      <Icon path={mdiArchiveOutline} size={1} />
+        <h2>{props.nombre}</h2>
+        <>{props.ico}</>
     </buttom>
   );
 };

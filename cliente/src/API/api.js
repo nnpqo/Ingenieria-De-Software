@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "localhost:3001/"
+const url = "http://localhost:3001"
 
 export const imagen = (file) => {
     axios.post(url+"", file).then().catch()
@@ -10,6 +10,6 @@ export const setModeloDispositivo = (datos) => {
 }
 
 export const getModeloDispositivos = () => {
-    axios.get(url+"").then().catch()
+    axios.get(url+"").then(function(response){console.log(JSON.stringify(response))}).catch(function(error){console.log(error)})
 }
 

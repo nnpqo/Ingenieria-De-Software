@@ -5,17 +5,9 @@
     gap: 10px;
 }
 
-.cabecera-container {
-    display: flex;
-    flex-direction: row;
-    width: 100vh;
-    height: 120px;
-    background-color: white;
-}
-
 .ventana-principal{
     display: flex;
     background-color: aqua; 
     width: 100%;
-    height: 95dvh;
+    height: 95dhv;
 }

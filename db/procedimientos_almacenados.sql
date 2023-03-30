@@ -57,3 +57,18 @@ END / / delimiter;
 /*llamada al procedimiento almacenado ejemplo:*/
 /*CALL relacion_etiqueta_modelo('nombre_etiqueta');*/
 /*-------------------------------------------------*/
+
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para obtener todos los modelos de una etiqueta*/
+delimiter //
+CREATE PROCEDURE obtener_todos_modelo_dispositivo(IN nombre_etiqueta VARCHAR(100))
+SELECT ruta_imagen, etiquetas.nombre AS etiqueta, modelos_dispositivos_moviles.nombre AS modelo
+FROM modelos_dispositivos_moviles,etiquetas,etiqueta_modelo
+WHERE nombre_etiqueta=etiquetas.nombre AND etiqueta_modelo.id_etiqueta=etiquetas.id AND 
+etiqueta_modelo.id_modelo_dispositivo=modelos_dispositivos_moviles.id;
+//
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL obtener_todos_modelo_dispositivo('nombre_etiqueta');*/
+/*-------------------------------------------------*/

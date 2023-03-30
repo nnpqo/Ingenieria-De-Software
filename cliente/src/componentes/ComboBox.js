@@ -1,12 +1,14 @@
 import React from 'react';
 
-function ComboBox(props) {
-  const options = props.options.map((option) =>
-    <option key={option}>{option}</option>
+export function ComboBox(props) {
+  const opciones = props.opciones.map((opciones) =>
+    <option key={opciones}>{opciones}</option>
   );
-  return (
+  return (<div className='combo-box'>
+    <p>{props.nombre}</p>
     <select>
-      {options}
+      {opciones}
     </select>
+  </div>
   );
 }

@@ -1,16 +1,29 @@
 import { Cabezera } from "./Cabecera";
 import { Menu,MenuEtiquetas } from "./Menu";
-import { Ventana } from "./Ventana";
+import { VentanaFormulario } from "./Ventana";
 import "../estilos/app.css";
 import CajaTexto from "./CajaTexto";
+import { Aviso } from "./Aviso";
+import { ComboBox } from "./ComboBox";
+import { useState,useEffect,useContext, createContext } from "react";
+
+export const prueba= createContext()
+
 
 export const VentanaPrincipal = (props) => {
-  const opciones=[<CajaTexto nombre={'hola'}/>]
+  const [ventana,setVentana]=useState(0)
+
+  console.log(ventana)
+  const etiquetas=['xiaomi','samsumg']
+  const opciones=[<CajaTexto nombre={'Nombre*'}/>,<CajaTexto nombre={'descripcion*'}/>,<ComboBox nombre={'etiquetas'} opciones={etiquetas}/>]
   return (
     <div>
-      {props.menu === 1 && <MenuEtiquetas />}
+      <prueba.Provider value={[setVentana]}>
+      {props.menu === 1 && <MenuEtiquetas /> }
       {props.menu === 2 && <Menu />}
-        {<Ventana titulo={'hola'} opciones={opciones}/>}
+      </prueba.Provider>
+
+      {<VentanaFormulario titulo={'REGISTRAR PRODUCTO'} opciones={opciones}/>}
     </div>
   );
 };

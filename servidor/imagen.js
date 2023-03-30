@@ -14,3 +14,4 @@ const upload = multer({
 }).single("image");
 
 module.exports = upload;
+<input method="POST" id="imagen" type={file}></input>

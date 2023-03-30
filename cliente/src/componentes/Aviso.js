@@ -1,6 +1,3 @@
-export const Aviso =()=>{
-    return<div>
-
-    </div>
-
-}
+export const Aviso = () => {
+  return <div></div>;
+};

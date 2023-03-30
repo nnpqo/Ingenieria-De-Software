@@ -1,6 +1,6 @@
-export function Aviso()={
+export const Aviso =()=>{
     return<div>
-        
+
     </div>
 
 }

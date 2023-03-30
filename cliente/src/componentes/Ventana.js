@@ -1,8 +1,8 @@
 import { Boton } from "./Boton";
 
 export const Ventana = (props) => {
-  const opciones = props.options.map((option) =>
-  <option key={option}>{option}</option>
+  const opciones = props.opciones.map((opciones) =>
+  <opciones key={opciones}>{opciones}</opciones>
 );
   return (
     <div>

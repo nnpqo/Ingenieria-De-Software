@@ -1,4 +1,3 @@
-import { Cabezera } from "./Cabecera";
 import { Menu,MenuEtiquetas } from "./Menu";
 import { VentanaFormulario } from "./Ventana";
 import "../estilos/app.css";

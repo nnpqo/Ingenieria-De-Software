@@ -10,15 +10,9 @@ export const Menu = () => {
   
   
   return (
-<<<<<<< HEAD
-    <div className="menu">
-      <Boton nombre={"Registar modelo"} ico={mdiArchiveOutline}/>
-      <Boton nombre={"Modificar modelo"} />
-=======
     <div>
-      <Boton nombre={"Registar modelo"} funcion={()=>{setVentana(0)}} />
+      <Boton nombre={"Registar modelo"} funcion={()=>{setVentana(0)} } />
       <Boton nombre={"Modificar modelo"} funcion={()=>{setVentana(1)}} />
->>>>>>> main
     </div>
   );
 };

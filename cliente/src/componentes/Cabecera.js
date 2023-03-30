@@ -1,18 +1,11 @@
 import { Boton } from "./Boton";
-<<<<<<< HEAD
 import "../estilos/cabecera.css";
+import { Link, Outlet } from "react-router-dom";
 
-export const Cabezera = () => {
+export const Cabecera = () => {
   return (
     <div className="cabecera">
-=======
-import { Link, Outlet } from "react-router-dom";
-export const Cabezera = () => {
-  return (
-    <div>
-      
->>>>>>> main
-      <Boton nombre={"JDKCELL"} />
+      <Boton nombre={"JDKCELL"} estilos={'boton-navbar'}/>
       <Boton nombre={"Producto"} />
       <Boton />
       <Outlet />

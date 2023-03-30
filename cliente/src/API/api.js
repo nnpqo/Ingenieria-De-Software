@@ -10,6 +10,7 @@ export const setModeloDispositivo = (datos) => {
 }
 
 export const getModeloDispositivos = () => {
-    axios.get(url+"").then(function(response){console.log(JSON.stringify(response))}).catch(function(error){console.log(error)})
+    axios.get(url+"").then(function(response){console.log(response.data.hola)})
+    .catch(function(error){console.log(error)})
 }
 

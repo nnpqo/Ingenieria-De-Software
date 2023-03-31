@@ -110,7 +110,7 @@ CREATE PROCEDURE obtener_datos_modelo(IN nomb_modelo VARCHAR(150))
 SELECT ruta_imagen,modelos_dispositivos_moviles.nombre AS modelo,descripcion,etiquetas.nombre AS etiqueta
 FROM modelos_dispositivos_moviles,etiquetas,etiqueta_modelo
 WHERE modelos_dispositivos_moviles.nombre=nomb_modelo AND modelos_dispositivos_moviles.visible=1
-AND modelos_dispositivos_moviles.id=etiqueta_modelo.id_modelo_dispositivo AND etiqueta_modelo.id_etiqueta=etiquetas.id;;
+AND modelos_dispositivos_moviles.id=etiqueta_modelo.id_modelo_dispositivo AND etiqueta_modelo.id_etiqueta=etiquetas.id;
 //
 /*EJEMPLO: llamada al procedimiento almacenado*/
 /*CALL obtener_datos_modelo('nombre_modelo');*/

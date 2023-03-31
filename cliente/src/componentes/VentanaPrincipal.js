@@ -1,5 +1,5 @@
 import { Menu,MenuEtiquetas } from "./Menu";
-import { VentanaFormulario } from "./Ventana";
+import { VentanaFormulario,Ventana } from "./Ventana";
 import "../estilos/app.css";
 import CajaTexto from "./CajaTexto";
 import { Aviso } from "./Aviso";
@@ -19,13 +19,22 @@ export const VentanaPrincipal = (props) => {
   const opcionesRegistro=[<CajaTexto nombre={'Nombre*'}/>,<CajaTexto nombre={'descripcion*'}/>,<ComboBox nombre={'etiquetas'} opciones={etiquetas}/>]
   return (
     <div>
-      <prueba.Provider value={[setVentana]}>
-      {props.menu === 1 && <MenuEtiquetas /> }
-      {props.menu === 2 && <Menu />}
+       {props.menu === 1 && (
+          <>
+            <MenuEtiquetas />
+            <Ventana modelos={modelos}/>
+          </>
+        )}
+      <prueba.Provider value={[setVentana]}>     
+      {props.menu === 2 && (
+            <><Menu />
+            {ventana === 0 && <VentanaFormulario titulo={'REGISTRAR PRODUCTO'} imagen={true} opciones={opcionesRegistro}/>}
+            {ventana === 1 && <VentanaFormulario titulo={'MODIFICAR PRODUCTO'} imagen={true} opciones={opcionesModificar}/>}
+      </>)
+      }
       </prueba.Provider>
 
-      {ventana === 0 && <VentanaFormulario titulo={'REGISTRAR PRODUCTO'} imagen={true} opciones={opcionesRegistro}/>}
-      {ventana === 1 && <VentanaFormulario titulo={'MODIFICAR PRODUCTO'} imagen={true} opciones={opcionesModificar}/>}
+      
     </div>
   );
 };

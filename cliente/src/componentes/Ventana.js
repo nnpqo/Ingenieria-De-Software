@@ -22,21 +22,15 @@ export const VentanaFormulario = (props) => {
   );
 }
 export const Ventana = (props) => {
-  const opciones = props.opciones.map((opciones) =>
-  <opciones key={opciones}>{opciones}</opciones>
+  const modelos = props.modelos.map((modelos) =>
+  <modelos key={modelos}>{modelos}</modelos>
 );
   return (
-    <div className="ventana">
-      <div className="titulo-Ventana">
-        <h1>{props.titulo}</h1>
-      </div>
-      <div className="formulario">
-        {opciones}
-      </div>
-      <div className="Guardar-Cancelar">
-        <Boton nombre={"GUARDAR"} funcion={getModeloDispositivos} />
-        <Boton nombre={"CANCELAR"} />
-      </div>
+    <div className="ventana-modelos">
+      <p>categorias &gt; dispositivos moviles &gt; samsumg</p>
+      {modelos}
     </div>
+
+
   );
 }

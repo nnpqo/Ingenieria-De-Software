@@ -1,11 +1,13 @@
 import { Boton } from "./Boton";
 import {getModeloDispositivos} from "../API/api";
+import { ImagenFormulario } from "./ImagenFormulario";
 export const VentanaFormulario = (props) => {
   const opciones = props.opciones.map((opciones) =>
   <opciones key={opciones}>{opciones}</opciones>
 );
   return (
     <div>
+      {props.imagen === true && <ImagenFormulario/>}
       <div className="titulo-Ventana">
         <h1>{props.titulo}</h1>
       </div>
@@ -24,7 +26,7 @@ export const Ventana = (props) => {
   <opciones key={opciones}>{opciones}</opciones>
 );
   return (
-    <div>
+    <div className="ventana">
       <div className="titulo-Ventana">
         <h1>{props.titulo}</h1>
       </div>

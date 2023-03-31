@@ -5,13 +5,13 @@ export const Categoria = () => {
         <ul>
           <li>
             <ul>
-              <Etiqueta />
+              <Etiqueta nombre={'samsumg'}/>
             </ul>
             <ul>
-              <Etiqueta />
+              <Etiqueta nombre={'xiaomi'}/>
             </ul>
             <ul>
-              <Etiqueta />
+              <Etiqueta nombre={'lg'}/>
             </ul>
           </li>
         </ul>

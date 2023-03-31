@@ -67,8 +67,49 @@ CREATE PROCEDURE obtener_todos_modelo_dispositivo(IN nombre_etiqueta VARCHAR(100
 SELECT ruta_imagen, etiquetas.nombre AS etiqueta, modelos_dispositivos_moviles.nombre AS modelo
 FROM modelos_dispositivos_moviles,etiquetas,etiqueta_modelo
 WHERE nombre_etiqueta=etiquetas.nombre AND etiqueta_modelo.id_etiqueta=etiquetas.id AND 
-etiqueta_modelo.id_modelo_dispositivo=modelos_dispositivos_moviles.id;
+etiqueta_modelo.id_modelo_dispositivo=modelos_dispositivos_moviles.id AND modelos_dispositivos_moviles.visible =1;
 //
 /*EJEMPLO: llamada al procedimiento almacenado*/
 /*CALL obtener_todos_modelo_dispositivo('nombre_etiqueta');*/
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para obtener todas las etiquetas de una categoria*/
+delimiter //
+CREATE PROCEDURE obtener_etiquetas(IN nomb_categoria VARCHAR(100))
+BEGIN 
+SET @id_categ=(SELECT id FROM categorias WHERE nombre=nomb_categoria);
+SELECT etiquetas.nombre FROM etiquetas
+WHERE etiquetas.id_categoria=@id_categ;
+END //
+delimiter ;
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL obtener_etiquetas('dispositivos_moviles');*/
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para ocultar un modelo*/
+delimiter //
+CREATE PROCEDURE ocultar_modelo(IN nomb_modelo VARCHAR(100))
+BEGIN 
+UPDATE modelos_dispositivos_moviles 
+SET modelos_dispositivos_moviles.visible = 0
+WHERE nombre=nomb_modelo;
+END //
+delimiter ;
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL ocultar_modelo('nombre_modelo');*/
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para obtener los datos de un modelo especifico*/
+delimiter //
+CREATE PROCEDURE obtener_datos_modelo(IN nomb_modelo VARCHAR(150))
+SELECT ruta_imagen,nombre,descripcion FROM modelos_dispositivos_moviles
+WHERE nombre=nomb_modelo AND modelos_dispositivos_moviles.visible=1 ;
+//
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL obtener_datos_modelo('nombre_modelo');*/
 /*-------------------------------------------------*/

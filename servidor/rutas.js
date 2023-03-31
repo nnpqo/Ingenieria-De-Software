@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const upload = require("./imagen");
+const upload = require("./imagen")
 const router = Router();
 
 
@@ -8,8 +8,8 @@ router.get("/", (req, res) => {
   res.send("Hello world!");
 });
 
-router.post("/subirImage", upload, (req, res) => {
-  //codigo para guardar a la base de datos
+router.post("/subirImagenes", upload, (req, res) => {
+  res.send('Archivo subido correctamente');
 });
 
 module.exports = router;

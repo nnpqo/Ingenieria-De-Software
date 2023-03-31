@@ -9,9 +9,8 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({
-  storage : storage,
+  storage,
   dest: path.join(__dirname, "public/imagenes"),
 }).single("image");
 
 module.exports = upload;
-<input method="POST" id="imagen" type={file}></input>

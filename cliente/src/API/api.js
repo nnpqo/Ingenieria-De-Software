@@ -8,13 +8,34 @@ export const imagen = (file) => {
     .catch();
 };
 
-export const setModeloDispositivo = (datos) => {
-  axios
+export const setModeloDispositivo = () => {
+  let nombre=document.getElementById("nombreModelo").value;
+  let descripcion=document.getElementById("descripcion").value;
+  let etiqueta=document.getElementById("etiqueta").value;
+  const datos={nombre: nombre,
+              descripcion: descripcion,
+              etiqueta: etiqueta}
+  console.log(datos);
+  /*axios
     .post(url + "", datos)
     .then()
-    .catch();
+    .catch();*/
 };
-
+export const updateModeloDispositivo = () => {
+  let modelo=document.getElementById("modelo").value;
+  let nombre=document.getElementById("nombreModelo").value;
+  let descripcion=document.getElementById("descripcion").value;
+  let etiqueta=document.getElementById("etiqueta").value;
+  const datos={modelo: modelo,
+              nombre: nombre,
+              descripcion: descripcion,
+              etiqueta: etiqueta}
+  console.log(datos);
+  /*axios
+    .post(url + "", datos)
+    .then()
+    .catch();*/
+};
 export const getModeloDispositivos = () => {
   axios
     .get(url + "")

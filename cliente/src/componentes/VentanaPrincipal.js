@@ -12,25 +12,13 @@ export const VentanaPrincipal = (props) => {
   const [ventana, setVentana] = useState(0);
 
   console.log(ventana);
-  const modelos = ["p30 pro", "galaxy s20", "redmi note 11"];
-  const etiquetas = ["xiaomi", "samsumg"];
-  const opcionesModificar = [
-    <ComboBox nombre={"Modelo*"} opciones={modelos} />,
-    <CajaTexto nombre={"cambiar Nombre*"} />,
-    <CajaTexto nombre={"cambiar Descripcion*"} />,
-    <ComboBox nombre={"Etiquetas"} opciones={etiquetas} />,
-  ];
-  const opcionesRegistro = [
-    <CajaTexto nombre={"Nombre*"} />,
-    <CajaTexto nombre={"descripcion*"} />,
-    <ComboBox nombre={"etiquetas"} opciones={etiquetas} />,
-  ];
+  
   return (
     <div className="ventana-principal">
       {props.menu === 1 && (
         <>
           <MenuEtiquetas />
-          <Ventana modelos={modelos} />
+          <Ventana />
         </>
       )}
       <prueba.Provider value={[setVentana]}>
@@ -41,14 +29,14 @@ export const VentanaPrincipal = (props) => {
               <VentanaFormulario
                 titulo={"REGISTRAR PRODUCTO"}
                 imagen={true}
-                opciones={opcionesRegistro}
+                tipo={"registro"}
               />
             )}
             {ventana === 1 && (
               <VentanaFormulario
                 titulo={"MODIFICAR PRODUCTO"}
                 imagen={true}
-                opciones={opcionesModificar}
+                tipo={"modificar"}
               />
             )}
           </>

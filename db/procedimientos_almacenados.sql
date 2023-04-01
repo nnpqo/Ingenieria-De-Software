@@ -19,27 +19,35 @@ END / /
 /*llamada al procedimiento almacenado ejemplo:*/
 /*CALL registrar_modelo('huawei p30 min','/images','celular 100 px etc');*/
 /*-------------------------------------------------*/
+
+
 /*-------------------------------------------------*/
 /*procedimiento almacenado para actualizar el modelo*/
+delimiter //
+CREATE PROCEDURE modificar_modelo(IN nombre_antiguo VARCHAR(150),
+                                  IN nombre_nuevo VARCHAR(150),
+                                  IN descrip_nueva TEXT,
+                                  IN etiqueta_nueva VARCHAR(100))
+      BEGIN 
+         SET @id_etiquet=(SELECT id FROM etiquetas WHERE nombre=etiqueta_nueva);
+         SET @id_modelo=(SELECT id FROM modelos_dispositivos_moviles WHERE nombre=nombre_antiguo);
+         SET @id_etiquet_modelo=(SELECT id FROM etiqueta_modelo WHERE id_modelo_dispositivo=@id_modelo);
+         UPDATE modelos_dispositivos_moviles 
+         SET nombre=nombre_nuevo,
+             descripcion=descrip_nueva
+         WHERE nombre=nombre_antiguo; 
+         UPDATE etiqueta_modelo 
+         SET id_etiqueta=@id_etiquet   
+         WHERE id=@id_etiquet_modelo;
+      END //
+delimiter ;
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL modificar_modelo('nombre_modelo_antiguo','nombre_modelo_nuevo','descripcion_nueva','etiqueta nueva');*/
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para relacionar la etiqueta con el nuevo modelo registrado*/
 delimiter / / 
-CREATE PROCEDURE modificar_modelo(
-    IN nombre_antiguo VARCHAR(150),
-    IN nombre_nuevo VARCHAR(150),
-    IN descrip_nueva TEXT
-)
-BEGIN
-    UPDATE modelos_dispositivos_moviles
-    SET nombre = nombre_nuevo,
-        descripcion = descrip_nueva
-    WHERE nombre = nombre_antiguo 
-END
-/ /
-    /*llamada al procedimiento almacenado ejemplo:*/
-    /*CALL modificar_modelo('nombre_modelo_antiguo','nombre_modelo_nuevo','descripcion_nueva');*/
-    /*-------------------------------------------------*/
-    /*-------------------------------------------------*/
-    /*procedimiento almacenado para relacionar la etiqueta con el nuevo modelo registrado*/
-    delimiter / / 
 CREATE PROCEDURE relacion_etiqueta_modelo(IN nombre_etiqueta VARCHAR(100)) 
 BEGIN
     SET @id_etiqueta2 =(
@@ -80,11 +88,12 @@ CREATE PROCEDURE obtener_etiquetas(IN nomb_categoria VARCHAR(100))
 BEGIN 
 SET @id_categ=(SELECT id FROM categorias WHERE nombre=nomb_categoria);
 SELECT etiquetas.nombre FROM etiquetas
-WHERE etiquetas.id_categoria=@id_categ;
+WHERE etiquetas.id_categoria=@id_categ
+ORDER BY etiquetas.nombre ASC ;
 END //
 delimiter ;
 /*EJEMPLO: llamada al procedimiento almacenado*/
-/*CALL obtener_etiquetas('dispositivos_moviles');*/
+/*CALL obtener_etiquetas('dispositivos moviles');*/
 /*-------------------------------------------------*/
 
 

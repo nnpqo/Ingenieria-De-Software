@@ -1,0 +1,78 @@
+Como empaquetar en jars y correr de linea de comandos
+
+1. Supongamos tener la clase A en el paquetea:
+
+package packagea;
+
+public class A {
+
+    private String messageA;
+
+    public A() {
+        messageA = "from A";
+    }
+    public String mA() {
+        return messageA;
+    }
+}
+
+la clase B en el paqueteb:
+
+package packageb;
+
+public class B {
+
+    private String messageB;
+
+    public B() {
+        messageB = "from B";
+    }
+    public String mB() {
+        return messageB;
+    }
+
+}
+
+y la clase principal en Main:
+
+import packagea.A;
+import packageb.B;
+
+public class Main {
+
+    public static void main(String[] pars) {
+        A a;
+        B b;
+
+        a = new A();
+        b = new B();
+
+        System.out.println(a.mA());
+        System.out.println(b.mB());
+    }
+
+}
+
+2. Compilamos los archivos tenemos la siguiente disposicion:
+
+azeroa-nh02-10:JarTest pablo$ ls
+Main.class	packagea	packageb
+
+En los directorios packagea y packageb estan los .class correspondientes de A y B.
+
+3. Empaquetamos en tres jars:
+
+jar -cvf packagea.jar packagea/*
+jar -cvf packageb.jar packageb/*
+jar -cvf home.jar Main.class
+
+4. Movemos los jars a cualquier directorio, en mi caso el directorio Jars:
+
+pazeroa-nh02-10:Jars pablo$ ls
+home.jar	packagea.jar	packageb.jar
+
+5. Desde ese directorio ejecutamos los jars:
+
+java -cp "home.jar:packagea.jar:packageb.jar" Main
+
+eso en Linux, para windows en teoria hay que cambiar los ":" por ";".

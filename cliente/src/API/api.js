@@ -14,7 +14,7 @@ export const imagen = (event) => {
 };
 
 export const setModeloDispositivo = (datos) => {
-  instancia.post("", datos).then().catch();
+  instancia.post("/setModelo", datos).then().catch();
 };
 
 export const getModeloDispositivos = () => {

@@ -1,5 +1,5 @@
 import { Boton } from "./Boton";
-import { getModeloDispositivos, imagen } from "../API/api";
+import { getModeloDispositivos, imagen, setModeloDispositivo } from "../API/api";
 export const VentanaFormulario = (props) => {
   const opciones = props.opciones.map((opciones) => (
     <opciones key={opciones}>{opciones}</opciones>
@@ -12,10 +12,10 @@ export const VentanaFormulario = (props) => {
       <div className="formulario">{opciones}</div>
       <div className="Guardar-Cancelar">
         <Boton nombre={"GUARDAR"} funcion={getModeloDispositivos} />
-        <Boton nombre={"CANCELAR"} />
+        <Boton nombre={"CANCELAR"} funcion={()=>setModeloDispositivo({hola : "hoal"})}/>
       </div>
 
-      <input type={"file"} id="image" onChange={imagen}></input>
+      <input type={"file"} id="image" onChange={imagen} accept="image/png, image/jpeg"></input>
     </div>
   );
 };

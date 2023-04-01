@@ -1,10 +1,11 @@
 import { Boton } from "./Boton";
+import '../estilos/cabecera.css';
 
 export const Cabezera = () => {
   return (
-    <div>
-      <Boton nombre={"JDKCELL"} />
-      <Boton  nombre ={"Producto"}/>
+    <div className="botones">
+      <Boton nombre={"JDKCELL"} estilos ={'boton-navbar'}/>
+      <Boton  nombre ={"Producto"}estilos ={'boton-navbar-pro'}/>
       <Boton />
     </div>
   );

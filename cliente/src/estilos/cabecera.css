@@ -1,0 +1,36 @@
+.boton-navbar{
+    font-size: 20px;
+    background-color: #284073;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 0%;
+    align-items: center;
+    display: inline-block;
+    margin: 20px 0px 20px 10px;
+}
+.boton-navbar:hover{
+    font-size: 20px;
+    background-color: #284073;
+    color: #0655FF;
+    padding: 0%;
+}
+
+.boton-navbar-pro{
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 0%;
+    align-items: center;
+    display: inline-block;
+    margin: 20px 150px 20px 1100px;
+}
+
+.boton-navbar-pro:hover{
+    color: #0655FF;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 0%;
+}
+

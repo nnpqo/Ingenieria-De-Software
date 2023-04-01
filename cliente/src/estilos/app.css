@@ -6,7 +6,7 @@
 .cabecera-container {
     flex:auto;
     width: 100%;
-    height: 110px;
+    height: 80px;
     background-color: white;
     
 }
@@ -14,8 +14,11 @@
 .ventana-principal{
     flex:auto;
     display: flex;
-    top: 110px;
-    background-color: aqua; 
+    top: 80px;
+    background-color: #1A2F5B; 
     width: 100%;
-    height: 1200px;
+    height: 633px;
 }
+
+
+

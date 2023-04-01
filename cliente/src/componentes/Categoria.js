@@ -38,4 +38,3 @@ const Etiqueta = (props) => {
   );
 };
 
-function desplegar() {}

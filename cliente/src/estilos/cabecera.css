@@ -1,14 +1,14 @@
 .cabecera {
-    background-color: #284073;;
-    display: flex;
-    gap: 10px;
-    height: 10vh;
-    align-items:  center;
+  background-color: #284073;
+  display: flex;
+  gap: 10px;
+  height: 10vh;
+  align-items: center;
 }
 
 .boton-navbar {
-    margin: 10px;
-    color: blue;
-    background-color: yellow;
-    border-radius: 10%;
+  margin: 10px;
+  color: blue;
+  background-color: yellow;
+  border-radius: 10%;
 }

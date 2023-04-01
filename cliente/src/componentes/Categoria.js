@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react";
 
 export const Categoria = () => {
-  const [desplegado,setdesplegado]=useState(false);
-  
+  const [desplegado, setdesplegado] = useState(false);
+
   return (
     <div>
       <li>
-        <ul ><p onClick={()=>{setdesplegado(!desplegado)}}>dispositivos moviles</p>
-          <li className={desplegado? "etiquetas-visible" : "etiquetas"}>
+        <ul>
+          <p
+            onClick={() => {
+              setdesplegado(!desplegado);
+            }}
+          >
+            dispositivos moviles
+          </p>
+          <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>
             <ul>
-              <Etiqueta nombre={'samsumg'}/>
+              <Etiqueta nombre={"samsumg"} />
             </ul>
             <ul>
-              <Etiqueta nombre={'xiaomi'}/>
+              <Etiqueta nombre={"xiaomi"} />
             </ul>
             <ul>
-              <Etiqueta nombre={'lg'}/>
+              <Etiqueta nombre={"lg"} />
             </ul>
           </li>
         </ul>
@@ -32,6 +39,4 @@ const Etiqueta = (props) => {
   );
 };
 
-function desplegar(){
-  
-}
+function desplegar() {}

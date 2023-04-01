@@ -1,25 +1,23 @@
-.contenido
-{
-    border-radius: 5px;
-    width: 100vw;
-    height: 100vh;
-    padding: 20px;
-    margin: 1px ; 
-    color: white;
+.contenido {
+  border-radius: 5px;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  margin: 1px;
+  color: white;
 }
-.direccion
-{
-    margin: 1px;
-    width: 100%;
-    height: 5%;
+.direccion {
+  margin: 1px;
+  width: 100%;
+  height: 5%;
 }
-.titulo{
-    padding: auto;
-    text-align-last: center;
-    margin:5px ; 
-    text-align: center;
-    font-size: 23px;
-    color: white;
+.titulo {
+  padding: auto;
+  text-align-last: center;
+  margin: 5px;
+  text-align: center;
+  font-size: 23px;
+  color: white;
 }
 
 /*.placeholder
@@ -33,23 +31,19 @@
     border-radius: 5px;
    
 }*/
-.atributos
-{
-    align-items: center;
-    margin:5px;
-    
-    width:90%;
-    height:90%; 
+.atributos {
+  align-items: center;
+  margin: 5px;
+
+  width: 90%;
+  height: 90%;
 }
-.Botones
-{
-    margin: 5px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    
-    
+.Botones {
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
 }
 /*.botonCancelar
 {text-align-last: center;
@@ -92,12 +86,11 @@
     margin:5px ; 
     border-radius: 5px;
 }*/
-.entradaEtiquetas
-{
-    display: flex;
-    background-color: #DBEAFA;
-    width: 100%;
-    height: 100%;
-    margin:5px ; 
-    border-radius: 5px;
+.entradaEtiquetas {
+  display: flex;
+  background-color: #dbeafa;
+  width: 100%;
+  height: 100%;
+  margin: 5px;
+  border-radius: 5px;
 }

@@ -1,11 +1,9 @@
-.imagen-formulario
-{
-    padding: auto;
-    margin:15px; 
-    width:90%;
-    height:90%; 
-    border: solid 2px white;
-    background-color:teal ;
-    border-radius: 5px;
-   
+.imagen-formulario {
+  padding: auto;
+  margin: 15px;
+  width: 90%;
+  height: 90%;
+  border: solid 2px white;
+  background-color: teal;
+  border-radius: 5px;
 }

@@ -1,8 +1,7 @@
-.ventana-formulario
-{
-    border-radius: 5px;
-    width: 100vw;
-    height: 100vh;
-    padding: 20px;
-    margin: 1px ;  
+.ventana-formulario {
+  border-radius: 5px;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  margin: 1px;
 }

@@ -72,10 +72,12 @@ END / / delimiter;
 /*procedimiento almacenado para obtener todos los modelos de una etiqueta*/
 delimiter //
 CREATE PROCEDURE obtener_todos_modelo_dispositivo(IN nombre_etiqueta VARCHAR(100))
-SELECT ruta_imagen, etiquetas.nombre AS etiqueta, modelos_dispositivos_moviles.nombre AS modelo
-FROM modelos_dispositivos_moviles,etiquetas,etiqueta_modelo
-WHERE nombre_etiqueta=etiquetas.nombre AND etiqueta_modelo.id_etiqueta=etiquetas.id AND 
-etiqueta_modelo.id_modelo_dispositivo=modelos_dispositivos_moviles.id AND modelos_dispositivos_moviles.visible =1;
+BEGIN
+    SELECT ruta_imagen, etiquetas.nombre AS etiqueta, modelos_dispositivos_moviles.nombre AS modelo
+    FROM modelos_dispositivos_moviles,etiquetas,etiqueta_modelo
+    WHERE nombre_etiqueta=etiquetas.nombre AND etiqueta_modelo.id_etiqueta=etiquetas.id AND 
+    etiqueta_modelo.id_modelo_dispositivo=modelos_dispositivos_moviles.id AND modelos_dispositivos_moviles.visible =1;
+END
 //
 /*EJEMPLO: llamada al procedimiento almacenado*/
 /*CALL obtener_todos_modelo_dispositivo('nombre_etiqueta');*/
@@ -86,10 +88,10 @@ etiqueta_modelo.id_modelo_dispositivo=modelos_dispositivos_moviles.id AND modelo
 delimiter //
 CREATE PROCEDURE obtener_etiquetas(IN nomb_categoria VARCHAR(100))
 BEGIN 
-SET @id_categ=(SELECT id FROM categorias WHERE nombre=nomb_categoria);
-SELECT etiquetas.nombre FROM etiquetas
-WHERE etiquetas.id_categoria=@id_categ
-ORDER BY etiquetas.nombre ASC ;
+    SET @id_categ=(SELECT id FROM categorias WHERE nombre=nomb_categoria);
+    SELECT etiquetas.nombre FROM etiquetas
+    WHERE etiquetas.id_categoria=@id_categ
+    ORDER BY etiquetas.nombre ASC ;
 END //
 delimiter ;
 /*EJEMPLO: llamada al procedimiento almacenado*/
@@ -102,9 +104,9 @@ delimiter ;
 delimiter //
 CREATE PROCEDURE ocultar_modelo(IN nomb_modelo VARCHAR(100))
 BEGIN 
-UPDATE modelos_dispositivos_moviles 
-SET modelos_dispositivos_moviles.visible = 0
-WHERE nombre=nomb_modelo;
+    UPDATE modelos_dispositivos_moviles 
+    SET modelos_dispositivos_moviles.visible = 0
+    WHERE nombre=nomb_modelo;
 END //
 delimiter ;
 /*EJEMPLO: llamada al procedimiento almacenado*/
@@ -116,10 +118,12 @@ delimiter ;
 /*procedimiento almacenado para obtener los datos de un modelo especifico*/
 delimiter //
 CREATE PROCEDURE obtener_datos_modelo(IN nomb_modelo VARCHAR(150))
-SELECT ruta_imagen,modelos_dispositivos_moviles.nombre AS modelo,descripcion,etiquetas.nombre AS etiqueta
-FROM modelos_dispositivos_moviles,etiquetas,etiqueta_modelo
-WHERE modelos_dispositivos_moviles.nombre=nomb_modelo AND modelos_dispositivos_moviles.visible=1
-AND modelos_dispositivos_moviles.id=etiqueta_modelo.id_modelo_dispositivo AND etiqueta_modelo.id_etiqueta=etiquetas.id;
+BEGIN
+    SELECT ruta_imagen,modelos_dispositivos_moviles.nombre AS modelo,descripcion,etiquetas.nombre AS etiqueta
+    FROM modelos_dispositivos_moviles,etiquetas,etiqueta_modelo
+    WHERE modelos_dispositivos_moviles.nombre=nomb_modelo AND modelos_dispositivos_moviles.visible=1
+    AND modelos_dispositivos_moviles.id=etiqueta_modelo.id_modelo_dispositivo AND etiqueta_modelo.id_etiqueta=etiquetas.id;
+END
 //
 /*EJEMPLO: llamada al procedimiento almacenado*/
 /*CALL obtener_datos_modelo('nombre_modelo');*/

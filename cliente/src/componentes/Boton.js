@@ -1,4 +1,5 @@
 import Icon from "@mdi/react";
+import "../estilos/boton.css";
 
 export const Boton = (props) => {
   return (

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Boton } from "./Boton";
+//import "../estilos/imagenFormulario.css";
+import "../estilos/imagenFormulario"
 export const ImagenFormulario = () => {
   
   return <div className='imagen-formulario'>

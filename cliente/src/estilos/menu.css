@@ -9,3 +9,10 @@
     min-width: 20%;
     max-width: 20%;
 }
+.etiquetas {
+    display: none;
+
+}
+.etiquetas-visible{
+    display:block;
+}

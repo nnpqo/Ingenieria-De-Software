@@ -1,12 +1,15 @@
 import { Boton } from "./Boton";
 import {getModeloDispositivos} from "../API/api";
 import { ImagenFormulario } from "./ImagenFormulario";
+import "../estilos/ventana.css";
+import "../estilos/boton.css";
 export const VentanaFormulario = (props) => {
   const opciones = props.opciones.map((opciones) =>
   <opciones key={opciones}>{opciones}</opciones>
 );
   return (
-    <div>
+    <div className="ventana-formulario">
+      <p className="direccion"> producto / Añadir dispositivo </p>
       {props.imagen === true && <ImagenFormulario/>}
       <div className="titulo-Ventana">
         <h1>{props.titulo}</h1>
@@ -15,8 +18,8 @@ export const VentanaFormulario = (props) => {
         {opciones}
       </div>
       <div className="Guardar-Cancelar">
-        <Boton nombre={"GUARDAR"} funcion={getModeloDispositivos} />
-        <Boton nombre={"CANCELAR"} />
+        <Boton nombre={"GUARDAR"} estilos={"guardar"} funcion={getModeloDispositivos} />
+        <Boton nombre={"CANCELAR"} estilos={"cancelar"} />
       </div>
     </div>
   );
@@ -30,7 +33,5 @@ export const Ventana = (props) => {
       <p>categorias &gt; dispositivos moviles &gt; samsumg</p>
       {modelos}
     </div>
-
-
   );
 }

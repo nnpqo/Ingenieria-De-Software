@@ -1,8 +1,9 @@
 import React from "react";
+import "../estilos/cajaTexto.css";
 
 function CajaTexto(props) {
   return (
-    <div>
+    <div className="cajaTexto">
       <label>{props.nombre}</label>
       <input type="text" />
     </div>

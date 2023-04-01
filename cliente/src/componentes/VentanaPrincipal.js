@@ -26,7 +26,7 @@ export const VentanaPrincipal = (props) => {
     <ComboBox nombre={"etiquetas"} opciones={etiquetas} />,
   ];
   return (
-    <div>
+    <div className="ventana-principal">
       {props.menu === 1 && (
         <>
           <MenuEtiquetas />

@@ -10,11 +10,10 @@ export const Cabecera = () => {
           <Boton nombre={"JDKCELL"} estilos={"boton-navbar"} />
         </Link>
         <Link to="/productos">
-          <Boton nombre={"Producto"} />
+          <Boton nombre={"Producto"} estilos={'boton-navbar-pro'} />
         </Link>
         <Boton />
       </div>
       <Outlet />
-    </>
-  );
+    </>)
 };

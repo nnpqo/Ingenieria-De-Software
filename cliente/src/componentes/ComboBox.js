@@ -1,6 +1,6 @@
 import React from "react";
 
-export function ComboBox(props) {
+export const ComboBox = (props) => {
   const opciones = props.opciones.map((opciones) => (
     <option key={opciones}>{opciones}</option>
   ));
@@ -10,4 +10,4 @@ export function ComboBox(props) {
       <select>{opciones}</select>
     </div>
   );
-}
+};

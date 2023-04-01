@@ -1,7 +1,7 @@
 import React from "react";
 import "../estilos/cajaTexto.css";
 
-function CajaTexto(props) {
+const CajaTexto = (props) => {
   return (
     <div className="cajaTexto">
       <label>{props.nombre}</label>

@@ -3,11 +3,12 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  background-color: rgb(6, 150, 23);
+  background-color: #284073;
   width: 15%;
-  top: 110px;
+  bottom: 110px;
   min-width: 20%;
   max-width: 20%;
+  height: 100%;
 }
 .etiquetas {
   display: none;

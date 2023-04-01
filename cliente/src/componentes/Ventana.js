@@ -27,6 +27,7 @@ export const VentanaFormulario = (props) => {
     </div>
   );
 };
+
 export const Ventana = (props) => {
   const modelos = props.modelos.map((modelos) => (
     <modelos key={modelos}>{modelos}</modelos>

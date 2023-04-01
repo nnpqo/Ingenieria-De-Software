@@ -7,8 +7,37 @@
 }
 
 .boton-navbar {
-  margin: 10px;
-  color: blue;
-  background-color: yellow;
-  border-radius: 10%;
+  font-size: 20px;
+  background-color: #284073;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0%;
+  display: inline-block;
+  justify-self: center;
+  margin: 0px 0px 20px 10px;
+}
+.boton-navbar:hover {
+  font-size: 20px;
+  background-color: #284073;
+  color: #0655ff;
+  padding: 0%;
+}
+
+.boton-navbar-pro {
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bolder;
+  padding: 0%;
+  align-items: center;
+  display: inline-block;
+  margin: 0px 150px 20px 1100px;
+}
+
+.boton-navbar-pro:hover {
+  color: #0655ff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bolder;
+  padding: 0%;
 }

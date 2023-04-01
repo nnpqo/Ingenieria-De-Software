@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 export const Categoria = () => {
   const [desplegado, setdesplegado] = useState(false);
-
   return (
     <div>
       <li>

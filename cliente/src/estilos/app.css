@@ -5,9 +5,18 @@
   gap: 10px;
 }
 
-.ventana-principal {
-  display: flex;
-  background-color: aqua;
+.cabecera-container {
+  flex: auto;
   width: 100%;
-  height: 95dhv;
+  height: 80px;
+  background-color: white;
+}
+
+.ventana-principal {
+  flex: auto;
+  display: flex;
+  top: 80px;
+  background-color: #1a2f5b;
+  width: 100%;
+  height: 50rem;
 }

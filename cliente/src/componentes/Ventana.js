@@ -5,6 +5,7 @@ import { CajaTexto } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
 import "../estilos/ventana.css";
 import "../estilos/boton.css";
+import { Aviso } from "./Aviso";
 
 export const VentanaFormulario = (props) => {
   const modelos = ["p30 pro", "galaxy s20", "redmi note 11"];
@@ -40,6 +41,7 @@ export const VentanaFormulario = (props) => {
           funcion={()=>{if (props.tipo== 'registro') setModeloDispositivo();
                         else updateModeloDispositivo()}}
         />
+        <Aviso nombre="prueba" mensaje="esto es el mensaje" estilos={"cancelar"}></Aviso>
         <Boton nombre={"CANCELAR"} estilos={"cancelar"} />
       </div>
     </div>

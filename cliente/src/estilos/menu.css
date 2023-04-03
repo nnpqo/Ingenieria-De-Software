@@ -1,18 +1,69 @@
-.menu {
+
+.menuIzquierda{
+  background-color: #284073;;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column; 
+  height: 685px;
+  left: 50px;
+  width: 25%;  
+  color: white;
+}
+.modeloCateg{
+  margin-left: 20%;
+}
+.dispositivosMoviles{
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  position: relative;
+  left: 38px;
+  top: 10px;
+  font-size: 20px;
+}
+.categoria1{
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  position: relative;
+  left: 18px;
+  top: 10px;
+  font-size: 20px;
+}
+.modeloCateg{
+  font-size: 140%;
+}
+
+/*
+.boton-registro{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
   background-color: #284073;
-  width: 15%;
-  bottom: 110px;
-  min-width: 20%;
-  max-width: 20%;
-  height: 100%;
+  padding: 10px;
+  margin: 20px 0px 20px 50px ;
 }
-.etiquetas {
-  display: none;
+.boton-registro:hover{
+  color: white;
+  background-color: #284073;
+  border: 2px solid floralwhite;
+   border-radius: 10%;
 }
-.etiquetas-visible {
-  display: block;
+.boton-modificar{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  background-color: #284073;
+  padding: 10px;
+  margin: 20px 0px 20px 50px ;
 }
+.boton-modificar:hover{
+  cursor: pointer;
+  color: white;
+  background-color: #284073;
+  border: 2px solid floralwhite;
+  border-radius: 10%;
+}
+#categoria{
+  color: white;
+  font-size: 35px;
+}*/

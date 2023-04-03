@@ -4,15 +4,13 @@ export const Categoria = () => {
   const [desplegado, setdesplegado] = useState(false);
   return (
     <div>
-      <li>
-        <ul>
-          <p
-            onClick={() => {
+          <span className="dispositivosMoviles">
+            <a onClick={() => {
               setdesplegado(!desplegado);
-            }}
-          >
-            dispositivos moviles
-          </p>
+            }}>
+              Dispositivos móviles
+            </a>
+          </span>
           <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>
             <ul>
               <Etiqueta nombre={"samsumg"} />
@@ -24,8 +22,6 @@ export const Categoria = () => {
               <Etiqueta nombre={"lg"} />
             </ul>
           </li>
-        </ul>
-      </li>
     </div>
   );
 };

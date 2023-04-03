@@ -9,4 +9,3 @@ export const CajaTexto = (props) => {
     </div>
   );
 }
-

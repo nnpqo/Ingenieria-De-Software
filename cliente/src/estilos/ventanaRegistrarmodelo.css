@@ -31,20 +31,8 @@
     border-radius: 5px;
    
 }*/
-.atributos {
-  align-items: center;
-  margin: 5px;
 
-  width: 90%;
-  height: 90%;
-}
-.Botones {
-  margin: 5px;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-}
+
 /*.botonCancelar
 {text-align-last: center;
     width: 100%;

@@ -6,6 +6,7 @@ import { Aviso } from "./Aviso";
 import { ComboBox } from "./ComboBox";
 import { useState, useEffect, useContext, createContext } from "react";
 
+
 export const prueba = createContext();
 
 export const VentanaPrincipal = (props) => {

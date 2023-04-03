@@ -1,4 +1,4 @@
-.cajaTexto {
+input[type="text"] {
   display: flex;
   border: solid 2px white;
   background-color: #dbeafa;

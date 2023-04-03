@@ -5,6 +5,7 @@ import { CajaTexto } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
 import "../estilos/ventana.css";
 import "../estilos/boton.css";
+import {Producto} from "./Producto";
 
 export const VentanaFormulario = (props) => {
   //const modelos= Object.values(data);
@@ -55,6 +56,10 @@ export const Ventana = (props) => {
   return (
     <div className="ventana-modelos">
       <p>categorias &gt; dispositivos moviles &gt; samsumg</p>
+      
+      <Producto />
+      <Producto />
+      <Producto />
     </div>
   );
 };

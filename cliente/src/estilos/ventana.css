@@ -5,3 +5,9 @@
   padding: 20px;
   margin: 1px;
 }
+
+.ventana-productos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

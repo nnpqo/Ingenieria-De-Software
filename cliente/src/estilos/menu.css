@@ -30,6 +30,12 @@
 .modeloCateg{
   font-size: 140%;
 }
+.etiquetas {
+  display: none;
+}
+.etiquetas-visible {
+  display: block;
+}
 
 /*
 .boton-registro{

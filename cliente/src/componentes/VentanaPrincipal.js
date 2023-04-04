@@ -5,6 +5,7 @@ import CajaTexto from "./CajaTexto";
 import { Aviso } from "./Aviso";
 import { ComboBox } from "./ComboBox";
 import { useState, useEffect, useContext, createContext } from "react";
+import {Producto} from "./Producto";
 
 
 export const prueba = createContext();
@@ -43,6 +44,7 @@ export const VentanaPrincipal = (props) => {
           </>
         )}
       </prueba.Provider>
+      
     </div>
   );
 };

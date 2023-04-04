@@ -45,8 +45,7 @@ export const VentanaFormulario = (props) => {
           funcion={()=>{if (props.tipo== 'registro') setModeloDispositivo();
                         else updateModeloDispositivo()}}
         />
-        <Aviso nombre="prueba" mensaje="esto es el mensaje" estilos={"cancelar"}></Aviso>
-        <Boton nombre={"CANCELAR"} estilos={"cancelar"} />
+        <Aviso nombre="CANCELAR" mensaje="esto es el mensaje" estilos={"cancelar"}></Aviso>
       </div>
     </div>
   );
@@ -58,10 +57,10 @@ export const Ventana = (props) => {
   return (
     <div className="ventana-modelos">
       <p>categorias &gt; dispositivos moviles &gt; samsumg</p>
+      <Producto />
+      <Producto />
+      <Producto />
       
-      <Producto />
-      <Producto />
-      <Producto />
     </div>
   );
 };

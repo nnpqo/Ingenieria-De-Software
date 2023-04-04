@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export const Categoria = () => {
   const [desplegado, setdesplegado] = useState(false);
+  const etiquetas = [<ul><Etiqueta nombre={"Samsumg"} /></ul>,<ul> <Etiqueta nombre={"Xiaomi"}/> </ul>,<ul>  <Etiqueta nombre={"Lg"}  /></ul>];
   return (
     <div>
           <span className="dispositivosMoviles">
@@ -12,15 +13,7 @@ export const Categoria = () => {
             </a>
           </span>
           <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>
-            <ul>
-              <Etiqueta nombre={"samsumg"} />
-            </ul>
-            <ul>
-              <Etiqueta nombre={"xiaomi"} />
-            </ul>
-            <ul>
-              <Etiqueta nombre={"lg"} />
-            </ul>
+            {etiquetas}
           </li>
     </div>
   );

@@ -6,9 +6,12 @@ import { ComboBox } from "./ComboBox";
 import "../estilos/ventana.css";
 import "../estilos/boton.css";
 import { Aviso } from "./Aviso";
+import {Producto} from "./Producto";
 
 export const VentanaFormulario = (props) => {
+  //const modelos= Object.values(data);
   const modelos = ["p30 pro", "galaxy s20", "redmi note 11"];
+  //const etiquetas= Object.values(data);
   const etiquetas = ["xiaomi", "samsumg"];
   const opcionesModificar = <>
     <ComboBox nombre={"Modelo*"} opciones={modelos} id={'modelo'} />
@@ -18,14 +21,15 @@ export const VentanaFormulario = (props) => {
     </>
   const opcionesRegistro = <>
     <CajaTexto nombre={"Nombre*"} id={'nombreModelo'}/>
-    <CajaTexto nombre={"descripcion*"} id={'descripcion'}/>
-    <ComboBox nombre={"etiquetas"} opciones={etiquetas} id={'etiqueta'}/>
+    <CajaTexto nombre={"Descripción*"} id={'descripcion'}/>
+    <ComboBox nombre={"Etiquetas*"} opciones={etiquetas} id={'etiqueta'}/>
     </>
 
 
   return (
     <div className="ventana-formulario">
-      <p className="direccion"> producto / Añadir dispositivo </p>
+      <p className="direccion"> Producto &gt; {props.tipo === 'registro' ?
+       'Registrar modelo de dispositivo movil' : 'Modificar dispositivo'} </p>
       {props.imagen === true && <ImagenFormulario />}
       <div className="titulo-Ventana">
         <h1>{props.titulo}</h1>
@@ -49,12 +53,15 @@ export const VentanaFormulario = (props) => {
 };
 
 
-
 export const Ventana = (props) => {
   
   return (
     <div className="ventana-modelos">
       <p>categorias &gt; dispositivos moviles &gt; samsumg</p>
+      
+      <Producto />
+      <Producto />
+      <Producto />
     </div>
   );
 };

@@ -9,15 +9,17 @@ import("../estilos/menu.css");
 export const Menu = () => {
   const [setVentana] = useContext(prueba);
   return (
-    <div className="menu">
+    <div className="menuIzquierda">
       <Boton
         nombre={"Registar modelo"}
+        estilos={"boton-registro"}
         funcion={() => {
           setVentana(0);
         }}
       />
       <Boton
         nombre={"Modificar modelo"}
+        estilos={"boton-modificar"}
         funcion={() => {
           setVentana(1);
         }}
@@ -28,9 +30,9 @@ export const Menu = () => {
 
 export const MenuEtiquetas = () => {
   return (
-    <div className="menu">
-      <span>Categorias</span>
-      <Categoria />
+    <div className="menuIzquierda" >
+      <span className="categoria1">Categorias</span>
+      <div className="modeloCateg"> <Categoria /></div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ export const Cabecera = () => {
     <>
       <div className="cabecera">
         <Link to="/">
-          <Boton nombre={"JDKCELL"} estilos={"boton-navbar"} />
+        <Boton nombre={"JDKCELL"} estilos={'boton-navbar'} />
         </Link>
         <Link to="/productos">
           <Boton nombre={"Producto"} estilos={'boton-navbar-pro'} />

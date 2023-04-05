@@ -21,7 +21,7 @@
   -moz-box-shadow: 6px 6px 14px -4px rgba(0, 0, 0, 0.75);
   box-shadow: 6px 6px 14px -4px rgba(0, 0, 0, 0.75);
   width:100%;
-  max-width: 150px;
+  max-width: 160px;
   height: auto;
   display: flex;
   flex-direction: column;

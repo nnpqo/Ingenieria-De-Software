@@ -1,5 +1,6 @@
 
 .menuIzquierda{
+  top: 150px; 
   background-color: #284073;
   display: flex;
   flex-direction: column; 
@@ -11,11 +12,12 @@
   margin-left: 20%;
 }
 .dispositivosMoviles{
+  
   color: rgb(255, 255, 255);
   font-weight: 700;
   position: relative;
   left: 38px;
-  top: 10px;
+  top: 80px;
   font-size: 20px;
 }
 .categoria1{

@@ -1,9 +1,4 @@
-.body {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+
 
 .cabecera-container {
   flex: auto;
@@ -13,9 +8,7 @@
 }
 
 .ventana-principal {
-  flex: auto;
   display: flex;
-  top: 80px;
   background-color: #1a2f5b;
   width: 100%;
 }

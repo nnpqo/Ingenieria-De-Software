@@ -60,6 +60,7 @@ export const VentanaFormulario = (props) => {
           mensaje="esto es el mensaje"
           estilos={"cancelar"}
         ></Aviso>
+
       </div>
     </div>
   );

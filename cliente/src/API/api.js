@@ -1,11 +1,17 @@
 import axios from "axios";
-const url = "http://localhost:3001";
 
-export const imagen = (file) => {
-  axios
-    .post(url + "", file)
-    .then()
-    .catch();
+const instancia = axios.create({
+  baseURL: "http://localhost:3001",
+});
+
+export const imagen = (event) => {
+  const file = event.target.files[0];
+  const formData = new FormData();
+  formData.append("image", file);
+  instancia
+    .post("/subirImagenes", formData)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };
 
 export const setModeloDispositivo = () => {
@@ -16,11 +22,12 @@ export const setModeloDispositivo = () => {
               descripcion: descripcion,
               etiqueta: etiqueta}
   console.log(datos);
-  /*axios
+  /*instancia
     .post(url + "", datos)
     .then()
     .catch();*/
 };
+
 export const updateModeloDispositivo = () => {
   let modelo=document.getElementById("modelo").value;
   let nombre=document.getElementById("nombreModelo").value;
@@ -31,16 +38,17 @@ export const updateModeloDispositivo = () => {
               descripcion: descripcion,
               etiqueta: etiqueta}
   console.log(datos);
-  /*axios
+  /*instancia
     .post(url + "", datos)
     .then()
     .catch();*/
 };
 export const getModeloDispositivos = () => {
-  axios
-    .get(url + "")
+
+  instancia
+    .get("/")
     .then(function (response) {
-      console.log(response.data.hola);
+      console.log(response.data);
     })
     .catch(function (error) {
       console.log(error);

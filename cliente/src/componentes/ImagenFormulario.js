@@ -10,7 +10,7 @@ export const ImagenFormulario = () => {
         <img src={imagenCarga} alt="Icono de carga de archivos" />
         <span>Subir imagen</span>
       </label>
-      <input type="file" id="image" onChange={() => {console.log("as")}} style={{display: "none"}} />
+      <input type="file" id="image" onChange={imagen} style={{display: "none"}} />
     </div>
   );
 };

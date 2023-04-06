@@ -43,8 +43,8 @@ export const updateModeloDispositivo = () => {
     .then()
     .catch();*/
 };
-export const getModeloDispositivos = () => {
 
+export const getModeloDispositivos = () => {
   instancia
     .get("/")
     .then(function (response) {

@@ -33,7 +33,7 @@ export const VentanaFormulario = (props) => {
     <div className="ventana-formulario">
       <p className="direccion">
         {" "}
-        Producto &gt;{" "}
+        Home &gt; Producto &gt;{" "}
         {props.tipo === "registro"
           ? "Registrar modelo de dispositivo movil"
           : "Modificar dispositivo"}{" "}
@@ -57,7 +57,7 @@ export const VentanaFormulario = (props) => {
         />
         <Aviso
           nombre="CANCELAR"
-          mensaje="esto es el mensaje"
+          mensaje="¿Está seguro de cancelar el registro?"
           estilos={"cancelar"}
         ></Aviso>
 
@@ -69,7 +69,6 @@ export const VentanaFormulario = (props) => {
 export const Ventana = (props) => {
   return (
     <div>
-      <p>categorias &gt; dispositivos moviles &gt; samsumg</p>
       <div className="ventana-productos">
         <Producto />
         <Producto />

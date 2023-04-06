@@ -1,23 +1,37 @@
 .cabecera {
   background-color: #284073;
   display: flex;
-  gap: 10px;
+  flex-direction: row;
+  gap: 10%;
   height: 10vh;
+  width: 100%;
   align-items: center;
-  position: fixed;
+  justify-content: center;
+  /*position: fixed;*/
+
+  
+  box-sizing: border-box;
+  
+  flex-grow: 1;
+  padding-left: 30px;
+  right: 0px;
+  left: 0px;
 }
 
 .boton-navbar {
-  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
   background-color: #284073;
   color: #ffffff;
   cursor: pointer;
   padding: 0%;
-  display: inline-block;
   justify-self: center;
-  margin: 0px 0px 20px 10px;
+  align-items: center;
+  margin: 0px 0px 10px 10px;
   background-color: transparent;
   border: none;
+  padding-top: 20px;
 }
 .boton-navbar:hover {
   font-size: 20px;
@@ -31,12 +45,13 @@
   cursor: pointer;
   font-size: 15px;
   font-weight: bolder;
-  padding: 0%;
+  padding: 10px;
   align-items: center;
   display: inline-block;
-  margin: 0px 150px 20px 1100px;
+  margin: 10px 50px 10px 5px ;
   background-color: transparent;
-  border: none;
+  border: 5px;
+
 }
 
 .boton-navbar-pro:hover {
@@ -45,4 +60,52 @@
   font-size: 15px;
   font-weight: bolder;
   padding: 0%;
+}
+
+.categorias{
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  flex-grow: 1;
+  text-align: right;
+  justify-content: space-between;
+}
+.home{
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+.cajaproducto{
+  display: block ;
+  right: 0px;
+  display: inline-block;
+}
+.otro {
+  color: transparent;
+}
+
+.jdk {
+  font-weight: normal;
+}
+
+.opciones-navbar {
+  display: flex;
+  width: 50%;
+  flex-direction: row-reverse;
+  padding-top: 20px;
+}
+
+.opciones-navbar h2{
+  font-weight: lighter;
+}
+
+.boton-usuario {
+  height: 45px;
+  width: 45px;
+  background-color: white;
+  border-radius: 100%;
+  border: none;
+  margin: 0 25px;
+
 }

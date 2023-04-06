@@ -3,72 +3,88 @@
   background-color: #284073;
   display: flex;
   flex-direction: column; 
-  min-width: 15%;  
-  width: 300px;
+  flex-wrap: wrap;
+  min-width: 20%;  
+  max-width: 20%;
   color: white;
+  gap: 20px;
+  padding-top: 40px;
+  align-items: center;
 }
-.modeloCateg{
-  margin-left: 20%;
-}
+
 .dispositivosMoviles{
   color: rgb(255, 255, 255);
   font-weight: 700;
-  position: relative;
-  left: 38px;
-  top: 10px;
-  font-size: 20px;
+  font-size: 25px;  
+  margin-left: 50px;
+  display: flex;
+
+}
+.categoria{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .categoria1{
   color: rgb(255, 255, 255);
   font-weight: 700;
-  position: relative;
-  left: 18px;
-  top: 10px;
-  font-size: 20px;
-}
-.modeloCateg{
-  font-size: 140%;
+  font-size: 25px;
+  left: 5px;
+
 }
 .etiquetas {
   display: none;
 }
 .etiquetas-visible {
   display: block;
+  font-size: 25px;
+  font-weight: 100;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items:flex-start;
+  flex-wrap: wrap;
 }
+.etiquetas-visible ul{
+  margin-top: 20px;
+  margin-left: 10px;
 
-/*
+}
 .boton-registro{
+  width: 200px;
+  height: 50px;
   border: none;
   outline: none;
   cursor: pointer;
   color: white;
   background-color: #284073;
   padding: 10px;
-  margin: 20px 0px 20px 50px ;
 }
 .boton-registro:hover{
   color: white;
   background-color: #284073;
   border: 2px solid floralwhite;
-   border-radius: 10%;
+   border-radius: 10px;
 }
 .boton-modificar{
-  border: none;
+  width: 200px;
+  height: 50px;
+  border: none;  
   outline: none;
   cursor: pointer;
   color: white;
   background-color: #284073;
   padding: 10px;
-  margin: 20px 0px 20px 50px ;
 }
 .boton-modificar:hover{
   cursor: pointer;
   color: white;
   background-color: #284073;
   border: 2px solid floralwhite;
-  border-radius: 10%;
+  border-radius: 10px;
 }
-#categoria{
+/*#categoria{
   color: white;
   font-size: 35px;
 }*/

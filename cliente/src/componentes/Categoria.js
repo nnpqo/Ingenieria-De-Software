@@ -4,7 +4,7 @@ export const Categoria = () => {
   const [desplegado, setdesplegado] = useState(false);
   const etiquetas = [<ul><Etiqueta nombre={"Samsumg"} /></ul>,<ul> <Etiqueta nombre={"Xiaomi"}/> </ul>,<ul>  <Etiqueta nombre={"Lg"}  /></ul>];
   return (
-    <div>
+    <div className="categoria">
           <span className="dispositivosMoviles">
             <a onClick={() => {
               setdesplegado(!desplegado);

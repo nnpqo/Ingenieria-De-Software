@@ -9,7 +9,7 @@ export const Producto = (props) =>{
         <div className="san">
             <img className="product" src={samsung} />
             <h4 className="tittle">Samsung</h4>
-            <h4 className="tittle">{props.nombre}</h4>
+            <h4 className="tittle">S50 pro</h4>
         </div>
       </div>
 

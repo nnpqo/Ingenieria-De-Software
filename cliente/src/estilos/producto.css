@@ -15,14 +15,14 @@
 .pantalla .san {
   background-color:#1A2F5B;
   border-radius: 20px;
-  margin: 2rem;
+  margin: 0.5rem;  
   padding: 1rem;
   -webkit-box-shadow: 6px 6px 14px -4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 6px 6px 14px -4px rgba(0, 0, 0, 0.75);
   box-shadow: 6px 6px 14px -4px rgba(0, 0, 0, 0.75);
   width:100%;
-  max-width: 160px;
-  height: auto;
+  max-width:180px;
+  height: 260px;
   display: flex;
   flex-direction: column;
   align-items: center;

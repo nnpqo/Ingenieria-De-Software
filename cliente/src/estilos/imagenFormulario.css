@@ -1,0 +1,24 @@
+.imagen-formulario {
+  padding: auto;
+  margin: 10px;
+  width: 450px;
+  height: 30%;
+  border: solid 2px white;
+  background-color: #1a2f5b;
+  position: relative;
+  left: 4.8cm;
+  top: 4cm;
+  border-style: dashed;
+}
+.posicion {
+  position: relative;
+  left: 4.2cm;
+  top: 1cm;
+}
+.posicion2 {
+  position: relative;
+  left: 4cm;
+  top: 1cm;
+  color: white;
+  font-family: Tahoma, sans-serif;
+}

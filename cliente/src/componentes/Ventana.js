@@ -16,16 +16,23 @@ export const VentanaFormulario = (props) => {
   const opcionesModificar = (
     <>
       <ComboBox nombre={"Modelo*"} opciones={modelos} id={"modelo"} />
+      <br />
       <CajaTexto nombre={"cambiar Nombre*"} id={"nombreModelo"} />
+      <br />
       <CajaTexto nombre={"cambiar Descripcion*"} id={"descripcion"} />
+      <br />
       <ComboBox nombre={"Etiquetas"} opciones={etiquetas} id={"etiqueta"} />
     </>
   );
   const opcionesRegistro = (
     <>
       <CajaTexto nombre={"Nombre*"} id={"nombreModelo"} />
+      <br />
       <CajaTexto nombre={"Descripción*"} id={"descripcion"} />
+      <br />
       <ComboBox nombre={"Etiquetas*"} opciones={etiquetas} id={"etiqueta"} />
+      <br />
+      <br />
     </>
   );
 
@@ -46,7 +53,7 @@ export const VentanaFormulario = (props) => {
         {props.tipo === "registro" && opcionesRegistro}
         {props.tipo === "modificar" && opcionesModificar}
       </div>
-      <div className="Guardar-Cancelar">
+      <div>
         <Boton
           nombre={"GUARDAR"}
           estilos={"guardar"}
@@ -60,7 +67,6 @@ export const VentanaFormulario = (props) => {
           mensaje="¿Está seguro de cancelar el registro?"
           estilos={"cancelar"}
         ></Aviso>
-
       </div>
     </div>
   );

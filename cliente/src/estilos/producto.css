@@ -1,27 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
 * {
-  font-family:  Tahoma, sans-serif;
+  font-family: Tahoma, sans-serif;
   margin: 0;
   letter-spacing: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
-
 .pantalla {
   display: flex;
 }
 
 .pantalla .san {
-  background-color:#1A2F5B;
+  background-color: #1a2f5b;
   border-radius: 20px;
-  margin: 0.5rem;  
+  margin: 0.5rem;
   padding: 1rem;
   -webkit-box-shadow: 6px 6px 14px -4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 6px 6px 14px -4px rgba(0, 0, 0, 0.75);
   box-shadow: 6px 6px 14px -4px rgba(0, 0, 0, 0.75);
-  width:100%;
-  max-width:180px;
+  width: 100%;
+  max-width: 180px;
   height: 260px;
   display: flex;
   flex-direction: column;
@@ -38,5 +37,5 @@
   font-weight: 200;
   font-size: 15px;
   margin: 0.5rem 0;
-  color:aliceblue;
+  color: aliceblue;
 }

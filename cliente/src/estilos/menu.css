@@ -1,10 +1,9 @@
-
-.menuIzquierda{
+.menuIzquierda {
   background-color: #284073;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   flex-wrap: wrap;
-  min-width: 20%;  
+  min-width: 20%;
   max-width: 20%;
   color: white;
   gap: 20px;
@@ -12,25 +11,23 @@
   align-items: center;
 }
 
-.dispositivosMoviles{
+.dispositivosMoviles {
   color: rgb(255, 255, 255);
   font-weight: 700;
-  font-size: 25px;  
+  font-size: 25px;
   margin-left: 50px;
   display: flex;
-
 }
-.categoria{
+.categoria {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.categoria1{
+.categoria1 {
   color: rgb(255, 255, 255);
   font-weight: 700;
   font-size: 25px;
   left: 5px;
-
 }
 .etiquetas {
   display: none;
@@ -43,15 +40,14 @@
   display: flex;
   flex-direction: column;
   width: 50%;
-  align-items:flex-start;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
-.etiquetas-visible ul{
+.etiquetas-visible ul {
   margin-top: 20px;
   margin-left: 10px;
-
 }
-.boton-registro{
+.boton-registro {
   width: 200px;
   height: 50px;
   border: none;
@@ -61,23 +57,23 @@
   background-color: #284073;
   padding: 10px;
 }
-.boton-registro:hover{
+.boton-registro:hover {
   color: white;
   background-color: #284073;
   border: 2px solid floralwhite;
-   border-radius: 10px;
+  border-radius: 10px;
 }
-.boton-modificar{
+.boton-modificar {
   width: 200px;
   height: 50px;
-  border: none;  
+  border: none;
   outline: none;
   cursor: pointer;
   color: white;
   background-color: #284073;
   padding: 10px;
 }
-.boton-modificar:hover{
+.boton-modificar:hover {
   cursor: pointer;
   color: white;
   background-color: #284073;

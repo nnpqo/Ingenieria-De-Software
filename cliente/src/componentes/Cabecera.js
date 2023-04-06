@@ -2,25 +2,31 @@ import { Boton } from "./Boton";
 import "../estilos/cabecera.css";
 import { Link, Outlet } from "react-router-dom";
 
-
 export const Cabecera = () => {
   return (
     <>
-      <header className="cabecera" >
+      <header className="cabecera">
         <div className="home">
-        <Link to="/">
-          <Boton nombre={<><span className="jdk">JDK</span><span className="cell">CELL</span></>} estilos={'boton-navbar'} />
+          <Link to="/">
+            <Boton
+              nombre={
+                <>
+                  <span className="jdk">JDK</span>
+                  <span className="cell">CELL</span>
+                </>
+              }
+              estilos={"boton-navbar"}
+            />
           </Link>
-        </div>     
-       <div className="opciones-navbar">
-            <Link to="/productos">
-           
-              <Boton nombre={"Producto"} estilos={'boton-navbar-pro'} />
-              
-            </Link>  
-            </div>
-            <Boton estilos={'boton-usuario'}/>
+        </div>
+        <div className="opciones-navbar">
+          <Link to="/productos">
+            <Boton nombre={"Producto"} estilos={"boton-navbar-pro"} />
+          </Link>
+        </div>
+        <Boton estilos={"boton-usuario"} />
       </header>
       <Outlet />
-    </>)
+    </>
+  );
 };

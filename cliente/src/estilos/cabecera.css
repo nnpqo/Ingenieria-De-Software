@@ -4,7 +4,7 @@
   gap: 10px;
   height: 10vh;
   align-items: center;
-  position: fixed;
+  /*position: fixed;*/
 }
 
 .boton-navbar {

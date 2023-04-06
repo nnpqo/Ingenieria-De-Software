@@ -11,3 +11,15 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+.titulo-Ventana{
+    color:white;
+    position: relative;
+    bottom: 7cm;
+    text-align: center;
+    font-size: 130%;
+    font-family: Tahoma, sans-serif;
+}
+.direccion{
+  color:white;
+  font-family: Tahoma, sans-serif;
+}

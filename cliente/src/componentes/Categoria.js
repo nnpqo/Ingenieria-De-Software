@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
+import { getEtiquetas } from "../API/api";
+import "../estilos/app.css"
 
 export const Categoria = () => {
   const [desplegado, setdesplegado] = useState(false);
-  const etiquetas = [
-    <ul>
-      <Etiqueta nombre={"Samsumg"} />
-    </ul>,
-    <ul>
-      {" "}
-      <Etiqueta nombre={"Xiaomi"} />{" "}
-    </ul>,
-    <ul>
-      {" "}
-      <Etiqueta nombre={"Lg"} />
-    </ul>,
-  ];
+  const [etiquetas, setEtiquetas] = useState([]);
+
+  useEffect(()=>{
+    getEtiquetas().then((nombres) => setEtiquetas(nombres));
+  },[])
+
+  let et = etiquetas?.map((eti)=>{
+    return <ul>
+      <Etiqueta nombre={eti}/>
+    </ul>
+  })
+ 
   return (
     <div className="categoria">
       <span className="dispositivosMoviles">
@@ -27,7 +28,7 @@ export const Categoria = () => {
         </a>
       </span>
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>
-        {etiquetas}
+        {et}
       </li>
     </div>
   );
@@ -36,7 +37,7 @@ const Etiqueta = (props) => {
   return (
     <>
       <input type="checkbox" name="" id="check"/>
-      <span>{props.nombre}</span>
+      <span className="nombre-etiqueta">{props.nombre}</span>
     </>
   );
 };

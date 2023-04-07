@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const instancia = axios.create({
+export const instancia = axios.create({
   baseURL: "http://localhost:3001",
 });
 
@@ -15,12 +15,14 @@ export const imagen = (event) => {
 };
 
 export const setModeloDispositivo = () => {
-  let nombre=document.getElementById("nombreModelo").value;
-  let descripcion=document.getElementById("descripcion").value;
-  let etiqueta=document.getElementById("etiqueta").value;
-  const datos={nombre: nombre,
-              descripcion: descripcion,
-              etiqueta: etiqueta}
+  let nombre = document.getElementById("nombreModelo").value;
+  let descripcion = document.getElementById("descripcion").value;
+  let etiqueta = document.getElementById("etiqueta").value;
+  const datos = {
+    nombre: nombre,
+    descripcion: descripcion,
+    etiqueta: etiqueta,
+  };
   console.log(datos);
   instancia
     .post("/setModelo", datos)
@@ -29,36 +31,35 @@ export const setModeloDispositivo = () => {
 };
 
 export const updateModeloDispositivo = () => {
-  let modelo=document.getElementById("modelo").value;
-  let nombre=document.getElementById("nombreModelo").value;
-  let descripcion=document.getElementById("descripcion").value;
-  let etiqueta=document.getElementById("etiqueta").value;
-  const datos={modelo: modelo,
-              nombre: nombre,
-              descripcion: descripcion,
-              etiqueta: etiqueta}
+  let modelo = document.getElementById("modelo").value;
+  let nombre = document.getElementById("nombreModelo").value;
+  let descripcion = document.getElementById("descripcion").value;
+  let etiqueta = document.getElementById("etiqueta").value;
+  const datos = {
+    modelo: modelo,
+    nombre: nombre,
+    descripcion: descripcion,
+    etiqueta: etiqueta,
+  };
   console.log(datos);
   instancia
     .put("/actualizarModelo", datos)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
-export const getModeloDispositivos = (eti) => {
-  let e=eti
-  console.log(e)
-  return axios
 
-  .get("http://localhost:3001/getAllModeloDispositivo", { params: { etiqueta: e } })
-  .then((res)=> {
-    const modelos = res.data.modelos.map((modelo) => modelo.modelo);
-      console.log(modelos);
-      return modelos;
-  })
-  .catch((error)=> {
-    console.log(error);
-  });
+export const getModeloDispositivos = async() => {
+  return await instancia
+    .get("/getAllModeloDispositivo")
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      alert(error);
+    });
 };
-export const getEtiquetas= () => {
+
+export const getEtiquetas = () => {
   return axios
     .get("http://localhost:3001/getEtiquetas")
     .then((res) => {

@@ -89,7 +89,7 @@ export const Ventana = (props) => {
   return (
     <div>
       <div className="ventana-productos">
-        {modelos.map((modelo, index) => (
+        {modelos?.map((modelo, index) => (
           <Producto nombre={modelo.nombre} etiqueta={modelo.etiqueta} ruta={modelo.ruta_imagen} key={index} />
         ))}
       </div>

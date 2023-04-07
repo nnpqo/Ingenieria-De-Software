@@ -2,7 +2,7 @@ const { Router } = require("express");
 const upload = require("./imagen");
 const router = Router();
 const db=require("./baseDeDatos")
-let file=null;
+let file="null";
 
 //routes
 router.get("/", (req, res) => {
@@ -32,7 +32,7 @@ router.post("/setModelo", (req, res) => {
       console.log('Resultados de la consulta:', results);
     }
   })
-  file=null;
+  file="null";
 });
 
 router.post("/subirImagenes", upload, (req, res) => {
@@ -45,7 +45,11 @@ router.put("/actualizarModelo",(req,res) =>{
   const nombreNuevo = req.body.nombre;
   const descripcionNueva = req.body.descripcion;
   const etiquetaNueva = req.body.etiqueta;
-  db.query("call modificar_modelo(?,?,?,?)",[nombreAntiguio,nombreNuevo,descripcionNueva,etiquetaNueva],
+  const imageName=file.filename;
+  const nuevaRuta="/images/"+imageName;
+  
+  db.query("call modificar_modelo(?,?,?,?,?)",[nombreAntiguio,nombreNuevo,descripcionNueva,etiquetaNueva,nuevaRuta],
+  
   (error, results, fields) => {
     if (error) {
       console.error('Error al ejecutar consulta:', error);
@@ -53,6 +57,7 @@ router.put("/actualizarModelo",(req,res) =>{
       console.log('Resultados de la consulta:', results);
     }
   })
+  file="null"
 })
 
 router.get("/getAllModeloDispositivo", (req, res) => {

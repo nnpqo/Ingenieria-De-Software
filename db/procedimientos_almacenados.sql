@@ -23,17 +23,21 @@ END / /
 
 /*-------------------------------------------------*/
 /*procedimiento almacenado para actualizar el modelo*/
+drop procedure if exists modificar_modelo;
+-------------------------------------------------/
 delimiter //
 CREATE PROCEDURE modificar_modelo(IN nombre_antiguo VARCHAR(150),
                                   IN nombre_nuevo VARCHAR(150),
                                   IN descrip_nueva TEXT,
-                                  IN etiqueta_nueva VARCHAR(100))
+                                  IN etiqueta_nueva VARCHAR(100),
+                                  IN ruta VARCHAR(100))
       BEGIN 
          SET @id_etiquet=(SELECT id FROM etiquetas WHERE nombre=etiqueta_nueva);
          SET @id_modelo=(SELECT id FROM modelos_dispositivos_moviles WHERE nombre=nombre_antiguo);
          SET @id_etiquet_modelo=(SELECT id FROM etiqueta_modelo WHERE id_modelo_dispositivo=@id_modelo);
          UPDATE modelos_dispositivos_moviles 
          SET nombre=nombre_nuevo,
+             ruta_imagen = ruta,
              descripcion=descrip_nueva
          WHERE nombre=nombre_antiguo; 
          UPDATE etiqueta_modelo 

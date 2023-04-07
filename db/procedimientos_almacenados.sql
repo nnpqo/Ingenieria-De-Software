@@ -23,6 +23,8 @@ END / /
 drop procedure if exists modificar_modelo;
 /*-------------------------------------------------*/
 /*procedimiento almacenado para actualizar el modelo*/
+drop procedure if exists modificar_modelo;
+-------------------------------------------------/
 delimiter //
 CREATE PROCEDURE modificar_modelo(IN nombre_antiguo VARCHAR(150),
                                   IN nombre_nuevo VARCHAR(150),

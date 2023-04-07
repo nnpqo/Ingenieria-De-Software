@@ -7,23 +7,22 @@ export const instancia = axios.create({
 });
 
 
-let file = null;
+let file = "null";
 
 
 export const guardarImagen = () => {
   const archivo = file;
-  if (!archivo == null) {
+  
     const formData = new FormData();
-    formData.append("image", file);
+    formData.append("image", archivo);
     instancia
       .post("/subirImagenes", formData)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-  }
+  file = "null"; 
 };
 
 export const imagen = (event) => {
-  file = null;
   const pesoMax = 1048576;
   const minAncho = 250;
   const minAlto = 250;
@@ -83,11 +82,13 @@ export const updateModeloDispositivo = () => {
     etiqueta: etiqueta,
   };
   console.log(datos);
-  /*instancia
-    .post(url + "", datos)
-    .then()
-    .catch();*/
+  instancia
+    .put("/actualizarModelo", datos)
+    .then((res) => console.log(res))
+    .catch((err)=> console.log(err));
+  
 };
+
 
 
 export const getModeloDispositivos = () => {
@@ -102,6 +103,7 @@ export const getModeloDispositivos = () => {
 };
 
 export const getEtiquetas = () => {
+
   return axios
     .get("http://localhost:3001/getEtiquetas")
     .then((res) => {
@@ -112,4 +114,20 @@ export const getEtiquetas = () => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+export const getNombreModeloDispositivos = () => {
+  /*let e=eti
+  console.log(e)*/
+  return axios
+
+  .get("http://localhost:3001/getAllModeloDispositivo")
+  .then((res)=> {
+    const modelos = res.data.modelos.map((modelo) => modelo.nombre);
+      console.log(modelos);
+      return modelos;
+  })
+  .catch((error)=> {
+    console.log(error);
+  });
 };

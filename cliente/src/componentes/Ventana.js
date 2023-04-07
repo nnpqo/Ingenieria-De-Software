@@ -1,10 +1,12 @@
 import { Boton } from "./Boton";
+
 import {
   instancia,
   setModeloDispositivo,
   updateModeloDispositivo,
-  getModeloDispositivos,
+  getNombreModeloDispositivos,
   getEtiquetas,
+  guardarImagen,
 } from "../API/api";
 import { ImagenFormulario } from "./ImagenFormulario";
 import { CajaTexto } from "./CajaTexto";
@@ -25,8 +27,8 @@ export const VentanaFormulario = (props) => {
   const [etiquetas, setEtiquetas] = useState([]);
 
   useEffect(() => {
-    getModeloDispositivos("Xiaomi").then((modelos) => setmodelos(modelos));
     getEtiquetas().then((nombres) => setEtiquetas(nombres));
+    getNombreModeloDispositivos().then((nombres) => setmodelos(nombres));    
   }, []);
   //const etiquetas = ["xiaomi", "samsumg"];
   const opcionesModificar = (
@@ -74,10 +76,10 @@ export const VentanaFormulario = (props) => {
           <Boton
             nombre={"GUARDAR"}
             estilos={"guardar"}
-            funcion={(e) => {
+            funcion={() => {
+              guardarImagen()
               if (props.tipo == "registro") {
                 setModeloDispositivo();
-
               } else {
                 updateModeloDispositivo();
               }
@@ -105,12 +107,12 @@ export const Ventana = (props) => {
       console.log(guardar);
     };
     getProdructo();
-  },[guardar]);
+  },[]);
 
   let prod = productos.modelos?.map((pro)=>{
     console.log(pro) 
     return (<>
-    <Producto img={pro.ruta_imagen} etiqueta={pro.etiqueta} nombre={pro.nombre}/>
+    <Producto ruta={pro.ruta_imagen} etiqueta={pro.etiqueta} nombre={pro.nombre}/>
     </>)
   })
 
@@ -118,6 +120,7 @@ export const Ventana = (props) => {
     <div>
       <div className="ventana-productos">
        {prod}
+
       </div>
     </div>
   );

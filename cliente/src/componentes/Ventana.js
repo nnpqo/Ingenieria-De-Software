@@ -11,11 +11,12 @@ import React, { useState, useEffect } from "react";
 
 export const VentanaFormulario = (props) => {
   
-  const modelos = ["p30 pro", "galaxy s20", "redmi note 11"];
-
+  //const modelos = ["p30 pro", "galaxy s20", "redmi note 11"];
+  const [modelos, setmodelos] = useState([]);
   const [etiquetas, setEtiquetas] = useState([]);
 
   useEffect(() => {
+    getModeloDispositivos("Xiaomi").then((modelos) => setmodelos(modelos));
     getEtiquetas().then((nombres) => setEtiquetas(nombres));
   }, []);
   //const etiquetas = ["xiaomi", "samsumg"];

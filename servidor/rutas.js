@@ -51,17 +51,18 @@ router.put("/actualizarModelo",(req,res) =>{
 })
 
 router.get("/getAllModeloDispositivo", (req, res) => {
-  const etiqueta=req.body.etiqueta
-  db.query("call obtener_etiquetas(?)",[etiqueta],
+  const etiqueta = req.query.etiqueta;
+  console.log(etiqueta)
+  db.query("CALL obtener_todos_modelo_dispositivo(?)",[etiqueta],
   (error, results, fields) => {
     if (error) {
       console.error('Error al ejecutar consulta:', error);
+      res.status(500).json({ error: 'Error al obtener modelos' });
     } else {
-      
       console.log('Resultados de la consulta:', results);
+      res.json({ modelos: results[0] }); // Enviar modelos como respuesta
     }
   })
-  res.send("Hello world!");
 });
 router.get("/getEtiquetas", (req, res) => {
   const categoria="dispositivos moviles"

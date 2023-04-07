@@ -43,14 +43,16 @@ export const updateModeloDispositivo = () => {
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
-export const getModeloDispositivos = () => {
-  let etiqueta="Xiaomi"
-  const datos={etiqueta: etiqueta}
-  instancia
+export const getModeloDispositivos = (eti) => {
+  let e=eti
+  console.log(e)
+  return axios
 
-  .get("/getAllModeloDispositivo",datos)
+  .get("http://localhost:3001/getAllModeloDispositivo", { params: { etiqueta: e } })
   .then((res)=> {
-    console.log(res.data);
+    const modelos = res.data.modelos.map((modelo) => modelo.modelo);
+      console.log(modelos);
+      return modelos;
   })
   .catch((error)=> {
     console.log(error);

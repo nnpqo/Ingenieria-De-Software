@@ -7,7 +7,7 @@ import "../estilos/imagenFormulario.css";
 export const ImagenFormulario = () => {
   return (
     <div className="imagen-formulario">
-      <label for="image" class="custom-file-upload">
+      <label htmlFor="image" className="custom-file-upload">
         <img
           src={imagenCarga}
           alt="Icono de carga de archivos"

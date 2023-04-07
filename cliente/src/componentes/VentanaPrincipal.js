@@ -10,11 +10,13 @@ import { Producto } from "./Producto";
 export const prueba = createContext();
 
 export const VentanaPrincipal = (props) => {
+  const [guardar, setGuardar] = useState(false);
   const [ventana, setVentana] = useState(0);
 
   console.log(ventana);
 
   return (
+  <prueba.Provider value={[setVentana, guardar, setGuardar]}>
     <div className="ventana-principal">
       {props.menu === 1 && (
         <>
@@ -22,7 +24,7 @@ export const VentanaPrincipal = (props) => {
           <Ventana />
         </>
       )}
-      <prueba.Provider value={[setVentana]}>
+      
         {props.menu === 2 && (
           <>
             <Menu />
@@ -42,7 +44,8 @@ export const VentanaPrincipal = (props) => {
             )}
           </>
         )}
-      </prueba.Provider>
+      
     </div>
+    </prueba.Provider>
   );
 };

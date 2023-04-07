@@ -1,5 +1,8 @@
 import axios from "axios";
-const instancia = axios.create({
+
+
+export const instancia = axios.create({
+
   baseURL: "http://localhost:3001",
 });
 
@@ -62,10 +65,10 @@ export const setModeloDispositivo = () => {
     etiqueta: etiqueta,
   };
   console.log(datos);
-  /*instancia
-    .post(url + "", datos)
-    .then()
-    .catch();*/
+  instancia
+    .post("/setModelo", datos)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };
 
 export const updateModeloDispositivo = () => {
@@ -86,13 +89,27 @@ export const updateModeloDispositivo = () => {
     .catch();*/
 };
 
+
 export const getModeloDispositivos = () => {
-  instancia
-    .get("/")
-    .then(function (response) {
-      console.log(response.data);
+  return  instancia
+    .get("/getAllModeloDispositivo")
+    .then((res) => {
+      return res.data;
     })
-    .catch(function (error) {
+    .catch((error) => {
+      alert(error);
+    });
+};
+
+export const getEtiquetas = () => {
+  return axios
+    .get("http://localhost:3001/getEtiquetas")
+    .then((res) => {
+      const etiquetas = res.data.etiquetas;
+      const nombres = etiquetas.map((etiqueta) => etiqueta.nombre);
+      return nombres;
+    })
+    .catch((error) => {
       console.log(error);
     });
 };

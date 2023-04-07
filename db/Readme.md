@@ -8,6 +8,6 @@
 #### por defecto no tiene contraseña dar enter
 ##### <Para ejecutar los scripts tienen que copiar y pegarlo en el shell>
 - 1. run script.sql 
-- 2. run script_datos.sql
+- 2. run triggers.sql
 - 3. run procedimientos_almacenados.sql
-- 4. run triggers.sql 
+- 4. run script_datos.sql

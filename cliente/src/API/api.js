@@ -3,9 +3,9 @@ const instancia = axios.create({
   baseURL: "http://localhost:3001",
 });
 
-export let validacion = "";
-let file = null; 
-let valido = false;
+
+let file = null;
+
 
 export const guardarImagen = () => {
   const archivo = file;
@@ -20,32 +20,32 @@ export const guardarImagen = () => {
 };
 
 export const imagen = (event) => {
-  file = null; 
+  file = null;
   const pesoMax = 1048576;
   const minAncho = 250;
   const minAlto = 250;
   const archivo = event.target.files[0];
   if (!archivo.type.startsWith("image/")) {
     console.log("no es imagen");
-    validacion = "el archivo no es una imagen";
+    alert( "el archivo no es una imagen");
   } else {
     if (archivo.size > pesoMax) {
       console.log("tamaño de la imagen muy alta");
-      validacion = "el tamaño de la imagen es superior a la permitida";
+      alert("el tamaño de la imagen es superior a la permitida");
     } else {
       const img = new Image();
+      
       img.src = URL.createObjectURL(archivo);
       img.onload = () => {
         console.log(img.width);
         console.log(img.height);
         if (img.width < minAlto || img.height < minAncho) {
-          console.log("resolusion demaciado baja");
-          validacion = "la resolucion de la imagen es menor a la permitida";
+           console.log("resolusion baja")
+           alert( "la resolucion de la imagen es menor a la permitida");
         } else {
-           file = archivo;
-           validacion = ""
-           let miImagen = document.getElementById("previsualizar");
-           miImagen.src = URL.createObjectURL(archivo);
+          file = archivo;
+          let miImagen = document.getElementById("previsualizar");
+          miImagen.src = URL.createObjectURL(archivo);
         }
       };
     }

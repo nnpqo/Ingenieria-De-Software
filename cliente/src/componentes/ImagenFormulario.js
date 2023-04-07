@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Boton } from "./Boton";
-import { imagen, validacion } from "../API/api";
+import { imagen } from "../API/api";
 import imagenCarga from "../img.png";
 
 export const ImagenFormulario = () => {
-  const [val, setValidacion] = useState(validacion);
+
 
   return (
     <div className="imagen-formulario">
@@ -19,13 +19,12 @@ export const ImagenFormulario = () => {
       <input
         type="file"
         id="image"
-        onChange={(e) => {
-          imagen(e);
-          setValidacion(validacion);
-        }}
+        onChange={
+          imagen
+        }
         style={{ display: "none" }}
+        accept="image/png, image/jpeg"
       />
-      <span>{val}</span>
     </div>
   );
 };

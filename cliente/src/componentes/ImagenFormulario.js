@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Boton } from "./Boton";
 import { imagen } from "../API/api";
 import imagenCarga from "../img.png";
@@ -12,6 +12,7 @@ export const ImagenFormulario = () => {
           src={imagenCarga}
           alt="Icono de carga de archivos"
           className="posicion"
+          id="previsualizar"
         />
         <h4 className="posicion2">Subir imagen</h4>
       </label>
@@ -20,6 +21,7 @@ export const ImagenFormulario = () => {
         id="image"
         onChange={imagen}
         style={{ display: "none" }}
+        accept="image/png, image/jpeg"
       />
     </div>
   );

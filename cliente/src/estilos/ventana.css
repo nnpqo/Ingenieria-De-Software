@@ -7,6 +7,7 @@
 }
 
 .ventana-productos {
+  top:400px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

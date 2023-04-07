@@ -1,5 +1,5 @@
 import { Boton } from "./Boton";
-import { setModeloDispositivo, updateModeloDispositivo,getModeloDispositivos,getEtiquetas } from "../API/api";
+import { setModeloDispositivo, updateModeloDispositivo,getModeloDispositivos,getEtiquetas,getNombreModeloDispositivos} from "../API/api";
 import { ImagenFormulario } from "./ImagenFormulario";
 import { CajaTexto } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
@@ -16,8 +16,8 @@ export const VentanaFormulario = (props) => {
   const [etiquetas, setEtiquetas] = useState([]);
 
   useEffect(() => {
-    getModeloDispositivos("Xiaomi").then((modelos) => setmodelos(modelos));
     getEtiquetas().then((nombres) => setEtiquetas(nombres));
+    getNombreModeloDispositivos().then((nombres) => setmodelos(nombres));    
   }, []);
   //const etiquetas = ["xiaomi", "samsumg"];
   const opcionesModificar = (
@@ -80,27 +80,18 @@ export const VentanaFormulario = (props) => {
 };
 
 export const Ventana = (props) => {
+  const [modelos, setmodelos] = useState([]);
+
+  useEffect(() => {
+    getModeloDispositivos().then((nombres) => setmodelos(nombres));
+    
+  }, []);
   return (
     <div>
       <div className="ventana-productos">
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
-        <Producto />
+        {modelos.map((modelo, index) => (
+          <Producto nombre={modelo.nombre} etiqueta={modelo.etiqueta} ruta={modelo.ruta_imagen} key={index} />
+        ))}
       </div>
     </div>
   );

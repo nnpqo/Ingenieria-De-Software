@@ -43,14 +43,14 @@ export const updateModeloDispositivo = () => {
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
-export const getModeloDispositivos = (eti) => {
-  let e=eti
-  console.log(e)
+export const getNombreModeloDispositivos = () => {
+  /*let e=eti
+  console.log(e)*/
   return axios
 
-  .get("http://localhost:3001/getAllModeloDispositivo", { params: { etiqueta: e } })
+  .get("http://localhost:3001/getAllModeloDispositivo")
   .then((res)=> {
-    const modelos = res.data.modelos.map((modelo) => modelo.modelo);
+    const modelos = res.data.modelos.map((modelo) => modelo.nombre);
       console.log(modelos);
       return modelos;
   })
@@ -58,6 +58,23 @@ export const getModeloDispositivos = (eti) => {
     console.log(error);
   });
 };
+
+export const getModeloDispositivos = () => {
+  /*let e=eti
+  console.log(e)*/
+  return axios
+
+  .get("http://localhost:3001/getAllModeloDispositivo")
+  .then((res)=> {
+    const modelos = res.data.modelos;
+      console.log(modelos);
+      return modelos;
+  })
+  .catch((error)=> {
+    console.log(error);
+  });
+};
+
 export const getEtiquetas= () => {
   return axios
     .get("http://localhost:3001/getEtiquetas")

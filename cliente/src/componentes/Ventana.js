@@ -93,7 +93,7 @@ export const VentanaFormulario = (props) => {
 };
 
 export const Ventana = (props) => {
-  let guardar = useContext(prueba)[0]
+  let guardar = useContext(prueba)[1]
   const [productos, setProductos] = useState({});
 
   useEffect(() => {
@@ -108,13 +108,15 @@ export const Ventana = (props) => {
 
   let prod = productos.modelos?.map((pro)=>{
     console.log(pro) 
-    return (<></>)
+    return (<>
+    <Producto img={pro.ruta_imagen} etiqueta={pro.etiqueta} nombre={pro.nombre}/>
+    </>)
   })
 
   return (
     <div>
       <div className="ventana-productos">
-        {prod}
+       {prod}
       </div>
     </div>
   );

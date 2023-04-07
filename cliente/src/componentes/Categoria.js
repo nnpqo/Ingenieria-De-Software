@@ -35,7 +35,7 @@ export const Categoria = () => {
 const Etiqueta = (props) => {
   return (
     <>
-      <input type="checkbox" name="" />
+      <input type="checkbox" name="" id="check"/>
       <span>{props.nombre}</span>
     </>
   );

@@ -7,8 +7,8 @@ export const Producto = (props) => {
     <div className="pantalla">
       <div className="san">
         <img className="product" src={props.img} />
-        <h4 className="tittle">props.etiqueta</h4>
-        <h4 className="tittle">props.nombre</h4>
+        <h4 className="tittle">{props.etiqueta}</h4>
+        <h4 className="tittle">{props.nombre}</h4>
       </div>
     </div>
   );

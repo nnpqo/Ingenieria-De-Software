@@ -3,6 +3,7 @@ const upload = require("./imagen");
 const router = Router();
 const db = require("./baseDeDatos");
 
+let ruta = ""; 
 //routes
 router.get("/", (req, res) => {
   res.send("Hello world!");
@@ -10,7 +11,7 @@ router.get("/", (req, res) => {
 
 router.post("/setModelo", (req, res) => {
   const nombre = req.body.nombre;
-  const rutaImg = "????";
+  const rutaImg = "/images/" + file.filename;
   const descrip = req.body.descripcion;
   const etiqueta = req.body.etiqueta;
   db.query(
@@ -35,9 +36,11 @@ router.post("/setModelo", (req, res) => {
       }
     }
   );
+  ruta = null; ; 
 });
 
-router.post("/subirImagenes", upload, (req, res) => {
+router.post("/subirImagenes", upload, (req, res) => { 
+  ruta = req.file.filename;
   res.send("Archivo subido correctamente");
 });
 

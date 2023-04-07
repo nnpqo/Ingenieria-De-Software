@@ -74,9 +74,10 @@ export const VentanaFormulario = (props) => {
           <Boton
             nombre={"GUARDAR"}
             estilos={"guardar"}
-            funcion={() => {
+            funcion={(e) => {
               if (props.tipo == "registro") {
                 setModeloDispositivo();
+
               } else {
                 updateModeloDispositivo();
               }

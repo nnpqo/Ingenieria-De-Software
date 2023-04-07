@@ -1,5 +1,5 @@
 import { Boton } from "./Boton";
-import { setModeloDispositivo, updateModeloDispositivo } from "../API/api";
+import { setModeloDispositivo, updateModeloDispositivo,getModeloDispositivos,getEtiquetas } from "../API/api";
 import { ImagenFormulario } from "./ImagenFormulario";
 import { CajaTexto } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
@@ -7,12 +7,18 @@ import "../estilos/ventana.css";
 import "../estilos/boton.css";
 import { Aviso } from "./Aviso";
 import { Producto } from "./Producto";
+import React, { useState, useEffect } from "react";
 
 export const VentanaFormulario = (props) => {
-  //const modelos= Object.values(data);
+  
   const modelos = ["p30 pro", "galaxy s20", "redmi note 11"];
-  //const etiquetas= Object.values(data);
-  const etiquetas = ["xiaomi", "samsumg"];
+
+  const [etiquetas, setEtiquetas] = useState([]);
+
+  useEffect(() => {
+    getEtiquetas().then((nombres) => setEtiquetas(nombres));
+  }, []);
+  //const etiquetas = ["xiaomi", "samsumg"];
   const opcionesModificar = (
     <>
       <ComboBox nombre={"Modelo*"} opciones={modelos} id={"modelo"} />

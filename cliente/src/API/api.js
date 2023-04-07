@@ -22,10 +22,10 @@ export const setModeloDispositivo = () => {
               descripcion: descripcion,
               etiqueta: etiqueta}
   console.log(datos);
-  /*instancia
-    .post(url + "", datos)
-    .then()
-    .catch();*/
+  instancia
+    .post("/setModelo", datos)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };
 
 export const updateModeloDispositivo = () => {
@@ -38,19 +38,33 @@ export const updateModeloDispositivo = () => {
               descripcion: descripcion,
               etiqueta: etiqueta}
   console.log(datos);
-  /*instancia
-    .post(url + "", datos)
-    .then()
-    .catch();*/
+  instancia
+    .put("/actualizarModelo", datos)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };
 export const getModeloDispositivos = () => {
-
+  let etiqueta="Xiaomi"
+  const datos={etiqueta: etiqueta}
   instancia
-    .get("/")
-    .then(function (response) {
-      console.log(response.data);
+
+  .get("/getAllModeloDispositivo",datos)
+  .then((res)=> {
+    console.log(res.data);
+  })
+  .catch((error)=> {
+    console.log(error);
+  });
+};
+export const getEtiquetas= () => {
+  return axios
+    .get("http://localhost:3001/getEtiquetas")
+    .then((res) => {
+      const etiquetas = res.data.etiquetas;
+      const nombres = etiquetas.map((etiqueta) => etiqueta.nombre);
+      return nombres;
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log(error);
     });
 };

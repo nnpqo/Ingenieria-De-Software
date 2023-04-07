@@ -4,28 +4,37 @@ const instancia = axios.create({
 });
 
 export let validacion = "";
+let file = null; 
 let valido = false;
 
-// export const imagen = (event) => {
-//   const file = previzualizar;
-// };
+export const guardarImagen = () => {
+  const archivo = file;
+  if (!archivo == null) {
+    const formData = new FormData();
+    formData.append("image", file);
+    instancia
+      .post("/subirImagenes", formData)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+};
 
 export const imagen = (event) => {
+  file = null; 
   const pesoMax = 1048576;
   const minAncho = 250;
   const minAlto = 250;
-  const file = event.target.files[0];
-  valido = false;
-  if (!file.type.startsWith("image/")) {
+  const archivo = event.target.files[0];
+  if (!archivo.type.startsWith("image/")) {
     console.log("no es imagen");
     validacion = "el archivo no es una imagen";
   } else {
-    if (file.size > pesoMax) {
+    if (archivo.size > pesoMax) {
       console.log("tamaño de la imagen muy alta");
       validacion = "el tamaño de la imagen es superior a la permitida";
     } else {
       const img = new Image();
-      img.src = URL.createObjectURL(file);
+      img.src = URL.createObjectURL(archivo);
       img.onload = () => {
         console.log(img.width);
         console.log(img.height);
@@ -33,12 +42,10 @@ export const imagen = (event) => {
           console.log("resolusion demaciado baja");
           validacion = "la resolucion de la imagen es menor a la permitida";
         } else {
-          const formData = new FormData();
-          formData.append("image", file);
-          instancia
-            .post("/subirImagenes", formData)
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+           file = archivo;
+           validacion = ""
+           let miImagen = document.getElementById("previsualizar");
+           miImagen.src = URL.createObjectURL(archivo);
         }
       };
     }

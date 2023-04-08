@@ -18,9 +18,17 @@ export const Aviso = (props) => {
     >
       <p className="mensaje">{props.mensaje}</p>
       <div className="botonesAviso">
-        <Boton nombre={"Si"} estilos={"botonSi"} />
+        <Boton nombre={"Si"} estilos={"botonSi"} funcion={borrar} />
         <Boton nombre={"No"} estilos={"botonNo"} />
       </div>
     </Popup>
   );
+};
+
+const borrar = () => {
+  document.getElementById("etiqueta").value = "";
+  document.getElementById("descripcion").value = "";
+  document.getElementById("nombreModelo").value = "";
+  document.getElementById("previsualizar").src =
+    "http://localhost:3001/images/img.png";
 };

@@ -1,6 +1,8 @@
 -- Trigers 
 
---Validacion de datos modelo_dispositivos_moviles
+-- Validacion de datos modelo_dispositivos_moviles
+
+use jdkcell_db;
 
 drop trigger if exists validacion_datos_modelos_dispositivos; 
 DELIMITER $$ 

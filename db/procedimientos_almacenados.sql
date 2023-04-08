@@ -1,3 +1,4 @@
+use jdkcell_db;
 /*-------------------------------------------------*/
 /*procedimiento almacenado para registrar un modelo*/
 drop procedure if exists registrar_modelo;

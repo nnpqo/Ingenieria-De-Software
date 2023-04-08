@@ -21,7 +21,7 @@ VALUES
     ('ZTE',1);
 
 
-INSERT INTO modelo_dispositivos_moviles (id, nombre, descripcion, ruta_imagen) 
+INSERT INTO modelos_dispositivos_moviles (id, nombre, descripcion, ruta_imagen) 
 values 
     ('1','galaxy s22 ultra', '','/images/s22u.jpeg'),
     ('2','galaxy a71', '', '/images/a71.jpeg'),

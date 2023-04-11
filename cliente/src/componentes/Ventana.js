@@ -70,6 +70,7 @@ export const VentanaFormulario = (props) => {
         </div>
         <div className="formulario">
           {props.tipo === "registro" && opcionesRegistro}
+          
           {props.tipo === "modificar" && opcionesModificar}
         </div>
         <div>
@@ -85,11 +86,21 @@ export const VentanaFormulario = (props) => {
               }
             }}
           />
-          <Aviso
+          if(props.tipo=== "registro"){
+            <Aviso
             nombre="CANCELAR"
             mensaje="¿Está seguro de cancelar el registro?"
             estilos={"cancelar"}
           ></Aviso>
+          }
+          else{
+            <Aviso
+            nombre="CANCELAR"
+            mensaje="¿Está seguro de descartarel registro?"
+            estilos={"cancelar"}
+          ></Aviso>
+          }
+
         </div>
       </div>
   );

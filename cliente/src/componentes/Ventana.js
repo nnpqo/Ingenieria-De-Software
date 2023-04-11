@@ -35,9 +35,9 @@ export const VentanaFormulario = (props) => {
     <>
       <ComboBox nombre={"Modelo*"} opciones={modelos} id={"modelo"} />
       <br />
-      <CajaTexto nombre={"cambiar Nombre*"} id={"nombreModelo"} />
+      <CajaTexto nombre={"Cambiar nombre*"} id={"nombreModelo"} />
       <br />
-      <CajaTexto nombre={"cambiar Descripcion*"} id={"descripcion"} />
+      <CajaTexto nombre={"Cambiar descripción*"} id={"descripcion"} />
       <br />
       <ComboBox nombre={"Etiquetas"} opciones={etiquetas} id={"etiqueta"} />
     </>

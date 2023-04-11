@@ -79,28 +79,26 @@ export const VentanaFormulario = (props) => {
             estilos={"guardar"}
             funcion={() => {
               guardarImagen()
-              if (props.tipo == "registro") {
+              if (props.tipo === "registro") {
                 setModeloDispositivo();
               } else {
                 updateModeloDispositivo();
               }
             }}
           />
-          if(props.tipo=== "registro"){
+          {props.tipo === "registro" ? (
             <Aviso
-            nombre="CANCELAR"
-            mensaje="¿Está seguro de cancelar el registro?"
-            estilos={"cancelar"}
-          ></Aviso>
-          }
-          else{
+              nombre="CANCELAR"
+              mensaje="¿Está seguro de cancelar el registro?"
+              estilos={"cancelar"}
+            />
+          ) : (
             <Aviso
-            nombre="CANCELAR"
-            mensaje="¿Está seguro de descartarel registro?"
-            estilos={"cancelar"}
-          ></Aviso>
-          }
-
+              nombre="CANCELAR"
+              mensaje="¿Está seguro de descartar los cambios?"
+              estilos={"cancelar"}
+            />
+          )}
         </div>
       </div>
   );

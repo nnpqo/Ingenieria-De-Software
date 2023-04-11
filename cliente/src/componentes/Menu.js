@@ -11,7 +11,7 @@ export const Menu = () => {
   return (
     <div className="menuIzquierda">
       <Boton
-        nombre={"Registar modelo"}
+        nombre={"Registrar modelo"}
         estilos={"boton-registro"}
         funcion={() => {
           setVentana(0);

@@ -35,9 +35,9 @@ export const VentanaFormulario = (props) => {
     <>
       <ComboBox nombre={"Modelo*"} opciones={modelos} id={"modelo"} />
       <br />
-      <CajaTexto nombre={"cambiar Nombre*"} id={"nombreModelo"} />
+      <CajaTexto nombre={"Cambiar nombre*"} id={"nombreModelo"} />
       <br />
-      <CajaTexto nombre={"cambiar Descripcion*"} id={"descripcion"} />
+      <CajaTexto nombre={"Cambiar descripción*"} id={"descripcion"} />
       <br />
       <ComboBox nombre={"Etiquetas"} opciones={etiquetas} id={"etiqueta"} />
     </>
@@ -70,6 +70,7 @@ export const VentanaFormulario = (props) => {
         </div>
         <div className="formulario">
           {props.tipo === "registro" && opcionesRegistro}
+          
           {props.tipo === "modificar" && opcionesModificar}
         </div>
         <div>
@@ -78,18 +79,26 @@ export const VentanaFormulario = (props) => {
             estilos={"guardar"}
             funcion={() => {
               guardarImagen()
-              if (props.tipo == "registro") {
+              if (props.tipo === "registro") {
                 setModeloDispositivo();
               } else {
                 updateModeloDispositivo();
               }
             }}
           />
-          <Aviso
-            nombre="CANCELAR"
-            mensaje="¿Está seguro de cancelar el registro?"
-            estilos={"cancelar"}
-          ></Aviso>
+          {props.tipo === "registro" ? (
+            <Aviso
+              nombre="CANCELAR"
+              mensaje="¿Está seguro de cancelar el registro?"
+              estilos={"cancelar"}
+            />
+          ) : (
+            <Aviso
+              nombre="CANCELAR"
+              mensaje="¿Está seguro de descartar los cambios?"
+              estilos={"cancelar"}
+            />
+          )}
         </div>
       </div>
   );

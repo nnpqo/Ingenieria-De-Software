@@ -2,18 +2,19 @@ const { Router } = require("express");
 const upload = require("./imagen");
 const router = Router();
 const db = require("./baseDeDatos");
-let file = "null";
 
-let ruta = "";
 //routes
 router.get("/", (req, res) => {
   res.send("Hello world!");
 });
 
+router.post("/subirImagenes", upload, (req, res) => {
+  res.send("Archivo subido correctamente");
+});
+
 router.post("/setModelo", (req, res) => {
-  const imageName = file.filename;
   const nombre = req.body.nombre;
-  const rutaImg = "/images/" + imageName;
+  const rutaImg = req.body.ruta;
   const descrip = req.body.descripcion;
   const etiqueta = req.body.etiqueta;
   db.query(
@@ -38,33 +39,28 @@ router.post("/setModelo", (req, res) => {
       }
     }
   );
-  file = "null";
 });
 
-router.post("/subirImagenes", upload, (req, res) => {
-  file = req.file;
-  res.send("Archivo subido correctamente");
-});
-
-router.put("/actualizarModelo",(req,res) =>{
+router.put("/actualizarModelo", (req, res) => {
   const nombreAntiguio = req.body.modelo;
   const nombreNuevo = req.body.nombre;
   const descripcionNueva = req.body.descripcion;
   const etiquetaNueva = req.body.etiqueta;
-  const imageName=file.filename;
-  const nuevaRuta="/images/"+imageName;
-  
-  db.query("call modificar_modelo(?,?,?,?,?)",[nombreAntiguio,nombreNuevo,descripcionNueva,etiquetaNueva,nuevaRuta],
-  
-  (error, results, fields) => {
-    if (error) {
-      console.error('Error al ejecutar consulta:', error);
-    } else {
-      console.log('Resultados de la consulta:', results);
+  const nuevaRuta = req.body.ruta;
+
+  db.query(
+    "call modificar_modelo(?,?,?,?,?)",
+    [nombreAntiguio, nombreNuevo, descripcionNueva, etiquetaNueva, nuevaRuta],
+
+    (error, results, fields) => {
+      if (error) {
+        console.error("Error al ejecutar consulta:", error);
+      } else {
+        console.log("Resultados de la consulta:", results);
+      }
     }
-  })
-  file="null"
-})
+  );
+});
 
 router.get("/getAllModeloDispositivo", (req, res) => {
   db.query(

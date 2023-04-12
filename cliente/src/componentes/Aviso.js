@@ -4,6 +4,15 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "../estilos/aviso.css";
 
+const borrar = (close) => {
+  document.getElementById("etiqueta").value = "";
+  document.getElementById("descripcion").value = "";
+  document.getElementById("nombreModelo").value = "";
+  document.getElementById("previsualizar").src =
+    "http://localhost:3001/images/img.png";
+  close();
+};
+
 export const Aviso = (props) => {
   return (
     <Popup
@@ -20,7 +29,7 @@ export const Aviso = (props) => {
         <>
           <p className="mensaje">{props.mensaje}</p>
           <div className="botonesAviso">
-            <Boton nombre={"Si"} estilos={"botonSi"} funcion={borrar} />
+          <Boton nombre={"Si"} estilos={"botonSi"} funcion={() => borrar(close)} />
             <Boton nombre={"No"} estilos={"botonNo"} funcion={close} />
           </div>
         </>
@@ -29,10 +38,3 @@ export const Aviso = (props) => {
   );
 };
 
-const borrar = () => {
-  document.getElementById("etiqueta").value = "";
-  document.getElementById("descripcion").value = "";
-  document.getElementById("nombreModelo").value = "";
-  document.getElementById("previsualizar").src =
-    "http://localhost:3001/images/img.png";
-};

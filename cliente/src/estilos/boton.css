@@ -6,27 +6,24 @@
   height: 100%;
 }*/
 .cancelar {
-  text-align-last: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 170px;
   height: 40px;
   color: white;
   background-color: #ff2e00;
-  margin: 5px;
   border-radius: 10px;
-  text-align: center;
-  position: relative;
-  left: 26cm;
-  top: -1.9cm;
+  
 }
 .guardar {
-  text-align-last: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 170px;
   height: 40px;
   color: white;
   background-color: #0e84c7;
-  margin: 5px;
   border-radius: 10px;
-  position: relative;
-  left: 25cm;
-  top: -2cm;
+  
 }

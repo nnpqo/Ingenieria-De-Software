@@ -6,6 +6,7 @@ import "../estilos/imagenFormulario.css";
 
 export const ImagenFormulario = () => {
   return (
+    <div className="imagen">
     <div className="imagen-formulario">
       <label htmlFor="image" className="custom-file-upload">
         <img
@@ -24,5 +25,6 @@ export const ImagenFormulario = () => {
         accept="image/png, image/jpeg"
       />
     </div>
+  </div>
   );
 };

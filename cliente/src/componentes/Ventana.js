@@ -9,7 +9,7 @@ import {
   guardarImagen,
 } from "../API/api";
 import { ImagenFormulario } from "./ImagenFormulario";
-import { CajaTexto } from "./CajaTexto";
+import { CajaTexto, TextArea } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
 import "../estilos/ventana.css";
 import "../estilos/boton.css";
@@ -18,94 +18,119 @@ import { Producto } from "./Producto";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
 
-
-
 export const VentanaFormulario = (props) => {
-  const [,guardar,setGuardar] = useContext(prueba);
+  const [, guardar, setGuardar] = useContext(prueba);
   //const modelos = ["p30 pro", "galaxy s20", "redmi note 11"];
   const [modelos, setmodelos] = useState([]);
   const [etiquetas, setEtiquetas] = useState([]);
 
   useEffect(() => {
     getEtiquetas().then((nombres) => setEtiquetas(nombres));
-    getNombreModeloDispositivos().then((nombres) => setmodelos(nombres));    
+    getNombreModeloDispositivos().then((nombres) => setmodelos(nombres));
   }, []);
   //const etiquetas = ["xiaomi", "samsumg"];
   const opcionesModificar = (
-    <>
+    <div className="formulario">
       <ComboBox nombre={"Modelo*"} opciones={modelos} id={"modelo"} />
       <br />
-      <CajaTexto nombre={"Cambiar nombre*"} id={"nombreModelo"} />
+      <CajaTexto
+        nombre={"Cambiar nombre*"}
+        id={"nombreModelo"}
+        max={30}
+        min={2}
+        regex={"[ a-zA-Z0-9]+"}
+      />
       <br />
-      <CajaTexto nombre={"Cambiar descripción*"} id={"descripcion"} />
+      <TextArea
+        nombre={"Cambiar descripción*"}
+        id={"descripcion"}
+        max={200}
+        min={10}
+      />
       <br />
       <ComboBox nombre={"Etiquetas"} opciones={etiquetas} id={"etiqueta"} />
-    </>
+    </div>
   );
   const opcionesRegistro = (
-    <>
-      <CajaTexto nombre={"Nombre*"} id={"nombreModelo"} />
+    <div className="formulario">
+      <CajaTexto
+        nombre={"Nombre*"}
+        id={"nombreModelo"}
+        max={30}
+        min={2}
+        regex={"[ a-zA-Z0-9]+"}
+      />
       <br />
-      <CajaTexto nombre={"Descripción*"} id={"descripcion"} />
+      <TextArea
+        nombre={"Descripción*"}
+        id={"descripcion"}
+        max={200}
+        min={10}
+      />
       <br />
       <ComboBox nombre={"Etiquetas*"} opciones={etiquetas} id={"etiqueta"} />
       <br />
       <br />
-    </>
+    </div>
   );
 
   return (
-    
-      <div className="ventana-formulario">
-        <p className="direccion">
-          {" "}
-          Home &gt; Producto &gt;{" "}
-          {props.tipo === "registro"
-            ? "Registrar modelo de dispositivo movil"
-            : "Modificar dispositivo"}{" "}
-        </p>
-        {props.imagen === true && <ImagenFormulario />}
+    <div className="ventana-formulario">
+      <p className="direccion">
+        {" "}
+        Home &gt; Producto &gt;{" "}
+        {props.tipo === "registro"
+          ? "Registrar modelo de dispositivo movil"
+          : "Modificar dispositivo"}{" "}
+      </p>
+      <div className="formulario">
         <div className="titulo-Ventana">
           <h1>{props.titulo}</h1>
         </div>
-        <div className="formulario">
-          {props.tipo === "registro" && opcionesRegistro}
-          
-          {props.tipo === "modificar" && opcionesModificar}
-        </div>
-        <div>
-          <Boton
-            nombre={"GUARDAR"}
-            estilos={"guardar"}
-            funcion={() => {
-              guardarImagen()
-              if (props.tipo === "registro") {
-                setModeloDispositivo();
-              } else {
-                updateModeloDispositivo();
-              }
-            }}
-          />
-          {props.tipo === "registro" ? (
-            <Aviso
-              nombre="CANCELAR"
-              mensaje="¿Está seguro de cancelar el registro?"
-              estilos={"cancelar"}
-            />
-          ) : (
-            <Aviso
-              nombre="CANCELAR"
-              mensaje="¿Está seguro de descartar los cambios?"
-              estilos={"cancelar"}
-            />
-          )}
+        <div className="contenedorImagenForm">
+          {props.imagen === true && <ImagenFormulario />}
+          <div className="campos">
+            {props.tipo === "registro" && opcionesRegistro}
+
+            {props.tipo === "modificar" && opcionesModificar}
+
+            <div className="botones">
+              <Boton
+                nombre={"GUARDAR"}
+                estilos={"guardar"}
+                funcion={() => {
+                  alerts();
+                  guardarImagen();
+                  if (props.tipo === "registro") {
+                    setModeloDispositivo();
+                  } else {
+                    updateModeloDispositivo();
+                  }
+                }}
+              />
+              {props.tipo === "registro" ? (
+                <Aviso
+                  nombre="CANCELAR"
+                  mensaje="¿Está seguro de cancelar el registro?"
+                  estilos={"cancelar"}
+                />
+              ) : (
+                <Aviso
+                  nombre="CANCELAR"
+                  mensaje="¿Está seguro de descartar los cambios?"
+                  estilos={"cancelar"}
+                />
+              )}
+            </div>
+          </div>
         </div>
       </div>
+    </div>
   );
 };
 
 export const Ventana = (props) => {
-  let guardar = useContext(prueba)[1]
+  let guardar = useContext(prueba)[1];
   const [productos, setProductos] = useState({});
 
   useEffect(() => {
@@ -116,21 +141,45 @@ export const Ventana = (props) => {
       console.log(guardar);
     };
     getProdructo();
-  },[]);
+  }, []);
 
-  let prod = productos.modelos?.map((pro)=>{
-    console.log(pro) 
-    return (<>
-    <Producto ruta={pro.ruta_imagen} etiqueta={pro.etiqueta} nombre={pro.nombre}/>
-    </>)
-  })
+  let prod = productos.modelos?.map((pro) => {
+    console.log(pro);
+    return (
+      <>
+        <Producto
+          ruta={pro.ruta_imagen}
+          etiqueta={pro.etiqueta}
+          nombre={pro.nombre}
+        />
+      </>
+    );
+  });
 
   return (
     <div>
-      <div className="ventana-productos">
-       {prod}
-
-      </div>
+      <div className="ventana-productos">{prod}</div>
     </div>
   );
+};
+
+const alerts = () => {
+  const inputNombre = document.getElementById("nombreModelo");
+  const inputDescripcion = document.getElementById("descripcion");
+  if (
+    inputNombre.validity.patternMismatch ||
+    inputNombre.validity.tooLong ||
+    inputNombre.validity.tooShort ||
+    inputNombre.validity.valueMissing
+  ) {
+    alert("nombre de producto no válido");
+  } else {
+    if (
+      inputDescripcion.validity.tooShort ||
+      inputDescripcion.validity.tooLong ||
+      inputDescripcion.validity.valueMissing
+    ) {
+      alert("descripcion no válido");
+    }
+  }
 };

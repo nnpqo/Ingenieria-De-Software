@@ -3,32 +3,48 @@ input[type="text"] {
   border: solid 2px white;
   background-color: #dbeafa;
   width: 400px;
-  height: 30px;
+  height: 40px;
   margin: 5px;
   border-radius: 5px;
-  position: relative;
+  padding: 10px;
   left: 60%;
   bottom: 5cm;
+  font-family: Tahoma;
+  font-size: 20px;
 }
 .combo-box {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   display: flex;
   border: solid 2px white;
   background-color: #dbeafa;
   width: 400px;
-  height: 30px;
+  height: 40px;
   margin: 5px;
   border-radius: 5px;
-  position: relative;
+  font-size: 20px;
   left: 60%;
   bottom: 5cm;
+  padding: 5px;
 }
 .letras {
   color: white;
-  position: relative;
   left: 60%;
   bottom: 5cm;
   font-size: 150%;
+}
+
+
+.textarea textarea{
+  resize: none;
+  display: flex;
+  border: solid 2px white;
+  background-color: #dbeafa;
+  width: 400px;
+  height: 95px;
+  margin: 5px;
+  border-radius: 5px;
+  left: 60%;
+  bottom: 5cm;
+  padding: 10px;
+  font-size: 20px;
+  
 }

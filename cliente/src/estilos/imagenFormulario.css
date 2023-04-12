@@ -1,24 +1,47 @@
+.imagen {
+  display: flex;
+  flex-direction: ;
+  width: 50%;
+  justify-content: center;
+  margin-top : 30px; 
+}
+
 .imagen-formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: auto;
   margin: 10px;
-  width: 450px;
-  height: 30%;
+  width: 80%;
+  height: 350px;
   border: solid 2px white;
   background-color: #1a2f5b;
-  position: relative;
   left: 4.8cm;
   top: 4cm;
   border-style: dashed;
+  
 }
+
+
 .posicion {
-  position: relative;
-  left: 4.2cm;
-  top: 1cm;
+  background-color: #1a2f5b;
+  margin: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+  max-width: 90%;
+  min-width: 80%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .posicion2 {
-  position: relative;
-  left: 4cm;
-  top: 1cm;
+  cursor: pointer;
   color: white;
+  text-align: center;
   font-family: Tahoma, sans-serif;
+}
+
+.posicion2:hover {
+  color:#0655ff;
 }

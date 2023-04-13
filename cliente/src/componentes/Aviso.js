@@ -16,11 +16,22 @@ export const Aviso = (props) => {
       nested
       className="aviso"
     >
-      <p className="mensaje">{props.mensaje}</p>
-      <div className="botonesAviso">
-        <Boton nombre={"Si"} estilos={"botonSi"} funcion={borrar} />
-        <Boton nombre={"No"} estilos={"botonNo"} />
-      </div>
+      {(close) => (
+        <>
+          <p className="mensaje">{props.mensaje}</p>
+          <div className="botonesAviso">
+            <Boton
+              nombre={"Si"}
+              estilos={"botonSi"}
+              funcion={() => {
+                borrar(close);
+                close();
+              }}
+            />
+            <Boton nombre={"No"} estilos={"botonNo"} funcion={close} />
+          </div>
+        </>
+      )}
     </Popup>
   );
 };

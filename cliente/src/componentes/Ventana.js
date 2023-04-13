@@ -76,7 +76,7 @@ export const VentanaFormulario = (props) => {
         {" "}
         Home &gt; Producto &gt;{" "}
         {props.tipo === "registro"
-          ? "Registrar modelo de dispositivo movil"
+          ? "Registrar modelo de dispositivo móvil"
           : "Modificar dispositivo"}{" "}
       </p>
       <div className="formulario">

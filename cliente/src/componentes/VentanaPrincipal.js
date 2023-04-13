@@ -41,7 +41,7 @@ export const VentanaPrincipal = (props) => {
             <Menu />
             {ventana === 0 && (
               <VentanaFormulario
-                titulo={"REGISTRAR MODELO DE DISPOSITIVO MOVIL"}
+                titulo={<>{"REGISTRAR MODELO DE"}<br/> {"DISPOSITIVO MÓVIL"}</>}
                 imagen={true}
                 tipo={"registro"}
               />

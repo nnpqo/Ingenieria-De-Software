@@ -12,6 +12,18 @@ export const prueba = createContext();
 export const VentanaPrincipal = (props) => {
   const [guardar, setGuardar] = useState(false);
   const [ventana, setVentana] = useState(0);
+  const [checkboxesSeleccionados, setCheckboxesSeleccionados] = useState([]);
+
+  function manejarSelecciónSelection(nombre, isChecked) {
+    if (isChecked) {
+      setCheckboxesSeleccionados([...checkboxesSeleccionados, nombre]);
+    } else {
+      setCheckboxesSeleccionados(
+        checkboxesSeleccionados.filter((n) => n !== nombre)
+      );
+    }
+    console.log(checkboxesSeleccionados)
+  }
 
   console.log(ventana);
 
@@ -20,7 +32,7 @@ export const VentanaPrincipal = (props) => {
     <div className="ventana-principal">
       {props.menu === 1 && (
         <>
-          <MenuEtiquetas />
+          <MenuEtiquetas  manejarSelecciónSelection={manejarSelecciónSelection}/>
           <Ventana />
         </>
       )}

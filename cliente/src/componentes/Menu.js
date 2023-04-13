@@ -28,11 +28,11 @@ export const Menu = () => {
   );
 };
 
-export const MenuEtiquetas = () => {
+export const MenuEtiquetas = (props) => {
   return (
     <div className="menuIzquierda" >
       <span className="categoria1">Categorias</span>
-      <div className="modeloCateg"> <Categoria/></div>
+      <div className="modeloCateg"> <Categoria manejarSelecciónSelection={props.manejarSelecciónSelection}/></div>
     </div>
   );
 };

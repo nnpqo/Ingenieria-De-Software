@@ -1,27 +1,31 @@
 import { useEffect, useState } from "react";
 import { getEtiquetas } from "../API/api";
-import "../estilos/app.css"
+import "../estilos/app.css";
 
 export const Categoria = (props) => {
   const [desplegado, setdesplegado] = useState(false);
   const [etiquetas, setEtiquetas] = useState([]);
- 
 
-  useEffect(()=>{
+  useEffect(() => {
     const etiquetas = async () => {
-      await getEtiquetas().then((nombres) => setEtiquetas(nombres));}
+      await getEtiquetas().then((nombres) => setEtiquetas(nombres));
+    };
     etiquetas();
-  },[])
+  }, []);
 
+  let et = etiquetas?.map((eti) => {
+    return (
+      <ul>
+        <Etiqueta
+          nombre={eti}
+          checked={"checkbox"}
+          isChecked={false}
+          handleCheckboxSelection={props.manejarSelecciónSelection}
+        />
+      </ul>
+    );
+  });
 
-  let et = etiquetas?.map((eti)=>{
-    return <ul>
-      <Etiqueta nombre={eti}
-      isChecked={false}
-      handleCheckboxSelection={props.manejarSelecciónSelection}/>
-    </ul>
-  })
- 
   return (
     <div className="categoria">
       <span className="dispositivosMoviles">
@@ -33,9 +37,7 @@ export const Categoria = (props) => {
           Dispositivos móviles
         </a>
       </span>
-      <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>
-        {et}
-      </li>
+      <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>
     </div>
   );
 };
@@ -53,12 +55,16 @@ const Etiqueta = (props) => {
 
   return (
     <>
-      <input type="checkbox" 
-      className="checkbox"
-      id="check"
-      checked={isChecked}
-      onChange={handleChange}/>
-      <span className="nombre-etiqueta">{props.nombre}</span>
+      <input
+        type="checkbox"
+        className={props.checked}
+        id={props.nombre}
+        checked={isChecked}
+        onChange={handleChange}
+      />
+      <label for={props.nombre} className="nombre-etiqueta">
+        {props.nombre}
+      </label>
     </>
   );
 };

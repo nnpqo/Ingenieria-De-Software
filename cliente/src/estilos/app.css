@@ -15,12 +15,34 @@
 }
 
 .nombre-etiqueta {
+  font-size: 20px;
+}
+
+.checkbox  { 
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  outline: none;
+
+}
+
+.checkbox + label::before {
+  content: '';
+  display: inline-block;
+  width: 25px;
+  height: 17px;
+  border: 2px solid white; /* Color del borde de la flechita */
+  margin-right: 10px;
+
+}
+
+.checkbox:checked + label::before {
+  content: '\2713'; /* Símbolo de la flechita */
+  text-align: center;
   font-size: 18px;
+  color: black; /* Color del texto de la flechita */
+  background-color: white; /* Color de fondo de la flechita */
+  padding: 0 auto;
+  font-weight: bolder;
 }
-
-.checkbox { 
-  width: 20px;
-  height: 18px;
-  margin-right: 5px;
-}
-

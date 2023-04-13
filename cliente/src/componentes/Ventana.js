@@ -132,6 +132,8 @@ export const VentanaFormulario = (props) => {
 export const Ventana = (props) => {
   let guardar = useContext(prueba)[1];
   const [productos, setProductos] = useState({});
+  const [etiquetas, setEtiquetas] = useState([]);
+  const [filtro, setfiltro] = useState([]);
 
   useEffect(() => {
     const getProdructo = async () => {
@@ -141,10 +143,16 @@ export const Ventana = (props) => {
       console.log(guardar);
     };
     getProdructo();
+    getEtiquetas().then((nombres) => setEtiquetas(nombres));
+
+
   }, []);
+
+  
 
   let prod = productos.modelos?.map((pro) => {
     console.log(pro);
+
     return (
       <>
         <Producto

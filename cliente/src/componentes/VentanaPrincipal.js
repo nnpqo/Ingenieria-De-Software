@@ -22,10 +22,9 @@ export const VentanaPrincipal = (props) => {
         checkboxesSeleccionados.filter((n) => n !== nombre)
       );
     }
-    console.log(checkboxesSeleccionados)
   }
 
-  console.log(ventana);
+
 
   return (
   <prueba.Provider value={[setVentana, guardar, setGuardar]}>
@@ -33,7 +32,7 @@ export const VentanaPrincipal = (props) => {
       {props.menu === 1 && (
         <>
           <MenuEtiquetas  manejarSelecciónSelection={manejarSelecciónSelection}/>
-          <Ventana />
+          <Ventana lista = {checkboxesSeleccionados}/>
         </>
       )}
       

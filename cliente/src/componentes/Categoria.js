@@ -8,8 +8,9 @@ export const Categoria = (props) => {
  
 
   useEffect(()=>{
-    getEtiquetas().then((nombres) => setEtiquetas(nombres));
-    
+    const etiquetas = async () => {
+      await getEtiquetas().then((nombres) => setEtiquetas(nombres));}
+    etiquetas();
   },[])
 
 

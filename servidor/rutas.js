@@ -22,20 +22,19 @@ router.post("/setModelo", (req, res) => {
     [nombre, rutaImg, descrip],
     (error, results, fields) => {
       if (error) {
-        console.error("Error al ejecutar consulta:", error);
+        res.send(error.message);
       } else {
-        console.log("Resultados de la consulta:", results);
-      }
-    }
-  );
-  db.query(
-    "call relacion_etiqueta_modelo(?)",
-    [etiqueta],
-    (error, results, fields) => {
-      if (error) {
-        console.error("Error al ejecutar consulta:", error);
-      } else {
-        console.log("Resultados de la consulta:", results);
+        db.query(
+          "call relacion_etiqueta_modelo(?)",
+          [etiqueta],
+          (error, results, fields) => {
+            if (error) {
+              console.error("Error al ejecutar consulta:", error.message);
+            } else {
+              res.send("Guardado Correctamente");
+            }
+          }
+        );
       }
     }
   );
@@ -54,9 +53,9 @@ router.put("/actualizarModelo", (req, res) => {
 
     (error, results, fields) => {
       if (error) {
-        console.error("Error al ejecutar consulta:", error);
+        res.send("Error al actualizar : " + error.message);
       } else {
-        console.log("Resultados de la consulta:", results);
+        res.send("modificado correctamente");
       }
     }
   );

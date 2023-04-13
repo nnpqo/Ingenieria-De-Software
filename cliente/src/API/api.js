@@ -28,7 +28,7 @@ export const imagen = (event) => {
   const allowedTypes = ["image/png", "image/jpeg"];
   if (!allowedTypes.includes(archivo.type)) {
     console.log("no es imagen");
-    alert("el archivo no es una imagen");
+    alert("el archivo no es una imagen permitida");
   } else {
     if (archivo.size > pesoMax) {
       console.log("tamaño de la imagen muy alta");
@@ -57,20 +57,20 @@ export const setModeloDispositivo = () => {
   let nombre = document.getElementById("nombreModelo").value;
   let descripcion = document.getElementById("descripcion").value;
   let etiqueta = document.getElementById("etiqueta").value;
-  let imagen = document.getElementById("image").files;
-  console.log(imagen[0].name)
+  let imagen = document.getElementById("image").files ;
+  let rutaImg = imagen[0] ? "/images/"+imagen[0].name : "/images/img.png"
   const datos = {
     nombre: nombre,
     descripcion: descripcion,
     etiqueta: etiqueta,
-    ruta : "/images/"+imagen[0].name
+    ruta : rutaImg,
     
   };
   console.log(datos);
   instancia
     .post("/setModelo", datos)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+    .then((res) => alert(res.data))
+    .catch((err) =>alert(err));
 };
 
 export const updateModeloDispositivo = () => {
@@ -78,19 +78,20 @@ export const updateModeloDispositivo = () => {
   let nombre = document.getElementById("nombreModelo").value;
   let descripcion = document.getElementById("descripcion").value;
   let etiqueta = document.getElementById("etiqueta").value;
-  let imagen = document.getElementById("image").files;
+  let imagen = document.getElementById("image").files ;
+  let rutaImg = imagen[0] ? "/images/"+imagen[0].name : "/images/img.png"
   const datos = {
     modelo: modelo,
     nombre: nombre,
     descripcion: descripcion,
     etiqueta: etiqueta,
-    ruta: "/images/"+imagen[0].name,
+    ruta: rutaImg,
   };
   console.log(datos);
   instancia
     .put("/actualizarModelo", datos)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+    .then((res) => alert(res.data))
+    .catch((err) => alert(err));
 };
 
 export const getModeloDispositivos = () => {

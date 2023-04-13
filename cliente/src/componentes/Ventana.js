@@ -17,6 +17,7 @@ import { Aviso } from "./Aviso";
 import { Producto } from "./Producto";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
+import {borrar} from "./Aviso"
 
 export const VentanaFormulario = (props) => {
   const [, guardar, setGuardar] = useContext(prueba);
@@ -106,6 +107,7 @@ export const VentanaFormulario = (props) => {
                   } else {
                     updateModeloDispositivo();
                   }
+                  borrar();
                 }}
               />
               {props.tipo === "registro" ? (

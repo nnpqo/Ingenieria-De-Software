@@ -31,7 +31,7 @@ export const Menu = () => {
 export const MenuEtiquetas = () => {
   return (
     <div className="menuIzquierda" >
-      <span className="categoria1">Categorias</span>
+      <span className="categoria1">Categorías</span>
       <div className="modeloCateg"> <Categoria/></div>
     </div>
   );

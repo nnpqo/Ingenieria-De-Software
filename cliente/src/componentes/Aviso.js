@@ -25,7 +25,7 @@ export const Aviso = (props) => {
   );
 };
 
-const borrar = () => {
+export const borrar = () => {
   document.getElementById("etiqueta").value = "";
   document.getElementById("descripcion").value = "";
   document.getElementById("nombreModelo").value = "";

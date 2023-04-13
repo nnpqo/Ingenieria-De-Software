@@ -33,14 +33,14 @@ CREATE PROCEDURE modificar_modelo(IN nombre_antiguo VARCHAR(150),
                                   IN etiqueta_nueva VARCHAR(100),
                                   IN ruta VARCHAR(100))
       BEGIN 
-         SET @id_etiquet=(SELECT id FROM etiquetas WHERE nombre=etiqueta_nueva);
-         SET @id_modelo=(SELECT id FROM modelos_dispositivos_moviles WHERE nombre=nombre_antiguo);
-         SET @id_etiquet_modelo=(SELECT id FROM etiqueta_modelo WHERE id_modelo_dispositivo=@id_modelo);
+         SET @id_etiquet=(SELECT id FROM etiquetas WHERE nombre=etiqueta_nueva LIMIT 1);
+         SET @id_modelo=(SELECT id FROM modelos_dispositivos_moviles WHERE nombre=nombre_antiguo limit 1);
+         SET @id_etiquet_modelo=(SELECT id FROM etiqueta_modelo WHERE id_modelo_dispositivo=@id_modelo limit 1);
          UPDATE modelos_dispositivos_moviles 
          SET nombre=nombre_nuevo,
              ruta_imagen = ruta,
              descripcion=descrip_nueva
-         WHERE nombre=nombre_antiguo; 
+         WHERE nombre=nombre_antiguo;  
          UPDATE etiqueta_modelo 
          SET id_etiqueta=@id_etiquet   
          WHERE id=@id_etiquet_modelo;

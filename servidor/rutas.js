@@ -62,8 +62,9 @@ router.put("/actualizarModelo", (req, res) => {
 });
 
 router.get("/getAllModeloDispositivo", (req, res) => {
+  const consulta = "select distinct m.nombre, m.ruta_imagen, e.nombre as etiqueta from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 order by m.nombre asc ;"
   db.query(
-    "select distinct m.nombre, m.ruta_imagen, e.nombre as etiqueta from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1;",
+    consulta,
     (error, results, fields) => {
       if (error) {
         console.error("Error al ejecutar consulta:", error);

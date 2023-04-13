@@ -62,12 +62,7 @@ export const VentanaFormulario = (props) => {
         regex={"[ a-zA-Z0-9]+"}
       />
       <br />
-      <TextArea
-        nombre={"Descripción*"}
-        id={"descripcion"}
-        max={200}
-        min={10}
-      />
+      <TextArea nombre={"Descripción*"} id={"descripcion"} max={200} min={10} />
       <br />
       <ComboBox nombre={"Etiquetas*"} opciones={etiquetas} id={"etiqueta"} />
       <br />
@@ -133,7 +128,10 @@ export const VentanaFormulario = (props) => {
 
 export const Ventana = (props) => {
   let guardar = useContext(prueba)[1];
+
   const [productos, setProductos] = useState({});
+  const [etiquetas, setEtiquetas] = useState([]);
+  const [filtro, setfiltro] = useState([]);
 
   useEffect(() => {
     const getProdructo = async () => {
@@ -143,19 +141,39 @@ export const Ventana = (props) => {
       console.log(guardar);
     };
     getProdructo();
-  }, []);
+    setEtiquetas(props.lista);
+    console.log(etiquetas);
+  }, [props.lista]);
 
   let prod = productos.modelos?.map((pro) => {
-    console.log(pro);
-    return (
-      <>
-        <Producto
-          ruta={pro.ruta_imagen}
-          etiqueta={pro.etiqueta}
-          nombre={pro.nombre}
-        />
-      </>
-    );
+    let producto = <></>;
+    if (etiquetas.length == 0) {
+      return (
+        <>
+          <Producto
+            ruta={pro.ruta_imagen}
+            etiqueta={pro.etiqueta}
+            nombre={pro.nombre}
+          />
+        </>
+      );
+    } else {
+      return etiquetas.map((eti) => {
+        if (pro.etiqueta === eti) {
+          console.log(eti);
+          return (
+            <>
+              <Producto
+                ruta={pro.ruta_imagen}
+                etiqueta={pro.etiqueta}
+                nombre={pro.nombre}
+              />
+            </>
+          );
+        }
+      });
+    }
+    return <></>;
   });
 
   return (

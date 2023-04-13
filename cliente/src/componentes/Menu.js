@@ -32,7 +32,7 @@ export const MenuEtiquetas = (props) => {
   return (
     <div className="menuIzquierda" >
 
-      <span className="categoria1">Categorias</span>
+      <span className="categoria1">Categorías</span>
       <div className="modeloCateg"> <Categoria manejarSelecciónSelection={props.manejarSelecciónSelection}/></div>
 
     </div>

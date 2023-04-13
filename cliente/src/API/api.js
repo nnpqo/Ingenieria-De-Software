@@ -4,11 +4,11 @@ export const instancia = axios.create({
   baseURL: "http://localhost:3001",
 });
 
-let file = "null"
+let file = "null";
 
 export const guardarImagen = () => {
   if (file != "null") {
-    console.log("si hay archivo")
+    console.log("si hay archivo");
     const formData = new FormData();
     formData.append("image", file);
     instancia
@@ -35,7 +35,6 @@ export const imagen = (event) => {
       alert("el tamaño de la imagen es superior a la permitida");
     } else {
       const img = new Image();
-
       img.src = URL.createObjectURL(archivo);
       img.onload = () => {
         console.log(img.width);
@@ -48,7 +47,7 @@ export const imagen = (event) => {
           miImagen.src = URL.createObjectURL(archivo);
         }
       };
-      file =  archivo;
+      file = archivo;
     }
   }
 };
@@ -57,20 +56,19 @@ export const setModeloDispositivo = () => {
   let nombre = document.getElementById("nombreModelo").value;
   let descripcion = document.getElementById("descripcion").value;
   let etiqueta = document.getElementById("etiqueta").value;
-  let imagen = document.getElementById("image").files ;
-  let rutaImg = imagen[0] ? "/images/"+imagen[0].name : "/images/img.png"
+  let imagen = document.getElementById("image").files;
+  let rutaImg = imagen[0] ? "/images/" + imagen[0].name : "/images/img.png";
   const datos = {
     nombre: nombre,
     descripcion: descripcion,
     etiqueta: etiqueta,
-    ruta : rutaImg,
-    
+    ruta: rutaImg,
   };
   console.log(datos);
   instancia
     .post("/setModelo", datos)
     .then((res) => alert(res.data))
-    .catch((err) =>alert(err));
+    .catch((err) => console.log(err));
 };
 
 export const updateModeloDispositivo = () => {
@@ -78,8 +76,8 @@ export const updateModeloDispositivo = () => {
   let nombre = document.getElementById("nombreModelo").value;
   let descripcion = document.getElementById("descripcion").value;
   let etiqueta = document.getElementById("etiqueta").value;
-  let imagen = document.getElementById("image").files ;
-  let rutaImg = imagen[0] ? "/images/"+imagen[0].name : "/images/img.png"
+  let imagen = document.getElementById("image").files;
+  let rutaImg = imagen[0] ? "/images/" + imagen[0].name : "/images/img.png";
   const datos = {
     modelo: modelo,
     nombre: nombre,
@@ -91,7 +89,7 @@ export const updateModeloDispositivo = () => {
   instancia
     .put("/actualizarModelo", datos)
     .then((res) => alert(res.data))
-    .catch((err) => alert(err));
+    .catch((err) => console.log(err));
 };
 
 export const getModeloDispositivos = () => {

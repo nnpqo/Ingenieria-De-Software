@@ -10,7 +10,7 @@ export const ImagenFormulario = () => {
     <div className="imagen-formulario">
       <label htmlFor="image" className="custom-file-upload">
         <img
-          src={imagenCarga}
+          src={"http://localhost:3001/images/img.png"}
           alt="Icono de carga de archivos"
           className="posicion"
           id="previsualizar"
@@ -20,7 +20,7 @@ export const ImagenFormulario = () => {
       <input
         type="file"
         id="image"
-        onChange={imagen}
+        onChange={(e) => {imagen(e) }}
         style={{ display: "none" }}
         accept="image/png, image/jpeg"
       />

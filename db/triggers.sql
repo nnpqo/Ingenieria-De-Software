@@ -12,10 +12,10 @@ begin
     set nom = upper(new.nombre);
     if not (nom REGEXP '^[ A-Z0-9]+$'  and length(nom) >= '2' and length(nom) <= '30')
         then SIGNAL SQLSTATE '45000'
-        set MESSAGE_TEXT = "nombre de modelo de dispositivo no válido";
+        set MESSAGE_TEXT = "Nombre de modelo de dispositivo no válido";
     elseif not (length(new.descripcion) <= '200' and length(new.descripcion) >= '10') 
         then SIGNAL SQLSTATE '45000'
-        set MESSAGE_TEXT = 'Numero de carateres excedidos';
+        set MESSAGE_TEXT = 'Numero de caracteres no está en el rango';
     else 
         set new.nombre = nom;   
 	end if;

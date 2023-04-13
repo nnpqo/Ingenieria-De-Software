@@ -1,5 +1,4 @@
 
-
 .cabecera-container {
   flex: auto;
   width: 100%;
@@ -11,8 +10,17 @@
   display: flex;
   background-color: #1a2f5b;
   width: 100%;
+  min-height: 90vh;
+  max-height: auto;
 }
 
 .nombre-etiqueta {
-  font-size: 20px;
+  font-size: 18px;
 }
+
+.checkbox { 
+  width: 20px;
+  height: 18px;
+  margin-right: 5px;
+}
+

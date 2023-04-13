@@ -54,7 +54,7 @@ const Etiqueta = (props) => {
   return (
     <>
       <input type="checkbox" 
-      name={props.nombre} 
+      className="checkbox"
       id="check"
       checked={isChecked}
       onChange={handleChange}/>

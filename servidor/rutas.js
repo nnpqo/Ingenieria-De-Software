@@ -22,7 +22,7 @@ router.post("/setModelo", (req, res) => {
     [nombre, rutaImg, descrip],
     (error, results, fields) => {
       if (error) {
-        res.send(error.message);
+        res.send("Error al guardar: " + error.message);
       } else {
         db.query(
           "call relacion_etiqueta_modelo(?)",

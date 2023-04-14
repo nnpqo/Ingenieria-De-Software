@@ -23,15 +23,15 @@ VALUES
 
 INSERT INTO modelos_dispositivos_moviles (id, nombre, descripcion, ruta_imagen) 
 values 
-    ('1','galaxy s22 ultra', '','/images/s22u.jpeg'),
-    ('2','galaxy a71', '', '/images/a71.jpeg'),
-    ('3','Tab s7 Fe', '','/images/s7fe.jpeg'),
-    ('4','galaxy z flip4','','/images/zflip4.jpeg' ),
-    ('5','galaxy s20 ultra','','/images/s20u.jpeg' ),
-    ('6','tab s6 lite', '','/images/s22u.jpeg'),
-    ('7','tab a7 lite','','/images/a7l.jpeg' ),
-    ('8','galaxy a51', '','/images/a51.jpeg'),
-    ('9','Tab a8 lite','','/images/s20u.jpeg' );
+    ('1','galaxy s22 ultra', 'descripcion prueba','/images/s22u.jpeg'),
+    ('2','galaxy a71', 'descripcion prueba', '/images/a71.jpeg'),
+    ('3','Tab s7 Fe', 'descripcion prueba','/images/s7fe.jpeg'),
+    ('4','galaxy z flip4','descripcion prueba','/images/zflip4.jpeg' ),
+    ('5','galaxy s20 ultra','descripcion prueba','/images/s20u.jpeg' ),
+    ('6','tab s6 lite', 'descripcion prueba','/images/s22u.jpeg'),
+    ('7','tab a7 lite','descripcion prueba','/images/a7l.jpeg' ),
+    ('8','galaxy a51', 'descripcion prueba','/images/a51.jpeg'),
+    ('9','Tab a8 lite','descripcion prueba','/images/s20u.jpeg' );
 
 insert into etiqueta_modelo (id_etiqueta, id_modelo_dispositivo) values 
 ('1', '1'),

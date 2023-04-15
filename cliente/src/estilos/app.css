@@ -34,15 +34,14 @@
   height: 17px;
   border: 2px solid white; /* Color del borde de la flechita */
   margin-right: 10px;
-
+  padding-bottom: 5px;
 }
 
 .checkbox:checked + label::before {
-  content: '\2713'; /* Símbolo de la flechita */
+  content: '✔'; /* Símbolo de la flechita */
   text-align: center;
   font-size: 18px;
   color: black; /* Color del texto de la flechita */
   background-color: white; /* Color de fondo de la flechita */
-  padding: 0 auto;
   font-weight: bolder;
 }

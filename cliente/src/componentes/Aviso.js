@@ -24,7 +24,7 @@ export const Aviso = (props) => {
               nombre={"Si"}
               estilos={"botonSi"}
               funcion={() => {
-                borrar(close);
+                borrar();
                 close();
               }}
             />
@@ -37,9 +37,9 @@ export const Aviso = (props) => {
 };
 
 export const borrar = () => {
-  document.getElementById("etiqueta").value = "";
+  // document.getElementById("etiqueta").value = "Samsung";
   document.getElementById("descripcion").value = "";
   document.getElementById("nombreModelo").value = "";
-  document.getElementById("previsualizar").src =
-    "http://localhost:3001/images/img.png";
+  document.getElementById('image').value = "";
+  document.getElementById("previsualizar").src = "http://localhost:3001/images/img.png";
 };

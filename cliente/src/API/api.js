@@ -1,4 +1,5 @@
 import axios from "axios";
+import { borrar } from "../componentes/Aviso";
 
 export const instancia = axios.create({
   baseURL: "http://localhost:3001",
@@ -27,12 +28,11 @@ export const imagen = (event) => {
   const archivo = event.target.files[0];
   const allowedTypes = ["image/png", "image/jpeg"];
   if (!allowedTypes.includes(archivo.type)) {
-    console.log("no es imagen");
-    alert("el archivo no es una imagen permitida");
+    alert("El archivo no es una imagen válida");
   } else {
     if (archivo.size > pesoMax) {
       console.log("tamaño de la imagen muy alta");
-      alert("el tamaño de la imagen es superior a la permitida");
+      alert("El tamaño de la imagen es superior a la permitida");
     } else {
       const img = new Image();
       img.src = URL.createObjectURL(archivo);
@@ -67,7 +67,12 @@ export const setModeloDispositivo = () => {
   console.log(datos);
   instancia
     .post("/setModelo", datos)
-    .then((res) => alert(res.data))
+    .then((res) => {
+      alert(res.data.message);
+      if (!res.data.error) {
+        borrar();
+      }
+    })
     .catch((err) => console.log(err));
 };
 
@@ -88,7 +93,13 @@ export const updateModeloDispositivo = () => {
   console.log(datos);
   instancia
     .put("/actualizarModelo", datos)
-    .then((res) => alert(res.data))
+    .then((res) => {
+      console.log(res.data);
+      alert(res.data.message);
+      if (!res.data.error) {
+        borrar();
+      }
+    })
     .catch((err) => console.log(err));
 };
 

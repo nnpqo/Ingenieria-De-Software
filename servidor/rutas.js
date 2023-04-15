@@ -22,7 +22,10 @@ router.post("/setModelo", (req, res) => {
     [nombre, rutaImg, descrip],
     (error, results, fields) => {
       if (error) {
-        res.send("Error al guardar: " + error.message);
+        res.send({
+          message: "Error al guardar: " + error.message,
+          error: true,
+        });
       } else {
         db.query(
           "call relacion_etiqueta_modelo(?)",
@@ -31,7 +34,7 @@ router.post("/setModelo", (req, res) => {
             if (error) {
               console.error("Error al ejecutar consulta:", error.message);
             } else {
-              res.send("Guardado Correctamente");
+              res.send({ message: "Guardado correctamente", error: false });
             }
           }
         );
@@ -53,28 +56,29 @@ router.put("/actualizarModelo", (req, res) => {
 
     (error, results, fields) => {
       if (error) {
-        res.send("Error al actualizar : " + error.message);
+        res.send({
+          message: "Error al actualizar : " + error.message,
+          error: true,
+        });
       } else {
-        res.send("modificado correctamente");
+        res.send({ message: "Modificado correctamente", error: false });
       }
     }
   );
 });
 
 router.get("/getAllModeloDispositivo", (req, res) => {
-  const consulta = "select distinct m.nombre, m.ruta_imagen, e.nombre as etiqueta from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 order by m.nombre asc ;"
-  db.query(
-    consulta,
-    (error, results, fields) => {
-      if (error) {
-        console.error("Error al ejecutar consulta:", error);
-        res.status(500).json({ error: "Error al obtener modelos" });
-      } else {
-        console.log("Resultados de la consulta:", results);
-        res.json({ modelos: results });
-      }
+  const consulta =
+    "select distinct m.nombre, m.ruta_imagen, e.nombre as etiqueta from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 order by m.nombre asc ;";
+  db.query(consulta, (error, results, fields) => {
+    if (error) {
+      console.error("Error al ejecutar consulta:", error);
+      res.status(500).json({ error: "Error al obtener modelos" });
+    } else {
+      console.log("Resultados de la consulta:", results);
+      res.json({ modelos: results });
     }
-  );
+  });
 });
 
 router.get("/getEtiquetas", (req, res) => {

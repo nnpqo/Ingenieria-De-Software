@@ -10,25 +10,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: auto;
-  margin: 10px;
   width: 80%;
   height: 350px;
   border: solid 2px white;
   background-color: #1a2f5b;
-  left: 4.8cm;
-  top: 4cm;
   border-style: dashed;
-  
 }
 
 
 .posicion {
   background-color: #1a2f5b;
-  margin: 0.5rem;
   padding: 1rem;
   width: 100%;
-  max-width: 90%;
   min-width: 80%;
   height: 300px;
   display: flex;

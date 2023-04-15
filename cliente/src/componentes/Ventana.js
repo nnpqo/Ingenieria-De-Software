@@ -64,7 +64,7 @@ export const VentanaFormulario = (props) => {
       <br />
       <TextArea nombre={"Descripción*"} id={"descripcion"} max={200} min={10} />
       <br />
-      <ComboBox nombre={"Etiquetas*"} opciones={etiquetas} id={"etiqueta"} />
+      <ComboBox nombre={"Etiqueta*"} opciones={etiquetas} id={"etiqueta"} />
       <br />
       <br />
     </div>
@@ -102,7 +102,6 @@ export const VentanaFormulario = (props) => {
                   } else {
                     updateModeloDispositivo();
                   }
-                  borrar();
                 }}
               />
               {props.tipo === "registro" ? (
@@ -184,22 +183,22 @@ export const Ventana = (props) => {
 };
 
 const alerts = () => {
-  const inputNombre = document.getElementById("nombreModelo");
-  const inputDescripcion = document.getElementById("descripcion");
-  if (
-    inputNombre.validity.patternMismatch ||
-    inputNombre.validity.tooLong ||
-    inputNombre.validity.tooShort ||
-    inputNombre.validity.valueMissing
-  ) {
-    alert("nombre de producto no válido");
-  } else {
-    if (
-      inputDescripcion.validity.tooShort ||
-      inputDescripcion.validity.tooLong ||
-      inputDescripcion.validity.valueMissing
-    ) {
-      alert("descripcion no válido");
-    }
-  }
+  // const inputNombre = document.getElementById("nombreModelo");
+  // const inputDescripcion = document.getElementById("descripcion");
+  // if (
+  //   inputNombre.validity.patternMismatch ||
+  //   inputNombre.validity.tooLong ||
+  //   inputNombre.validity.tooShort ||
+  //   inputNombre.validity.valueMissing
+  // ) {
+  //   alert("nombre de producto no válido");
+  // } else {
+  //   if (
+  //     inputDescripcion.validity.tooShort ||
+  //     inputDescripcion.validity.tooLong ||
+  //     inputDescripcion.validity.valueMissing
+  //   ) {
+  //     alert("descripcion no válido");
+  //   }
+  // }
 };

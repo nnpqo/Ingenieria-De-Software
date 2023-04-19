@@ -113,8 +113,11 @@
   background-color: white;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
   border: none;
   outline: none;
+  margin: 0%;
 }
 
 .barra-buscar{
@@ -122,10 +125,11 @@
   width: 340px;
   display: flex;
   align-items: center;
+  gap: 0;
 }
 
 .contenedor-icono{
-  background-color: white;
+  background-color: #0E84C7;
   height: 35px;
   width: 40px;
   cursor: pointer;

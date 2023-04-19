@@ -17,7 +17,7 @@ import { Aviso } from "./Aviso";
 import { Producto } from "./Producto";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
-import {borrar} from "./Aviso"
+import { borrar } from "./Aviso"
 
 export const VentanaFormulario = (props) => {
   const [, guardar, setGuardar] = useContext(prueba);
@@ -49,7 +49,15 @@ export const VentanaFormulario = (props) => {
         min={10}
       />
       <br />
-      <ComboBox nombre={"Etiquetas"} opciones={etiquetas} id={"etiqueta"} />
+      <div className="etiqueta_precio">
+        <ComboBox nombre={"Etiquetas"} opciones={etiquetas} id={"etiqueta"} />
+        <CajaTexto
+          nombre={"Cambiar precio*"}
+          id={"precio"}
+          max={6}
+          regex={"[0-9]+"}
+        />
+      </div>
     </div>
   );
   const opcionesRegistro = (
@@ -64,8 +72,15 @@ export const VentanaFormulario = (props) => {
       <br />
       <TextArea nombre={"Descripción*"} id={"descripcion"} max={200} min={10} />
       <br />
-      <ComboBox nombre={"Etiqueta*"} opciones={etiquetas} id={"etiqueta"} />
-      <br />
+      <div className="etiqueta_precio">
+        <ComboBox nombre={"Etiqueta*"} opciones={etiquetas} id={"etiqueta"} />
+        <CajaTexto
+          nombre={"precio*"}
+          id={"precio"}
+          max={6}
+          regex={"[0-9]+"}
+        />
+      </div>
       <br />
     </div>
   );

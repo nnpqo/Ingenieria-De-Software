@@ -106,3 +106,36 @@
   border: none;
   margin: 0 25px;
 }
+
+.barra-buscar input{
+  height: 35px;
+  width: 300px;
+  background-color: white;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border: none;
+  outline: none;
+}
+
+.barra-buscar{
+  height: 35px;
+  width: 340px;
+  display: flex;
+  align-items: center;
+}
+
+.contenedor-icono{
+  background-color: white;
+  height: 35px;
+  width: 40px;
+  cursor: pointer;
+  border: none;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.contenedor-icono:hover{
+  background-color: #0E84C7;
+}
+
+

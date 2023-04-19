@@ -24,24 +24,29 @@ export const VentanaPrincipal = (props) => {
     }
   }
 
-
-
   return (
-  <prueba.Provider value={[setVentana, guardar, setGuardar]}>
-    <div className="ventana-principal">
-      {props.menu === 1 && (
-        <>
-          <MenuEtiquetas  manejarSelecciónSelection={manejarSelecciónSelection}/>
-          <Ventana lista = {checkboxesSeleccionados}/>
-        </>
-      )}
-      
+    <prueba.Provider value={[setVentana, guardar, setGuardar]}>
+      <div className="ventana-principal">
+        {props.menu === 1 && (
+          <>
+            <MenuEtiquetas
+              manejarSelecciónSelection={manejarSelecciónSelection}
+            />
+            <Ventana lista={checkboxesSeleccionados} />
+          </>
+        )}
+
         {props.menu === 2 && (
           <>
             <Menu />
             {ventana === 0 && (
               <VentanaFormulario
-                titulo={<>{"REGISTRAR MODELO DE"}<br/> {"DISPOSITIVO MÓVIL"}</>}
+                titulo={
+                  <>
+                    {"REGISTRAR MODELO DE"}
+                    <br /> {"DISPOSITIVO MÓVIL"}
+                  </>
+                }
                 imagen={true}
                 tipo={"registro"}
               />
@@ -55,8 +60,7 @@ export const VentanaPrincipal = (props) => {
             )}
           </>
         )}
-      
-    </div>
+      </div>
     </prueba.Provider>
   );
 };

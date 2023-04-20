@@ -25,6 +25,7 @@ input[type="text"] {
   bottom: 5cm;
   padding: 5px;
 }
+
 .letras {
   color: white;
   left: 60%;
@@ -45,6 +46,11 @@ input[type="text"] {
   left: 60%;
   bottom: 5cm;
   padding: 10px;
-  font-size: 20px;
-  
+  font-size: 20px; 
+}
+#etiqueta {
+  width: 215px;
+}
+#precio {
+  width: 175px;
 }

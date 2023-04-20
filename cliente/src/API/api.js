@@ -26,28 +26,30 @@ export const imagen = (event) => {
   const minAncho = 250;
   const minAlto = 250;
   const archivo = event.target.files[0];
-  const allowedTypes = ["image/png", "image/jpeg"];
-  if (!allowedTypes.includes(archivo.type)) {
-    alert("El archivo no es una imagen válida");
-  } else {
-    if (archivo.size > pesoMax) {
-      console.log("tamaño de la imagen muy alta");
-      alert("El tamaño de la imagen es superior a la permitida");
+  if (archivo !== undefined) {
+    const allowedTypes = ["image/png", "image/jpeg"];
+    if (!allowedTypes.includes(archivo.type)) {
+      alert("El archivo no es una imagen válida");
     } else {
-      const img = new Image();
-      img.src = URL.createObjectURL(archivo);
-      img.onload = () => {
-        console.log(img.width);
-        console.log(img.height);
-        if (img.width < minAlto || img.height < minAncho) {
-          console.log("resolusion baja");
-          alert("la resolucion de la imagen es menor a la permitida");
-        } else {
-          let miImagen = document.getElementById("previsualizar");
-          miImagen.src = URL.createObjectURL(archivo);
-        }
-      };
-      file = archivo;
+      if (archivo.size > pesoMax) {
+        console.log("tamaño de la imagen muy alta");
+        alert("El tamaño de la imagen es superior a la permitida");
+      } else {
+        const img = new Image();
+        img.src = URL.createObjectURL(archivo);
+        img.onload = () => {
+          console.log(img.width);
+          console.log(img.height);
+          if (img.width < minAlto || img.height < minAncho) {
+            console.log("resolusion baja");
+            alert("la resolucion de la imagen es menor a la permitida");
+          } else {
+            let miImagen = document.getElementById("previsualizar");
+            miImagen.src = URL.createObjectURL(archivo);
+          }
+        };
+        file = archivo;
+      }
     }
   }
 };

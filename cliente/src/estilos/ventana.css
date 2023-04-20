@@ -59,3 +59,8 @@
   justify-content: space-between;
   padding: 5px;
 }
+.etiqueta_precio {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+}

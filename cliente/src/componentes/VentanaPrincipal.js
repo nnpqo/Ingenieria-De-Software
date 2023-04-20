@@ -24,18 +24,18 @@ export const VentanaPrincipal = (props) => {
     }
   }
 
-
-
   return (
-  <prueba.Provider value={[setVentana, guardar, setGuardar]}>
-    <div className="ventana-principal">
-      {props.menu === 1 && (
-        <>
-          <MenuEtiquetas  manejarSelecciónSelection={manejarSelecciónSelection}/>
-          <Ventana lista = {checkboxesSeleccionados}/>
-        </>
-      )}
-      
+    <prueba.Provider value={[setVentana, guardar, setGuardar]}>
+      <div className="ventana-principal">
+        {props.menu === 1 && (
+          <>
+            <MenuEtiquetas
+              manejarSelecciónSelection={manejarSelecciónSelection}
+            />
+            <Ventana lista={checkboxesSeleccionados} />
+          </>
+        )}
+
         {props.menu === 2 && (
           <>
             <Menu />
@@ -55,8 +55,7 @@ export const VentanaPrincipal = (props) => {
             )}
           </>
         )}
-      
-    </div>
+      </div>
     </prueba.Provider>
   );
 };

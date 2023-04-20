@@ -134,9 +134,10 @@
 .contenedor-icono{
   background-color: #0E84C7;
   height: 35px;
-  width: 40px;
+  width: 45px;
   cursor: pointer;
   border: none;
+  background-image: url("../imagenes/search\ \(5\).svg");
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 }

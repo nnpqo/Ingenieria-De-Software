@@ -152,3 +152,20 @@ END
 /*EJEMPLO: llamada al procedimiento almacenado*/
 /*CALL obtener_caracteristicas_modelo('nombre_modelo');*/
 /*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para buscar un modelo por similitudes*/
+delimiter //
+CREATE PROCEDURE buscar_modelo(IN nombre_modelo VARCHAR(150))
+BEGIN 
+   select distinct m.id, m.visible, m.nombre, m.ruta_imagen, e.nombre as etiqueta
+   from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e
+   where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 
+        and m.nombre like CONCAT('%',nombre_modelo,'%') 
+   ORDER BY m.nombre ASC;
+END //
+delimiter ;
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL buscar_modelo('nombre_modelo');*/
+/*-------------------------------------------------*/

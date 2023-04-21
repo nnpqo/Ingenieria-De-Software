@@ -18,7 +18,7 @@
 }
 
 .boton-navbar {
-  display: flex;
+  display: inline-block;
   flex-direction: row;
   font-size: 18px;
   background-color: #284073;
@@ -27,7 +27,7 @@
   padding: 0%;
   justify-self: center;
   align-items: center;
-  margin: 0px 0px 10px 10px;
+  margin: 15px 0px 10px 10px;
   background-color: transparent;
   border: none;
   padding-top: 20px;

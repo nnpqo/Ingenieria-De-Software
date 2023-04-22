@@ -110,7 +110,6 @@ export const VentanaFormulario = (props) => {
                 nombre={"GUARDAR"}
                 estilos={"guardar"}
                 funcion={() => {
-                  alerts();
                   guardarImagen();
                   if (props.tipo === "registro") {
                     setModeloDispositivo();
@@ -145,7 +144,6 @@ export const Ventana = (props) => {
 
   const [productos, setProductos] = useState({});
   const [etiquetas, setEtiquetas] = useState([]);
-  const [filtro, setfiltro] = useState([]);
 
   useEffect(() => {
     const getProdructo = async () => {
@@ -157,10 +155,11 @@ export const Ventana = (props) => {
     getProdructo();
     setEtiquetas(props.lista);
     console.log(etiquetas);
+    
   }, [props.lista]);
 
   let prod = productos.modelos?.map((pro) => {
-    let producto = <></>;
+    
     if (etiquetas.length == 0) {
       return (
         <>
@@ -185,17 +184,35 @@ export const Ventana = (props) => {
             </>
           );
         }
+        else{
+          return false
+        }
       });
     }
-    return <></>;
   });
+  let prodFiltrado = prod?.flat().filter((valor) => {
+    return valor;
+  }); 
+
+  let mostrarProd = prodFiltrado && prodFiltrado.length > 0 ? prodFiltrado : sinProducto();
 
   return (
     <div>
-      <div className="ventana-productos">{prod}</div>
+      <div className="ventana-productos">{mostrarProd}</div>
     </div>
   );
 };
+const sinProducto = () => {
+  return (<div>
+    <img
+      src={"http://localhost:3001/images/sad.svg"}
+      alt="Icono :("
+      className="sad"
+    />
+    <h1 className="sin-producto">Lo siento, no hemos encontrado resultados que coincidan con tu búsqueda</h1>
+  </div>
+  )
+}
 
 const alerts = () => {
   // const inputNombre = document.getElementById("nombreModelo");

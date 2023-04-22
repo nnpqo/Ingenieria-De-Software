@@ -11,14 +11,14 @@ export const Menu = () => {
   return (
     <div className="menuIzquierda">
       <Boton
-        nombre={"Registrar modelo"}
+        nombre={"Registrar dipositivo"}
         estilos={"boton-registro"}
         funcion={() => {
           setVentana(0);
         }}
       />
       <Boton
-        nombre={"Modificar modelo"}
+        nombre={"Modificar dispositivo"}
         estilos={"boton-modificar"}
         funcion={() => {
           setVentana(1);

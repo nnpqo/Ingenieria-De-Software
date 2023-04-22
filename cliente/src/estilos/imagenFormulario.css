@@ -1,9 +1,9 @@
 .imagen {
   display: flex;
-  flex-direction: ;
+  flex-direction: row;
   width: 50%;
   justify-content: center;
-  margin-top : 30px; 
+  margin-top: 30px;
 }
 
 .imagen-formulario {
@@ -16,7 +16,6 @@
   background-color: #1a2f5b;
   border-style: dashed;
 }
-
 
 .posicion {
   background-color: #1a2f5b;
@@ -36,5 +35,5 @@
 }
 
 .posicion2:hover {
-  color:#0655ff;
+  color: #0655ff;
 }

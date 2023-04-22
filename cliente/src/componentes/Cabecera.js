@@ -19,6 +19,10 @@ export const Cabecera = () => {
             />
           </Link>
         </div>
+        <div className="barra-buscar">
+          <input type="text" class="estilo-input" placeholder="Buscar"></input>
+          <button class="contenedor-icono"></button>
+        </div>
         <div className="opciones-navbar">
           <Link to="/productos">
             <Boton nombre={"Producto"} estilos={"boton-navbar-pro"} />

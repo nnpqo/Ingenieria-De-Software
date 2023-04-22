@@ -45,3 +45,12 @@
   background-color: white; /* Color de fondo de la flechita */
   font-weight: bolder;
 }
+
+.icono-agregar{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: end;
+  margin-right: 10%;
+}

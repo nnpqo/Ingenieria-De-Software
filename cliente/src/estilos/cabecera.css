@@ -18,7 +18,7 @@
 }
 
 .boton-navbar {
-  display: flex;
+  display: inline-block;
   flex-direction: row;
   font-size: 18px;
   background-color: #284073;
@@ -27,16 +27,14 @@
   padding: 0%;
   justify-self: center;
   align-items: center;
-  margin: 0px 0px 10px 10px;
+  margin: 15px 0px 10px 10px;
   background-color: transparent;
   border: none;
   padding-top: 20px;
 }
 .boton-navbar:hover {
-  font-size: 20px;
-  background-color: #284073;
+  font-size: 18px;
   color: #0655ff;
-  padding: 0%;
 }
 
 .boton-navbar-pro {
@@ -57,7 +55,6 @@
   cursor: pointer;
   font-size: 15px;
   font-weight: bolder;
-  padding: 0%;
 }
 
 .categorias {
@@ -70,9 +67,7 @@
 }
 .home {
   align-items: center;
-  display: inline-flex;
-  flex-direction: row;
-  flex-grow: 1;
+  display: flex;
 }
 .cajaproducto {
   display: block;
@@ -85,6 +80,10 @@
 
 .jdk {
   font-weight: normal;
+}
+
+.cell{
+  font-weight: bold;
 }
 
 .opciones-navbar {

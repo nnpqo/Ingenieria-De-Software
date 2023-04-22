@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getEtiquetas } from "../API/api";
 import "../estilos/app.css";
+import logo from "../imagenes/iconoAgregar.svg";
 
 export const Categoria = (props) => {
   const [desplegado, setdesplegado] = useState(false);
@@ -36,6 +37,9 @@ export const Categoria = (props) => {
         >
           Dispositivos móviles
         </a>
+        <button className="icono-agregar">
+        <img src={logo}></img>
+        </button>
       </span>
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>
     </div>

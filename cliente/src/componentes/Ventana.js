@@ -202,17 +202,6 @@ export const Ventana = (props) => {
     </div>
   );
 };
-const sinProducto = () => {
-  return (<div>
-    <img
-      src={"http://localhost:3001/images/sad.svg"}
-      alt="Icono :("
-      className="sad"
-    />
-    <h1 className="sin-producto">Lo siento, no hemos encontrado resultados que coincidan con tu búsqueda</h1>
-  </div>
-  )
-}
 
 const sinProducto = () => {
   return (<div className="contenedor-enunciado">

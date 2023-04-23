@@ -1,12 +1,11 @@
 use jdkcell_db;
-/*-------------------------------------------------*/
-/*procedimiento almacenado para registrar un modelo*/
 drop procedure if exists registrar_modelo;
-delimiter / / 
+delimiter // 
 CREATE PROCEDURE registrar_modelo(
     IN nomb VARCHAR(150),
     IN ruta_imag VARCHAR(100),
-    IN descripc TEXT
+    IN descripc TEXT,
+    IN precio DECIMAL
 ) BEGIN
     DECLARE CONTINUE HANDLER FOR 1062 
     BEGIN 
@@ -14,16 +13,14 @@ CREATE PROCEDURE registrar_modelo(
         set MESSAGE_TEXT = 'Error: Modelo Dispositivo ya existe';
     END;
     
-    INSERT INTO modelos_dispositivos_moviles (nombre, ruta_imagen, descripcion)
-    VALUES (nomb, ruta_imag, descripc);
-END / /
+    INSERT INTO modelos_dispositivos_moviles (nombre, ruta_imagen, descripcion,precio_venta_sugerido)
+    VALUES (nomb, ruta_imag, descripc,precio);
+END //
 /*llamada al procedimiento almacenado ejemplo:*/
-/*CALL registrar_modelo('huawei p30 min','/images','celular 100 px etc');*/
+/*CALL registrar_modelo('huawei p30 min','/images','celular 100 px etc',1879);*/
 /*-------------------------------------------------*/
 
-drop procedure if exists modificar_modelo;
-/*-------------------------------------------------*/
-/*procedimiento almacenado para actualizar el modelo*/
+/*procedimiento almacenado para modificar un modelo de un dispositivo*/
 drop procedure if exists modificar_modelo;
 -------------------------------------------------/
 delimiter //
@@ -31,6 +28,7 @@ CREATE PROCEDURE modificar_modelo(IN nombre_antiguo VARCHAR(150),
                                   IN nombre_nuevo VARCHAR(150),
                                   IN descrip_nueva TEXT,
                                   IN etiqueta_nueva VARCHAR(100),
+                                  IN precio_nuevo DECIMAL,
                                   IN ruta VARCHAR(100))
       BEGIN 
          SET @id_etiquet=(SELECT id FROM etiquetas WHERE nombre=etiqueta_nueva LIMIT 1);
@@ -39,7 +37,8 @@ CREATE PROCEDURE modificar_modelo(IN nombre_antiguo VARCHAR(150),
          UPDATE modelos_dispositivos_moviles 
          SET nombre=nombre_nuevo,
              ruta_imagen = ruta,
-             descripcion=descrip_nueva
+             descripcion=descrip_nueva,
+             precio_venta_sugerido=precio_nuevo
          WHERE nombre=nombre_antiguo;  
          UPDATE etiqueta_modelo 
          SET id_etiqueta=@id_etiquet   
@@ -47,7 +46,7 @@ CREATE PROCEDURE modificar_modelo(IN nombre_antiguo VARCHAR(150),
       END //
 delimiter ;
 /*EJEMPLO: llamada al procedimiento almacenado*/
-/*CALL modificar_modelo('nombre_modelo_antiguo','nombre_modelo_nuevo','descripcion_nueva','etiqueta nueva');*/
+/*CALL modificar_modelo('nombre_modelo_antiguo','nombre_modelo_nuevo','descripcion_nueva','etiqueta nueva',precioNuevo,'/ruta');*/
 /*-------------------------------------------------*/
 
 /*-------------------------------------------------*/
@@ -132,4 +131,40 @@ END
 //
 /*EJEMPLO: llamada al procedimiento almacenado*/
 /*CALL obtener_datos_modelo('nombre_modelo');*/
+/*-------------------------------------------------*/
+
+
+/*----------------2DO SPRINT-----------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para obtener los datos de un modelo (marca,modelo,precio y descripcion)*/
+delimiter //
+CREATE PROCEDURE obtener_caracteristicas_modelo(IN nomb_modelo VARCHAR(150))
+BEGIN
+    SELECT etiquetas.nombre AS marca, modelos_dispositivos_moviles.nombre AS modelo, precio_venta_sugerido AS precio, descripcion 
+    FROM etiquetas, modelos_dispositivos_moviles, etiqueta_modelo
+    WHERE etiqueta_modelo.id_modelo_dispositivo=modelos_dispositivos_moviles.id 
+	       AND etiqueta_modelo.id_etiqueta=etiquetas.id AND modelos_dispositivos_moviles.nombre=nomb_modelo; 
+END
+//
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL obtener_caracteristicas_modelo('nombre_modelo');*/
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para buscar un modelo por similitudes*/
+delimiter //
+CREATE PROCEDURE buscar_modelo(IN nombre_modelo VARCHAR(150))
+BEGIN 
+   select distinct m.id, m.visible, m.nombre, m.ruta_imagen, e.nombre as etiqueta
+   from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e
+   where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 
+        and m.nombre like CONCAT('%',nombre_modelo,'%') 
+   ORDER BY m.nombre ASC;
+END //
+delimiter ;
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL buscar_modelo('nombre_modelo');*/
 /*-------------------------------------------------*/

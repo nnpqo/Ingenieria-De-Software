@@ -197,6 +197,19 @@ export const Ventana = (props) => {
   );
 };
 
+const sinProducto = () => {
+  return (<div className="contenedor-enunciado">
+    <img
+      src={"http://localhost:3001/images/sad.svg"}
+      alt="Icono :("
+      className="sad"
+    />
+    <br/>
+    <h1 className="sin-producto">Lo siento, no hemos encontrado resultados <br/> que coincidan con tu búsqueda</h1>
+  </div>
+  )
+}
+
 const alerts = () => {
   // const inputNombre = document.getElementById("nombreModelo");
   // const inputDescripcion = document.getElementById("descripcion");

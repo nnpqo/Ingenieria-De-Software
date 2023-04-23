@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getEtiquetas } from "../API/api";
 import "../estilos/app.css";
 import logo from "../imagenes/iconoAgregar.svg";
+import { Aviso,eliminar } from "./Aviso";
+import { CajaTexto, TextArea } from "./CajaTexto";
 
 export const Categoria = (props) => {
   const [desplegado, setdesplegado] = useState(false);
@@ -37,9 +39,20 @@ export const Categoria = (props) => {
         >
           Dispositivos móviles
         </a>
-        <button className="icono-agregar">
-        <img src={logo}></img>
-        </button>
+        <Aviso trigger={iconoAgregar()}
+          titulo="AGREGAR ETIQUETA"
+          extra={<CajaTexto
+            nombre={"Nombre de etiqueta*"}
+            id={"etiquetaFormulario"}
+            min={2}
+            max={20}
+            regex={"[ a-zA-Z0-9]+"}
+          />}
+          bt1Nombre={"Guardar"}
+          bt1Estilo={"guardar"}
+          bt1Funcion={() => eliminar(props.nombre)}
+          bt2Nombre={"Cancelar"}
+          bt2Estilo={"cancelar"} />
       </span>
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>
     </div>
@@ -72,3 +85,10 @@ const Etiqueta = (props) => {
     </>
   );
 };
+const iconoAgregar=()=>{
+  return(
+    <button className="icono-agregar">
+        <img src={logo}></img>
+        </button>
+  )
+}

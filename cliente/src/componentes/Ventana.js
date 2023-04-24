@@ -211,7 +211,8 @@ const sinProducto = () => {
       className="sad"
     />
     <br/>
-    <h1 className="sin-producto">Lo siento, no hemos encontrado resultados <br/> que coincidan con tu búsqueda</h1>
+    <h1 className="sin-producto">Lo siento, no hemos encontrado resultados</h1>
+    <h1 className="sin-producto1">que coincidan con tu búsqueda</h1>
   </div>
   )
 }

@@ -211,12 +211,20 @@ export const Ventana = (props) => {
 
 const sinProducto = () => {
   return (<div className="contenedor-enunciado">
-    <img
-      src={"http://localhost:3001/images/sad.svg"}
-      alt="Icono :("
-      className="sad"
-    />
-    <br/>
+    <div id="container">
+        <div id="spooky">
+            <div id="body">
+              <div id="eyes"></div>
+                <div id="mouth"></div>
+                <div id="feet">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div id="shadow"></div>
+    </div>
     <h1 className="sin-producto">Lo siento, no hemos encontrado resultados</h1>
     <h1 className="sin-producto1">que coincidan con tu búsqueda</h1>
   </div>

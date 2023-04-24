@@ -123,12 +123,18 @@ export const VentanaFormulario = (props) => {
                   nombre="CANCELAR"
                   mensaje="¿Está seguro de cancelar el registro?"
                   estilos={"cancelar"}
+                  bt1Nombre={"Si"}
+                  bt1Estilo={"botonSi"}
+                  bt1Funcion={borrar}
+                  bt2Nombre={"No"}
+                  bt2Estilo={"botonNo"}
                 />
               ) : (
                 <Aviso
                   nombre="CANCELAR"
                   mensaje="¿Está seguro de descartar los cambios?"
                   estilos={"cancelar"}
+                  bt1Funcion={borrar}
                 />
               )}
             </div>

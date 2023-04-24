@@ -113,7 +113,7 @@ router.post("/setVisible", (req, res) => {
 
 router.get("/getProducto", (req, res) => {
   const id = req.body.id;
-  const sql = ""
+  const sql = "call obtener_caracteristicas_modelo(?)"
   db.query(sql,[id], (error, results, fields)=>{
     if(error){
       res.send("Error al obtener dispositivo móvil.")
@@ -125,8 +125,7 @@ router.get("/getProducto", (req, res) => {
 
 router.get("/getBusqueda", (req, res) => {
   const palabra = req.body.id; 
-  const sql = "select distinct m.id, m.visible, m.nombre, m.ruta_imagen, e.nombre as etiqueta from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 and m.nombre like '%?%' order by m.nombre asc ;"
-  db.query(sql, [palabra], (error, result, fields) => {
+  const sql = "call buscar_modelo"
     if(error){
       res.send("Error al obtener dispositivo móvil.")
     }else{

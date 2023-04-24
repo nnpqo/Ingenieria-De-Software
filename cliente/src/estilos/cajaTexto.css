@@ -54,3 +54,6 @@ input[type="text"] {
 #precio {
   width: 175px;
 }
+.errorMensaje{
+  color: red;
+}

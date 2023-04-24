@@ -13,11 +13,11 @@ export const CajaTexto = (props) => {
     setErrorMsg(event.target.validationMessage); // Actualiza el estado 'errorMsg' con el mensaje de error proporcionado por el navegador
     if (event.target.value.length < props.min) {
       setErrorMsg(`El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`); // Establece un mensaje de error personalizado si el valor es demasiado corto
-    } /*else if (event.target.value.length > props.max) {
+    } else if (event.target.value.length > props.max) {
       setErrorMsg(`El valor ingresado es demasiado largo (máximo ${props.max} caracteres)`); // Establece un mensaje de error personalizado si el valor es demasiado largo
-    } else if (event.target.value.match(props.regex)) {
+    } /*else if (event.target.value.match(props.regex)) {
       setErrorMsg(`El valor ingresado contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
-    }*/ else {
+    } */else {
       setErrorMsg(''); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
     }
   };

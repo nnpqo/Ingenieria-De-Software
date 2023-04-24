@@ -1,0 +1,39 @@
+.imagen {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.imagen-formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 350px;
+  border: solid 2px white;
+  background-color: #1a2f5b;
+  border-style: dashed;
+}
+
+.posicion {
+  background-color: #1a2f5b;
+  padding: 1rem;
+  width: 100%;
+  min-width: 80%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.posicion2 {
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  font-family: Tahoma, sans-serif;
+}
+
+.posicion2:hover {
+  color: #0655ff;
+}

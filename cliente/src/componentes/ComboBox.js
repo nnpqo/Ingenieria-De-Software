@@ -1,13 +1,19 @@
 import React from "react";
+import "../estilos/cajaTexto.css";
 
 export const ComboBox = (props) => {
-  const opciones = props.opciones.map((opciones) => (
-    <option key={opciones}>{opciones}</option>
-  ));
+  const opciones = props.opciones
+    ? props.opciones.map((opcion) => (
+        <option key={opcion}>{opcion}</option>
+      ))
+    : null;
+
   return (
-    <div className="combo-box">
-      <p>{props.nombre}</p>
-      <select>{opciones}</select>
+    <div>
+      <label className="letras">{props.nombre}</label>
+      <select className="combo-box" id={props.id}>
+        {opciones}
+      </select>
     </div>
   );
 };

@@ -1,26 +1,40 @@
 .cabecera {
   background-color: #284073;
   display: flex;
-  gap: 10px;
+  flex-direction: row;
+  gap: 10%;
   height: 10vh;
+  width: 100%;
   align-items: center;
+  justify-content: center;
+  /*position: fixed;*/
+
+  box-sizing: border-box;
+
+  flex-grow: 1;
+  padding-left: 30px;
+  right: 0px;
+  left: 0px;
 }
 
 .boton-navbar {
-  font-size: 20px;
+  display: inline-block;
+  flex-direction: row;
+  font-size: 18px;
   background-color: #284073;
   color: #ffffff;
   cursor: pointer;
   padding: 0%;
-  display: inline-block;
   justify-self: center;
-  margin: 0px 0px 20px 10px;
+  align-items: center;
+  margin: 15px 0px 10px 10px;
+  background-color: transparent;
+  border: none;
+  padding-top: 20px;
 }
 .boton-navbar:hover {
-  font-size: 20px;
-  background-color: #284073;
+  font-size: 18px;
   color: #0655ff;
-  padding: 0%;
 }
 
 .boton-navbar-pro {
@@ -28,10 +42,12 @@
   cursor: pointer;
   font-size: 15px;
   font-weight: bolder;
-  padding: 0%;
+  padding: 10px;
   align-items: center;
   display: inline-block;
-  margin: 0px 150px 20px 1100px;
+  margin: 10px 50px 10px 5px;
+  background-color: transparent;
+  border: 5px;
 }
 
 .boton-navbar-pro:hover {
@@ -39,5 +55,94 @@
   cursor: pointer;
   font-size: 15px;
   font-weight: bolder;
-  padding: 0%;
 }
+
+.categorias {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  flex-grow: 1;
+  text-align: right;
+  justify-content: space-between;
+}
+.home {
+  align-items: center;
+  display: flex;
+}
+.cajaproducto {
+  display: block;
+  right: 0px;
+  display: inline-block;
+}
+.otro {
+  color: transparent;
+}
+
+.jdk {
+  font-weight: normal;
+}
+
+.cell{
+  font-weight: bold;
+}
+
+.opciones-navbar {
+  display: flex;
+  width: 50%;
+  flex-direction: row-reverse;
+  padding-top: 20px;
+}
+
+.opciones-navbar h2 {
+  font-weight: lighter;
+}
+
+.boton-usuario {
+  height: 45px;
+  width: 45px;
+  background-image: url("../imagenes/retrato-mujer-caucasica-sonriendo_53876-24998.jpg");
+  background-position: center; /* Center the image */
+  background-size:cover;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  border: none;
+  margin: 0 25px;
+}
+
+.barra-buscar input{
+  height: 35px;
+  width: 300px;
+  background-color: white;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border: none;
+  outline: none;
+  margin: 0%;
+}
+
+.barra-buscar{
+  height: 35px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.contenedor-icono{
+  background-color: #0E84C7;
+  height: 35px;
+  width: 45px;
+  cursor: pointer;
+  border: none;
+  background-image: url("../imagenes/search\ \(5\).svg");
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.contenedor-icono:hover{
+  background-color: #0E84C7;
+}
+
+

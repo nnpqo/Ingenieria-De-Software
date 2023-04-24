@@ -14,7 +14,7 @@ CREATE TABLE categorias (
   nombre VARCHAR(100),
   ultima_actualizacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
-  UNIQUE KEY(nombre)
+  UNIQUE (nombre)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------------
@@ -26,7 +26,7 @@ CREATE TABLE etiquetas (
   id_categoria MEDIUMINT UNSIGNED NOT NULL,
   ultima_actualizacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY  (id),
-  UNIQUE KEY (nombre),
+  UNIQUE (nombre),
   KEY idx_fk_id_categoria (id_categoria),
   CONSTRAINT fk_etiqueta_categoria FOREIGN KEY (id_categoria) REFERENCES categorias (id) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -60,7 +60,7 @@ CREATE TABLE modelos_dispositivos_moviles (
   visible TINYINT NOT NULL DEFAULT 1,
   ultima_actualizacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY  (id),
-  UNIQUE KEY(nombre)
+  UNIQUE (nombre)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 SET SQL_MODE=@OLD_SQL_MODE;

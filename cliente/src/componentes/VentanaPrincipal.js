@@ -5,55 +5,57 @@ import CajaTexto from "./CajaTexto";
 import { Aviso } from "./Aviso";
 import { ComboBox } from "./ComboBox";
 import { useState, useEffect, useContext, createContext } from "react";
+import { Producto } from "./Producto";
 
 export const prueba = createContext();
 
 export const VentanaPrincipal = (props) => {
+  const [guardar, setGuardar] = useState(false);
   const [ventana, setVentana] = useState(0);
+  const [checkboxesSeleccionados, setCheckboxesSeleccionados] = useState([]);
 
-  console.log(ventana);
-  const modelos = ["p30 pro", "galaxy s20", "redmi note 11"];
-  const etiquetas = ["xiaomi", "samsumg"];
-  const opcionesModificar = [
-    <ComboBox nombre={"Modelo*"} opciones={modelos} />,
-    <CajaTexto nombre={"cambiar Nombre*"} />,
-    <CajaTexto nombre={"cambiar Descripcion*"} />,
-    <ComboBox nombre={"Etiquetas"} opciones={etiquetas} />,
-  ];
-  const opcionesRegistro = [
-    <CajaTexto nombre={"Nombre*"} />,
-    <CajaTexto nombre={"descripcion*"} />,
-    <ComboBox nombre={"etiquetas"} opciones={etiquetas} />,
-  ];
+  function manejarSelecciónSelection(nombre, isChecked) {
+    if (isChecked) {
+      setCheckboxesSeleccionados([...checkboxesSeleccionados, nombre]);
+    } else {
+      setCheckboxesSeleccionados(
+        checkboxesSeleccionados.filter((n) => n !== nombre)
+      );
+    }
+  }
+
   return (
-    <div className="ventana-principal">
-      {props.menu === 1 && (
-        <>
-          <MenuEtiquetas />
-          <Ventana modelos={modelos} />
-        </>
-      )}
-      <prueba.Provider value={[setVentana]}>
+    <prueba.Provider value={[setVentana, guardar, setGuardar]}>
+      <div className="ventana-principal">
+        {props.menu === 1 && (
+          <>
+            <MenuEtiquetas
+              manejarSelecciónSelection={manejarSelecciónSelection}
+            />
+            <Ventana lista={checkboxesSeleccionados} />
+          </>
+        )}
+
         {props.menu === 2 && (
           <>
             <Menu />
             {ventana === 0 && (
               <VentanaFormulario
-                titulo={"REGISTRAR PRODUCTO"}
+                titulo={<>{"REGISTRAR"} {"DISPOSITIVO"}</>}
                 imagen={true}
-                opciones={opcionesRegistro}
+                tipo={"registro"}
               />
             )}
             {ventana === 1 && (
               <VentanaFormulario
-                titulo={"MODIFICAR PRODUCTO"}
+                titulo={"MODIFICAR DISPOSITIVO"}
                 imagen={true}
-                opciones={opcionesModificar}
+                tipo={"modificar"}
               />
             )}
           </>
         )}
-      </prueba.Provider>
-    </div>
+      </div>
+    </prueba.Provider>
   );
 };

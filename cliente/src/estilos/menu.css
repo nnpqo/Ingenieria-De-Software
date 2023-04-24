@@ -1,18 +1,94 @@
-.menu {
+
+.menuIzquierda {
+  background-color: #284073;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-width: 20%;
+  max-width: 20%;
+  color: white;
+  gap: 20px;
+  padding-top: 40px;
+  align-items: center;
+  
+}
+
+
+.dispositivosMoviles {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  font-size: 25px;
+  margin-left: 50px;
+  display: flex;
+}
+
+.modeloCateg{
+  margin-left: 20%;
+}
+
+.categoria {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  background-color: #284073;
-  width: 15%;
-  bottom: 110px;
-  min-width: 20%;
-  max-width: 20%;
-  height: 100%;
+}
+.categoria1 {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  font-size: 25px;
+  left: 5px;
 }
 .etiquetas {
   display: none;
 }
 .etiquetas-visible {
   display: block;
+  font-size: 25px;
+  font-weight: 100;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
+.etiquetas-visible ul {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.boton-registro {
+  width: 250px;
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  background-color: #284073;
+  padding: 10px;
+}
+.boton-registro:hover {
+  color: white;
+  background-color: #284073;
+  border: 2px solid floralwhite;
+  border-radius: 10px;
+}
+.boton-modificar {
+  width: 250px;
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  background-color: #284073;
+  padding: 10px;
+}
+.boton-modificar:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #284073;
+  border: 2px solid floralwhite;
+  border-radius: 10px;
+}
+/*#categoria{
+  color: white;
+  font-size: 35px;
+}*/

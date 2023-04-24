@@ -9,15 +9,17 @@ import("../estilos/menu.css");
 export const Menu = () => {
   const [setVentana] = useContext(prueba);
   return (
-    <div className="menu">
+    <div className="menuIzquierda">
       <Boton
-        nombre={"Registar modelo"}
+        nombre={"Registrar dipositivo"}
+        estilos={"boton-registro"}
         funcion={() => {
           setVentana(0);
         }}
       />
       <Boton
-        nombre={"Modificar modelo"}
+        nombre={"Modificar dispositivo"}
+        estilos={"boton-modificar"}
         funcion={() => {
           setVentana(1);
         }}
@@ -26,11 +28,13 @@ export const Menu = () => {
   );
 };
 
-export const MenuEtiquetas = () => {
+export const MenuEtiquetas = (props) => {
   return (
-    <div className="menu">
-      <span>Categorias</span>
-      <Categoria />
+    <div className="menuIzquierda" >
+
+      <span className="categoria1">Categorías</span>
+      <div className="modeloCateg"> <Categoria manejarSelecciónSelection={props.manejarSelecciónSelection}/></div>
+
     </div>
   );
 };

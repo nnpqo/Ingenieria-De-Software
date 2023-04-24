@@ -1,0 +1,64 @@
+.popup-content,
+aviso-content {
+  background-color: #0655ff;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  align-content: center;
+  border-radius: 7px;
+  gap: 20px;
+  flex-wrap: wrap;
+  border: none;
+  height: 200px;
+  padding: 40px;
+}
+.botonesAviso {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+.botonSi {
+  background-color: #284073;
+  color: white;
+  border-radius: 20px;
+  font-size: 30px;
+  width: 100px;
+  height: 60px;
+  font-weight: normal;
+  border: none;
+  padding: 1.5%;
+  cursor: pointer;
+}
+.botonNo {
+  background-color: #ff2e00;
+  color: white;
+  border-radius: 20px;
+  font-size: 30px;
+  width: 100px;
+  height: 60px;
+  font-weight: normal;
+  border: none;
+  padding: 1.5%;
+  cursor: pointer;
+}
+.mensaje {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+.botonNo h2 {
+  font-weight: normal;
+  font-size: 35px;
+  text-align: center;
+}
+.botonSi h2 {
+  font-weight: normal;
+  font-size: 35px;
+  text-align: center;
+}
+.botonSi:hover {
+  background-color: #0c2253;
+}
+.botonNo:hover {
+  background-color: #d62d07;
+}

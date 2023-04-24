@@ -31,7 +31,7 @@
   content: '';
   display: inline-block;
   width: 25px;
-  height: 17px;
+  height: 23px;
   border: 2px solid white; /* Color del borde de la flechita */
   margin-right: 10px;
   padding-bottom: 5px;
@@ -40,7 +40,7 @@
 .checkbox:checked + label::before {
   content: '✔'; /* Símbolo de la flechita */
   text-align: center;
-  font-size: 18px;
+  font-size: 15px;
   color: black; /* Color del texto de la flechita */
   background-color: white; /* Color de fondo de la flechita */
   font-weight: bolder;

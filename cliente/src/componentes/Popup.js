@@ -12,7 +12,7 @@ export const Popup =(props)=>{
                         <p>{props.etiqueta}</p>
                         <h3>Modelo</h3>
                         <p>{props.nombre}</p>
-                        <h3>Precios</h3>
+                        <h3>Precio</h3>
                         
                     </div>
                     <div>

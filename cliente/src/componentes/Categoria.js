@@ -30,15 +30,14 @@ export const Categoria = (props) => {
   return (
     <div className="categoria">
       <span className="dispositivosMoviles">
-        <a
-          onClick={() => {
-            setdesplegado(!desplegado);
-          }}
-        >
+        <a>
           Dispositivos móviles
         </a>
-        <button className="icono-agregar">
+        <button className="icono-agregar" onClick={() => {
+            setdesplegado(!desplegado);
+          }}>
         <img src={logo}></img>
+        
         </button>
       </span>
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>

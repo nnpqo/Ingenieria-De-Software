@@ -98,40 +98,42 @@ router.get("/getEtiquetas", (req, res) => {
   );
 });
 
-router.post("/setVisible", (req, res) => {
-  const id = req.body.id; 
-  const sql = "update into modelos_dispositivos_moviles set visible = 0 where id = ?"
-  db.query(sql, [id], (error, results, fields)=>{
-    if(error){
-      console.error("Error al ejecutar")
-    }else{
-      console.log("eliminación exitosa")
+router.put("/setVisible/:id", (req, res) => {
+  const id = req.params.id;
+  const sql =
+    "update modelos_dispositivos_moviles set visible = 0 where id = ?";
+  db.query(sql, [id], (error, results, fields) => {
+    if (error) {
+      console.error("Error al ejecutar");
+    } else {
+      console.log(results);
+      console.log("eliminación exitosa");
     }
-  })
+  });
+});
 
-})
-
-router.get("/getProducto", (req, res) => {
-  const id = req.body.id;
-  const sql = "call obtener_caracteristicas_modelo(?)"
-  db.query(sql,[id], (error, results, fields)=>{
-    if(error){
-      res.send("Error al obtener dispositivo móvil.")
-    }else{
-      res.json({producto: results})
+router.get("/getProducto/:nombre", (req, res) => {
+  const nombre = req.params.nombre;
+  const sql = "call obtener_caracteristicas_modelo(?)";
+  db.query(sql, [nombre], (error, results, fields) => {
+    if (error) {
+      res.send("Error al obtener dispositivo móvil.");
+    } else {
+      res.json({ producto: results });
     }
-  })
-})
+  });
+});
 
-router.get("/getBusqueda", (req, res) => {
-  const palabra = req.body.id; 
-  const sql = "call buscar_modelo"
-    if(error){
-      res.send("Error al obtener dispositivo móvil.")
-    }else{
-      res.json({dispositivos: results})
+router.get("/getBusqueda/:busqueda", (req, res) => {
+  const palabra = req.params.busqueda;
+  const sql = "call buscar_modelo(?)";
+  db.query(sql, [palabra], (error, results, fields) => {
+    if (error) {
+      res.send("Error al obtener dispositivo móvil.");
+    } else {
+      res.json({ dispositivos: results });
     }
-  })
-})
+  });
+});
 
 module.exports = router;

@@ -20,8 +20,8 @@ export const Cabecera = () => {
           </Link>
         </div>
         <div className="barra-buscar">
-          <input type="text" class="estilo-input" placeholder="Buscar"></input>
-          <button class="contenedor-icono"></button>
+          <input type="text" class="estilo-input" placeholder="Buscar" id="buscar"></input>
+          <button class="contenedor-icono" onClick={()=>{}}></button>
         </div>
         <div className="opciones-navbar">
           <Link to="/productos">

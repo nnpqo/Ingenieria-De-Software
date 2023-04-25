@@ -1,9 +1,10 @@
 .popup-content,
 aviso-content {
-  background-color: #0655ff;
+  background-color: #284073;
   display: flex;
   justify-items: center;
   flex-direction: column;
+  text-align: center;
   align-content: center;
   border-radius: 7px;
   gap: 20px;
@@ -12,6 +13,22 @@ aviso-content {
   height: 200px;
   padding: 40px;
 }
+/*.popup-content,
+eti-content{
+  background-color: #284073;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  text-align: center;
+  align-content: center;
+  border-radius: 7px;
+  gap: 20px;
+  flex-wrap: wrap;
+  border: none;
+  height: 300px;
+  padding: 50px;
+}*/
+
 .botonesAviso {
   width: 80%;
   display: flex;
@@ -61,4 +78,8 @@ aviso-content {
 }
 .botonNo:hover {
   background-color: #d62d07;
+}
+.eti{
+
+  background-color: red;
 }

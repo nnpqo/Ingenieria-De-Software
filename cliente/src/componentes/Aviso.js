@@ -43,6 +43,48 @@ export const Aviso = (props) => {
     </Popup>
   );
 };
+
+export const AvisoEti = (props) => {
+  return (
+    <div className="etiq"> <Popup
+    trigger={
+      props.trigger? props.trigger
+       :(
+      <button className={props.estilos}>
+        <h2>{props.nombre}</h2>
+      </button>
+      )
+    }
+    modal
+    nested
+    className="eti"
+  >
+    {(close) => (
+      <>
+      {props.titulo && <h1 className="titulo">{props.titulo}</h1>}
+      {props.mensaje && <p className="mensaje">{props.mensaje}</p>}
+        
+        {props.extra}
+        <div className="botonesAviso">
+          <Boton
+            nombre={props.bt1Nombre}
+            estilos={props.bt1Estilo}
+            funcion={() => {
+              {props.bt1Funcion && props.bt1Funcion()}
+              close();
+            }}
+          />
+          {props.bt2Nombre &&(
+          <Boton nombre={props.bt2Nombre} estilos={props.bt2Estilo} funcion={close} />
+          )}
+        </div>
+      </>
+    )}
+  </Popup></div>
+    
+  );
+};
+
 export const borrar = () => {
   // document.getElementById("etiqueta").value = "Samsung";
   document.getElementById("descripcion").value = "";

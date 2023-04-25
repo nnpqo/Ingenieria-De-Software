@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getEtiquetas } from "../API/api";
 import "../estilos/app.css";
 import logo from "../imagenes/iconoAgregar.svg";
-import { Aviso,eliminar } from "./Aviso";
+import { Aviso,AvisoEti,eliminar } from "./Aviso";
 import { CajaTexto, TextArea } from "./CajaTexto";
 
 export const Categoria = (props) => {

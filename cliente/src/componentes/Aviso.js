@@ -46,7 +46,7 @@ export const Aviso = (props) => {
 
 export const AvisoEti = (props) => {
   return (
-    <div className="etiq"> <Popup
+    <Popup
     trigger={
       props.trigger? props.trigger
        :(
@@ -57,7 +57,7 @@ export const AvisoEti = (props) => {
     }
     modal
     nested
-    className="eti"
+    className="avisoEti"
   >
     {(close) => (
       <>
@@ -80,7 +80,7 @@ export const AvisoEti = (props) => {
         </div>
       </>
     )}
-  </Popup></div>
+  </Popup>
     
   );
 };

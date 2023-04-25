@@ -136,5 +136,15 @@ router.get("/getBusqueda/:busqueda", (req, res) => {
   });
 });
 
-
+router.post("/setEtiqueta/:etiqueta", (req, res) => {
+  const palabra = req.params.etiqueta;
+  const sql = "insert into etiquetas (nombre, id_categoria) values (?, 1)";
+  db.query(sql, [palabra], (error, results, fields) => {
+    if (error) {
+      res.send("Error al guardar etiqueta.");
+    } else {
+      res.send("Guardado correctamente.");
+    }
+  });
+})
 module.exports = router;

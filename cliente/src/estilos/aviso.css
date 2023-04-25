@@ -1,20 +1,4 @@
-.popup-content,
-aviso-content {
-  background-color: #284073;
-  display: flex;
-  justify-items: center;
-  flex-direction: column;
-  text-align: center;
-  align-content: center;
-  border-radius: 7px;
-  gap: 20px;
-  flex-wrap: wrap;
-  border: none;
-  height: 200px;
-  padding: 40px;
-}
-.popup-content,
-eti-content{
+.avisoEti-content{
   background-color: #284073;
   display: flex;
   justify-items: center;
@@ -28,6 +12,26 @@ eti-content{
   height: 300px;
   padding: 50px;
 }
+
+
+.aviso-content {
+  background-color: #284073;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  text-align: center;
+  align-content: center;
+  border-radius: 7px;
+  gap: 20px;
+  flex-wrap: wrap;
+  border: none;
+  height: 200px;
+  padding: 40px;
+}
+.avisoEti {
+  border: 1px solid red;
+}
+
 
 .botonesAviso {
   width: 80%;
@@ -80,6 +84,27 @@ eti-content{
   background-color: #d62d07;
 }
 .titulo{
-
+  display: flex;
   color: white;
+  align-items: center;
+  justify-content: center;
+}
+/*#etiquetaFormulario{
+  display: flex;
+  justify-content: flex-start;
+}
+/*.letras{
+  margin-right: 182px;
+}*/
+.botonesAviso{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cajita{
+  display: flex;
+  justify-items: center;
+  
+  align-items: center;
+  justify-content: center;
 }

@@ -8,7 +8,6 @@ import {
   getEtiquetas,
   guardarImagen,
 } from "../API/api";
-import { verificar } from "../API/productos";
 import { ImagenFormulario } from "./ImagenFormulario";
 import { CajaTexto, TextArea } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
@@ -29,7 +28,7 @@ export const VentanaFormulario = (props) => {
   useEffect(() => {
     getEtiquetas().then((nombres) => setEtiquetas(nombres));
     getNombreModeloDispositivos().then((nombres) => setmodelos(nombres));
-    verificar();
+    
   }, []);
   //const etiquetas = ["xiaomi", "samsumg"];
   const opcionesModificar = (
@@ -163,8 +162,7 @@ export const Ventana = (props) => {
     getProdructo();
     setEtiquetas(props.lista);
     console.log(etiquetas);
-    
-    
+    console.log("hollla")
   }, [props.lista]);
 
   let prod = productos.modelos?.map((pro) => {

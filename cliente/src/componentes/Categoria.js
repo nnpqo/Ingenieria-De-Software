@@ -43,6 +43,7 @@ export const Categoria = (props) => {
           titulo="AGREGAR ETIQUETA"
           extra={<div className="cajita"><CajaTexto 
             nombre={"Nombre de etiqueta*"}
+            id2={"tex"}
             id={"etiquetaFormulario"}
             min={2}
             max={20}

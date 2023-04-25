@@ -54,3 +54,11 @@ input[type="text"] {
 #precio {
   width: 175px;
 }
+/*.cajaTexto{
+
+  display: flex;
+  justify-items: center;
+  
+  align-items: center;
+  justify-content: center;
+}*/

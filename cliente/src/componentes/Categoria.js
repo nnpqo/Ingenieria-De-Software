@@ -39,7 +39,7 @@ export const Categoria = (props) => {
         >
           Dispositivos móviles
         </a>
-        <Aviso trigger={iconoAgregar()}
+        <AvisoEti trigger={iconoAgregar()}
           titulo="AGREGAR ETIQUETA"
           extra={<CajaTexto
             nombre={"Nombre de etiqueta*"}

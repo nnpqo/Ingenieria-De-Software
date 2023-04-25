@@ -3,27 +3,25 @@
   background-color: #284073;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   min-width: 20%;
   max-width: 20%;
   color: white;
   gap: 20px;
-  padding-top: 40px;
+  padding-top: 20px;
   align-items: center;
-  
 }
 
 
 .dispositivosMoviles {
   color: rgb(255, 255, 255);
   font-weight: 700;
-  font-size: 25px;
+  font-size: 22px;
   margin-left: 50px;
   display: flex;
 }
 
 .modeloCateg{
-  margin-left: 20%;
+  margin-left: 10%;
 }
 
 .categoria {
@@ -35,7 +33,7 @@
   color: rgb(255, 255, 255);
   font-weight: 700;
   font-size: 25px;
-  left: 5px;
+  margin-left: 50px;
 }
 .etiquetas {
   display: none;
@@ -88,6 +86,17 @@
   border: 2px solid floralwhite;
   border-radius: 10px;
 }
+.contenedor-categoria{
+  background-color: #284073;
+  display: flex;
+  flex-direction: column;
+  min-width: 20%;
+  max-width: 20%;
+  color: white;
+  gap: 20px;
+  padding-top: 20px;
+}
+
 /*#categoria{
   color: white;
   font-size: 35px;

@@ -69,7 +69,7 @@ router.put("/actualizarModelo", (req, res) => {
 
 router.get("/getAllModeloDispositivo", (req, res) => {
   const consulta =
-    "select distinct m.nombre, m.ruta_imagen, e.nombre as etiqueta from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 order by m.nombre asc ;";
+    "select distinct m.id, m.visible, m.nombre, m.ruta_imagen, e.nombre as etiqueta from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 order by m.nombre asc ;";
   db.query(consulta, (error, results, fields) => {
     if (error) {
       console.error("Error al ejecutar consulta:", error);
@@ -97,5 +97,40 @@ router.get("/getEtiquetas", (req, res) => {
     }
   );
 });
+
+router.post("/setVisible", (req, res) => {
+  const id = req.body.id; 
+  const sql = "update into modelos_dispositivos_moviles set visible = 0 where id = ?"
+  db.query(sql, [id], (error, results, fields)=>{
+    if(error){
+      console.error("Error al ejecutar")
+    }else{
+      console.log("eliminación exitosa")
+    }
+  })
+
+})
+
+router.get("/getProducto", (req, res) => {
+  const id = req.body.id;
+  const sql = "call obtener_caracteristicas_modelo(?)"
+  db.query(sql,[id], (error, results, fields)=>{
+    if(error){
+      res.send("Error al obtener dispositivo móvil.")
+    }else{
+      res.json({producto: results})
+    }
+  })
+})
+
+router.get("/getBusqueda", (req, res) => {
+  const palabra = req.body.id; 
+  const sql = "call buscar_modelo"
+    if(error){
+      res.send("Error al obtener dispositivo móvil.")
+    }else{
+      res.json({dispositivos: results})
+    }
+  })
 
 module.exports = router;

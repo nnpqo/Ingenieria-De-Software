@@ -36,6 +36,7 @@ export const Categoria = (props) => {
           onClick={() => {
             setdesplegado(!desplegado);
           }}
+          className="Dispositivos"
         >
           Dispositivos móviles
         </a>
@@ -56,8 +57,10 @@ export const Categoria = (props) => {
           bt2Estilo={"cancelar"} />
       </span>
       <div className={desplegado ? "etiquetas-visible" : "etiquetas"} >
-        <input type="checkbox" id="all" onChange={chackeAll}></input>
-        <label for="all">all</label>
+        <div className="contenedor-seleccionar">
+        <input type="checkbox" id="all" className="checkbox" onChange={chackeAll}></input>
+        <label for="all" className="Seleccionar">Seleccionar todos</label>
+        </div>
       </div>
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>
     </div>

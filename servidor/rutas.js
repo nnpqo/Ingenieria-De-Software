@@ -136,4 +136,5 @@ router.get("/getBusqueda/:busqueda", (req, res) => {
   });
 });
 
+
 module.exports = router;

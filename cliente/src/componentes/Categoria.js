@@ -26,7 +26,7 @@ export const Categoria = (props) => {
         <Etiqueta
           nombre={eti}
           checked={"checkbox"}
-          isChecked={false}
+          isChecked={isChecked}
           handleCheckboxSelection={props.manejarSelecciónSelection}
           setIsChecked={setIsChecked}
         />
@@ -72,16 +72,24 @@ const Etiqueta = (props) => {
   const isChecked=props.isChecked;
   const setIsChecked=props.setIsChecked;
   const a=document.getElementById(props.nombre)
+  const [check,setCheck]= useState(false);
+
   function handleChange() {
     setIsChecked(a.checked);
-    console.log(props.isChecked);
+    console.log(a.checked);
+    setCheck(!check)
     props.handleCheckboxSelection(props.nombre, a.checked);
   }
 
   useEffect(() => {
     setIsChecked(props.isChecked);
     console.log(props.isChecked)
-  }, [props.isChecked]);
+    let all=document.getElementById("all")
+    console.log(all)
+    if (all.checked){
+      all.checked =false;
+    }
+  },[check]);
 
   return (
     <>
@@ -89,7 +97,7 @@ const Etiqueta = (props) => {
         type="checkbox"
         className={props.checked}
         id={props.nombre}
-        //checked={}
+        //checked={props.isCheckd}
         onChange={handleChange}
       />
       <label for={props.nombre} className="nombre-etiqueta">
@@ -108,18 +116,15 @@ const iconoAgregar=()=>{
 const chackeAll=(setEtiquetas,setIsChecked)=>{
   
   let all=document.getElementById("all")
-  console.log(all.checked)
+
   let etiquetas=document.getElementsByClassName("checkbox");
-  console.log(etiquetas)
+ 
   let aux=[];
   if(all.checked){
     
     Array.from(etiquetas).map((item)=>{item.checked=true
-      aux.push(item.id)
-      //setEtiquetas()
-    //item.dispatchEvent(new Event('onChange', { bubbles: true }))
-    console.log( Array.from(etiquetas))})
-    setIsChecked(true)
+      aux.push(item.id)})
+    //setIsChecked(true)
     //etiquetas.onChange()
   }
   else{
@@ -127,7 +132,7 @@ const chackeAll=(setEtiquetas,setIsChecked)=>{
       
       //setEtiquetas([])
       //item.dispatchEvent(new Event('change', { bubbles: true }))
-      console.log(item.checked+ " "+item.id)})
+      })
       
   }
   setEtiquetas(aux)

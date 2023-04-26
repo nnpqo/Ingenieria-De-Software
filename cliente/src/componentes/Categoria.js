@@ -4,17 +4,19 @@ import "../estilos/app.css";
 import logo from "../imagenes/iconoAgregar.svg";
 import { Aviso, AvisoEti, eliminar } from "./Aviso";
 import { CajaTexto, TextArea } from "./CajaTexto";
+import {agregarEtiqueta} from "../API/etiquetas"
 
 export const Categoria = (props) => {
   const [desplegado, setdesplegado] = useState(false);
   const [etiquetas, setEtiquetas] = useState([]);
+  const [nuevaEti,setNuevaEti]=useState(false)
 
   useEffect(() => {
     const etiquetas = async () => {
       await getEtiquetas().then((nombres) => setEtiquetas(nombres));
     };
     etiquetas();
-  }, []);
+  }, [nuevaEti]);
 
   let et = etiquetas?.map((eti) => {
     return (
@@ -45,7 +47,8 @@ export const Categoria = (props) => {
           titulo="AGREGAR ETIQUETA"
           bt1Nombre={"Guardar"}
           bt1Estilo={"guardar"}
-          bt1Funcion={() => eliminar(props.nombre)}
+          bt1Funcion={()=>{guardarEtiqueta();
+            nuevaEti? setNuevaEti(false):setNuevaEti(true)}}
           bt2Nombre={"Cancelar"}
           bt2Estilo={"cancelar"}
         />
@@ -90,28 +93,20 @@ const Etiqueta = (props) => {
 const iconoAgregar = () => {
   return (
     <button className="icono-agregar">
+
       <img src={logo}></img>
     </button>
   );
 };
-const chackeAll = () => {
-  let all = document.getElementById("all");
-  console.log(all.checked);
-  let etiquetas = document.getElementsByClassName("checkbox");
-  console.log(etiquetas);
-  if (all.checked) {
-    Array.from(etiquetas).map((item) => {
-      item.checked = true;
-      item.dispatchEvent(new Event("change", { bubbles: true }));
-      console.log(item);
-    });
-    etiquetas.checked = true;
-    //etiquetas.onChange()
-  } else {
-    Array.from(etiquetas).map((item) => {
-      item.checked = false;
-      item.dispatchEvent(new Event("change", { bubbles: true }));
-      console.log(item);
-    });
+
+
+const guardarEtiqueta = async () => {
+  let valor = document.getElementById("etiquetaFormulario");
+  console.log("agregar etiqueta" + valor.value);
+  try {
+    await agregarEtiqueta(valor.value);
+  } catch (error) {
+    console.log(error);
   }
 };
+

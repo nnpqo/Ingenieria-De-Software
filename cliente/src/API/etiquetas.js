@@ -2,7 +2,7 @@ import { instancia } from "./api";
 
 export const agregarEtiqueta = (dato) => {
   return instancia
-    .post("/setEtiquetas/" + dato)
+    .post("/setEtiqueta/" + dato)
     .then((res) => {
       return res.data;
     })

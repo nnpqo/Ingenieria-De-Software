@@ -4,17 +4,19 @@ import "../estilos/app.css";
 import logo from "../imagenes/iconoAgregar.svg";
 import { Aviso,eliminar } from "./Aviso";
 import { CajaTexto, TextArea } from "./CajaTexto";
+import {agregarEtiqueta} from "../API/etiquetas"
 
 export const Categoria = (props) => {
   const [desplegado, setdesplegado] = useState(false);
   const [etiquetas, setEtiquetas] = useState([]);
+  const [nuevaEti,setNuevaEti]=useState(false)
 
   useEffect(() => {
     const etiquetas = async () => {
       await getEtiquetas().then((nombres) => setEtiquetas(nombres));
     };
     etiquetas();
-  }, []);
+  }, [nuevaEti]);
 
   let et = etiquetas?.map((eti) => {
     return (
@@ -50,7 +52,8 @@ export const Categoria = (props) => {
           />}
           bt1Nombre={"Guardar"}
           bt1Estilo={"guardar"}
-          bt1Funcion={() => eliminar(props.nombre)}
+          bt1Funcion={()=>{guardarEtiqueta();
+            nuevaEti? setNuevaEti(false):setNuevaEti(true)}}
           bt2Nombre={"Cancelar"}
           bt2Estilo={"cancelar"} />
       </span>
@@ -92,3 +95,13 @@ const iconoAgregar=()=>{
         </button>
   )
 }
+
+const guardarEtiqueta = async () => {
+  let valor = document.getElementById("etiquetaFormulario");
+  console.log("agregar etiqueta" + valor.value);
+  try {
+    await agregarEtiqueta(valor.value);
+  } catch (error) {
+    console.log(error);
+  }
+};

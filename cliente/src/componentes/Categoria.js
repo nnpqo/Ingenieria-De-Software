@@ -11,6 +11,7 @@ export const Categoria = (props) => {
   const [desplegado, setdesplegado] = useState(false);
   const [etiquetas, setEtiquetas] = useState([]);
   const [, , ,setEtiquetass] = useContext(prueba);
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     const etiquetas = async () => {
@@ -27,6 +28,7 @@ export const Categoria = (props) => {
           checked={"checkbox"}
           isChecked={false}
           handleCheckboxSelection={props.manejarSelecciónSelection}
+          setIsChecked={setIsChecked}
         />
       </ul>
     );
@@ -59,7 +61,7 @@ export const Categoria = (props) => {
           bt2Estilo={"cancelar"} />
       </span>
       <div className={desplegado ? "etiquetas-visible" : "etiquetas"} >
-        <input type="checkbox" id="all" onChange={()=>{chackeAll(setEtiquetass)}}></input>
+        <input type="checkbox" id="all" onChange={()=>{chackeAll(setEtiquetass,setIsChecked)}}></input>
         <label for="all">all</label>
       </div>
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>
@@ -67,17 +69,19 @@ export const Categoria = (props) => {
   );
 };
 const Etiqueta = (props) => {
-  const [isChecked, setIsChecked] = useState(false);
-
+  const isChecked=props.isChecked;
+  const setIsChecked=props.setIsChecked;
+  const a=document.getElementById(props.nombre)
   function handleChange() {
-    setIsChecked(!isChecked);
-    props.handleCheckboxSelection(props.nombre, !isChecked);
+    setIsChecked(a.checked);
+    console.log(props.isChecked);
+    props.handleCheckboxSelection(props.nombre, a.checked);
   }
 
-  /*useEffect(() => {
+  useEffect(() => {
     setIsChecked(props.isChecked);
     console.log(props.isChecked)
-  }, [props.isChecked]);*/
+  }, [props.isChecked]);
 
   return (
     <>
@@ -85,7 +89,7 @@ const Etiqueta = (props) => {
         type="checkbox"
         className={props.checked}
         id={props.nombre}
-        checked={isChecked}
+        //checked={}
         onChange={handleChange}
       />
       <label for={props.nombre} className="nombre-etiqueta">
@@ -101,7 +105,7 @@ const iconoAgregar=()=>{
         </button>
   )
 }
-const chackeAll=(setEtiquetas)=>{
+const chackeAll=(setEtiquetas,setIsChecked)=>{
   
   let all=document.getElementById("all")
   console.log(all.checked)
@@ -115,17 +119,18 @@ const chackeAll=(setEtiquetas)=>{
       //setEtiquetas()
     //item.dispatchEvent(new Event('onChange', { bubbles: true }))
     console.log( Array.from(etiquetas))})
-    etiquetas.checked=true
+    setIsChecked(true)
     //etiquetas.onChange()
   }
   else{
     Array.from(etiquetas).map((item)=>{item.checked=false
-      //setEtiquetas([])
+      
       //setEtiquetas([])
       //item.dispatchEvent(new Event('change', { bubbles: true }))
-      console.log(item)})
+      console.log(item.checked+ " "+item.id)})
       
   }
-  
   setEtiquetas(aux)
+  //Array.from(etiquetas).map((item)=>{all.checked?item.checked=true:item.checked=false})
+  console.log(etiquetas[0].checked)
 }

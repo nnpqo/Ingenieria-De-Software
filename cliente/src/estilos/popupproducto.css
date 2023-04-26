@@ -1,21 +1,37 @@
 
-
-.popupproducto
-{
-    display: table;
-    flex-direction: row;
-    background-color: blue;
-    border-color: lightblue;
-    border-radius: 13px;
-    padding: 15px;
-    
-    
-    
+.pr-content {
+  background-color: #284073;
+ display: flex;
+  justify-items: center;
+  flex-direction: column;
+  align-content: center;
+  border-radius: 7px;
+  gap: 20px;
+  flex-wrap: wrap;
+  border: none;
+  height: 600px;
+  padding: 40px;
 }
 
+.popupproucto
+{
+    display:flex;
+    flex-direction: column;
+    
+    border-color: lightblue;
+    border-radius: 13px;
+    
+   
+    
+}
+.popupcontenido{
+    display: flex;
+    flex-direction: row;
+}
 .centreado
 {
     display: flex;
+    flex-direction: row;
     background-color: none;
     border-radius: 11px;
     justify-content: center;
@@ -27,5 +43,7 @@
 
 .imagenpop
 {   
+    display: flex;
     height: 50vh;
+    
 }

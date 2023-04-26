@@ -17,7 +17,7 @@ export const Popupproducto = (props) => {
       }
       modal
       nested
-      className="aviso"
+      className="pr"
     >
       {(close) => (
         <>

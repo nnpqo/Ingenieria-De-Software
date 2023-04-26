@@ -17,12 +17,8 @@ import { Aviso } from "./Aviso";
 import { Producto } from "./Producto";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
-<<<<<<< HEAD
-import { borrar } from "./Aviso";
-=======
 import { borrar } from "./Aviso"
 import {Bienvenida} from "./Bienvenido"
->>>>>>> funcionBienvenida-jesus
 
 export const VentanaFormulario = (props) => {
   const [, guardar, setGuardar] = useContext(prueba);
@@ -213,7 +209,7 @@ export const Ventana = (props) => {
 
   return (
     <>
-      <div className="ventana-productos">{mostrarProd}</div>
+      <div className="ventana-productos">{etiquetas.length === 0? (<Bienvenida/>) :mostrarProd}</div>
     </>
   );
 };
@@ -239,7 +235,7 @@ const sinProducto = () => {
         Lo siento, no hemos encontrado resultados
       </h1>
       <h1 className="sin-producto1">que coincidan con tu búsqueda</h1>
-      </div>
+   </div>
   );
 };
 

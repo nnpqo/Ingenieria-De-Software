@@ -12,7 +12,7 @@ export const CajaTexto = (props) => {
     setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
     setErrorMsg(event.target.validationMessage); // Actualiza el estado 'errorMsg' con el mensaje de error proporcionado por el navegador
     const aux=props.id;
-    if(aux == 'precio'){
+    if(aux == 'precio' || aux == 'Cambiar precio'){
       if (event.target.value.length < props.min) {
         setErrorMsg(`El valor ingresado es demasiado corto (mínimo ${props.min} dígito)`); // Establece un mensaje de error personalizado si el valor es demasiado corto
       } else if (event.target.value.match(props.regex)) {

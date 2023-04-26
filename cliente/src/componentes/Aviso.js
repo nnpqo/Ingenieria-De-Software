@@ -31,7 +31,8 @@ export const Aviso = (props) => {
               estilos={props.bt1Estilo}
               funcion={() => {
                 {props.bt1Funcion && props.bt1Funcion()}
-                close();
+                //close();
+                console.log(close());
               }}
             />
             {props.bt2Nombre &&(

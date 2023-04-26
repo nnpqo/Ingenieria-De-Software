@@ -6,7 +6,7 @@ import { Aviso,eliminar } from "./Aviso";
 
 export const Producto = (props) => {
   const ruta = "http://localhost:3001" + props.ruta;
-  console.log(ruta);
+ // console.log(ruta);
   return (
     <div className="pantalla" id={props.nombre}>
       <div className="san">

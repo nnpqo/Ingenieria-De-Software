@@ -33,7 +33,9 @@ export const MenuEtiquetas = (props) => {
     <div className="menuIzquierda" >
 
       <span className="categoria1">Categorías</span>
-      <div className="modeloCateg"> <Categoria manejarSelecciónSelection={props.manejarSelecciónSelection}/></div>
+      <div className="modeloCateg"> 
+        <Categoria manejarSelecciónSelection={props.manejarSelecciónSelection}/>
+      </div>
 
     </div>
   );

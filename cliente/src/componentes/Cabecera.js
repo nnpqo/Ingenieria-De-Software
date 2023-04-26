@@ -1,8 +1,16 @@
 import { Boton } from "./Boton";
 import "../estilos/cabecera.css";
 import { Link, Outlet } from "react-router-dom";
+import { Busqueda } from "./Busqueda";
+import { useState } from "react";
 
 export const Cabecera = () => {
+  const [buscar, setBuscar] = useState(false)
+
+  const actualizarBusqueda = (nuevaBusqueda) => {
+    setBuscar(nuevaBusqueda);
+  }
+
   return (
     <>
       <header className="cabecera">
@@ -13,16 +21,16 @@ export const Cabecera = () => {
                 <>
                   <span className="jdk">JDK</span>
                   <span className="cell">CELL</span>
+                  <span>{buscar?"hola":"mundo"}</span>
                 </>
               }
               estilos={"boton-navbar"}
             />
+            
           </Link>
         </div>
-        <div className="barra-buscar">
-          <input type="text" class="estilo-input" placeholder="Buscar" id="buscar"></input>
-          <button class="contenedor-icono" onClick={()=>{}}></button>
-        </div>
+        <Busqueda visible={true} actualizar={actualizarBusqueda}></Busqueda>
+        
         <div className="opciones-navbar">
           <Link to="/productos">
             <Boton nombre={"Producto"} estilos={"boton-navbar-pro"} />

@@ -8,6 +8,7 @@ import {
   getEtiquetas,
   guardarImagen,
 } from "../API/api";
+import { getDispositivosBusqueda } from "../API/productos";
 import { ImagenFormulario } from "./ImagenFormulario";
 import { CajaTexto, TextArea } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
@@ -17,8 +18,8 @@ import { Aviso } from "./Aviso";
 import { Producto } from "./Producto";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
-import { borrar } from "./Aviso"
-import {Bienvenida} from "./Bienvenido"
+import { borrar } from "./Aviso";
+import { Bienvenida } from "./Bienvenido";
 
 export const VentanaFormulario = (props) => {
   const [, guardar, setGuardar] = useContext(prueba);
@@ -29,7 +30,6 @@ export const VentanaFormulario = (props) => {
   useEffect(() => {
     getEtiquetas().then((nombres) => setEtiquetas(nombres));
     getNombreModeloDispositivos().then((nombres) => setmodelos(nombres));
-    
   }, []);
   //const etiquetas = ["xiaomi", "samsumg"];
   const opcionesModificar = (
@@ -157,9 +157,26 @@ export const Ventana = (props) => {
 
   const [productos, setProductos] = useState({});
   const [etiquetas, setEtiquetas] = useState([]);
+  const [busqueda, setBusqueda] = useState("");
+
+  const obtenerBusqueda = () => {
+    const palabra = document.getElementById("buscar").value;
+    setBusqueda(palabra);
+  };
+
+  
 
   useEffect(() => {
-    const getProdructo = async () => {
+    obtenerBusqueda();
+    console.log(busqueda)
+    const bus = async (busqueda) => {
+       await setProductos(getDispositivosBusqueda(busqueda));
+    };
+    
+  }, [busqueda]);
+
+  useEffect(() => {
+    const getProdructo = async (busqueda) => {
       const result = await instancia.get("/getAllModeloDispositivo");
       setProductos(result.data);
       console.log(result.data);
@@ -209,7 +226,9 @@ export const Ventana = (props) => {
 
   return (
     <>
-      <div className="ventana-productos">{etiquetas.length === 0? (<Bienvenida/>) :mostrarProd}</div>
+      <div className="ventana-productos">
+        {etiquetas.length === 0 ? <Bienvenida /> : mostrarProd}
+      </div>
     </>
   );
 };
@@ -235,7 +254,7 @@ const sinProducto = () => {
         Lo siento, no hemos encontrado resultados
       </h1>
       <h1 className="sin-producto1">que coincidan con tu búsqueda</h1>
-   </div>
+    </div>
   );
 };
 

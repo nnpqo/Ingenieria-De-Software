@@ -17,7 +17,7 @@ import { Aviso } from "./Aviso";
 import { Producto } from "./Producto";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
-import { borrar } from "./Aviso"
+import { borrar } from "./Aviso";
 
 export const VentanaFormulario = (props) => {
   const [, guardar, setGuardar] = useContext(prueba);
@@ -75,12 +75,7 @@ export const VentanaFormulario = (props) => {
       <br />
       <div className="etiqueta_precio">
         <ComboBox nombre={"Etiqueta*"} opciones={etiquetas} id={"etiqueta"} />
-        <CajaTexto
-          nombre={"Precio*"}
-          id={"precio"}
-          max={6}
-          regex={"[0-9]+"}
-        />
+        <CajaTexto nombre={"Precio*"} id={"precio"} max={6} regex={"[0-9]+"} />
       </div>
       <br />
     </div>
@@ -166,11 +161,9 @@ export const Ventana = (props) => {
     getProdructo();
     setEtiquetas(props.lista);
     console.log(etiquetas);
-    console.log("hollla")
   }, [props.lista]);
 
   let prod = productos.modelos?.map((pro) => {
-    
     if (etiquetas.length == 0) {
       return (
         <>
@@ -194,36 +187,50 @@ export const Ventana = (props) => {
               />
             </>
           );
-        }
-        else{
-          return false
+        } else {
+          return false;
         }
       });
     }
   });
   let prodFiltrado = prod?.flat().filter((valor) => {
     return valor;
-  }); 
+  });
 
-  let mostrarProd = prodFiltrado && prodFiltrado.length > 0 ? prodFiltrado : sinProducto();
+  let mostrarProd =
+    prodFiltrado && prodFiltrado.length > 0 ? prodFiltrado : sinProducto();
 
   return (
-    <div>
+    <>
       <div className="ventana-productos">{mostrarProd}</div>
+    </>
+  );
+};
+
+const sinProducto = () => {
+  return (
+    <div className="contenedor-enunciado">
+      <div id="container">
+        <div id="spooky">
+          <div id="body">
+            <div id="eyes"></div>
+            <div id="mouth"></div>
+            <div id="feet">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+        <div id="shadow"></div>
+      </div>
+      <h1 className="sin-producto">
+        Lo siento, no hemos encontrado resultados
+      </h1>
+      <h1 className="sin-producto1">que coincidan con tu búsqueda</h1>
     </div>
   );
 };
-const sinProducto = () => {
-  return (<div>
-    <img
-      src={"http://localhost:3001/images/sad.svg"}
-      alt="Icono :("
-      className="sad"
-    />
-    <h1 className="sin-producto">Lo siento, no hemos encontrado resultados que coincidan con tu búsqueda</h1>
-  </div>
-  )
-}
 
 const alerts = () => {
   // const inputNombre = document.getElementById("nombreModelo");

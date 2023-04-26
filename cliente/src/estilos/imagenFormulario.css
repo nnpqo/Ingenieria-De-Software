@@ -1,6 +1,5 @@
 .imagen {
   display: flex;
-  flex-direction: row;
   width: 50%;
   justify-content: center;
   margin-top: 30px;

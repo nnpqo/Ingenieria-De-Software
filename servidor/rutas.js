@@ -136,6 +136,7 @@ router.get("/getBusqueda/:busqueda", (req, res) => {
   });
 });
 
+
 router.post("/setEtiqueta/:etiqueta", (req, res) => {
   const palabra = req.params.etiqueta;
   const sql = "insert into etiquetas (nombre, id_categoria) values (?, 1)";

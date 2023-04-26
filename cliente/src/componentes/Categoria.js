@@ -36,9 +36,11 @@ export const Categoria = (props) => {
           onClick={() => {
             setdesplegado(!desplegado);
           }}
+          className="Dispositivos"
         >
           Dispositivos móviles
         </a>
+        
         <Aviso trigger={iconoAgregar()}
           titulo="AGREGAR ETIQUETA"
           extra={<CajaTexto
@@ -54,6 +56,12 @@ export const Categoria = (props) => {
           bt2Nombre={"Cancelar"}
           bt2Estilo={"cancelar"} />
       </span>
+      {/* <div className={desplegado ? "etiquetas-visible" : "etiquetas"} >
+        <div className="contenedor-seleccionar">
+        <input type="checkbox" id="all" className="checkbox" onChange={chackeAll}></input>
+        <label for="all" className="Seleccionar">Seleccionar todos</label>
+        </div>
+      </div> */}
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>
     </div>
   );
@@ -91,4 +99,23 @@ const iconoAgregar=()=>{
         <img src={logo}></img>
         </button>
   )
+}
+const chackeAll=()=>{
+  let all=document.getElementById("all")
+  console.log(all.checked)
+  let etiquetas=document.getElementsByClassName("checkbox");
+  console.log(etiquetas)
+  if(all.checked){
+    Array.from(etiquetas).map((item)=>{item.checked=true
+    item.dispatchEvent(new Event('change', { bubbles: true }))
+    console.log(item)})
+    etiquetas.checked=true
+    //etiquetas.onChange()
+  }
+  else{
+    Array.from(etiquetas).map((item)=>{item.checked=false
+      item.dispatchEvent(new Event('change', { bubbles: true }))
+      console.log(item)})
+  }
+  
 }

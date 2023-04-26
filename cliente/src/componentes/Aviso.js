@@ -68,12 +68,15 @@ export const Mensaje = (props) => {
       }
       modal
       hover="click"
-      className="aviso"
+      className="mensaje"
     >
       {(close) => (
-       setTimeout(()=>{
+        <div className="mensaje-popup">
+        {props.mensaje && <p className="mensaje">{props.mensaje}</p>}
+        {setTimeout(()=>{
         close();
-       },2000)
+      },2000)}
+       </div>
       )}
       </Popup>
   );

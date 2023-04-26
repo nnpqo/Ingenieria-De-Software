@@ -62,3 +62,7 @@ aviso-content {
 .botonNo:hover {
   background-color: #d62d07;
 }
+
+.mensaje-popup {
+  color: #0655ff;
+}

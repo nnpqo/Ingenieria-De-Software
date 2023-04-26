@@ -41,14 +41,6 @@ export const Categoria = (props) => {
         </a>
         <AvisoEti trigger={iconoAgregar()}
           titulo="AGREGAR ETIQUETA"
-          extra={<div className="cajita"><CajaTexto 
-            nombre={"Nombre de etiqueta*"}
-            id2={"tex"}
-            id={"etiquetaFormulario"}
-            min={2}
-            max={20}
-            regex={"[ a-zA-Z0-9]+"}
-          /></div>}
           bt1Nombre={"Guardar"}
           bt1Estilo={"guardar"}
           bt1Funcion={() => eliminar(props.nombre)}

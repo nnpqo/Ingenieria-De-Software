@@ -15,7 +15,7 @@
 
 
 .aviso-content {
-  background-color: #284073;
+  background-color: #0655ff;
   display: flex;
   justify-items: center;
   flex-direction: column;
@@ -38,6 +38,13 @@
   display: flex;
   justify-content: space-around;
 }
+
+.botones-etiqueta {
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+}
+
 .botonSi {
   background-color: #284073;
   color: white;
@@ -96,18 +103,16 @@
 /*.letras{
   margin-right: 182px;
 }*/
-.botonesAviso{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .cajita{
   display: flex;
+  flex-direction: column;
   justify-items: center;
-  
   align-items: center;
   justify-content: center;
+  gap: 20px; 
 }
+
 #tex{
   margin-right: 182px;
 }

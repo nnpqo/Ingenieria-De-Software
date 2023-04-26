@@ -56,12 +56,12 @@ export const Categoria = (props) => {
           bt2Nombre={"Cancelar"}
           bt2Estilo={"cancelar"} />
       </span>
-      <div className={desplegado ? "etiquetas-visible" : "etiquetas"} >
+      {/* <div className={desplegado ? "etiquetas-visible" : "etiquetas"} >
         <div className="contenedor-seleccionar">
         <input type="checkbox" id="all" className="checkbox" onChange={chackeAll}></input>
         <label for="all" className="Seleccionar">Seleccionar todos</label>
         </div>
-      </div>
+      </div> */}
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>
     </div>
   );

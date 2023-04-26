@@ -98,8 +98,10 @@
 }
 
 .boton-usuario {
-  height: 45px;
-  width: 45px;
+  min-height: 45px;
+  min-width: 45px;
+  max-height: 45px;
+  max-width: 45px;
   background-image: url("../imagenes/retrato-mujer-caucasica-sonriendo_53876-24998.jpg");
   background-position: center; /* Center the image */
   background-size:cover;

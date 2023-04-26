@@ -17,8 +17,8 @@ export const CajaTexto = (props) => {
         setErrorMsg(`El valor ingresado es demasiado corto (mínimo ${props.min} dígito)`); // Establece un mensaje de error personalizado si el valor es demasiado corto
       } else if (event.target.value.match(props.regex)) {
         setErrorMsg(`El precio debe ser mayor a 1Bs`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
-      } else {
-        setErrorMsg(''); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
+      } else if(isNaN(event.target.value)){
+        setErrorMsg('El valor ingresado debe ser un número'); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
       }
       
 

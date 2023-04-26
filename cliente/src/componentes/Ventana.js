@@ -157,6 +157,7 @@ export const Ventana = (props) => {
 
   const [productos, setProductos] = useState({});
   const [etiquetas, setEtiquetas] = useState([]);
+  const [cambioVisible,setcambioVisible]=useState(false)
 
   useEffect(() => {
     const getProdructo = async () => {
@@ -168,13 +169,14 @@ export const Ventana = (props) => {
     getProdructo();
     setEtiquetas(props.lista);
     console.log(etiquetas);
-  }, [props.lista]);
+  }, [props.lista,cambioVisible]);
 
   let prod = productos.modelos?.map((pro) => {
     if (etiquetas.length == 0) {
       return (
         <>
           <Producto
+            id={pro.id}
             ruta={pro.ruta_imagen}
             etiqueta={pro.etiqueta}
             nombre={pro.nombre}
@@ -185,15 +187,20 @@ export const Ventana = (props) => {
       return etiquetas.map((eti) => {
         if (pro.etiqueta === eti) {
           console.log(eti);
+          if (pro.visible===1){
           return (
             <>
-              <Producto
+              <Producto                
+                cambioVisible={cambioVisible}
+                funActualizar={setcambioVisible}
+                id={pro.id}
                 ruta={pro.ruta_imagen}
                 etiqueta={pro.etiqueta}
                 nombre={pro.nombre}
               />
             </>
           );
+        }
         } else {
           return false;
         }

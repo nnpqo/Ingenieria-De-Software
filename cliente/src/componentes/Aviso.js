@@ -117,9 +117,7 @@ export const borrar = () => {
   document.getElementById("previsualizar").src =
     "http://localhost:3001/images/img.png";
 };
-export const eliminar = (modelo) => {
-  console.log("eliminando: " + modelo);
-};
+
 
 /*<div className="botonesAviso">
             <Boton

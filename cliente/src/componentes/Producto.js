@@ -1,7 +1,8 @@
 import React from "react";
 import "../estilos/producto.css";
 import samsung from "../imagenes/samsung_g.jpg";
-import { Aviso,eliminar } from "./Aviso";
+import { Aviso } from "./Aviso";
+import {eliminarProducto} from "../API/productos"
 
 
 export const Producto = (props) => {
@@ -14,7 +15,8 @@ export const Producto = (props) => {
           mensaje="¿Está seguro de eliminar este modelo de dispositivo?"
           bt1Nombre={"Si"}
           bt1Estilo={"botonSi"}
-          bt1Funcion={() => eliminar(props.nombre)}
+          bt1Funcion={() => {eliminar(props.id);
+            props.cambioVisible? props.funActualizar(false):props.funActualizar(true)}}
           bt2Nombre={"No"}
           bt2Estilo={"botonNo"} />
         <img className="product" src={ruta} />
@@ -54,3 +56,11 @@ const Basurero = () => {
     </button>
   )
 }
+const eliminar = async (id) => {
+  console.log("tratando de eliminar:"+id)
+  try {
+    await eliminarProducto(id);
+  } catch (error) {
+    console.log(error);
+  }
+};

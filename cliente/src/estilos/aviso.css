@@ -1,9 +1,25 @@
-.popup-content,
-aviso-content {
+.avisoEti-content{
+  background-color: #284073;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  text-align: center;
+  align-content: center;
+  border-radius: 7px;
+  gap: 20px;
+  flex-wrap: wrap;
+  border: none;
+  height: 300px;
+  padding: 50px;
+}
+
+
+.aviso-content {
   background-color: #0655ff;
   display: flex;
   justify-items: center;
   flex-direction: column;
+  text-align: center;
   align-content: center;
   border-radius: 7px;
   gap: 20px;
@@ -12,11 +28,23 @@ aviso-content {
   height: 200px;
   padding: 40px;
 }
+.avisoEti {
+  border: 1px solid red;
+}
+
+
 .botonesAviso {
   width: 80%;
   display: flex;
   justify-content: space-around;
 }
+
+.botones-etiqueta {
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+}
+
 .botonSi {
   background-color: #284073;
   color: white;
@@ -61,4 +89,30 @@ aviso-content {
 }
 .botonNo:hover {
   background-color: #d62d07;
+}
+.titulo{
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+/*#etiquetaFormulario{
+  display: flex;
+  justify-content: flex-start;
+}
+/*.letras{
+  margin-right: 182px;
+}*/
+
+.cajita{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; 
+}
+
+#tex{
+  margin-right: 182px;
 }

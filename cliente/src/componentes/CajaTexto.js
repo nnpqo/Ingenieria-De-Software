@@ -4,7 +4,7 @@ import "../estilos/cajaTexto.css";
 export const CajaTexto = (props) => {
   return (
     <div className="cajaTexto">
-      <label className="letras">{props.nombre}</label>
+      <label className="letras" id={props.id2}>{props.nombre}</label>
       <input id={props.id} type="text" pattern={props.regex} maxLength={props.max} minLength={props.min} required/>
     </div>
   );

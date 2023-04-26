@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getEtiquetas } from "../API/api";
 import "../estilos/app.css";
 import logo from "../imagenes/iconoAgregar.svg";
-import { Aviso,eliminar } from "./Aviso";
+import { Aviso,AvisoEti,eliminar } from "./Aviso";
 import { CajaTexto, TextArea } from "./CajaTexto";
 
 export const Categoria = (props) => {
@@ -40,16 +40,8 @@ export const Categoria = (props) => {
         >
           Dispositivos móviles
         </a>
-        
-        <Aviso trigger={iconoAgregar()}
+        <AvisoEti trigger={iconoAgregar()}
           titulo="AGREGAR ETIQUETA"
-          extra={<CajaTexto
-            nombre={"Nombre de etiqueta*"}
-            id={"etiquetaFormulario"}
-            min={2}
-            max={20}
-            regex={"[ a-zA-Z0-9]+"}
-          />}
           bt1Nombre={"Guardar"}
           bt1Estilo={"guardar"}
           bt1Funcion={() => eliminar(props.nombre)}

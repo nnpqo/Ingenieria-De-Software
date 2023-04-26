@@ -55,16 +55,27 @@ export const eliminar=(modelo)=>{
   console.log("eliminando: "+modelo)
 }
 
+export const Mensaje = (props) => {
+  return (
+    <Popup
+      trigger={
+        props.trigger? props.trigger
+         :(
+        <button className={props.estilos}>
+          <h2>{props.nombre}</h2>
+        </button>
+        )
+      }
+      modal
+      hover="click"
+      className="aviso"
+    >
+      {(close) => (
+       setTimeout(()=>{
+        close();
+       },2000)
+      )}
+      </Popup>
+  );
+};
 
-
-/*<div className="botonesAviso">
-            <Boton
-              nombre={"Si"}
-              estilos={"botonSi"}
-              funcion={() => {
-                {props.funcionSi()}
-                close();
-              }}
-            />
-            <Boton nombre={"No"} estilos={"botonNo"} funcion={close} />
-          </div>*/

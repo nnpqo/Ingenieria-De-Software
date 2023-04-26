@@ -13,7 +13,7 @@ import { CajaTexto, TextArea } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
 import "../estilos/ventana.css";
 import "../estilos/boton.css";
-import { Aviso } from "./Aviso";
+import { Aviso, Mensaje} from "./Aviso";
 import { Producto } from "./Producto";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
@@ -131,8 +131,8 @@ export const VentanaFormulario = (props) => {
                   bt2Estilo={"botonNo"}
                 />
               ) : (
-                <Aviso
-                  nombre="CANCELAR"
+                <Mensaje
+                nombre="holis"
                   mensaje="¿Está seguro de descartar los cambios?"
                   estilos={"cancelar"}
                   bt1Nombre={"Si"}

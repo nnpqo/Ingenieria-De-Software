@@ -19,6 +19,7 @@ export const Aviso = (props) => {
       nested
       className="aviso"
     >
+      
       {(close) => (
         <>
         {props.titulo && <h1 className="titulo">{props.titulo}</h1>}

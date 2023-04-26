@@ -123,7 +123,7 @@ router.get("/getProducto", (req, res) => {
   })
 })
 
-router.get("/getBusqueda", (req, res) => {
+/*router.get("/getBusqueda", (req, res) => {
   const palabra = req.body.id; 
   const sql = "call buscar_modelo"
     if(error){
@@ -132,6 +132,6 @@ router.get("/getBusqueda", (req, res) => {
       res.json({dispositivos: results})
     }
   })
-})
+})*/
 
 module.exports = router;

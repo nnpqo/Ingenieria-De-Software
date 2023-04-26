@@ -1,39 +1,63 @@
 import React from "react";
 import "../estilos/producto.css";
-import samsung from "../imagenes/samsung_g.jpg";
-import { Aviso,eliminar } from "./Aviso";
-
+import { Aviso, eliminar } from "./Aviso";
+import { Popupproducto } from "./Popupproducto";
 
 export const Producto = (props) => {
   const ruta = "http://localhost:3001" + props.ruta;
   console.log(ruta);
   return (
-    <div className="pantalla" id={props.nombre}>
-      <div className="san">
-        <Aviso trigger={Basurero()}
-          mensaje="¿Está seguro de eliminar este modelo de dispositivo?"
-          bt1Nombre={"Si"}
-          bt1Estilo={"botonSi"}
-          bt1Funcion={() => eliminar(props.nombre)}
-          bt2Nombre={"No"}
-          bt2Estilo={"botonNo"} />
-        <img className="product" src={ruta} />
-        <h4 className="tittle">{props.etiqueta}</h4>
-        <h4 className="tittle">{props.nombre}</h4>
-      </div>
-    </div>
+    <Popupproducto
+      trigger={
+        <div className="pantalla" id={props.nombre}>
+          <div
+            // onClick={(props, ruta) => {
+            //   mostrarmodelo(props, ruta);
+            // }}
+            className="san">
+            <Aviso
+              trigger={Basurero()}
+              mensaje="¿Está seguro de eliminar este modelo de dispositivo?"
+              bt1Nombre={"Si"}
+              bt1Estilo={"botonSi"}
+              bt1Funcion={() => eliminar(props.nombre)}
+              bt2Nombre={"No"}
+              bt2Estilo={"botonNo"}
+            />
+            <img className="product" src={ruta} />
+            <h4 className="tittle">{props.etiqueta}</h4>
+            <h4 className="tittle">{props.nombre}</h4>
+          </div>
+        </div>
+      }
+      //here
+      ruta={ruta}
+      etiqueta={props.etiqueta}
+      caracteristicas={"hm no se lol"}
+      nombre={props.nombre}
+    />
   );
 };
 
+
+// const mostrarmodelo = (props, ruta) => {
+//   console.log("1");
+//   return (
+//     <Popupproducto trigger
+//       style="position:fixed"
+//       etiqueta={props.etiqueta}
+//       nombre={props.nombre}
+//       ruta={ruta}
+//       caracteristicas={"caracteristicas del telefono"}
+//       precio={"00123"}
+//     />
+//   );
+// };
 const Basurero = () => {
   return (
     <button className="color">
       <div className="eliminar">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
@@ -52,5 +76,5 @@ const Basurero = () => {
         </svg>
       </div>
     </button>
-  )
-}
+  );
+};

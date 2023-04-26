@@ -35,7 +35,9 @@ export const VentanaPrincipal = (props) => {
             <Ventana lista={checkboxesSeleccionados} />
           </>
         )}
-
+          {/* <div className="botonpopup">
+            <Boton>Popup</Boton>
+          </div> */}
         {props.menu === 2 && (
           <>
             <Menu />
@@ -55,6 +57,7 @@ export const VentanaPrincipal = (props) => {
             )}
           </>
         )}
+     
       </div>
     </prueba.Provider>
   );

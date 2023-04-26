@@ -60,6 +60,8 @@ export const VentanaFormulario = (props) => {
       </div>
     </div>
   );
+
+  
   const opcionesRegistro = (
     <div className="formulario">
       <CajaTexto
@@ -183,10 +185,12 @@ export const Ventana = (props) => {
           return (
             <>
               <Producto
+                
                 ruta={pro.ruta_imagen}
                 etiqueta={pro.etiqueta}
                 nombre={pro.nombre}
               />
+
             </>
           );
         }

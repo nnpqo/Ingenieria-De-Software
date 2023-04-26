@@ -132,6 +132,6 @@ router.get("/getBusqueda", (req, res) => {
       res.json({dispositivos: results})
     }
   })
-})
+
 
 module.exports = router;

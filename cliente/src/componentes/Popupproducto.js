@@ -22,39 +22,34 @@ export const Popupproducto = (props) => {
       {(close) => (
         <>
         <div className="popupproucto">
-          <h2>{props.nombre}</h2>
+          <h2 className="nP">{props.nombre}</h2>
           <div className="popupcontenido">
             <img
               className="imagenpop"
               src={props.ruta}
               alt="Descripción de la imagen"
             />
-            <div>
-              <div className="centreado">
+            <div className="med">
+              <div className="centreado1">
 
               <h3>Marca</h3>
               <p>{props.etiqueta}</p>
               </div>
 
               
-              <div className="centreado">
+              <div className="centreado2">
                 <h3>Precio</h3>
                 <p>{props.precio}</p>
               </div>
             </div>
 
-            <div>
+            <div className="cate">
               <h3>Caracteristicas</h3>
               {/* <p>{props.caracteristicas}</p> */}
             </div>
-            <Boton
-              nombre={props.bt1Nombre}
-              estilos={props.bt1Estilo}
-              funcion={() => {
-                {props.bt1Funcion && props.bt1Funcion()}
-                close();
-              }}
-            />
+            
+
+
           </div>
         </div>
         </>

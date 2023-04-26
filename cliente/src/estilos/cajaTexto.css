@@ -54,11 +54,8 @@ input[type="text"] {
 #precio {
   width: 175px;
 }
-/*.cajaTexto{
+.errorMensaje{
+  color: #ff2e00;
+  font-size: 15px;
+}
 
-  display: flex;
-  justify-items: center;
-  
-  align-items: center;
-  justify-content: center;
-}*/

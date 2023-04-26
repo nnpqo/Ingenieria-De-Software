@@ -56,7 +56,7 @@ export const VentanaFormulario = (props) => {
           nombre={"Cambiar precio"}
           id={"precio"}
           max={6}
-          regex={"[0-9]+"}
+          regex={"^[1-9][0-9]*$"}
         />
       </div>
     </div>
@@ -75,7 +75,13 @@ export const VentanaFormulario = (props) => {
       <br />
       <div className="etiqueta_precio">
         <ComboBox nombre={"Etiqueta*"} opciones={etiquetas} id={"etiqueta"} />
-        <CajaTexto nombre={"Precio*"} id={"precio"} max={6} regex={"[0-9]+"} />
+        <CajaTexto
+          nombre={"Precio*"}
+          id={"precio"}
+          min={1}
+          max={6}
+          regex={"^[1-9][0-9]*$"}
+        />
       </div>
       <br />
     </div>

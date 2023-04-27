@@ -11,6 +11,9 @@ input[type="text"] {
   bottom: 5cm;
   font-family: Tahoma;
   font-size: 20px;
+  outline: none;
+  transition: box-shadow 0.15s;
+  box-shadow: none;
 }
 .combo-box {
   display: flex;
@@ -33,8 +36,7 @@ input[type="text"] {
   font-size: 150%;
 }
 
-
-.textarea textarea{
+.textarea textarea {
   resize: none;
   display: flex;
   border: solid 2px white;
@@ -46,7 +48,7 @@ input[type="text"] {
   left: 60%;
   bottom: 5cm;
   padding: 10px;
-  font-size: 20px; 
+  font-size: 20px;
 }
 #etiqueta {
   width: 215px;
@@ -54,8 +56,58 @@ input[type="text"] {
 #precio {
   width: 175px;
 }
-.errorMensaje{
+.errorMensaje {
   color: #ff2e00;
   font-size: 15px;
+  display: inline;
+  align-items: flex-start;
 }
 
+.icon {
+  float: left;
+}
+
+.errorMensaje .fondo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border-color: #ff2e00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  place-self: flex-end;
+  position: absolute;
+  z-index: 2;
+}
+
+.errorMensaje .fondo .icon {
+  height: 20px;
+  width: 20px;
+  background-size: 20px;
+  z-index: 1;
+}
+input:blank {
+  box-shadow: none;
+}
+
+.invalid {
+  box-shadow: #ff2e00 0 0 10px 0 !important;
+  animation: mover 0.15s ease-in-out 0s;
+}
+
+@keyframes mover {
+  0% {
+    margin-left: 0;
+  }
+  25% {
+    margin-left: -5px;
+  }
+  75% {
+    margin-left: 5px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}

@@ -14,6 +14,7 @@ input[type="text"] {
   outline: none;
   transition: box-shadow 0.15s;
   box-shadow: none;
+  outline: none;
 }
 .combo-box {
   display: flex;
@@ -49,9 +50,11 @@ input[type="text"] {
   bottom: 5cm;
   padding: 10px;
   font-size: 20px;
+  outline: none;
 }
 #etiqueta {
   width: 215px;
+  outline: none;
 }
 #precio {
   width: 175px;
@@ -93,7 +96,7 @@ input:blank {
 }
 
 .invalid {
-  box-shadow: #ff2e00 0 0 10px 0 !important;
+  box-shadow: #ff2e00 0 0 15px 0 !important;
   animation: mover 0.15s ease-in-out 0s;
 }
 

@@ -67,8 +67,10 @@ export const Categoria = (props) => {
         </div>
       </div> */}
       <div className={desplegado ? "etiquetas-visible" : "etiquetas"} >
-        <input type="checkbox" id="all" onChange={()=>{chackeAll(setEtiquetass,setIsChecked)}}></input>
-        <label for="all">all</label>
+        <div className="contenedor-seleccionar">
+        <input type="checkbox" id="all" className="checkbox" onChange={()=>{chackeAll(setEtiquetass,setIsChecked)}}></input>
+        <label for="all" className="Seleccionar">Seleccionar todos</label>
+        </div>
       </div>
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>
     </div>

@@ -10,6 +10,7 @@
 
 .pantalla {
   display: flex;
+  height: 300px;
 }
 
 .pantalla .san {
@@ -29,7 +30,8 @@
   align-items: center;
   overflow: hidden;
   border: 2px solid floralwhite;
-  white-space: normal; /* Evita que el texto se envuelva */
+  white-space: normal; 
+  flex: 1 1 200px;/* Evita que el texto se envuelva */
 }
 
 .pantalla .san .color {

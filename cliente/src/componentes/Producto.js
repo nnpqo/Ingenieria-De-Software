@@ -2,6 +2,10 @@ import React from "react";
 import "../estilos/producto.css";
 import { Aviso, eliminar } from "./Aviso";
 import { Popupproducto } from "./Popupproducto";
+import samsung from "../imagenes/samsung_g.jpg";
+
+import { eliminarProducto } from "../API/productos";
+
 
 export const Producto = (props) => {
   const ruta = "http://localhost:3001" + props.ruta;
@@ -20,7 +24,14 @@ export const Producto = (props) => {
               mensaje="¿Está seguro de eliminar este modelo de dispositivo?"
               bt1Nombre={"Si"}
               bt1Estilo={"botonSi"}
-              bt1Funcion={() => eliminar(props.nombre)}
+              bt1Funcion={() => {
+                const elProducto = new Promise((resolve, reject) => {
+                  const result = eliminarProducto(props.id);
+                  resolve(result);
+                });
+                elProducto.then(result => result)
+                props.funActualizar(!props.cambioVisible);
+              }}
               bt2Nombre={"No"}
               bt2Estilo={"botonNo"}
             />
@@ -36,6 +47,7 @@ export const Producto = (props) => {
       etiqueta={props.etiqueta}
       caracteristicas={props.caracteristicas}
       nombre={props.nombre}
+      precio={props.precio}
     />
   );
 };

@@ -157,23 +157,8 @@ export const Ventana = (props) => {
 
   const [productos, setProductos] = useState({});
   const [etiquetas, setEtiquetas] = useState([]);
-  const [busqueda, setBusqueda] = useState("");
+  const [busqueda, setBusqueda] = useState(false);
 
-  const obtenerBusqueda = () => {
-    const palabra = document.getElementById("buscar").value;
-    setBusqueda(palabra);
-  };
-
-  
-
-  useEffect(() => {
-    obtenerBusqueda();
-    console.log(busqueda)
-    const bus = async (busqueda) => {
-       await setProductos(getDispositivosBusqueda(busqueda));
-    };
-    
-  }, [busqueda]);
 
   useEffect(() => {
     const getProdructo = async (busqueda) => {

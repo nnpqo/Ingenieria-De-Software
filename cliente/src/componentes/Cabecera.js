@@ -4,13 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import { Busqueda } from "./Busqueda";
 import { useState } from "react";
 
-export const Cabecera = () => {
-  const [buscar, setBuscar] = useState(false)
-
-  const actualizarBusqueda = (nuevaBusqueda) => {
-    setBuscar(nuevaBusqueda);
-  }
-
+export const Cabecera = (props) => {
   return (
     <>
       <header className="cabecera">
@@ -21,7 +15,7 @@ export const Cabecera = () => {
                 <>
                   <span className="jdk">JDK</span>
                   <span className="cell">CELL</span>
-                  <span>{buscar?"hola":"mundo"}</span>
+                  <span>{}</span>
                 </>
               }
               estilos={"boton-navbar"}
@@ -29,7 +23,7 @@ export const Cabecera = () => {
             
           </Link>
         </div>
-        <Busqueda visible={true} actualizar={actualizarBusqueda}></Busqueda>
+        <Busqueda visible={true} actualizar={props.actualizar}></Busqueda>
         
         <div className="opciones-navbar">
           <Link to="/productos">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import { getEtiquetas } from "../API/api";
 import "../estilos/app.css";
 import logo from "../imagenes/iconoAgregar.svg";
@@ -6,10 +6,16 @@ import { Aviso, AvisoEti, eliminar } from "./Aviso";
 import { CajaTexto, TextArea } from "./CajaTexto";
 import {agregarEtiqueta} from "../API/etiquetas"
 
+import { prueba } from "./VentanaPrincipal";
+
+
+
 export const Categoria = (props) => {
   const [desplegado, setdesplegado] = useState(false);
   const [etiquetas, setEtiquetas] = useState([]);
   const [nuevaEti,setNuevaEti]=useState(false)
+  const [, , ,setEtiquetass] = useContext(prueba);
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     const etiquetas = async () => {
@@ -24,8 +30,9 @@ export const Categoria = (props) => {
         <Etiqueta
           nombre={eti}
           checked={"checkbox"}
-          isChecked={false}
+          isChecked={isChecked}
           handleCheckboxSelection={props.manejarSelecciónSelection}
+          setIsChecked={setIsChecked}
         />
       </ul>
     );
@@ -47,7 +54,7 @@ export const Categoria = (props) => {
           titulo="AGREGAR ETIQUETA"
           bt1Nombre={"Guardar"}
           bt1Estilo={"guardar"}
-          bt1Funcion={()=>{guardarEtiqueta();
+          bt1Funcion={()=>{ agregarEtiqueta();
             nuevaEti? setNuevaEti(false):setNuevaEti(true)}}
           bt2Nombre={"Cancelar"}
           bt2Estilo={"cancelar"}
@@ -59,21 +66,36 @@ export const Categoria = (props) => {
         <label for="all" className="Seleccionar">Seleccionar todos</label>
         </div>
       </div> */}
+      <div className={desplegado ? "etiquetas-visible" : "etiquetas"} >
+        <input type="checkbox" id="all" onChange={()=>{chackeAll(setEtiquetass,setIsChecked)}}></input>
+        <label for="all">all</label>
+      </div>
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>
     </div>
   );
 };
 const Etiqueta = (props) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const isChecked=props.isChecked;
+  const setIsChecked=props.setIsChecked;
+  const a=document.getElementById(props.nombre)
+  const [check,setCheck]= useState(false);
 
   function handleChange() {
-    setIsChecked(!isChecked);
-    props.handleCheckboxSelection(props.nombre, !isChecked);
+    setIsChecked(a.checked);
+    console.log(a.checked);
+    setCheck(!check)
+    props.handleCheckboxSelection(props.nombre, a.checked);
   }
 
   useEffect(() => {
     setIsChecked(props.isChecked);
-  }, [props.isChecked]);
+    console.log(props.isChecked)
+    let all=document.getElementById("all")
+    console.log(all)
+    if (all.checked){
+      all.checked =false;
+    }
+  },[check]);
 
   return (
     <>
@@ -81,7 +103,7 @@ const Etiqueta = (props) => {
         type="checkbox"
         className={props.checked}
         id={props.nombre}
-        checked={isChecked}
+        //checked={props.isCheckd}
         onChange={handleChange}
       />
       <label for={props.nombre} className="nombre-etiqueta">
@@ -93,20 +115,33 @@ const Etiqueta = (props) => {
 const iconoAgregar = () => {
   return (
     <button className="icono-agregar">
+        <img src={logo}></img>
+        </button>
+  )
+}
+const chackeAll=(setEtiquetas,setIsChecked)=>{
+  
+  let all=document.getElementById("all")
 
-      <img src={logo}></img>
-    </button>
-  );
-};
-
-
-const guardarEtiqueta = async () => {
-  let valor = document.getElementById("etiquetaFormulario");
-  console.log("agregar etiqueta" + valor.value);
-  try {
-    await agregarEtiqueta(valor.value);
-  } catch (error) {
-    console.log(error);
+  let etiquetas=document.getElementsByClassName("checkbox");
+ 
+  let aux=[];
+  if(all.checked){
+    
+    Array.from(etiquetas).map((item)=>{item.checked=true
+      aux.push(item.id)})
+    //setIsChecked(true)
+    //etiquetas.onChange()
   }
-};
-
+  else{
+    Array.from(etiquetas).map((item)=>{item.checked=false
+      
+      //setEtiquetas([])
+      //item.dispatchEvent(new Event('change', { bubbles: true }))
+      })
+      
+  }
+  setEtiquetas(aux)
+  //Array.from(etiquetas).map((item)=>{all.checked?item.checked=true:item.checked=false})
+  console.log(etiquetas[0].checked)
+}

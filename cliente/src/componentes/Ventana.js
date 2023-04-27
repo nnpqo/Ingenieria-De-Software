@@ -184,7 +184,7 @@ export const Ventana = (props) => {
     } else {
       return etiquetas.map((eti) => {
         if (pro.etiqueta === eti) {
-          console.log(eti);
+          //console.log(eti);
           return (
             <>
               <Producto

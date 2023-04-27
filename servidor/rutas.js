@@ -70,7 +70,7 @@ router.put("/actualizarModelo", (req, res) => {
 
 router.get("/getAllModeloDispositivo", (req, res) => {
   const consulta =
-    "select distinct m.id, m.visible, m.nombre, m.ruta_imagen, e.nombre as etiqueta from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 order by m.nombre asc ;";
+    "select distinct m.id, m.visible, m.nombre, m.ruta_imagen, m.descripcion, m.precio_venta_sugerido as precio, e.nombre as etiqueta from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 order by m.nombre asc ;";
   db.query(consulta, (error, results, fields) => {
     if (error) {
       console.error("Error al ejecutar consulta:", error);

@@ -1,0 +1,138 @@
+.pr-content {
+  background-color: #284073;
+  display: flex;
+  border-radius: 10px;
+  border: 4px solid #0e84c7 !important;
+
+  flex-direction: column;
+  align-content: center;
+  border-radius: 20px;
+  gap: 20px;
+  flex-wrap: wrap;
+  border: none;
+  height: 400px;
+  width: 800px;
+  padding: 40px;
+  padding-top: 0;
+}
+
+.popupproucto {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  border-radius: 13px;
+  color: white;
+  justify-content: space-between;
+}
+.popupcontenido {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.med {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: none;
+  border-radius: 11px;
+  width: 200px;
+  justify-content: space-between;
+}
+
+.imagenpop {
+  display: flex;
+  border-radius: 10px;
+  height: 300px;
+  width: 250px;
+}
+.centreado1 {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 13px;
+  border: 2px solid #0e84c7;
+
+  padding: 50px;
+}
+.centreado2 {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 13px;
+  border: 2px solid #0e84c7;
+
+  padding: 50px;
+}
+.cate {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #0e84c7;
+  border-radius: 13px;
+  width: 280px;
+  padding: 10px;
+}
+
+.titulo-caracteristicas {
+  
+}
+
+.cate p {
+  margin-top: 10px;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+.nP {
+  width: 90%;
+  text-align: center;
+  padding: 15px;
+  flex: 1;
+}
+
+.close-container {
+  display: block;
+  position: relative;
+  bottom: 30px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.leftright {
+  height: 4px;
+  width: 30px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: white;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all 0.3s ease-in;
+}
+
+.rightleft {
+  height: 4px;
+  width: 30px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: white;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all 0.3s ease-in;
+}
+
+.close-container:hover .leftright {
+  transform: rotate(-45deg);
+  background-color: #ff2e00;
+}
+.close-container:hover .rightleft {
+  transform: rotate(45deg);
+  background-color: #ff2e00;
+}

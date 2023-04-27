@@ -27,13 +27,14 @@ export const Producto = (props) => {
             <img className="product" src={ruta} />
             <h4 className="tittle">{props.etiqueta}</h4>
             <h4 className="tittle">{props.nombre}</h4>
+  
           </div>
         </div>
       }
       //here
       ruta={ruta}
       etiqueta={props.etiqueta}
-      caracteristicas={"hm no se lol"}
+      caracteristicas={props.caracteristicas}
       nombre={props.nombre}
     />
   );

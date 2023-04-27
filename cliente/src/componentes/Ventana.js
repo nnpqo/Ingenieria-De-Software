@@ -175,6 +175,8 @@ export const Ventana = (props) => {
             ruta={pro.ruta_imagen}
             etiqueta={pro.etiqueta}
             nombre={pro.nombre}
+            caracteristicas={pro.descripcion}
+            precio = {pro.precio}
           />
         </>
       );

@@ -17,9 +17,10 @@ router.post("/setModelo", (req, res) => {
   const rutaImg = req.body.ruta;
   const descrip = req.body.descripcion;
   const etiqueta = req.body.etiqueta;
+  const precio = req.body.precio;
   db.query(
-    "call registrar_modelo(?,?,?)",
-    [nombre, rutaImg, descrip],
+    "call registrar_modelo(?,?,?,?)",
+    [nombre, rutaImg, descrip, precio],
     (error, results, fields) => {
       if (error) {
         res.send({
@@ -49,10 +50,10 @@ router.put("/actualizarModelo", (req, res) => {
   const descripcionNueva = req.body.descripcion;
   const etiquetaNueva = req.body.etiqueta;
   const nuevaRuta = req.body.ruta;
-
+  const precio = req.body.precio;
   db.query(
-    "call modificar_modelo(?,?,?,?,?)",
-    [nombreAntiguio, nombreNuevo, descripcionNueva, etiquetaNueva, nuevaRuta],
+    "call modificar_modelo(?,?,?,?,?,?)",
+    [nombreAntiguio, nombreNuevo, descripcionNueva, etiquetaNueva, nuevaRuta, precio],
 
     (error, results, fields) => {
       if (error) {

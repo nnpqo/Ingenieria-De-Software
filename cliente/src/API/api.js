@@ -59,12 +59,14 @@ export const setModeloDispositivo = () => {
   let descripcion = document.getElementById("descripcion").value;
   let etiqueta = document.getElementById("etiqueta").value;
   let imagen = document.getElementById("image").files;
+  let precio = document.getElementById("precio").value;
   let rutaImg = imagen[0] ? "/images/" + imagen[0].name : "/images/img.png";
   const datos = {
     nombre: nombre,
     descripcion: descripcion,
     etiqueta: etiqueta,
     ruta: rutaImg,
+    precio: precio,
   };
   console.log(datos);
   instancia
@@ -84,6 +86,7 @@ export const updateModeloDispositivo = () => {
   let descripcion = document.getElementById("descripcion").value;
   let etiqueta = document.getElementById("etiqueta").value;
   let imagen = document.getElementById("image").files;
+  let precio = document.getElementById("precio").value;
   let rutaImg = imagen[0] ? "/images/" + imagen[0].name : "/images/img.png";
   const datos = {
     modelo: modelo,
@@ -91,6 +94,7 @@ export const updateModeloDispositivo = () => {
     descripcion: descripcion,
     etiqueta: etiqueta,
     ruta: rutaImg,
+    precio: precio,
   };
   console.log(datos);
   instancia

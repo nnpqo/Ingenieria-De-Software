@@ -11,8 +11,8 @@ export const Busqueda = (props) => {
         id="buscar"
       ></input>
       <button class="contenedor-icono" onClick={() => {
-        setBuscar(!buscar);
         props.actualizar(buscar)
+        setBuscar(!buscar);
       }}></button>
     </div>
   );

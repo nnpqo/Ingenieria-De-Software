@@ -32,7 +32,7 @@ export const VentanaPrincipal = (props) => {
             <MenuEtiquetas
               manejarSelecciónSelection={manejarSelecciónSelection}
             />
-            <Ventana lista={checkboxesSeleccionados} />
+            <Ventana lista={checkboxesSeleccionados} busqueda={props.busqueda}/>
           </>
         )}
 

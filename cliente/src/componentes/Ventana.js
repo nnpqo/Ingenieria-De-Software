@@ -164,14 +164,13 @@ export const Ventana = (props) => {
       console.log ("borrado")
       result ? resolve(result) : reject([]);
     });
-
     getProdructos
       .then((result) => {setProductos(result.dispositivos[0])})
       .catch((e) => setProductos([]));
     console.log(productos);
     setEtiquetas(props.lista);
     console.log(etiquetas);
-  },[props.lista, cambioVisible]);
+  },[props.lista, cambioVisible, props.busqueda]);
 
   let prod = productos?.map((pro) => {
     if (etiquetas.length === 0) {

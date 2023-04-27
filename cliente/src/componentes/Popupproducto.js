@@ -22,7 +22,13 @@ export const Popupproducto = (props) => {
       {(close) => (
         <>
         <div className="popupproucto">
-          <h2 className="nP">{props.nombre}</h2>
+        <div className="content">
+        <h2 className="nP">{props.nombre}</h2>
+        <div class="close-container">
+          <div class="leftright"></div>
+          <div class="rightleft"></div>
+          </div>
+          </div>
           <div className="popupcontenido">
             <img
               className="imagenpop"
@@ -44,7 +50,7 @@ export const Popupproducto = (props) => {
             </div>
 
             <div className="cate">
-              <h3>Caracteristicas</h3>
+              <h3 className="titulo-caracteristicas">Descripción</h3>
               {/* <p>{props.caracteristicas}</p> */}
             </div>
             

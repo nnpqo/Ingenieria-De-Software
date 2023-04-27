@@ -3,7 +3,7 @@
   background-color: #284073;
   display: flex;
   border-radius: 10px;
-  border:2px solid #0E84C7 !important;
+  border:4px solid #0E84C7 !important;
 
   flex-direction: column;
   align-content: center;
@@ -30,7 +30,6 @@
 .popupcontenido{
     display: flex;
     flex-direction: row;
-   
     justify-content: space-between;
 }
 .med
@@ -49,10 +48,9 @@
 
 .imagenpop{   
     display:flex;
-   
     border-radius: 10px;
     height: 300px;;
-    width: 300px;
+    width: 250px;
 }
 .centreado1{
     display:flex;
@@ -78,9 +76,64 @@
     flex-direction: column;
     border:2px solid #0E84C7;
     border-radius: 13px;
-    width:200px;
+    width:280px;
 }
+
+.titulo-caracteristicas{
+    margin-top: 10px;
+}
+
+.content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
 .nP{
     text-align: center;
     padding: 15px;
+    flex: 1;
 }
+
+
+.close-container{
+    margin: auto;
+    margin-top: 5px;
+    cursor: pointer;
+    width: 50%;
+    margin-left: 20px;
+  }
+  
+  .leftright{
+    height: 4px;
+    width: 35px;
+    position: absolute;
+    margin-top: 24px;
+    background-color: white;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    transition: all .3s ease-in;
+  }
+  
+  .rightleft{
+    height: 4px;
+    width: 35px;
+    position: absolute;
+    margin-top: 24px;
+    background-color: white;
+    border-radius: 2px;
+    transform: rotate(-45deg);
+    transition: all .3s ease-in;
+  }
+  
+  .close-container:hover .leftright{
+    transform: rotate(-45deg);
+    background-color: #FF2E00;
+  }
+  .close-container:hover .rightleft{
+    transform: rotate(45deg);
+    background-color: #FF2E00;
+  }
+  

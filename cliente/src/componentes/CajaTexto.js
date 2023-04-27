@@ -8,30 +8,25 @@ export const CajaTexto = (props) => {
 
   const handleInput = (event) => {
     setErrorMsg(event.target.validationMessage); // Actualiza el estado 'errorMsg' con el mensaje de error proporcionado por el navegador
+    setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
     const aux = props.id;
     if (aux === "precio" || aux === "Cambiar precio") {
       if (event.target.value < props.min) {
         setErrorMsg(`El precio ingresado es demasiado bajo ${1} dígito)`); // Establece un mensaje de error personalizado si el valor es demasiado corto
-        setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
       } else if (event.target.value.match(props.regex)) {
         setErrorMsg(`El precio debe ser mayor a 1Bs`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
-        setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
       } else if (isNaN(event.target.value)) {
         setErrorMsg("El valor ingresado debe ser un número"); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
-        setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
       }
     } else {
       if (event.target.value.length < props.min) {
         setErrorMsg(
           `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
         ); // Establece un mensaje de error personalizado si el valor es demasiado corto
-        setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
       } else if (event.target.value.match(props.regex)) {
         setErrorMsg(`El valor ingresado contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
-        setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
       } else {
         setErrorMsg(""); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
-        setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
       }
     }
   };

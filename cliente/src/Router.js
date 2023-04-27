@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export const Router = () => {
   const [buscar, setBuscar] = useState(false)
+  
   const actualizarBusqueda = (nuevaBusqueda) => {
     setBuscar(nuevaBusqueda);
   }

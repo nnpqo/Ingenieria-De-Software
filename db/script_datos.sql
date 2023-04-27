@@ -56,7 +56,7 @@ insert into etiqueta_modelo (id_etiqueta, id_modelo_dispositivo) values
 ('1', '6'),
 ('1', '7'),
 ('1', '8'),
-('1', '9');
+('1', '9'),
 ('2', '10'),
 ('2', '11'),
 ('2', '12'),

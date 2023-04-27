@@ -2,7 +2,7 @@ import { instancia } from "./api";
 
 export const getDispositivosBusqueda = (data) => {
   return instancia
-    .get("/getBusqueda/" + data)
+    .get("/getBusqueda/"+ data)
     .then((res) => {
       return res.data;
     })
@@ -13,7 +13,7 @@ export const getDispositivosBusqueda = (data) => {
 
 export const getProducto = (data) => {
   return instancia
-    .get("/getProducto/" + data)
+    .get("/getProducto"+ data)
     .then((res) => {
       return res.data;
     })

@@ -8,6 +8,7 @@ import {
   getEtiquetas,
   guardarImagen,
 } from "../API/api";
+import { getDispositivosBusqueda } from "../API/productos";
 import { ImagenFormulario } from "./ImagenFormulario";
 import { CajaTexto, TextArea } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
@@ -17,8 +18,8 @@ import { Aviso } from "./Aviso";
 import { Producto } from "./Producto";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
-import { borrar } from "./Aviso"
-import {Bienvenida} from "./Bienvenido"
+import { borrar } from "./Aviso";
+import { Bienvenida } from "./Bienvenido";
 
 export const VentanaFormulario = (props) => {
   const [, guardar, setGuardar] = useContext(prueba);
@@ -29,7 +30,6 @@ export const VentanaFormulario = (props) => {
   useEffect(() => {
     getEtiquetas().then((nombres) => setEtiquetas(nombres));
     getNombreModeloDispositivos().then((nombres) => setmodelos(nombres));
-    
   }, []);
   //const etiquetas = ["xiaomi", "samsumg"];
   const opcionesModificar = (
@@ -153,26 +153,28 @@ export const VentanaFormulario = (props) => {
 };
 
 export const Ventana = (props) => {
-  let guardar = useContext(prueba)[1];
-
-  const [productos, setProductos] = useState({});
+  const [productos, setProductos] = useState([]);
   const [etiquetas, setEtiquetas] = useState([]);
-  const [cambioVisible,setcambioVisible]=useState(false)
+  const [cambioVisible, setcambioVisible] = useState(false);
 
   useEffect(() => {
-    const getProdructo = async () => {
-      const result = await instancia.get("/getAllModeloDispositivo");
-      setProductos(result.data);
-      console.log(result.data);
-      console.log(guardar);
-    };
-    getProdructo();
+    const getProdructos = new Promise((resolve, reject) => {
+      let palabra = document.getElementById("buscar").value !== "" ? document.getElementById("buscar").value : "&" ;
+      const result = getDispositivosBusqueda(palabra);
+      console.log ("borrado")
+      result ? resolve(result) : reject([]);
+    });
+
+    getProdructos
+      .then((result) => {setProductos(result.dispositivos[0])})
+      .catch((e) => setProductos([]));
+    console.log(productos);
     setEtiquetas(props.lista);
     console.log(etiquetas);
-  }, [props.lista,cambioVisible]);
+  },[props.lista, cambioVisible]);
 
-  let prod = productos.modelos?.map((pro) => {
-    if (etiquetas.length == 0) {
+  let prod = productos?.map((pro) => {
+    if (etiquetas.length === 0) {
       return (
         <>
           <Producto
@@ -187,20 +189,20 @@ export const Ventana = (props) => {
       return etiquetas.map((eti) => {
         if (pro.etiqueta === eti) {
           console.log(eti);
-          if (pro.visible===1){
-          return (
-            <>
-              <Producto                
-                cambioVisible={cambioVisible}
-                funActualizar={setcambioVisible}
-                id={pro.id}
-                ruta={pro.ruta_imagen}
-                etiqueta={pro.etiqueta}
-                nombre={pro.nombre}
-              />
-            </>
-          );
-        }
+          if (pro.visible === 1) {
+            return (
+              <>
+                <Producto
+                  cambioVisible={cambioVisible}
+                  funActualizar={setcambioVisible}
+                  id={pro.id}
+                  ruta={pro.ruta_imagen}
+                  etiqueta={pro.etiqueta}
+                  nombre={pro.nombre}
+                />
+              </>
+            );
+          }
         } else {
           return false;
         }
@@ -216,7 +218,9 @@ export const Ventana = (props) => {
 
   return (
     <>
-      <div className="ventana-productos">{etiquetas.length === 0? (<Bienvenida/>) :mostrarProd}</div>
+      <div className="ventana-productos">
+        {etiquetas.length === 0 ? <Bienvenida /> : mostrarProd}
+      </div>
     </>
   );
 };
@@ -242,7 +246,7 @@ const sinProducto = () => {
         Lo siento, no hemos encontrado resultados
       </h1>
       <h1 className="sin-producto1">que coincidan con tu búsqueda</h1>
-   </div>
+    </div>
   );
 };
 

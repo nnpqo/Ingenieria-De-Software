@@ -2,7 +2,7 @@ import React from "react";
 import "../estilos/producto.css";
 import samsung from "../imagenes/samsung_g.jpg";
 import { Aviso } from "./Aviso";
-import {eliminarProducto} from "../API/productos"
+import { eliminarProducto } from "../API/productos";
 
 
 export const Producto = (props) => {
@@ -11,14 +11,22 @@ export const Producto = (props) => {
   return (
     <div className="pantalla" id={props.nombre}>
       <div className="san">
-        <Aviso trigger={Basurero()}
+        <Aviso
+          trigger={Basurero()}
           mensaje="¿Está seguro de eliminar este modelo de dispositivo?"
           bt1Nombre={"Si"}
           bt1Estilo={"botonSi"}
-          bt1Funcion={() => {eliminar(props.id);
-            props.cambioVisible? props.funActualizar(false):props.funActualizar(true)}}
+          bt1Funcion={() => {
+            const elProducto = new Promise((resolve, reject) => {
+              const result = eliminarProducto(props.id);
+              resolve(result);
+            });
+            elProducto.then(result => result)
+            props.funActualizar(!props.cambioVisible);
+          }}
           bt2Nombre={"No"}
-          bt2Estilo={"botonNo"} />
+          bt2Estilo={"botonNo"}
+        />
         <img className="product" src={ruta} />
         <h4 className="tittle">{props.etiqueta}</h4>
         <h4 className="tittle">{props.nombre}</h4>
@@ -31,11 +39,7 @@ const Basurero = () => {
   return (
     <button className="color">
       <div className="eliminar">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
@@ -54,13 +58,13 @@ const Basurero = () => {
         </svg>
       </div>
     </button>
-  )
-}
-const eliminar = async (id) => {
-  console.log("tratando de eliminar:"+id)
-  try {
-    await eliminarProducto(id);
-  } catch (error) {
-    console.log(error);
-  }
+  );
 };
+// const eliminar = async (id) => {
+//   console.log("tratando de eliminar:" + id);
+//   try {
+//     await eliminarProducto(id);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

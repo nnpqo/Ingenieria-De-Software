@@ -125,11 +125,16 @@ router.get("/getProducto/:nombre", (req, res) => {
 });
 
 router.get("/getBusqueda/:busqueda", (req, res) => {
-  const palabra = req.params.busqueda;
+  let p = req.params.busqueda;
+  
+  if(p==="&"){
+    p = ""
+  }
+  console.log(p + "holis");
   const sql = "call buscar_modelo(?)";
-  db.query(sql, [palabra], (error, results, fields) => {
+  db.query(sql, [p], (error, results, fields) => {
     if (error) {
-      res.send("Error al obtener dispositivo móvil.");
+      res.json({ error : "Error al obtener dispositivo móvil."});
     } else {
       res.json({ dispositivos: results });
     }

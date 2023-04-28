@@ -53,7 +53,7 @@ router.put("/actualizarModelo", (req, res) => {
   const precio = req.body.precio;
   db.query(
     "call modificar_modelo(?,?,?,?,?,?)",
-    [nombreAntiguio, nombreNuevo, descripcionNueva, etiquetaNueva, nuevaRuta, precio],
+    [nombreAntiguio, nombreNuevo, descripcionNueva, etiquetaNueva, precio,nuevaRuta],
 
     (error, results, fields) => {
       if (error) {

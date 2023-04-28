@@ -139,6 +139,7 @@ END
 
 /*-------------------------------------------------*/
 /*procedimiento almacenado para obtener los datos de un modelo (marca,modelo,precio y descripcion)*/
+drop procedure if exists obtener_caracteristicas_modelo;
 delimiter //
 CREATE PROCEDURE obtener_caracteristicas_modelo(IN nomb_modelo VARCHAR(150))
 BEGIN
@@ -159,7 +160,7 @@ drop procedure if exists buscar_modelo;
 delimiter //
 CREATE PROCEDURE buscar_modelo(IN nombre_modelo VARCHAR(150))
 BEGIN 
-   select distinct m.id, m.visible, m.nombre, m.ruta_imagen, m.descripcion, m,precio_venta_sugerido as precio, e.nombre as etiqueta
+   select distinct m.id, m.visible, m.nombre, m.ruta_imagen, m.descripcion, m.precio_venta_sugerido as precio, e.nombre as etiqueta
    from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e
    where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 
         and m.nombre like CONCAT('%',nombre_modelo,'%') 

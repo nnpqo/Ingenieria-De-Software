@@ -39,3 +39,13 @@ begin
 	end if;
 end 
 $$
+
+drop trigger if exists validacion_etiquetas; 
+DELIMITER $$ 
+create trigger validacion_etiquetas before insert on etiquetas for each row
+begin 
+    if not (new.nombre REGEXP '^[ a_zA-Z]+$'  and length(new.nombre) >= '2' and length(new.nombre) <= '20')
+        then SIGNAL SQLSTATE '45000'
+        set MESSAGE_TEXT = "El campo 'nombre' no cumple el formato requerido" ;
+end 
+$$

@@ -81,7 +81,7 @@ export const AvisoEti = (props) => {
               id={"etiquetaFormulario"}
               min={2}
               max={20}
-              regex={"[ a-zA-Z0-9]+"}
+              regex={"^[a-zA-Z]+$"}
             />
             <div className="botones-etiqueta">
               <Boton

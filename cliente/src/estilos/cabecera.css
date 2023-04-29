@@ -132,6 +132,10 @@
   gap: 0;
 }
 
+.buscar-no-visible{
+  display:none;
+}
+
 .contenedor-icono{
   background-color: #0E84C7;
   height: 35px;

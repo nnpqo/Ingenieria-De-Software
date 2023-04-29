@@ -13,6 +13,7 @@ export const VentanaPrincipal = (props) => {
   const [guardar, setGuardar] = useState(false);
   const [ventana, setVentana] = useState(0);
   const [checkboxesSeleccionados, setCheckboxesSeleccionados] = useState([]);
+  
  /* useEffect(()=>{
 
   },[])*/
@@ -34,6 +35,7 @@ export const VentanaPrincipal = (props) => {
       <div className="ventana-principal">
         {props.menu === 1 && (
           <>
+            {props.setBarraBusqueda(true)}
             <MenuEtiquetas
               manejarSelecciónSelection={manejarSelecciónSelection}
             />
@@ -45,6 +47,7 @@ export const VentanaPrincipal = (props) => {
           </div> */}
         {props.menu === 2 && (
           <>
+            {props.setBarraBusqueda(false)}
             <Menu />
             {ventana === 0 && (
               <VentanaFormulario

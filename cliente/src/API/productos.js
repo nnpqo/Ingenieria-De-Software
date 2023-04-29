@@ -24,7 +24,7 @@ export const getProducto = (data) => {
 
 export const eliminarProducto = (data) => {
   return instancia
-    .put("/setVisible/" + data)
+    .put("/setVisible/" + data.id)
     .then((res) => {
       return res.data;
     })

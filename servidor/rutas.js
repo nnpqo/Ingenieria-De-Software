@@ -23,8 +23,9 @@ router.post("/setModelo", (req, res) => {
     [nombre, rutaImg, descrip, precio],
     (error, results, fields) => {
       if (error) {
+        console.error("error: " + error.message);
         res.send({
-          message: "Error al guardar: " + error.message,
+          message: "Error al guardar",
           error: true,
         });
       } else {
@@ -53,12 +54,20 @@ router.put("/actualizarModelo", (req, res) => {
   const precio = req.body.precio;
   db.query(
     "call modificar_modelo(?,?,?,?,?,?)",
-    [nombreAntiguio, nombreNuevo, descripcionNueva, etiquetaNueva, precio,nuevaRuta],
+    [
+      nombreAntiguio,
+      nombreNuevo,
+      descripcionNueva,
+      etiquetaNueva,
+      precio,
+      nuevaRuta,
+    ],
 
     (error, results, fields) => {
       if (error) {
+        console.error("error: " + error.message);
         res.send({
-          message: "Error al actualizar : " + error.message,
+          message: "Error al modificar",
           error: true,
         });
       } else {
@@ -105,10 +114,11 @@ router.put("/setVisible/:id", (req, res) => {
     "update modelos_dispositivos_moviles set visible = 0 where id = ?";
   db.query(sql, [id], (error, results, fields) => {
     if (error) {
-      console.error("Error al ejecutar");
+      console.error("error : " + error.message)
+      res.send({mensaje: "Error al eliminar", error: true});
     } else {
       console.log(results);
-      console.log("eliminación exitosa");
+      res.send({mensaje : "Eliminación exitosa" , error: false});
     }
   });
 });
@@ -127,21 +137,19 @@ router.get("/getProducto/:nombre", (req, res) => {
 
 router.get("/getBusqueda/:busqueda", (req, res) => {
   let p = req.params.busqueda;
-  
-  if(p==="&"){
-    p = ""
+
+  if (p === "&") {
+    p = "";
   }
-  console.log(p + "holis");
   const sql = "call buscar_modelo(?)";
   db.query(sql, [p], (error, results, fields) => {
     if (error) {
-      res.json({ error : "Error al obtener dispositivo móvil."});
+      res.json({ error: "Error al obtener dispositivo móvil." });
     } else {
       res.json({ dispositivos: results });
     }
   });
 });
-
 
 router.post("/setEtiqueta/:etiqueta", (req, res) => {
   const palabra = req.params.etiqueta;
@@ -153,5 +161,5 @@ router.post("/setEtiqueta/:etiqueta", (req, res) => {
       res.send("Guardado correctamente.");
     }
   });
-})
+});
 module.exports = router;

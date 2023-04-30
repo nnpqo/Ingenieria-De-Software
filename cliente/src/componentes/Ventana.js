@@ -258,24 +258,3 @@ const sinProducto = () => {
     </div>
   );
 };
-
-const alerts = () => {
-  // const inputNombre = document.getElementById("nombreModelo");
-  // const inputDescripcion = document.getElementById("descripcion");
-  // if (
-  //   inputNombre.validity.patternMismatch ||
-  //   inputNombre.validity.tooLong ||
-  //   inputNombre.validity.tooShort ||
-  //   inputNombre.validity.valueMissing
-  // ) {
-  //   alert("nombre de producto no válido");
-  // } else {
-  //   if (
-  //     inputDescripcion.validity.tooShort ||
-  //     inputDescripcion.validity.tooLong ||
-  //     inputDescripcion.validity.valueMissing
-  //   ) {
-  //     alert("descripcion no válido");
-  //   }
-  // }
-};

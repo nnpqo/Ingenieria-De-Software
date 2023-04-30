@@ -16,7 +16,10 @@ begin
     elseif not (length(new.descripcion) <= '200' and length(new.descripcion) >= '10') 
         then SIGNAL SQLSTATE '45000'
         set MESSAGE_TEXT = "El campo 'Descripción' no cumple el formato requerido";
-    else 
+    elseif not (new.precio_venta_sugerido <= '2' and new.precio_venta_sugerido >= '20000') 
+        then SIGNAL SQLSTATE '45000'
+        set MESSAGE_TEXT = 'El precio no esta en el rango';
+    else
         set new.nombre = nom;   
 	end if;
 end 
@@ -34,8 +37,22 @@ begin
     elseif not (length(new.descripcion) <= '200' and length(new.descripcion) >= '10') 
         then SIGNAL SQLSTATE '45000'
         set MESSAGE_TEXT = "El campo 'Cambiar descripción' no cumple el formato requerido";
+    elseif not (new.precio_venta_sugerido <= '2' and new.precio_venta_sugerido >= '20000') 
+        then SIGNAL SQLSTATE '45000'
+        set MESSAGE_TEXT = 'El precio no esta en el rango';
     else 
         set new.nombre = nom;   
 	end if;
+end 
+$$
+
+drop trigger if exists validacion_etiquetas; 
+DELIMITER $$ 
+create trigger validacion_etiquetas before insert on etiquetas for each row
+begin 
+    if not (new.nombre REGEXP '^[ a_zA-Z]+$'  and length(new.nombre) >= '2' and length(new.nombre) <= '20')
+        then SIGNAL SQLSTATE '45000'
+        set MESSAGE_TEXT = "El campo 'nombre' no cumple el formato requerido" ;
+    end if;
 end 
 $$

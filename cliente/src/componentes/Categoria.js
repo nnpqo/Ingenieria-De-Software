@@ -54,7 +54,7 @@ export const Categoria = (props) => {
           titulo="AGREGAR ETIQUETA"
           bt1Nombre={"Guardar"}
           bt1Estilo={"guardar"}
-          bt1Funcion={()=>{ agregarEtiqueta();
+          bt1Funcion={()=>{ agregarEtiqueta(document.getElementById("etiquetaFormulario").value);
             nuevaEti? setNuevaEti(false):setNuevaEti(true)}}
           bt2Nombre={"Cancelar"}
           bt2Estilo={"cancelar"}

@@ -12,7 +12,7 @@ export const CajaTexto = (props) => {
     const aux = props.id;
     if (aux === "precio" || aux === "Cambiar precio") {
       if (event.target.value < props.min) {
-        setErrorMsg(`El precio ingresado debe ser mayor a ${1}.)`); // Establece un mensaje de error personalizado si el valor es demasiado corto
+        setErrorMsg(`El precio ingresado debe ser mayor a ${1}`); // Establece un mensaje de error personalizado si el valor es demasiado corto
       } else if (event.target.value.match(props.regex)) {
         setErrorMsg(`El precio debe ser mayor a 1Bs`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
       } else if (isNaN(event.target.value)) {

@@ -80,9 +80,9 @@ export const VentanaFormulario = (props) => {
         <CajaTexto
           nombre={"Precio*"}
           id={"precio"}
-          minimo={1}
-          maximo={5}
-          regex={"^[1-9][0-9]*$"}
+          min={1}
+          max={5}
+          regex={"^([1-9][0-9]{0,4})$"}
         />
       </div>
       <br />

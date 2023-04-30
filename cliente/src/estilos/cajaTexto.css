@@ -15,6 +15,7 @@ input[type="text"] {
   transition: box-shadow 0.15s;
   box-shadow: none;
   outline: none;
+flex-direction: column;
 }
 .combo-box {
   display: flex;
@@ -60,6 +61,7 @@ input[type="text"] {
   width: 175px;
 }
 .errorMensaje {
+ 
   color: #ff2e00;
   font-size: 15px;
   display: inline;
@@ -99,7 +101,10 @@ input:blank {
   box-shadow: #ff2e00 0 0 15px 0 !important;
   animation: mover 0.15s ease-in-out 0s;
 }
-
+.p{
+  display: flex;
+  flex-direction: row;
+}
 @keyframes mover {
   0% {
     margin-left: 0;

@@ -18,7 +18,15 @@ export const CajaTexto = (props) => {
       } else if (isNaN(event.target.value)) {
         setErrorMsg("El valor ingresado debe ser un número"); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
       }
-    } 
+    } else if (aux === "etiquetaFormulario") {
+      if (event.target.value.length < props.min) {
+        setErrorMsg(
+          `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
+        );
+      } else if (props.regex && !props.regex.match(event.target.value)) {
+        setErrorMsg('El valor ingresado tiene un caracter especial o número');
+      } 
+    }
     
   };
 

@@ -139,7 +139,7 @@
 .contenedor-icono{
   background-color: #0E84C7;
   height: 35px;
-  width: 40px;
+  width: 42px;
   cursor: pointer;
   border: none;
   background-image: url("../imagenes/search\ \(5\).svg");
@@ -148,21 +148,23 @@
 }
 
 .contenedor-icono:hover{
-  background-color: #0E84C7;
+  background-color: #2076a7;
 }
 
 #boton-X{
   
   background-color: white;
   height: 35px;
-  width: 50px;
+  width: 35px;
   cursor: pointer;
   border: none;
-  background-image: url("../imagenes/cruz-pequena.svg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #boton-X:hover{
-  border: 2px solid black;
+  background-color: #f5cdc5;
 }
 
 

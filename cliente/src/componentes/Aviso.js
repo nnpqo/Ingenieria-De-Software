@@ -116,7 +116,7 @@ export const borrar = () => {
   document.getElementById("image").value = "";
   document.getElementById("precio").value = "";
   document.getElementById("previsualizar").src =
-    "http://localhost:3001/images/img.png";
+    process.env.REACT_APP_API_URL + "/images/img.png";
 };
 export const Mensaje = (props) => {
   return (
@@ -242,7 +242,7 @@ export const Mensaje3 = (props) => {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     if (open) {
-       setTimeout(closeModal, 2000); 
+      setTimeout(closeModal, 2000);
     }
   }, [open]);
   const closeModal = () => setOpen(false);

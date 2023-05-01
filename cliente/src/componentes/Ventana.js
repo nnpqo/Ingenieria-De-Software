@@ -82,8 +82,8 @@ export const VentanaFormulario = (props) => {
           nombre={"Precio*"}
           id={"precio"}
           min={1}
-          max={6}
-          regex={"^[1-9][0-9]*$"}
+          max={5}
+          regex={"/^([1-9]\d{0,3}|1\d{4}|20000)$/"}
         />
       </div>
       <br />

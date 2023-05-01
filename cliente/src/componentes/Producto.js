@@ -21,8 +21,7 @@ export const Producto = (props) => {
             className="san">
             <Aviso2
               trigger={Basurero()}
-              mensaje="¿Está seguro de eliminar este modelo de dispositivo?"
-              mensaje2="Eliminado exitosamente!"
+              mensaje={"¿Está seguro de eliminar "+props.etiqueta+" "+props.nombre+" ?"}
               bt1Nombre={"Si"}
               bt1Estilo={"botonSi"}
               bt1Funcion={() => {

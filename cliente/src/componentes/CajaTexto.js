@@ -18,11 +18,17 @@ export const CajaTexto = (props) => {
         setErrorMsg(`El precio debe ser mayor a 1Bs`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
       } else if (isNaN(event.target.value)) {
         setErrorMsg("El valor ingresado debe ser un número"); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
-      } else if (parseInt(event.target.value.precio)>20000  ){
-        setErrorMsg(`El precio ingresado debe ser menor a ${20000}.)`) 
-          
+      } else if (parseInt(event.target.value.precio) > 20000) {
+        setErrorMsg(`El precio ingresado debe ser menor a ${20000}.)`);
       }
-
+    } else if (aux === "etiquetaFormulario") {
+      if (event.target.value.length < props.min) {
+        setErrorMsg(
+          `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
+        );
+      } else if (props.regex && !props.regex.match(event.target.value)) {
+        setErrorMsg("El valor ingresado tiene un caracter especial o número");
+      }
     } else {
       if (event.target.value.length < props.min) {
         setErrorMsg(
@@ -34,7 +40,6 @@ export const CajaTexto = (props) => {
         setErrorMsg(""); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
       }
     }
-    
   };
 
   const handleInvalid = (event) => {
@@ -59,26 +64,27 @@ export const CajaTexto = (props) => {
         onInvalid={handleInvalid}
         className={isValid ? "" : "invalid"}
       />
-      {!isValid && (<div className ={props.class}>
-        <div className="errorMensaje">
-          <div className="fondo">
-            <div className="icon">
-              <svg
-                viewBox="0 0 24 24"
-                fill="#ffffff"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm-1.5-5.009c0-.867.659-1.491 1.491-1.491.85 0 1.509.624 1.509 1.491 0 .867-.659 1.509-1.509 1.509-.832 0-1.491-.642-1.491-1.509zM11.172 6a.5.5 0 0 0-.499.522l.306 7a.5.5 0 0 0 .5.478h1.043a.5.5 0 0 0 .5-.478l.305-7a.5.5 0 0 0-.5-.522h-1.655z"
-                  fill="#ff2e00"
-                />
-              </svg>
+      {!isValid && (
+        <div className={props.class}>
+          <div className="errorMensaje">
+            <div className="fondo">
+              <div className="icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="#ffffff"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm-1.5-5.009c0-.867.659-1.491 1.491-1.491.85 0 1.509.624 1.509 1.491 0 .867-.659 1.509-1.509 1.509-.832 0-1.491-.642-1.491-1.509zM11.172 6a.5.5 0 0 0-.499.522l.306 7a.5.5 0 0 0 .5.478h1.043a.5.5 0 0 0 .5-.478l.305-7a.5.5 0 0 0-.5-.522h-1.655z"
+                    fill="#ff2e00"
+                  />
+                </svg>
+              </div>
             </div>
+            &nbsp; &nbsp; &nbsp;{errorMsg}
           </div>
-          &nbsp; &nbsp; &nbsp;{errorMsg}
-        </div>
         </div>
       )}
     </div>

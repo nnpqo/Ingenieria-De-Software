@@ -64,6 +64,19 @@
   justify-content: space-between;
   padding: 5px;
 }
+
+.guardar:hover {
+  -webkit-transform:scale(1.1);
+  transform:scale(1.1);
+}
+.guardar {overflow:hidden;}
+
+.cancelar:hover {
+  -webkit-transform:scale(1.1);
+  transform:scale(1.1);
+}
+.cancelar {overflow:hidden;}
+
 .etiqueta_precio {
   display: flex;
   width: 400px;

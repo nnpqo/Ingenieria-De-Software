@@ -24,5 +24,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vscode
+<<<<<<< HEAD
 env 
 env*
+=======
+
+.env*
+>>>>>>> yanina-bugs

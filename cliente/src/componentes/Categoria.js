@@ -117,7 +117,7 @@ const Etiqueta = (props) => {
 const iconoAgregar = () => {
   return (
     <button className="icono-agregar">
-        <img src={logo}></img>
+        <img className="icono" src={logo}></img>
         </button>
   )
 }

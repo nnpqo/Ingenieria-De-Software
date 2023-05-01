@@ -127,7 +127,7 @@ export const VentanaFormulario = (props) => {
                   nombre="CANCELAR"
                   mensaje="¿Está seguro de cancelar el registro?"
                   estilos={"cancelar"}
-                  bt1Nombre={"Si"}
+                  bt1Nombre={"Sí"}
                   bt1Estilo={"botonSi"}
                   bt1Funcion={borrar}
                   bt2Nombre={"No"}
@@ -138,7 +138,7 @@ export const VentanaFormulario = (props) => {
                   nombre="CANCELAR"
                   mensaje="¿Está seguro de descartar los cambios?"
                   estilos={"cancelar"}
-                  bt1Nombre={"Si"}
+                  bt1Nombre={"Sí"}
                   bt1Estilo={"botonSi"}
                   bt1Funcion={borrar}
                   bt2Nombre={"No"}

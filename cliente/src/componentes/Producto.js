@@ -1,6 +1,6 @@
 import React from "react";
 import "../estilos/producto.css";
-import { Aviso, eliminar } from "./Aviso";
+import { Aviso2, eliminar } from "./Aviso";
 import { Popupproducto } from "./Popupproducto";
 import samsung from "../imagenes/samsung_g.jpg";
 
@@ -19,9 +19,10 @@ export const Producto = (props) => {
             //   mostrarmodelo(props, ruta);
             // }}
             className="san">
-            <Aviso
+            <Aviso2
               trigger={Basurero()}
               mensaje="¿Está seguro de eliminar este modelo de dispositivo?"
+              mensaje2="Eliminado exitosamente!"
               bt1Nombre={"Si"}
               bt1Estilo={"botonSi"}
               bt1Funcion={() => {
@@ -34,7 +35,7 @@ export const Producto = (props) => {
               }}
               bt2Nombre={"No"}
               bt2Estilo={"botonNo"}
-            />
+           />
             <img className="product" src={ruta} />
             <h4 className="tittle">{props.etiqueta}</h4>
             <h4 className="tittle">{props.nombre}</h4>

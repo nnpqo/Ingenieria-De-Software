@@ -116,3 +116,143 @@
 #tex{
   margin-right: 182px;
 }
+
+.mensaje-popup {
+  color: #0655ff;
+}
+.mensaje2-content {
+  background-color: #0655ff;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  align-content: center;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  border: none;
+  height: 250px;
+  width: 35%;  
+  padding: 30px;
+} 
+.mensaje-popup{
+   position:absolute; 
+    top:10%;
+   left:26%;
+  /* width: 100px;
+   height: 100px; */  
+}
+/* .mensaje-popup,
+.contenedor{
+  padding:10px;
+  margin: 10px;
+} */
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48vh;
+  position:absolute; 
+   top:-390%;
+   left:25%;
+}
+
+.loading {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.circle {
+  stroke: #ffffff;
+  /*  stroke: rgb(7, 251, 7); */
+}
+
+.check {
+  stroke: #ffffff;
+  /* stroke: rgb(7, 251, 7); */
+}
+.circle-loading {
+  /* stroke: rgb(154, 246, 154); */
+  stroke: #9f9696;
+}
+
+.loading {
+  width: 124px;
+  height: 124px;
+}
+
+.loading svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.circle {
+  transform: rotate(-90deg);
+  transform-origin: center;
+  stroke-dasharray: 380;
+  stroke-dashoffset: 380;
+  animation: circle_4 1s ease-in-out forwards;
+}
+
+.check {
+  stroke-dasharray: 45;
+  stroke-dashoffset: 45;
+  animation: check_4 0.1s 1s ease-in-out forwards;
+}
+
+@keyframes circle_4 {
+  0% {
+    stroke-dashoffset: 380;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes check_4 {
+  0%{
+    stroke-dashoffset: 45;
+  }
+  100% {
+    stroke-dashoffset: 90;
+  }
+  
+}
+.botonOk {
+  background-color: #0dc832;
+  color: white;
+  border-radius: 20px;
+  font-size: 30px;
+  width: 70px;
+  height: 40px;
+  border: none;
+  padding: 1.5%;
+  cursor: pointer;
+  position:absolute; 
+    top:420%;
+   left:32%;
+}
+.botonOk h2 {
+  font-weight: normal;
+  font-size: 25px;
+  text-align: center;
+}
+
+.mensajeEliminar {
+  color: white;
+  font-size: 100px;
+  position:absolute; 
+  top:50px;
+ left:32%;
+}
+.contenedor2 {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  height: 48vh;
+  position:absolute; 
+   top:95px;
+   left:25%;
+}

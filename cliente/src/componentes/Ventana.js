@@ -14,7 +14,7 @@ import { CajaTexto, TextArea } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
 import "../estilos/ventana.css";
 import "../estilos/boton.css";
-import { Aviso } from "./Aviso";
+import { Aviso, Mensaje } from "./Aviso";
 import { Producto } from "./Producto";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
@@ -110,7 +110,33 @@ export const VentanaFormulario = (props) => {
             {props.tipo === "modificar" && opcionesModificar}
 
             <div className="botones">
-              <Boton
+            {props.tipo === "registro"?
+              (
+                <Mensaje
+                nombre="GUARDAR"
+                mensaje="guardado exitosamente!"
+                estilos={"guardar"}
+                bt1Nombre={"OK"}
+                bt1Estilo={"botonOk"}
+                funcion={() => {
+                  guardarImagen();
+                  setModeloDispositivo();
+                }}
+              />
+              ):(
+                <Mensaje
+                nombre="GUARDAR"
+                mensaje="Modificado exitosamente!"
+                estilos={"guardar"}
+                bt1Nombre={"OK"}
+                bt1Estilo={"botonOk"}
+                funcion={() => {
+                  guardarImagen();
+                  updateModeloDispositivo();
+                }}
+              />
+              )}
+              {/* <Boton
                 nombre={"GUARDAR"}
                 estilos={"guardar"}
                 funcion={() => {
@@ -121,7 +147,7 @@ export const VentanaFormulario = (props) => {
                     updateModeloDispositivo();
                   }
                 }}
-              />
+              /> */}
               {props.tipo === "registro" ? (
                 <Aviso
                   nombre="CANCELAR"

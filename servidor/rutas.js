@@ -18,6 +18,7 @@ router.post("/setModelo", (req, res) => {
   const descrip = req.body.descripcion;
   const etiqueta = req.body.etiqueta;
   const precio = req.body.precio;
+  console.log(precio);
   db.query(
     "call registrar_modelo(?,?,?,?)",
     [nombre, rutaImg, descrip, precio],

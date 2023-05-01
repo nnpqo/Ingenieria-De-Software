@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Boton } from "./Boton";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "../estilos/aviso.css";
 import { CajaTexto } from "./CajaTexto";
+import { useState } from "react";
 
 export const Aviso = (props) => {
   return (
@@ -21,7 +22,6 @@ export const Aviso = (props) => {
       nested
       className="aviso"
     >
-      
       {(close) => (
         <>
           {props.titulo && <h1 className="titulo">{props.titulo}</h1>}
@@ -92,8 +92,7 @@ export const AvisoEti = (props) => {
                     props.bt1Funcion && props.bt1Funcion();
                   }
                   close();
-                }
-              }
+                }}
               />
               {props.bt2Nombre && (
                 <Boton
@@ -119,73 +118,74 @@ export const borrar = () => {
     "http://localhost:3001/images/img.png";
 };
 export const Mensaje = (props) => {
-
   return (
     <Popup
       trigger={
-        <button className={props.estilos} >
+        <button className={props.estilos}>
           <h2>{props.nombre}</h2>
         </button>
-        
       }
       modal
       hover="click"
       className="mensaje2"
-      
     >
       {(close) => (
         <div className="mensaje-popup">
-        {props.mensaje && <p className="mensaje">{props.mensaje}</p>}
-        <div className="contenedor">
-           <div className="loading">
-               <svg
-                     xmlns="http://www.w3.org/2000/svg"
-                     width="124"
-                     height="124"
-                     viewBox="0 0 124 124"
-                   >
-                   <circle
-                      class="circle-loading"
-                      cx="62"
-                      cy="62"
-                      r="59"
-                      fill="none"
-                      stroke="hsl(271, 76%, 74%)"
-                      stroke-width="6px"
-                   ></circle>
-                   <circle
-                      className="circle"
-                      cx="62"
-                      cy="62"
-                      r="59"
-                      fill="none"
-                      stroke="hsl(271, 76%, 53%)"
-                      stroke-width="6px"
-                      stroke-linecap="round"
-                   ></circle>
-                   <polyline
-                       className="check"
-                       points="73.56 48.63 57.88 72.69 49.38 62"
-                       fill="none"
-                       stroke="hsl(271, 76%, 53%)"
-                       stroke-width="6px"
-                       stroke-linecap="round"
-                  ></polyline>
+          {props.mensaje && <p className="mensaje">{props.mensaje}</p>}
+
+          <div className="contenedor">
+            <div className="loading">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="124"
+                height="124"
+                viewBox="0 0 124 124"
+              >
+                <circle
+                  class="circle-loading"
+                  cx="62"
+                  cy="62"
+                  r="59"
+                  fill="none"
+                  stroke="hsl(271, 76%, 74%)"
+                  stroke-width="6px"
+                ></circle>
+                <circle
+                  className="circle"
+                  cx="62"
+                  cy="62"
+                  r="59"
+                  fill="none"
+                  stroke="hsl(271, 76%, 53%)"
+                  stroke-width="6px"
+                  stroke-linecap="round"
+                ></circle>
+                <polyline
+                  className="check"
+                  points="73.56 48.63 57.88 72.69 49.38 62"
+                  fill="none"
+                  stroke="hsl(271, 76%, 53%)"
+                  stroke-width="6px"
+                  stroke-linecap="round"
+                ></polyline>
               </svg>
-           </div>
-         </div>
-         <Boton
-                nombre={props.bt1Nombre}
-                estilos={props.bt1Estilo}
-                funcion={() => {
-                  {props.funcion && props.funcion();}
-                  close();
-                }}
-              />
-       </div>
-   )}
-      
-      </Popup>
+            </div>
+          </div>
+          {
+            <Boton
+              nombre={props.bt1Nombre}
+              estilos={props.bt1Estilo}
+              funcion={() => {
+                {
+                  props.funcion && props.funcion();
+                }
+                close();
+              }}
+            />
+          }
+        </div>
+      )}
+    </Popup>
   );
 };
 export const Aviso2 = (props) => {
@@ -204,13 +204,12 @@ export const Aviso2 = (props) => {
       nested
       className="aviso"
     >
-      
       {(close) => (
         <>
           {props.titulo && <h1 className="titulo">{props.titulo}</h1>}
           {props.mensaje && <p className="mensaje">{props.mensaje}</p>}
           {props.extra}
-          <div className="botonesAviso" >
+          <div className="botonesAviso">
             <Mensaje
               nombre={props.bt1Nombre}
               mensaje={props.mensaje2}
@@ -235,5 +234,39 @@ export const Aviso2 = (props) => {
         </>
       )}
     </Popup>
+  );
+};
+
+export const Mensaje3 = (props) => {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (open) {
+       setTimeout(closeModal, 2000); 
+    }
+  }, [open]);
+  const closeModal = () => setOpen(false);
+  return (
+    <div>
+      <button
+        type="button"
+        className={props.estilos}
+        onClick={() => {
+          props.funcion();
+          setOpen((o) => !o);
+        }}
+      >
+        <h2>{props.nombre}</h2>
+      </button>
+      <Popup
+        className="mensaje3"
+        open={open}
+        closeOnDocumentClick
+        onClose={closeModal}
+      >
+        <div>
+          <span className="mensaje">{props.mensaje}</span>
+        </div>
+      </Popup>
+    </div>
   );
 };

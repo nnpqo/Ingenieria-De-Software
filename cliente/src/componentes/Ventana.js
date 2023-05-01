@@ -14,7 +14,7 @@ import { CajaTexto, TextArea } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
 import "../estilos/ventana.css";
 import "../estilos/boton.css";
-import { Aviso, Mensaje } from "./Aviso";
+import { Aviso, Mensaje3 } from "./Aviso";
 import { Producto } from "./Producto";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
@@ -26,6 +26,7 @@ export const VentanaFormulario = (props) => {
   //const modelos = ["p30 pro", "galaxy s20", "redmi note 11"];
   const [modelos, setmodelos] = useState([]);
   const [etiquetas, setEtiquetas] = useState([]);
+  const [men, setMensaje] = useState("");
 
   useEffect(() => {
     getEtiquetas().then((nombres) => setEtiquetas(nombres));
@@ -110,44 +111,30 @@ export const VentanaFormulario = (props) => {
             {props.tipo === "modificar" && opcionesModificar}
 
             <div className="botones">
-            {props.tipo === "registro"?
-              (
-                <Mensaje
-                nombre="GUARDAR"
-                mensaje="guardado exitosamente!"
-                estilos={"guardar"}
-                bt1Nombre={"OK"}
-                bt1Estilo={"botonOk"}
-                funcion={() => {
-                  guardarImagen();
-                  setModeloDispositivo();
-                }}
-              />
-              ):(
-                <Mensaje
-                nombre="GUARDAR"
-                mensaje="Modificado exitosamente!"
-                estilos={"guardar"}
-                bt1Nombre={"OK"}
-                bt1Estilo={"botonOk"}
-                funcion={() => {
-                  guardarImagen();
-                  updateModeloDispositivo();
-                }}
-              />
+              {props.tipo === "registro" ? (
+                  <Mensaje3
+                    nombre="GUARDAR"
+                    estilos={"guardar"}
+                    funcion={() => {
+                      guardarImagen();
+                      setModeloDispositivo().then(result => setMensaje(result))
+                    }}
+                    mensaje={men}
+                  />
+                
+              ) : (
+                <Mensaje3
+                  nombre="GUARDAR"
+                  estilos={"guardar"}
+                  bt1Nombre={"OK"}
+                  bt1Estilo={"botonOk"}
+                  funcion={() => {
+                    guardarImagen();
+                    updateModeloDispositivo().then(result => setMensaje(result))
+                  }}
+                  mensaje={men}
+                />
               )}
-              {/* <Boton
-                nombre={"GUARDAR"}
-                estilos={"guardar"}
-                funcion={() => {
-                  guardarImagen();
-                  if (props.tipo === "registro") {
-                    setModeloDispositivo();
-                  } else {
-                    updateModeloDispositivo();
-                  }
-                }}
-              /> */}
               {props.tipo === "registro" ? (
                 <Aviso
                   nombre="CANCELAR"

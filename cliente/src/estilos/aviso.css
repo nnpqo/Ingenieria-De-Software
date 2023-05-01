@@ -256,3 +256,16 @@
    top:95px;
    left:25%;
 }
+.mensaje3-content {
+  background-color: #0655ff;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  align-content: center;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  border: none;
+  height: 100px;
+  width: 25%;  
+  padding: 30px;
+} 

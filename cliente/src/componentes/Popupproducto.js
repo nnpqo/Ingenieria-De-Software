@@ -40,11 +40,13 @@ export const Popupproducto = (props) => {
                 <div className="centreado1">
                   <h3>Marca</h3>
                   <p>{props.etiqueta}</p>
+                  
                 </div>
 
                 <div className="centreado2">
                   <h3>Precio</h3>
-                  <p>{props.precio}</p>
+                  <p>{props.precio} Bs</p>
+                  <h4 className="Bs"></h4>
                 </div>
               </div>
 

@@ -17,8 +17,9 @@ export const CajaTexto = (props) => {
         setErrorMsg(`El precio debe ser mayor a 1Bs`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
       } else if (isNaN(event.target.value)) {
         setErrorMsg("El valor ingresado debe ser un número"); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
-      } else if (event.target.value <props.max){
-        setErrorMsg(`El precio ingresado debe ser menor a ${20000}.)`)
+      } else if (parseInt(event.target.value.precio)>20000  ){
+        setErrorMsg(`El precio ingresado debe ser menor a ${20000}.)`) 
+          
       }
 
     } else {
@@ -45,6 +46,9 @@ export const CajaTexto = (props) => {
       <input
         id={props.id}
         type="text"
+        // type= {props.id === "precio" ?  "number":"text"}
+        // max={props.id === "precio" ?   "20000":""}
+        // min={props.id === "precio" ?   "1":""}
         pattern={props.regex}
         maxLength={props.max}
         minLength={props.min}

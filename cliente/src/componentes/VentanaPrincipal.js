@@ -17,7 +17,11 @@ export const VentanaPrincipal = (props) => {
  /* useEffect(()=>{
 
   },[])*/
-
+  useEffect(()=>{
+    if(props.menu==2){
+      setCheckboxesSeleccionados([])
+    }
+  },[props.menu])
   function manejarSelecciónSelection(nombre, isChecked) {
     console.log(nombre+isChecked)
     if (isChecked) {

@@ -139,8 +139,9 @@ export const getNombreModeloDispositivos = () => {
   return instancia
     .get("/getAllModeloDispositivo")
     .then((res) => {
-      const modelos = res.data.modelos.map((modelo) =>  modelo.visible === 1 && modelo.nombre);
-      console.log(modelos);
+      const modelos = res.data.modelos.map((modelo) =>  modelo.visible === 1 && modelo.nombre)
+      .filter((modelo) => modelo !== false);
+      console.log("hola ss"+modelos);
       return modelos;
     })
     .catch((error) => {

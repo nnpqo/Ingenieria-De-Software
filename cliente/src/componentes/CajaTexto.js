@@ -11,14 +11,24 @@ export const CajaTexto = (props) => {
     setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
     const aux = props.id;
     if (aux === "precio" || aux === "Cambiar precio") {
-      if (event.target.value < props.min) {
-        setErrorMsg(`El precio ingresado es demasiado bajo ${1} dígito)`); // Establece un mensaje de error personalizado si el valor es demasiado corto
-      } else if (event.target.value.match(props.regex)) {
+      if (event.target.value.length === 1 && event.target.value === '0') {
         setErrorMsg(`El precio debe ser mayor a 1Bs`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
       } else if (isNaN(event.target.value)) {
         setErrorMsg("El valor ingresado debe ser un número"); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
-      }
-    } else {
+      }else if(event.target.value.includes('.')){
+        setErrorMsg('El precio solo acepta enteros')
+      }else if (event.target.value < props.min) {
+        setErrorMsg(`El precio ingresado es demasiado bajo ${1} dígito)`); // Establece un mensaje de error personalizado si el valor es demasiado corto
+      } 
+    } else if (aux === "etiquetaFormulario") {
+      if (event.target.value.length < props.min) {
+        setErrorMsg(
+          `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
+        );
+      } else if (props.regex && !props.regex.match(event.target.value)) {
+        setErrorMsg('El valor ingresado tiene un caracter especial o número');
+      } 
+    }else{
       if (event.target.value.length < props.min) {
         setErrorMsg(
           `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
@@ -29,6 +39,7 @@ export const CajaTexto = (props) => {
         setErrorMsg(""); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
       }
     }
+    
   };
 
   const handleInvalid = (event) => {
@@ -50,7 +61,7 @@ export const CajaTexto = (props) => {
         onInvalid={handleInvalid}
         className={isValid ? "" : "invalid"}
       />
-      {!isValid && (
+      {!isValid && (<div className ={props.class}>
         <div className="errorMensaje">
           <div className="fondo">
             <div className="icon">
@@ -69,6 +80,7 @@ export const CajaTexto = (props) => {
             </div>
           </div>
           &nbsp; &nbsp; &nbsp;{errorMsg}
+        </div>
         </div>
       )}
     </div>

@@ -23,7 +23,7 @@ export const Cabecera = (props) => {
             
           </Link>
         </div>
-        <Busqueda visible={true} actualizar={props.actualizar}></Busqueda>
+        <Busqueda visible={props.barra} actualizar={props.actualizar}></Busqueda>
         
         <div className="opciones-navbar">
           <Link to="/productos">

@@ -13,8 +13,7 @@
 
 # misc
 .DS_Store
-.env.p
-.env
+.env*
 .env.local
 .env.development.local
 .env.test.local
@@ -24,10 +23,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vscode
-<<<<<<< HEAD
-env 
-env*
-=======
 
 .env*
->>>>>>> yanina-bugs

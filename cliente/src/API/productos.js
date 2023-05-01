@@ -23,6 +23,7 @@ export const getProducto = (data) => {
 };
 
 export const eliminarProducto = (data) => {
+  console.log(data)
   return instancia
     .put("/setVisible/" + data)
     .then((res) => {

@@ -18,31 +18,66 @@ router.post("/setModelo", (req, res) => {
   const descrip = req.body.descripcion;
   const etiqueta = req.body.etiqueta;
   const precio = req.body.precio;
-  db.query(
-    "call registrar_modelo(?,?,?,?)",
-    [nombre, rutaImg, descrip, precio],
-    (error, results, fields) => {
-      if (error) {
-        console.error("error: " + error.message);
-        res.send({
-          message: "Error al guardar",
-          error: true,
-        });
-      } else {
-        db.query(
-          "call relacion_etiqueta_modelo(?)",
-          [etiqueta],
-          (error, results, fields) => {
-            if (error) {
-              console.error("Error al ejecutar consulta:", error.message);
-            } else {
-              res.send({ message: "Guardado correctamente", error: false });
-            }
+  let sql =
+    "select * from modelos_dispositivos_moviles where visible = 0 and nombre = ?";
+  db.query(sql,[nombre],(error, results, fields) =>{
+    if (error) throw error;
+    if (results.length === 0) {
+      console.log('No se encontraron resultados');
+      db.query(
+        "call registrar_modelo(?,?,?,?)",
+        [nombre, rutaImg, descrip, precio],
+        (error, results, fields) => {
+          if (error) {
+            res.send({
+              message: "Error al guardar: ",
+              error: true,
+            });
+          } else {
+            db.query(
+              "call relacion_etiqueta_modelo(?)",
+              [etiqueta],
+              (error, results, fields) => {
+                if (error) {
+                  console.error("Error al ejecutar consulta:", error.message);
+                } else {
+                  res.send({ message: "Guardado correctamente", error: false });
+                }
+              }
+            );
           }
-        );
+        }
+      );
+    } else {
+      console.log(results);
+      db.query(
+        "call modificar_modelo(?,?,?,?,?,?)",
+        [nombre, nombre, descrip, etiqueta, precio,rutaImg],
+    
+        (error, results, fields) => {
+          if (error) {
+            res.send({
+              message: "Error al actualizar : " + error.message,
+              error: true,
+            });
+          } else {
+            res.send({ message: "Guardado correctamente", error: false });
+          }
+        }
+      );
+      sql =
+      "update modelos_dispositivos_moviles set visible = 1 where nombre = ?";
+      db.query(sql, [nombre], (error, results, fields) => {
+        if (error) {
+        console.error("Error al ejecutar");
+      } else {
+        console.log(results);
+        console.log("aaahh");
       }
+    });
     }
-  );
+  });
+  
 });
 
 router.put("/actualizarModelo", (req, res) => {

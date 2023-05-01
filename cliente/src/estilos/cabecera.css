@@ -126,16 +126,20 @@
 
 .barra-buscar{
   height: 35px;
-  width: 300px;
+  width: 350px;
   display: flex;
   align-items: center;
   gap: 0;
 }
 
+.buscar-no-visible{
+  display:none;
+}
+
 .contenedor-icono{
   background-color: #0E84C7;
   height: 35px;
-  width: 45px;
+  width: 40px;
   cursor: pointer;
   border: none;
   background-image: url("../imagenes/search\ \(5\).svg");
@@ -145,6 +149,20 @@
 
 .contenedor-icono:hover{
   background-color: #0E84C7;
+}
+
+#boton-X{
+  
+  background-color: white;
+  height: 35px;
+  width: 50px;
+  cursor: pointer;
+  border: none;
+  background-image: url("../imagenes/cruz-pequena.svg");
+}
+
+#boton-X:hover{
+  border: 2px solid black;
 }
 
 

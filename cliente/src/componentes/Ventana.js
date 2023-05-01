@@ -237,7 +237,7 @@ export const Ventana = (props) => {
                 <div className="mens-bus">
                   <p>
                     Se encontraron {mostrarProd.length} modelos que coinciden
-                    con su busqueda
+                    con su búsqueda
                   </p>
                 </div>
               </>

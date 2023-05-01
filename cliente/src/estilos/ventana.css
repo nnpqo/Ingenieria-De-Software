@@ -220,14 +220,12 @@
 }
 
 .mens-bus {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
   font-weight: 300;
+  margin-left: 40px;
+  margin-top: 20px
   /*  position: relative; */
   /*  margin-bottom: 3rem; */
 }

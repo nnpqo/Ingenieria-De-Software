@@ -114,6 +114,7 @@ export const borrar = () => {
   document.getElementById("descripcion").value = "";
   document.getElementById("nombreModelo").value = "";
   document.getElementById("image").value = "";
+  document.getElementById("precio").value = "";
   document.getElementById("previsualizar").src =
     "http://localhost:3001/images/img.png";
 };

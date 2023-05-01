@@ -21,8 +21,8 @@ export const Producto = (props) => {
             className="san">
             <Aviso
               trigger={Basurero()}
-              mensaje="¿Está seguro de eliminar este modelo de dispositivo?"
-              bt1Nombre={"Si"}
+              mensaje="¿Está seguro de eliminar este modelo de producto?"
+              bt1Nombre={"Sí"}
               bt1Estilo={"botonSi"}
               bt1Funcion={() => {
                 const elProducto = new Promise((resolve, reject) => {

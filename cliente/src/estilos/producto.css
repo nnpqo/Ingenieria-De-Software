@@ -91,3 +91,6 @@
   box-sizing: border-box;
   text-overflow: ellipsis;
 }
+
+.pantalla:hover {-webkit-transform:scale(1.3);transform:scale(1.3);}
+.pantalla {overflow:hidden;}

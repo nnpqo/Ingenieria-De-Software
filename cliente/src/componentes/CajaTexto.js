@@ -12,13 +12,13 @@ export const CajaTexto = (props) => {
     const aux = props.id;
     if (aux === "precio" || aux === "Cambiar precio") {
       if (event.target.value < props.min) {
-        setErrorMsg(`El precio ingresado debe ser mayor a ${1}`); // Establece un mensaje de error personalizado si el valor es demasiado corto
+        setErrorMsg(`El precio ingresado debe ser mayor o igual a 1Bs`); // Establece un mensaje de error personalizado si el valor es demasiado corto
       } else if (event.target.value.match(props.regex)) {
         setErrorMsg(`El precio debe ser mayor a 1Bs`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
       } else if (isNaN(event.target.value)) {
         setErrorMsg("El valor ingresado debe ser un número"); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
       } else if (parseInt(event.target.value.id)>99999  ){
-        setErrorMsg("El precio ingresado debe ser menor a 99.999Bs") 
+        setErrorMsg("El precio ingresado debe ser menor o igual a 99.999Bs") 
           
       }
 

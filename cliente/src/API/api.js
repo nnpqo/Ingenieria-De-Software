@@ -1,5 +1,6 @@
 import axios from "axios";
 import { borrar } from "../componentes/Aviso";
+import { Mensaje } from "../componentes/Aviso";
 
 export const instancia = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -68,16 +69,22 @@ export const setModeloDispositivo = () => {
     ruta: rutaImg,
     precio: precio,
   };
-  console.log(datos);
-  instancia
+  console.log(precio);
+  return instancia
     .post("/setModelo", datos)
     .then((res) => {
-      alert(res.data.message);
+      /* alert(res.data.message); */
+
       if (!res.data.error) {
         borrar();
       }
+      const mensaje = res.data.message
+      return mensaje;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      return "hola"
+    });
 };
 
 export const updateModeloDispositivo = () => {
@@ -97,16 +104,21 @@ export const updateModeloDispositivo = () => {
     precio: precio,
   };
   console.log(datos);
-  instancia
+  return instancia
     .put("/actualizarModelo", datos)
     .then((res) => {
-      console.log(res.data);
-      alert(res.data.message);
+      /*  alert(res.data.message); */
+
       if (!res.data.error) {
         borrar();
       }
+      const mensaje = res.data.message
+      return mensaje;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      return "hola"
+    });
 };
 
 export const getModeloDispositivos = () => {

@@ -8,7 +8,7 @@ import { eliminarProducto } from "../API/productos";
 
 
 export const Producto = (props) => {
-  const ruta = "http://localhost:3001" + props.ruta;
+  const ruta = process.env.REACT_APP_API_URL + props.ruta;
  // console.log(ruta);
   return (
     <Popupproducto

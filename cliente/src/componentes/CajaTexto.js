@@ -13,21 +13,14 @@ export const CajaTexto = (props) => {
     if (aux === "precio" || aux === "Cambiar precio") {
       // if (event.target.value.length === 1 && event.target.value === '0') {
       if (event.target.value < props.min) {
-        setErrorMsg(`El precio ingresado debe ser mayor o igual ${1} Bs)`); // Establece un mensaje de error personalizado si el valor es demasiado corto
-      } else if (event.target.value.match(props.regex)) {
+        setErrorMsg(`El precio ingresado debe ser mayor o igual a 1Bs`); // Establece un mensaje de error personalizado si el valor es demasiado corto
+      } else if (!event.target.value.match(props.regex)) {
         setErrorMsg(`El precio debe ser mayor a 1Bs`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
       } else if (isNaN(event.target.value)) {
         setErrorMsg("El valor ingresado debe ser un número"); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
-      } else if (parseInt(event.target.value.precio) > 20000) {
-        setErrorMsg(`El precio ingresado debe ser menor a ${20000}.)`);
-      }
-    } else if (aux === "etiquetaFormulario") {
-      if (event.target.value.length < props.min) {
-        setErrorMsg(
-          `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
-        );
-      } else if (props.regex && !props.regex.match(event.target.value)) {
-        setErrorMsg("El valor ingresado tiene un caracter especial o número");
+      } else if (parseInt(event.target.value.id)>99999  ){
+        setErrorMsg("El precio ingresado debe ser menor o igual a 99.999Bs") 
+          
       }
     } else {
       if (event.target.value.length < props.min) {

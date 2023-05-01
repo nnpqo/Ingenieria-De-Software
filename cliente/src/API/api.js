@@ -2,7 +2,7 @@ import axios from "axios";
 import { borrar } from "../componentes/Aviso";
 
 export const instancia = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 let file = "null";
@@ -121,8 +121,8 @@ export const getModeloDispositivos = () => {
 };
 
 export const getEtiquetas = () => {
-  return axios
-    .get("http://localhost:3001/getEtiquetas")
+  return instancia
+    .get("/getEtiquetas")
     .then((res) => {
       const etiquetas = res.data.etiquetas;
       const nombres = etiquetas.map((etiqueta) => etiqueta.nombre);
@@ -136,9 +136,8 @@ export const getEtiquetas = () => {
 export const getNombreModeloDispositivos = () => {
   /*let e=eti
   console.log(e)*/
-  return axios
-
-    .get("http://localhost:3001/getAllModeloDispositivo")
+  return instancia
+    .get("/getAllModeloDispositivo")
     .then((res) => {
       const modelos = res.data.modelos.map((modelo) => modelo.nombre);
       console.log(modelos);

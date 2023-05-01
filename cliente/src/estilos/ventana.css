@@ -7,51 +7,43 @@
 
 .ventana-productos {
   display: flex;
-  flex-direction: row;
-  justify-content:flex-start;
-  
-  
-  flex-wrap: wrap;
-  padding: 30px;
-  width: 80%;
-  
+  flex-direction: column;
+  /* justify-content: flex-start; */
+
+  /* flex-wrap: wrap; */
+  /*   padding: 20px; */
+  width: 100%;
 }
 
 .direccion {
   color: white;
   width: 100%;
-  font-family: tahoma,sans-serif;
+  font-family: tahoma, sans-serif;
 }
 
-
-.formulario{
+.formulario {
   display: flex;
   flex-direction: column;
-   
-  
 }
- .contenedorImagenForm {
+.contenedorImagenForm {
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 77vh;
-  gap:50px;
-  
+  gap: 50px;
 }
-
 
 .campos {
   display: flex;
   flex-direction: column;
   width: 50%;
-
 }
 
 .titulo-Ventana {
   display: flex;
   flex-wrap: wrap;
   color: white;
-  width:  100%;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: center;
   margin: 20px;
@@ -70,18 +62,18 @@
   justify-content: space-between;
 }
 
-.sin-producto, .sin-producto1{
+.sin-producto,
+.sin-producto1 {
   color: white;
 }
 
-.contenedor-enunciado{
+.contenedor-enunciado {
   display: flex;
   flex-direction: column;
   height: 80vh;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   width: 100%;
-  
 }
 
 #container {
@@ -97,7 +89,7 @@
 
 *:after,
 *:before {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 #spooky {
@@ -108,39 +100,35 @@
 }
 
 #spooky #body {
-    position: relative;
-    margin: 50px auto 0;
-    width: 180px;
-    height: 220px;
-    background: #EDF1F2;
-    border-top-left-radius: 90px;
-    border-top-right-radius: 90px;   
+  position: relative;
+  margin: 50px auto 0;
+  width: 180px;
+  height: 220px;
+  background: #edf1f2;
+  border-top-left-radius: 90px;
+  border-top-right-radius: 90px;
 }
-
 
 #spooky #body:before,
 #spooky #body:after {
-    content: '';
-    position: absolute;
-    top: 130px;
-    display: inline-block;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #EDF1F2;
-    animation: floaty .2s infinite;
-   
+  content: "";
+  position: absolute;
+  top: 130px;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #edf1f2;
+  animation: floaty 0.2s infinite;
 }
 
 #spooky #body:before {
-    left: -18px;
+  left: -18px;
 }
 
 #spooky #body:after {
-    right: -18px;
+  right: -18px;
 }
-
-
 
 #spooky #body #eyes {
   display: flex;
@@ -152,73 +140,94 @@
   padding: 90px 0 0;
 }
 
-
 #spooky #body #eyes:before,
 #spooky #body #eyes:after {
-    content: ' ';
-    display: black;
-    width: 30px;
-    height: 30px;
-    background: black;
-    border-radius: 50%;
+  content: " ";
+  display: black;
+  width: 30px;
+  height: 30px;
+  background: black;
+  border-radius: 50%;
 }
 
 #spooky #body #mouth {
-    background: black;
-    margin: 40px auto 0;
-    width: 60px;
-    height: 34px;
-    border-radius: 50%;
-    animation: zoomy 2s infinite;
+  background: black;
+  margin: 40px auto 0;
+  width: 60px;
+  height: 34px;
+  border-radius: 50%;
+  animation: zoomy 2s infinite;
 }
 
-
 #spooky #body #feet {
-    position: absolute;
-    display: flex;
-    bottom: -18px;
-    width: 180px;
-    height: 36px;
-  
+  position: absolute;
+  display: flex;
+  bottom: -18px;
+  width: 180px;
+  height: 36px;
 }
 
 #spooky #body #feet > *,
 #spooky #body #feet::before,
 #spooky #body #feet::after {
-    content: ' ';
-    width: 36px;
-    height: 35px;
-    background: #EDF1F2;
-    border-radius: 50%;
-    border-bottom: 10px solid #f9f8f8;
+  content: " ";
+  width: 36px;
+  height: 35px;
+  background: #edf1f2;
+  border-radius: 50%;
+  border-bottom: 10px solid #f9f8f8;
 }
 
 #shadow {
-    margin: -90px auto 0;
-    background: #252f33;
-    width: 180px;
-    height: 40px;
-    border-radius: 50%;
-    animation: zoomy 2s infinite;
+  margin: -90px auto 0;
+  background: #252f33;
+  width: 180px;
+  height: 40px;
+  border-radius: 50%;
+  animation: zoomy 2s infinite;
 }
 
-
 @keyframes floaty {
-    0%, 100% {
-        transform: translateY(0);
-    }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
 
-    50% {
-        transform: translateY(-20px);
-    }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes zoomy {
-    0%, 100% {
-        transform: scale(1);
-    }
+  0%,
+  100% {
+    transform: scale(1);
+  }
 
-    50% {
-        transform: scale(0.8);
-    }
+  50% {
+    transform: scale(0.8);
+  }
+}
+
+.pro {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  flex-wrap: wrap;
+  padding: 30px;
+  width: 100%;
+}
+
+.mens-bus {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: 300;
+  /*  position: relative; */
+  /*  margin-bottom: 3rem; */
 }

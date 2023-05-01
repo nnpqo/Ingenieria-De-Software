@@ -241,7 +241,23 @@ export const Ventana = (props) => {
   return (
     <>
       <div className="ventana-productos">
-        {etiquetas.length === 0 ? <Bienvenida /> : mostrarProd}
+        {etiquetas.length === 0 ? (
+          <Bienvenida />
+        ) : (
+          <>
+            {prodFiltrado.length > 0 && (
+              <>
+                <div className="mens-bus">
+                  <p>
+                    Se encontraron {mostrarProd.length} modelos que coinciden
+                    con su búsqueda
+                  </p>
+                </div>
+              </>
+            )}
+            <div className="pro">{mostrarProd}</div>
+          </>
+        )}
       </div>
     </>
   );

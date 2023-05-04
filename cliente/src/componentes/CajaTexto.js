@@ -12,18 +12,24 @@ export const CajaTexto = (props) => {
     const aux = props.id;
     if (aux === "precio" || aux === "Cambiar precio") {
       // if (event.target.value.length === 1 && event.target.value === '0') {
-      if (event.target.value < props.min) {
+      if (event.target.value.trim() === '') {
+        setErrorMsg(`El campo es requerido`); // Establece un mensaje de error personalizado indicando el nombre del campo que falló
+      } else  if (isNaN(event.target.value)) {
+        setErrorMsg("El valor ingresado debe ser un número"); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
+      } else if(event.target.value.includes('.')){
+        setErrorMsg('El precio solo acepta enteros')
+      } else if (event.target.value < props.min) {
         setErrorMsg(`El precio ingresado debe ser mayor o igual a 1Bs`); // Establece un mensaje de error personalizado si el valor es demasiado corto
       } else if (!event.target.value.match(props.regex)) {
         setErrorMsg(`El precio debe ser mayor a 1Bs`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
-      } else if (isNaN(event.target.value)) {
-        setErrorMsg("El valor ingresado debe ser un número"); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
-      } else if (parseInt(event.target.value.id)>99999  ){
+      }  else if (parseInt(event.target.value.id)>99999  ){
         setErrorMsg("El precio ingresado debe ser menor o igual a 99.999Bs") 
           
       }
     } else {
-      if (event.target.value.length < props.min) {
+      if (event.target.value.trim() === '') {
+        setErrorMsg(`El campo es requerido`); // Establece un mensaje de error personalizado indicando el nombre del campo que falló
+      }else if (event.target.value.length < props.min) {
         setErrorMsg(
           `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
         ); // Establece un mensaje de error personalizado si el valor es demasiado corto
@@ -91,7 +97,9 @@ export const TextArea = (props) => {
   const handleInput = (event) => {
     setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
     setErrorMsg(event.target.validationMessage); // Actualiza el estado 'errorMsg' con el mensaje de error proporcionado por el navegador
-    if (event.target.value.length < props.min) {
+    if (event.target.value.trim() === '') {
+      setErrorMsg(`El campo es requerido`); // Establece un mensaje de error personalizado indicando el nombre del campo que falló
+    }else if (event.target.value.length < props.min) {
       setErrorMsg(
         `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
       ); // Establece un mensaje de error personalizado si el valor es demasiado corto

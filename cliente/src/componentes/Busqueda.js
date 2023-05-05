@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import logo from "../imagenes/cruz-pequena.svg";
-
+import search from "../imagenes/search.svg";
 
 export const Busqueda = (props) => {
     const [buscar, setBuscar] = useState(false)        
@@ -15,13 +15,14 @@ export const Busqueda = (props) => {
       ></input>
       
       <button id="boton-X" onClick={()=>{eliminarBusqueda(props,buscar,setBuscar)}}>
-        <img classname="icon" src={logo}></img>
+        <img classname="icon-close" src={logo}></img>
       </button>
       <button class="contenedor-icono" onClick={() => {
         setBuscar(!buscar);
         props.actualizar(buscar)
-      }}></button>
-      
+      }}>
+        <img className="busqueda-icon" src={search}></img>
+      </button>
     </div>
   );
       

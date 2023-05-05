@@ -52,7 +52,7 @@ export const Popupproducto = (props) => {
 
               <div className="cate">
                 <h3 className="titulo-caracteristicas">Descripción</h3>
-                {<p>{props.caracteristicas}</p>}
+                {<p className="descripcion">{props.caracteristicas}</p>}
               </div>
             </div>
           </div>

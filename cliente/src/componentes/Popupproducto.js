@@ -24,7 +24,7 @@ export const Popupproducto = (props) => {
         <>
           <div className="popupproucto">
             <div className="content">
-              <h2 className="nP">{props.nombre}</h2>
+              <h1 className="nP">{props.nombre}</h1>
               <div class="close-container" onClick={()=>close()}>
                 <div class="leftright"></div>
                 <div class="rightleft"></div>
@@ -38,20 +38,20 @@ export const Popupproducto = (props) => {
               />
               <div className="med">
                 <div className="centreado1">
-                  <h3>Marca</h3>
+                  <h2>Marca</h2>
                   <p>{props.etiqueta}</p>
                   
                 </div>
 
                 <div className="centreado2">
-                  <h3>Precio</h3>
+                  <h2>Precio</h2>
                   <p>{props.precio} Bs</p>
-                  <h4 className="Bs"></h4>
+                  <h3 className="Bs"></h3>
                 </div>
               </div>
 
               <div className="cate">
-                <h3 className="titulo-caracteristicas">Descripción</h3>
+                <h2 className="titulo-caracteristicas">Descripción</h2>
                 {<p>{props.caracteristicas}</p>}
               </div>
             </div>

@@ -11,7 +11,8 @@ export const Busqueda = (props) => {
         class="estilo-input"
         placeholder="Buscar"
         id="buscar"
-        onKeyUp={()=>{enterBusqueda(props,buscar,setBuscar)}}
+        onKeyUp={()=>{enterBusqueda(props,buscar,setBuscar);
+          eliminarEspacio()}}
       ></input>
       
       <button id="boton-X" onClick={()=>{eliminarBusqueda(props,buscar,setBuscar)}}>
@@ -26,7 +27,14 @@ export const Busqueda = (props) => {
   );
       
 };
-
+const eliminarEspacio=()=>{
+  const input=document.getElementById("buscar")
+  const value = input.value
+  if(value.length > 0 && value[0] === " "){
+    
+    input.value = value.slice(1);
+  }
+}
 const  eliminarBusqueda=(props,buscar,setBuscar)=>{
   const input=document.getElementById("buscar")
   input.value="";

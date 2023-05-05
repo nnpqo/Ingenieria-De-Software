@@ -16,7 +16,7 @@ begin
     elseif not (length(new.descripcion) <= '200' and length(new.descripcion) >= '10') 
         then SIGNAL SQLSTATE '45000'
         set MESSAGE_TEXT = "El campo 'Descripción' no cumple el formato requerido";
-    elseif not (new.precio_venta_sugerido >= '2' and new.precio_venta_sugerido <= '20000') 
+    elseif not (new.precio_venta_sugerido >= '1' and new.precio_venta_sugerido <= '99999') 
         then SIGNAL SQLSTATE '45000'
         set MESSAGE_TEXT = 'El precio no esta en el rango';
     else
@@ -37,7 +37,7 @@ begin
     elseif not (length(new.descripcion) <= '200' and length(new.descripcion) >= '10') 
         then SIGNAL SQLSTATE '45000'
         set MESSAGE_TEXT = "El campo 'Cambiar descripción' no cumple el formato requerido";
-    elseif not (new.precio_venta_sugerido >= '2' and new.precio_venta_sugerido <= '20000') 
+    elseif not (new.precio_venta_sugerido >= '1' and new.precio_venta_sugerido <= '99999') 
         then SIGNAL SQLSTATE '45000'
         set MESSAGE_TEXT = 'El precio no esta en el rango';
     else 

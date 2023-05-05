@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "../estilos/cajaTexto.css";
+import { Boton } from "./Boton";
 
 export const CajaTexto = (props) => {
   const [isValid, setIsValid] = useState(true);
@@ -11,7 +12,7 @@ export const CajaTexto = (props) => {
     setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
     const aux = props.id;
     if (aux === "precio" || aux === "Cambiar precio") {
-      // if (event.target.value.length === 1 && event.target.value === '0') {
+      
       if (event.target.value.trim() === '') {
         setErrorMsg(`El campo es requerido`); // Establece un mensaje de error personalizado indicando el nombre del campo que falló
       } else  if (isNaN(event.target.value)) {
@@ -26,7 +27,10 @@ export const CajaTexto = (props) => {
         setErrorMsg("El precio ingresado debe ser menor o igual a 99.999Bs") 
           
       }
-    } else {
+    }else {
+      if (event.target.value.match(/[^a-zA-Z]/)) {
+        setErrorMsg(`El valor ingresado prueba contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
+      }else
       if (event.target.value.trim() === '') {
         setErrorMsg(`El campo es requerido`); // Establece un mensaje de error personalizado indicando el nombre del campo que falló
       }else if (event.target.value.length < props.min) {
@@ -35,9 +39,7 @@ export const CajaTexto = (props) => {
         ); // Establece un mensaje de error personalizado si el valor es demasiado corto
       } else if (event.target.value.match(props.regex)) {
         setErrorMsg(`El valor ingresado contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
-      } else {
-        setErrorMsg(""); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
-      }
+      } 
     }
   };
 
@@ -45,9 +47,11 @@ export const CajaTexto = (props) => {
     setErrorMsg(props.errorMsg || event.target.validationMessage); // Actualiza el estado 'errorMsg' con la propiedad 'errorMsg' proporcionada o el mensaje de error proporcionado por el navegador
     setIsValid(false); // Establece el estado 'isValid' en 'false'
   };
-
+  
   return (
+    
     <div className="cajaTexto">
+     
       <label className="letras">{props.nombre}</label>
       <input
         id={props.id}

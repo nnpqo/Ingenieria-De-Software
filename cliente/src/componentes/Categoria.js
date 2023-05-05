@@ -79,10 +79,11 @@ export const Categoria = (props) => {
 const Etiqueta = (props) => {
   const isChecked=props.isChecked;
   const setIsChecked=props.setIsChecked;
-  const a=document.getElementById(props.nombre)
+  let a=document.getElementById(props.nombre)
   const [check,setCheck]= useState(false);
 
   function handleChange() {
+    a=document.getElementById(props.nombre)
     setIsChecked(a.checked);
     console.log(a.checked);
     setCheck(!check)
@@ -91,16 +92,14 @@ const Etiqueta = (props) => {
 
   useEffect(() => {
     setIsChecked(props.isChecked);
-    console.log(props.isChecked)
     let all=document.getElementById("all")
-    console.log(all)
     if (all.checked){
       all.checked =false;
     }
   },[check]);
 
   return (
-    <>
+    <div id={"div-"+props.nombre}>
       <input
         type="checkbox"
         className={props.checked}
@@ -111,7 +110,7 @@ const Etiqueta = (props) => {
       <label for={props.nombre} className="nombre-etiqueta">
         {props.nombre}
       </label>
-    </>
+    </div>
   );
 };
 const iconoAgregar = () => {
@@ -132,18 +131,11 @@ const chackeAll=(setEtiquetas,setIsChecked)=>{
     
     Array.from(etiquetas).map((item)=>{item.checked=true
       aux.push(item.id)})
-    //setIsChecked(true)
-    //etiquetas.onChange()
   }
   else{
-    Array.from(etiquetas).map((item)=>{item.checked=false
-      
-      //setEtiquetas([])
-      //item.dispatchEvent(new Event('change', { bubbles: true }))
-      })
+    Array.from(etiquetas).map((item)=>{item.checked=false})
       
   }
   setEtiquetas(aux)
-  //Array.from(etiquetas).map((item)=>{all.checked?item.checked=true:item.checked=false})
   console.log(etiquetas[0].checked)
 }

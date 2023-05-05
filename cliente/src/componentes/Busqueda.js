@@ -19,7 +19,8 @@ export const Busqueda = (props) => {
       </button>
       <button class="contenedor-icono" onClick={() => {
         setBuscar(!buscar);
-        props.actualizar(buscar)
+        props.actualizar(buscar);
+        buscarAll();
       }}></button>
       
     </div>
@@ -40,7 +41,18 @@ const enterBusqueda=(props,buscar,setBuscar)=>{
         if (event.keyCode === 13) {
           setBuscar(!buscar)
           props.actualizar(buscar)
+          buscarAll()
         }
       })}
+}
+const buscarAll=()=>{
+  const checkbox = document.getElementById("all");
+  checkbox.checked = true;
+  
+
+  const event = new Event("change");
+  checkbox.dispatchEvent(event);
+  
+  
 }
 

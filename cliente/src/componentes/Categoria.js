@@ -108,7 +108,7 @@ const Etiqueta = (props) => {
         //checked={props.isCheckd}
         onChange={handleChange}
       />
-      <label for={props.nombre} className="nombre-etiqueta">
+      <label for={props.nombre} title={props.nombre} className="nombre-etiqueta">
         {props.nombre}
       </label>
     </>

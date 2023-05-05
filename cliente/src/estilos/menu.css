@@ -3,12 +3,14 @@
   background-color: #284073;
   display: flex;
   flex-direction: column;
-  min-width: 20%;
-  max-width: 20%;
+  min-width: 25%;
+  max-width: 25%;
   color: white;
   gap: 20px;
   padding-top: 10px;
   align-items: center;
+  min-height: 90vh;
+  max-height:100vh;
 }
 
 
@@ -48,10 +50,14 @@
   width: 60%;
   align-items: flex-start;
   flex-wrap: wrap;
+  white-space: pre-wrap;
 }
 .etiquetas-visible ul {
   margin-top: 10px;
   margin-left: 10px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .boton-registro {
   width: 250px;
@@ -61,15 +67,20 @@
   cursor: pointer;
   color: white;
   background-color: #284073;
-  padding: 10px;
+  width: 80%;
 }
 .boton-registro:hover {
   color: white;
   background-color: #284073;
   border: 2px solid floralwhite;
   border-radius: 10px;
+  width: 80%;
+  height: 50px;
 }
 .boton-modificar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 250px;
   height: 50px;
   border: none;
@@ -77,7 +88,7 @@
   cursor: pointer;
   color: white;
   background-color: #284073;
-  padding: 10px;
+  width: 80%;
 }
 .boton-modificar:hover {
   cursor: pointer;
@@ -85,13 +96,14 @@
   background-color: #284073;
   border: 2px solid floralwhite;
   border-radius: 10px;
+  height: 50px;
 }
 .contenedor-categoria{
   background-color: #284073;
   display: flex;
   flex-direction: column;
-  min-width: 20%;
-  max-width: 20%;
+  min-width: 25%;
+  max-width: 25vh;
   color: white;
   gap: 20px;
   padding-top: 20px;

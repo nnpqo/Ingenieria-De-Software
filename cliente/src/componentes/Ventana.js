@@ -8,7 +8,7 @@ import {
   getEtiquetas,
   guardarImagen,
 } from "../API/api";
-import { getDispositivosBusqueda } from "../API/productos";
+import { getDispositivosBusqueda, getProducto } from "../API/productos";
 import { ImagenFormulario } from "./ImagenFormulario";
 import { CajaTexto, TextArea } from "./CajaTexto";
 import { ComboBox } from "./ComboBox";
@@ -27,15 +27,44 @@ export const VentanaFormulario = (props) => {
   const [modelos, setmodelos] = useState([]);
   const [etiquetas, setEtiquetas] = useState([]);
   const [men, setMensaje] = useState("");
+  const [seleccion, setSeleccion] = useState(false);
 
   useEffect(() => {
     getEtiquetas().then((nombres) => setEtiquetas(nombres));
     getNombreModeloDispositivos().then((nombres) => setmodelos(nombres));
   }, []);
+
   //const etiquetas = ["xiaomi", "samsumg"];
   const opcionesModificar = (
     <div className="formulario">
-      <ComboBox nombre={"Modelo*"} opciones={modelos} id={"modelo"} />
+      <ComboBox
+        nombre={"Modelo*"}
+        opciones={modelos}
+        id={"modelo"}
+        click={() => {
+          document.querySelector(
+            '#modelo option[value="tituloComboBox"]'
+          ).disabled = true;
+        }}
+        recuperar={() => {
+          const combox = document.getElementById("modelo").value;
+
+          getProducto(combox).then((res) => {
+            const pro = res.producto[0][0];
+            document.getElementById("descripcion").value = pro.descripcion;
+            document.getElementById("nombreModelo").value = pro.modelo;
+            document.getElementById("precio").value = pro.precio;
+            document.getElementById("previsualizar").src =
+              process.env.REACT_APP_API_URL + pro.ruta;
+            document.getElementById("etiqueta").value = pro.marca;
+          });
+        }}
+        vacio={
+          <>
+            <option value="tituloComboBox">seleccione dispositivo</option>
+          </>
+        }
+      />
       <br />
       <CajaTexto
         nombre={"Cambiar nombre"}
@@ -112,16 +141,15 @@ export const VentanaFormulario = (props) => {
 
             <div className="botones">
               {props.tipo === "registro" ? (
-                  <Mensaje3
-                    nombre="GUARDAR"
-                    estilos={"guardar"}
-                    funcion={() => {
-                      guardarImagen();
-                      setModeloDispositivo().then(result => setMensaje(result))
-                    }}
-                    mensaje={men}
-                  />
-                
+                <Mensaje3
+                  nombre="GUARDAR"
+                  estilos={"guardar"}
+                  funcion={() => {
+                    guardarImagen();
+                    setModeloDispositivo().then((result) => setMensaje(result));
+                  }}
+                  mensaje={men}
+                />
               ) : (
                 <Mensaje3
                   nombre="GUARDAR"
@@ -129,8 +157,20 @@ export const VentanaFormulario = (props) => {
                   bt1Nombre={"OK"}
                   bt1Estilo={"botonOk"}
                   funcion={() => {
-                    guardarImagen();
-                    updateModeloDispositivo().then(result => setMensaje(result))
+                    const option = document.getElementById("modelo").value
+                    console.log(option);
+                    if (
+                        option === "tituloComboBox"
+                    ) {
+                      setMensaje(
+                        "Error al modificar: Seleccione un dispositivo."
+                      );
+                    } else {
+                      guardarImagen();
+                      updateModeloDispositivo().then((result) =>
+                        setMensaje(result)
+                      );
+                    }
                   }}
                   mensaje={men}
                 />

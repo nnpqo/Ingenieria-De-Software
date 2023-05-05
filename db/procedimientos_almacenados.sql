@@ -7,12 +7,6 @@ CREATE PROCEDURE registrar_modelo(
     IN descripc TEXT,
     IN precio DECIMAL
 ) BEGIN
-    DECLARE CONTINUE HANDLER FOR 1062 
-    BEGIN 
-        SIGNAL SQLSTATE '45000'
-        set MESSAGE_TEXT = 'Error: Modelo Dispositivo ya existe';
-    END;
-    
     INSERT INTO modelos_dispositivos_moviles (nombre, ruta_imagen, descripcion,precio_venta_sugerido)
     VALUES (nomb, ruta_imag, descripc,precio);
 END //
@@ -143,7 +137,7 @@ drop procedure if exists obtener_caracteristicas_modelo;
 delimiter //
 CREATE PROCEDURE obtener_caracteristicas_modelo(IN nomb_modelo VARCHAR(150))
 BEGIN
-    SELECT etiquetas.nombre AS marca, modelos_dispositivos_moviles.nombre AS modelo, precio_venta_sugerido AS precio, descripcion 
+    SELECT etiquetas.nombre AS marca, modelos_dispositivos_moviles.nombre AS modelo, precio_venta_sugerido AS precio, descripcion, ruta_image as ruta
     FROM etiquetas, modelos_dispositivos_moviles, etiqueta_modelo
     WHERE etiqueta_modelo.id_modelo_dispositivo=modelos_dispositivos_moviles.id 
 	       AND etiqueta_modelo.id_etiqueta=etiquetas.id AND modelos_dispositivos_moviles.nombre=nomb_modelo; 
@@ -170,3 +164,25 @@ delimiter ;
 /*EJEMPLO: llamada al procedimiento almacenado*/
 /*CALL buscar_modelo('nombre_modelo');*/
 /*-------------------------------------------------*/
+drop procedure if exists modificar_modelo_sin_imagen;
+-------------------------------------------------/
+delimiter //
+CREATE PROCEDURE modificar_modelo_sin_imagen(IN nombre_antiguo VARCHAR(150),
+                                  IN nombre_nuevo VARCHAR(150),
+                                  IN descrip_nueva TEXT,
+                                  IN etiqueta_nueva VARCHAR(100),
+                                  IN precio_nuevo DECIMAL)
+      BEGIN 
+         SET @id_etiquet=(SELECT id FROM etiquetas WHERE nombre=etiqueta_nueva LIMIT 1);
+         SET @id_modelo=(SELECT id FROM modelos_dispositivos_moviles WHERE nombre=nombre_antiguo limit 1);
+         SET @id_etiquet_modelo=(SELECT id FROM etiqueta_modelo WHERE id_modelo_dispositivo=@id_modelo limit 1);
+         UPDATE modelos_dispositivos_moviles 
+         SET nombre=nombre_nuevo,
+             descripcion=descrip_nueva,
+             precio_venta_sugerido=precio_nuevo
+         WHERE nombre=nombre_antiguo;  
+         UPDATE etiqueta_modelo 
+         SET id_etiqueta=@id_etiquet   
+         WHERE id=@id_etiquet_modelo;
+      END //
+delimiter ;

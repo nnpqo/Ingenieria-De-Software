@@ -5,8 +5,8 @@ import logo from "../imagenes/iconoAgregar.svg";
 import { Aviso, AvisoEti, eliminar } from "./Aviso";
 import { CajaTexto, TextArea } from "./CajaTexto";
 import { agregarEtiqueta } from "../API/etiquetas";
-import arriba from "../imagenes/cruz-pequena.svg"
-import abajo from "../imagenes/iconoAbajo.svg"
+import arriba from "../imagenes/iconoArriba.svg";
+import abajo from "../imagenes/iconoAbajo.svg";
 
 import { prueba } from "./VentanaPrincipal";
 
@@ -16,7 +16,7 @@ export const Categoria = (props) => {
   const [nuevaEti, setNuevaEti] = useState(false);
   const [, , , setEtiquetass] = useContext(prueba);
   const [isChecked, setIsChecked] = useState(false);
-
+  const [etiM, setEtiM] = useState({});
   useEffect(() => {
     const etiquetas = async () => {
       await getEtiquetas().then((nombres) => setEtiquetas(nombres));
@@ -46,13 +46,13 @@ export const Categoria = (props) => {
   return (
     <div className="categoria">
       <span className="dispositivosMoviles">
+        {desplegado ? <img src={arriba} /> : <img src={abajo} />}
         <a
           onClick={() => {
             setdesplegado(!desplegado);
           }}
           className="Dispositivos"
         >
-        
           Dispositivos móviles
         </a>
 
@@ -62,13 +62,22 @@ export const Categoria = (props) => {
           bt1Nombre={"Guardar"}
           bt1Estilo={"guardar"}
           bt1Funcion={() => {
-            agregarEtiqueta(
-              document.getElementById("etiquetaFormulario").value
-            );
+            const nameEti =
+              document.getElementById("etiquetaFormulario").value === ""
+                ? "@"
+                : document.getElementById("etiquetaFormulario").value;
+
+            agregarEtiqueta(nameEti).then((result) => {
+              setEtiM(result);
+              console.log(result);
+            });
             nuevaEti ? setNuevaEti(false) : setNuevaEti(true);
+            setEtiM({})
           }}
           bt2Nombre={"Cancelar"}
           bt2Estilo={"cancelar"}
+          mensaje2={etiM.message}
+          error={etiM.error}
         />
       </span>
       {/* <div className={desplegado ? "etiquetas-visible" : "etiquetas"} >
@@ -79,8 +88,10 @@ export const Categoria = (props) => {
       </div> */}
       <div className={desplegado ? "etiquetas-visible" : "etiquetas"}>
         <div className="contenedor-seleccionar">
-        <input type="checkbox" id="all" className="checkbox" ></input>
-        <label for="all" className="Seleccionar">Seleccionar todos</label>
+          <input type="checkbox" id="all" className="checkbox"></input>
+          <label for="all" className="Seleccionar">
+            Seleccionar todos
+          </label>
         </div>
       </div>
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>
@@ -88,13 +99,13 @@ export const Categoria = (props) => {
   );
 };
 const Etiqueta = (props) => {
-  const isChecked=props.isChecked;
-  const setIsChecked=props.setIsChecked;
-  let a=document.getElementById(props.nombre)
-  const [check,setCheck]= useState(false);
+  const isChecked = props.isChecked;
+  const setIsChecked = props.setIsChecked;
+  let a = document.getElementById(props.nombre);
+  const [check, setCheck] = useState(false);
 
   function handleChange() {
-    a=document.getElementById(props.nombre)
+    a = document.getElementById(props.nombre);
     setIsChecked(a.checked);
     console.log(a.checked);
     setCheck(!check);
@@ -103,14 +114,14 @@ const Etiqueta = (props) => {
 
   useEffect(() => {
     setIsChecked(props.isChecked);
-    let all=document.getElementById("all")
-    if (all.checked){
-      all.checked =false;
+    let all = document.getElementById("all");
+    if (all.checked) {
+      all.checked = false;
     }
   }, [check]);
 
   return (
-    <div id={"div-"+props.nombre}>
+    <div id={"div-" + props.nombre}>
       <input
         type="checkbox"
         className={props.checked}
@@ -118,7 +129,11 @@ const Etiqueta = (props) => {
         //checked={props.isCheckd}
         onChange={handleChange}
       />
-      <label for={props.nombre} title={props.nombre} className="nombre-etiqueta">
+      <label
+        for={props.nombre}
+        title={props.nombre}
+        className="nombre-etiqueta"
+      >
         {props.nombre}
       </label>
     </div>
@@ -134,18 +149,19 @@ const iconoAgregar = () => {
 const chackeAll = (setEtiquetas, setIsChecked) => {
   let all = document.getElementById("all");
 
-  let etiquetas=document.getElementsByClassName("checkbox");
- 
-  let aux=[];
-  if(all.checked){
-    
-    Array.from(etiquetas).map((item)=>{item.checked=true
-      aux.push(item.id)})
+  let etiquetas = document.getElementsByClassName("checkbox");
+
+  let aux = [];
+  if (all.checked) {
+    Array.from(etiquetas).map((item) => {
+      item.checked = true;
+      aux.push(item.id);
+    });
+  } else {
+    Array.from(etiquetas).map((item) => {
+      item.checked = false;
+    });
   }
-  else{
-    Array.from(etiquetas).map((item)=>{item.checked=false})
-      
-  }
-  setEtiquetas(aux)
-  console.log(etiquetas[0].checked)
-}
+  setEtiquetas(aux);
+  console.log(etiquetas[0].checked);
+};

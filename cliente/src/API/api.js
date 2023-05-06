@@ -78,7 +78,7 @@ export const setModeloDispositivo = () => {
       if (!res.data.error) {
         borrar();
       }
-      const mensaje = res.data.message
+      const mensaje = res.data
       return mensaje;
     })
     .catch((err) => {
@@ -112,7 +112,7 @@ export const updateModeloDispositivo = () => {
       if (!res.data.error) {
         borrar();
       }
-      const mensaje = res.data.message
+      const mensaje = res.data
       return mensaje;
     })
     .catch((err) => {

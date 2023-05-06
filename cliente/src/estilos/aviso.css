@@ -11,6 +11,7 @@
   border: none;
   height: 350px;
   padding: 50px;
+  width: auto;
 }
 
 
@@ -259,13 +260,35 @@
 .mensaje3-content {
   background-color: #0655ff;
   display: flex;
-  justify-items: center;
-  flex-direction: column;
-  align-content: center;
-  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
   flex-wrap: wrap;
   border: none;
-  height: 100px;
-  width: 25%;  
-  padding: 30px;
+  height: 80px;
+  width: 300px;  
 } 
+
+.mensaje3-content span{
+  font-size: 20px;
+  margin: 5px;
+  text-align: center;
+}
+
+.mensaje3E-content {
+  background-color: #ff2e00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  border: none;
+  height: 80px;
+  width: 300px;
+}
+
+.mensaje3E-content span{
+  font-size: 20px;
+  margin: 5px;
+  text-align: center;
+}

@@ -229,9 +229,16 @@ router.post("/setEtiqueta/:etiqueta", (req, res) => {
   const sql = "insert into etiquetas (nombre, id_categoria) values (?, 1)";
   db.query(sql, [palabra], (error, results, fields) => {
     if (error) {
-      res.send("Error al guardar etiqueta.");
+      if (error.code === "ER_DUP_ENTRY") {
+        res.send({
+          message: "Error al guardar: etiqueta ya existe.",
+          error: true,
+        });
+      } else {
+        res.send({ message: "Error al guardar etiqueta.", error: true });
+      }
     } else {
-      res.send("Guardado correctamente.");
+      res.send({ message: "Guardado correctamente.", error: false });
     }
   });
 });

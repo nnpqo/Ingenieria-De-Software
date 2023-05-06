@@ -5,6 +5,7 @@ import search from "../imagenes/search.svg";
 export const Busqueda = (props) => {
   const [buscar, setBuscar] = useState(false);
   return (
+    <div className="buscar-contenedor">
     <div className={props.visible ? "barra-buscar" : "buscar-no-visible"}>
       <input
         type="text"
@@ -35,6 +36,7 @@ export const Busqueda = (props) => {
       >
         <img className="busqueda-icon" src={search}></img>
       </button>
+    </div>
     </div>
   );
 };

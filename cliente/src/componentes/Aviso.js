@@ -5,7 +5,7 @@ import "reactjs-popup/dist/index.css";
 import "../estilos/aviso.css";
 import { CajaTexto } from "./CajaTexto";
 import { useState } from "react";
-import {inputArtificial} from "./Ventana"
+import { inputArtificial } from "./Ventana";
 
 export const Aviso = (props) => {
   return (
@@ -85,18 +85,24 @@ export const AvisoEti = (props) => {
               regex={"^[a-zA-Z]+$"}
             />
             <div className="botones-etiqueta">
-              <Boton
-                nombre={props.bt1Nombre}
-                estilos={props.bt1Estilo}
+              <Mensaje3
+                nombre="GUARDAR"
+                estilos={"guardar"}
                 funcion={() => {
-                  {
-                    props.bt1Funcion && props.bt1Funcion();
-                  }
-                  if (document.getElementById("etiquetaFormulario").value===""){
+                  props.bt1Funcion();
+                  if (
+                    document.getElementById("etiquetaFormulario").value === ""
+                  ) {
                     inputArtificial();
-                  }else{close();}
-                  
+                  }
+                  if (!props.error) {
+                    setTimeout(() => {
+                      close();
+                    }, 2000);
+                  }
                 }}
+                mensaje={props.mensaje2}
+                error={props.error}
               />
               {props.bt2Nombre && (
                 <Boton
@@ -263,7 +269,7 @@ export const Mensaje3 = (props) => {
         <h2>{props.nombre}</h2>
       </button>
       <Popup
-        className="mensaje3"
+        className={props.error ? "mensaje3E" : "mensaje3"}
         open={open}
         closeOnDocumentClick
         onClose={closeModal}

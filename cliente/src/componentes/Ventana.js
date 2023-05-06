@@ -27,6 +27,7 @@ export const VentanaFormulario = (props) => {
   const [modelos, setmodelos] = useState([]);
   const [etiquetas, setEtiquetas] = useState([]);
   const [men, setMensaje] = useState("");
+  const [error, setError] = useState(false);
   const [seleccion, setSeleccion] = useState(false);
 
   useEffect(() => {
@@ -141,17 +142,20 @@ export const VentanaFormulario = (props) => {
 
             <div className="botones">
               {props.tipo === "registro" ? (
-                  <Mensaje3
-                    nombre="GUARDAR"
-                    estilos={"guardar"}
-                    funcion={() => {
-                      inputArtificial();
-                      guardarImagen();
-                      setModeloDispositivo().then(result => setMensaje(result))
-                    }}
-                    mensaje={men}
-                  />
-                
+                <Mensaje3
+                  nombre="GUARDAR"
+                  estilos={"guardar"}
+                  funcion={() => {
+                    inputArtificial();
+                    guardarImagen();
+                    setModeloDispositivo().then((result) => {
+                      setMensaje(result.message);
+                      setError(result.error);
+                    });
+                  }}
+                  mensaje={men}
+                  error={error}
+                />
               ) : (
                 <Mensaje3
                   nombre="GUARDAR"
@@ -159,22 +163,23 @@ export const VentanaFormulario = (props) => {
                   bt1Nombre={"OK"}
                   bt1Estilo={"botonOk"}
                   funcion={() => {
-                    const option = document.getElementById("modelo").value
-                    if (
-                        option === "tituloComboBox"
-                    ) {
+                    const option = document.getElementById("modelo").value;
+                    if (option === "tituloComboBox") {
                       setMensaje(
-                        "Error al modificar: Seleccione un dispositivo."
+                        "Error al modificar: \n Seleccione un dispositivo"
                       );
+                      setError(true);
                     } else {
                       inputArtificial();
                       guardarImagen();
-                      updateModeloDispositivo().then((result) =>
-                        setMensaje(result)
-                      );
+                      updateModeloDispositivo().then((result) => {
+                        setMensaje(result.message);
+                        setError(result.error);
+                      });
                     }
                   }}
                   mensaje={men}
+                  error={error}
                 />
               )}
               {props.tipo === "registro" ? (
@@ -333,6 +338,6 @@ export const inputArtificial = () => {
   var inputs = document.querySelectorAll("input[type='text'], textarea");
 
   for (var i = 0; i < inputs.length; i++) {
-    inputs[i].dispatchEvent(new Event('input', { bubbles: true }));
+    inputs[i].dispatchEvent(new Event("input", { bubbles: true }));
   }
-}
+};

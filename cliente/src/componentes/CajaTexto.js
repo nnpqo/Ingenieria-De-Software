@@ -24,7 +24,7 @@ export const CajaTexto = (props) => {
       }
     }else if(aux==="etiquetaFormulario") {
       if (event.target.value.match(/[^a-zA-Z]/)) {
-        setErrorMsg(`El valor ingresado prueba contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
+        setErrorMsg(`El valor ingresado contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
       }else if (event.target.value.length < props.min) {
         setErrorMsg(
           `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`

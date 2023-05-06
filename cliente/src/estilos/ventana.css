@@ -25,10 +25,8 @@
 .formulario {
   display: flex;
   flex-direction: column;
-
-    overflow: hidden;
-
 }
+
 .contenedorImagenForm {
   display: flex;
   flex-direction: row;

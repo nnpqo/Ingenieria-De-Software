@@ -116,6 +116,7 @@ export const VentanaFormulario = (props) => {
                     nombre="GUARDAR"
                     estilos={"guardar"}
                     funcion={() => {
+                      inputArtificial();
                       guardarImagen();
                       setModeloDispositivo().then(result => setMensaje(result))
                     }}
@@ -129,6 +130,7 @@ export const VentanaFormulario = (props) => {
                   bt1Nombre={"OK"}
                   bt1Estilo={"botonOk"}
                   funcion={() => {
+                    inputArtificial();
                     guardarImagen();
                     updateModeloDispositivo().then(result => setMensaje(result))
                   }}
@@ -287,3 +289,10 @@ const sinProducto = () => {
     </div>
   );
 };
+export const inputArtificial = () => {
+  var inputs = document.querySelectorAll("input[type='text']");
+
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].dispatchEvent(new Event('input', { bubbles: true }));
+  }
+}

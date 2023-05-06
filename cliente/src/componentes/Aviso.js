@@ -5,6 +5,7 @@ import "reactjs-popup/dist/index.css";
 import "../estilos/aviso.css";
 import { CajaTexto } from "./CajaTexto";
 import { useState } from "react";
+import {inputArtificial} from "./Ventana"
 
 export const Aviso = (props) => {
   return (
@@ -91,7 +92,10 @@ export const AvisoEti = (props) => {
                   {
                     props.bt1Funcion && props.bt1Funcion();
                   }
-                  close();
+                  if (document.getElementById("etiquetaFormulario").value===""){
+                    inputArtificial();
+                  }else{close();}
+                  
                 }}
               />
               {props.bt2Nombre && (

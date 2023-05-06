@@ -9,7 +9,7 @@ import { agregarEtiqueta } from "../API/etiquetas";
 import { prueba } from "./VentanaPrincipal";
 
 export const Categoria = (props) => {
-  const [desplegado, setdesplegado] = useState(false);
+  const [desplegado, setdesplegado] = useState(true);
   const [etiquetas, setEtiquetas] = useState([]);
   const [nuevaEti, setNuevaEti] = useState(false);
   const [, , , setEtiquetass] = useContext(prueba);
@@ -35,7 +35,12 @@ export const Categoria = (props) => {
       </ul>
     );
   });
-
+  useEffect(() => {
+    const checkbox = document.getElementById("all");
+    checkbox.addEventListener("change", () => {
+      chackeAll(setEtiquetass);
+    });
+  }, []);
   return (
     <div className="categoria">
       <span className="dispositivosMoviles">
@@ -73,17 +78,8 @@ export const Categoria = (props) => {
       </div> */}
       <div className={desplegado ? "etiquetas-visible" : "etiquetas"}>
         <div className="contenedor-seleccionar">
-          <input
-            type="checkbox"
-            id="all"
-            className="checkbox"
-            onChange={() => {
-              chackeAll(setEtiquetass, setIsChecked);
-            }}
-          ></input>
-          <label for="all" className="Seleccionar">
-            Seleccionar todos
-          </label>
+        <input type="checkbox" id="all" className="checkbox" ></input>
+        <label for="all" className="Seleccionar">Seleccionar todos</label>
         </div>
       </div>
       <li className={desplegado ? "etiquetas-visible" : "etiquetas"}>{et}</li>

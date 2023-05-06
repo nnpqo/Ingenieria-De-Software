@@ -1,8 +1,8 @@
-
 import "../estilos/Bienvenido.css";
-export const Bienvenida=(props)=>{
-
-    return(
+export const Bienvenida = (props) => {
+  return (
+    <>
+      <p className="mens">Seleccione etiquetas para su busqueda </p>
       <div class="conteiner">
         <ul class="colum1">
           <li id="luces">B</li>
@@ -26,5 +26,6 @@ export const Bienvenida=(props)=>{
           <li id="luces">L</li>
         </ul>
       </div>
-    )
-  }
+    </>
+  );
+};

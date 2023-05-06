@@ -52,7 +52,7 @@ CREATE TABLE etiqueta_modelo(
 CREATE TABLE modelos_dispositivos_moviles (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT, 
   nombre VARCHAR(30) NOT NULL,
-  ruta_imagen VARCHAR(100) NOT NULL,
+  ruta_imagen VARCHAR(250) NOT NULL,
   descripcion TEXT,
   cantidad SMALLINT,
   precio_compra decimal(10,2) CHECK( precio_compra > 0),

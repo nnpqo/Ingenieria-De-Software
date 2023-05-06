@@ -22,7 +22,7 @@ export const CajaTexto = (props) => {
         setErrorMsg("El precio ingresado debe ser menor o igual a 99.999Bs") 
           
       }
-    } else {
+    } else if(aux==="etiquetaFormulario"){
       if (event.target.value.match(/[^a-zA-Z]/)) {
         setErrorMsg(`El valor ingresado contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
       }else if (event.target.value.length < props.min) {

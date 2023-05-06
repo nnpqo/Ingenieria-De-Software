@@ -51,6 +51,7 @@ export const VentanaFormulario = (props) => {
           const combox = document.getElementById("modelo").value;
 
           getProducto(combox).then((res) => {
+            console.log(res)
             const pro = res.producto[0][0];
             document.getElementById("descripcion").value = pro.descripcion;
             document.getElementById("nombreModelo").value = pro.modelo;

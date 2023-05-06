@@ -197,6 +197,7 @@ router.put("/setVisible/:id", (req, res) => {
 });
 
 router.get("/getProducto/:nombre", (req, res) => {
+  console.log(req.params.nombre)
   const nombre = req.params.nombre;
   const sql = "call obtener_caracteristicas_modelo(?)";
   db.query(sql, [nombre], (error, results, fields) => {

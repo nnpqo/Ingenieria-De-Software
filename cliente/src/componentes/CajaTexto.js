@@ -28,10 +28,15 @@ export const CajaTexto = (props) => {
       }  else if (parseInt(event.target.value.id)>99999  ){
         setErrorMsg("El precio ingresado debe ser menor o igual a 99.999Bs") 
       }
-    }else {
+    }else if(aux==="etiquetaFormulario") {
       if (event.target.value.match(/[^a-zA-Z]/)) {
-        setErrorMsg(`El valor ingresado prueba contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
-      }else
+        setErrorMsg(`El valor ingresado contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
+      }else if (event.target.value.length < props.min) {
+        setErrorMsg(
+          `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
+        );}
+    
+    }else{
       if (event.target.value.trim() === '') {
         setErrorMsg(`El campo es requerido`); // Establece un mensaje de error personalizado indicando el nombre del campo que falló
       }else if (event.target.value.length < props.min) {

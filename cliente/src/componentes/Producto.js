@@ -22,7 +22,7 @@ export const Producto = (props) => {
             <Aviso2
               trigger={Basurero()}
               mensaje={"¿Está seguro de eliminar "+props.etiqueta+" "+props.nombre+" ?"}
-              bt1Nombre={"Si"}
+              bt1Nombre={"Sí"}
               bt1Estilo={"botonSi"}
               bt1Funcion={() => {
                 const elProducto = new Promise((resolve, reject) => {

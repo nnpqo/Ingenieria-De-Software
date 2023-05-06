@@ -110,10 +110,8 @@
   border: none;
   margin: 0 25px;
 }
-
 .barra-buscar input{
   height: 35px;
-  width: 300px;
   background-color: white;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -122,6 +120,13 @@
   border: none;
   outline: none;
   margin: 0%;
+  width: 150px; 
+  font-size: 1rem;
+  padding: 9px 10px 9px 5px;
+  transition: width 1s ease-in-out
+}
+.barra-buscar input:focus{
+  width: 90%; 
 }
 
 .barra-buscar{
@@ -142,17 +147,27 @@
   width: 42px;
   cursor: pointer;
   border: none;
-  background-image: url("../imagenes/search\ \(5\).svg");
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.busqueda-icon{
+  width: 30px;
+  height: 30px;
+}
+
+.busqueda-icon:hover {
+  filter: brightness(90%);
 }
 
 .contenedor-icono:hover{
   background-color: #2076a7;
 }
 
-#boton-X{
-  
+#boton-X{ 
   background-color: white;
   height: 35px;
   width: 35px;

@@ -330,7 +330,7 @@ const sinProducto = () => {
   );
 };
 export const inputArtificial = () => {
-  var inputs = document.querySelectorAll("input[type='text']");
+  var inputs = document.querySelectorAll("input[type='text'], textarea");
 
   for (var i = 0; i < inputs.length; i++) {
     inputs[i].dispatchEvent(new Event('input', { bubbles: true }));

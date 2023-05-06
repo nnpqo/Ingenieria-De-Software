@@ -2,6 +2,7 @@ import { Route, Routes, HashRouter } from "react-router-dom";
 import { VentanaPrincipal } from "./componentes/VentanaPrincipal";
 import { Cabecera } from "./componentes/Cabecera";
 import { useState } from "react";
+import "./estilos/index.css";
 
 export const Router = () => {
   const [barraBusqueda,setBarraBusqueda]= useState(false)

@@ -2,7 +2,7 @@ import "../estilos/Bienvenido.css";
 export const Bienvenida = (props) => {
   return (
     <>
-      <p className="mens">Seleccione etiquetas para su busqueda </p>
+      <p className="mens">Seleccione etiquetas para su búsqueda.</p>
       <div class="conteiner">
         <ul class="colum1">
           <li id="luces">B</li>

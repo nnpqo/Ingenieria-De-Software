@@ -5,6 +5,8 @@ import logo from "../imagenes/iconoAgregar.svg";
 import { Aviso, AvisoEti, eliminar } from "./Aviso";
 import { CajaTexto, TextArea } from "./CajaTexto";
 import { agregarEtiqueta } from "../API/etiquetas";
+import arriba from "../imagenes/cruz-pequena.svg"
+import abajo from "../imagenes/iconoAbajo.svg"
 
 import { prueba } from "./VentanaPrincipal";
 
@@ -50,9 +52,8 @@ export const Categoria = (props) => {
           }}
           className="Dispositivos"
         >
-          <details>
-            <summary>Dispositivos &nbsp; &nbsp; móviles</summary>
-          </details>
+        
+          Dispositivos móviles
         </a>
 
         <AvisoEti

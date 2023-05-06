@@ -13,7 +13,7 @@ export const getDispositivosBusqueda = (data) => {
 
 export const getProducto = (data) => {
   return instancia
-    .get("/getProducto"+ data)
+    .get("/getProducto/"+ data)
     .then((res) => {
       return res.data;
     })

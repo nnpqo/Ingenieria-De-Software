@@ -39,6 +39,8 @@
 .Seleccionar {
   font-weight: bold;
   font-size: 19px;
+  overflow: hidden;
+  width: 100%;
 }
 
 .Dispositivos {

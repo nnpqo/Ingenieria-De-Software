@@ -94,7 +94,7 @@ export const updateModeloDispositivo = () => {
   let etiqueta = document.getElementById("etiqueta").value;
   let imagen = document.getElementById("image").files;
   let precio = document.getElementById("precio").value;
-  let rutaImg = imagen[0] ? "/images/" + imagen[0].name : "/images/img.png";
+  let rutaImg = imagen[0] ? "/images/" + imagen[0].name : "";
   const datos = {
     modelo: modelo,
     nombre: nombre,

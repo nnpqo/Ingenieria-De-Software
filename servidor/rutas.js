@@ -20,26 +20,33 @@ router.post("/setModelo", (req, res) => {
   const precio = req.body.precio;
   let sql =
     "select * from modelos_dispositivos_moviles where visible = 0 and nombre = ?";
-  db.query(sql,[nombre],(error, results, fields) =>{
+  db.query(sql, [nombre], (error, results, fields) => {
     if (error) throw error;
     if (results.length === 0) {
-      console.log('No se encontraron resultados');
+      console.log("No se encontraron resultados");
       db.query(
         "call registrar_modelo(?,?,?,?)",
         [nombre, rutaImg, descrip, precio],
         (error, results, fields) => {
           if (error) {
-            res.send({
-              message: "Error al guardar: ",
-              error: true,
-            });
+            if (error.code === "ER_DUP_ENTRY") {
+              res.send({
+                message: "Error al guardar: dispositivo móvil ya existe.",
+                error: true,
+              });
+            } else {
+              res.send({
+                message: "Error al guardar",
+                error: true,
+              });
+            }
           } else {
             db.query(
               "call relacion_etiqueta_modelo(?)",
               [etiqueta],
               (error, results, fields) => {
                 if (error) {
-                  console.error("Error al ejecutar consulta:", error.message);
+                  console.error("Error al ejecutar consulta:", error.code);
                 } else {
                   res.send({ message: "Guardado correctamente", error: false });
                 }
@@ -52,12 +59,12 @@ router.post("/setModelo", (req, res) => {
       console.log(results);
       db.query(
         "call modificar_modelo(?,?,?,?,?,?)",
-        [nombre, nombre, descrip, etiqueta, precio,rutaImg],
-    
+        [nombre, nombre, descrip, etiqueta, precio, rutaImg],
+
         (error, results, fields) => {
           if (error) {
             res.send({
-              message: "Error al actualizar : " + error.message,
+              message: "Error al guardar",
               error: true,
             });
           } else {
@@ -66,18 +73,17 @@ router.post("/setModelo", (req, res) => {
         }
       );
       sql =
-      "update modelos_dispositivos_moviles set visible = 1 where nombre = ?";
+        "update modelos_dispositivos_moviles set visible = 1 where nombre = ?";
       db.query(sql, [nombre], (error, results, fields) => {
         if (error) {
-        console.error("Error al ejecutar");
-      } else {
-        console.log(results);
-        console.log("aaahh");
-      }
-    });
+          console.error("Error al ejecutar");
+        } else {
+          console.log(results);
+          console.log("aaahh");
+        }
+      });
     }
   });
-  
 });
 
 router.put("/actualizarModelo", (req, res) => {
@@ -87,29 +93,61 @@ router.put("/actualizarModelo", (req, res) => {
   const etiquetaNueva = req.body.etiqueta;
   const nuevaRuta = req.body.ruta;
   const precio = req.body.precio;
-  db.query(
-    "call modificar_modelo(?,?,?,?,?,?)",
-    [
-      nombreAntiguio,
-      nombreNuevo,
-      descripcionNueva,
-      etiquetaNueva,
-      precio,
-      nuevaRuta,
-    ],
-
-    (error, results, fields) => {
-      if (error) {
-        console.error("error: " + error.message);
-        res.send({
-          message: "Error al modificar",
-          error: true,
-        });
-      } else {
-        res.send({ message: "Modificado correctamente", error: false });
+  if (nuevaRuta === "") {
+    db.query(
+      "call modificar_modelo_sin_imagen(?,?,?,?,?)",
+      [nombreAntiguio, nombreNuevo, descripcionNueva, etiquetaNueva, precio],
+      (error, results, fields) => {
+        if (error) {
+          console.error("error: " + error.message);
+          if (error.code === "ER_DUP_ENTRY") {
+            res.send({
+              message: "Error al modificar: dispositivo móvil ya existe.",
+              error: true,
+            });
+          } else {
+            res.send({
+              message: "Error al modificar",
+              error: true,
+            });
+          }
+        } else {
+          res.send({ message: "Modificado correctamente", error: false });
+        }
       }
-    }
-  );
+    );
+  } else {
+    db.query(
+      "call modificar_modelo(?,?,?,?,?,?)",
+      [
+        nombreAntiguio,
+        nombreNuevo,
+        descripcionNueva,
+        etiquetaNueva,
+        precio,
+        nuevaRuta,
+      ],
+
+      (error, results, fields) => {
+        if (error) {
+          console.error("error: " + error.message);
+          if (error.code === "ER_DUP_ENTRY") {
+            res.send({
+              message: "Error al modificar: dispositivo móvil ya existe.",
+              error: true,
+            });
+          } else {
+            res.send({
+              message: "Error al modificar",
+              error: true,
+            });
+          }
+        } else {
+          res.send({ message: "Modificado correctamente", error: false });
+        }
+      }
+    );
+  }
 });
 
 router.get("/getAllModeloDispositivo", (req, res) => {
@@ -149,11 +187,11 @@ router.put("/setVisible/:id", (req, res) => {
     "update modelos_dispositivos_moviles set visible = 0 where id = ?";
   db.query(sql, [id], (error, results, fields) => {
     if (error) {
-      console.error("error : " + error.message)
-      res.send({mensaje: "Error al eliminar", error: true});
+      console.error("error : " + error.message);
+      res.send({ mensaje: "Error al eliminar", error: true });
     } else {
       console.log(results);
-      res.send({mensaje : "Eliminación exitosa" , error: false});
+      res.send({ mensaje: "Eliminación exitosa", error: false });
     }
   });
 });

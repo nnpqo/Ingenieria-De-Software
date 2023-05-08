@@ -12,6 +12,7 @@ export const Busqueda = (props) => {
         class="estilo-input"
         placeholder="Buscar"
         id="buscar"
+        maxLength={30}
         onKeyUp={() => {
           enterBusqueda(props, buscar, setBuscar);
           eliminarEspacio();

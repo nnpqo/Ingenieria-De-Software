@@ -256,7 +256,7 @@ export const Ventana = (props) => {
     } else {
       return etiquetas.map((eti) => {
         if (pro.etiqueta === eti) {
-          console.log(eti);
+          //console.log(eti);
           if (pro.visible === 1) {
             return (
               <>

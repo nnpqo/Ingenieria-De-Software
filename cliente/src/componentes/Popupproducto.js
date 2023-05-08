@@ -25,13 +25,20 @@ export const Popupproducto = (props) => {
         <>
           <div className="popupproucto">
             <div className="content">
+              {descripcion? <div onClick={()=>(setDescripcion(false))}>-D</div>:
+              <div onClick={()=>(setDescripcion(true))}>C-</div>}
+              
               <h1 className="nP">{props.nombre}</h1>
               <div class="close-container" onClick={()=>close()}>
                 <div class="leftright"></div>
                 <div class="rightleft"></div>
               </div>
+
             </div>
-            <ContenidoDescripcion props={props}></ContenidoDescripcion>
+            {descripcion?  <ContenidoDescripcion props={props}></ContenidoDescripcion>:
+              <ContenidoTabla></ContenidoTabla>
+            }
+           
           </div>
         </>
       )}
@@ -70,7 +77,33 @@ const ContenidoDescripcion=(prop)=>{
 </div>
 }
 const ContenidoTabla = ()=>{
-  return 
+  const lista=[{imei:15225,color:"blanco"},{imei:15225,color:"blanco"},{imei:15225,color:"blanco"}]
+  let contador=0;
+  let list= lista.map((item)=>{
+    {contador=contador+1}
+    return<div id={item.imei} className="fila">
+      
+      <p className="numero">{contador}</p>
+      <p className="imei">{item.imei}</p>
+      <p className="color">{item.color}</p>
+    </div>
+  })
+  console.log(lista)
+  return <div>
+    <div>boton</div>
+    <div id="tabla">
+      <div id="titulos">Cabecera
+        <h2>numero</h2>
+        <h2>Imei</h2>
+        <h2>color</h2>
+        <h2>modificar</h2>
+        <h2>vender</h2>
+      </div>
+      <div id="lista">
+        {list}
+      </div>
+    </div>
+  </div>
 }
 //  <Popup className="popup">
 

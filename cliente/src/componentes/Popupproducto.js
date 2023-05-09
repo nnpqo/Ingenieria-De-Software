@@ -77,20 +77,30 @@ const ContenidoDescripcion=(prop)=>{
 </div>
 }
 const ContenidoTabla = ()=>{
+  const [añadir,setAñadir]= useState(false)
   const lista=[{imei:15225,color:"blanco"},{imei:15225,color:"blanco"},{imei:15225,color:"blanco"}]
   let contador=0;
   let list= lista.map((item)=>{
     {contador=contador+1}
     return<div id={item.imei} className="fila">
-      
       <p className="numero">{contador}</p>
-      <p className="imei">{item.imei}</p>
-      <p className="color">{item.color}</p>
+      <input type="number" className="imei" value={item.imei} disabled></input>
+      <input className="color" value={item.color} disabled></input>
+      <div className="modificar-vender">
+          modificar vender
+        </div>
+        <di className="aceptar-cancelar">
+          aceptar cancelar
+        </di>
     </div>
   })
   console.log(lista)
   return <div>
-    <div>boton</div>
+    <button id="añadir-producto" onClick={()=>{}}>
+      <p>añadir</p>
+      <p>producto</p>
+      <img src="../imagenes/iconoAgregar.svg"></img>
+    </button>
     <div id="tabla">
       <div id="titulos">Cabecera
         <h2>numero</h2>
@@ -101,6 +111,7 @@ const ContenidoTabla = ()=>{
       </div>
       <div id="lista">
         {list}
+        {/*añadir? <>input</>*/}
       </div>
     </div>
   </div>

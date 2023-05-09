@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { Boton } from "./Boton"
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../estilos/login.css";
+import usuarioimg from "../imagenes/usuario.svg";
+import candado from "../imagenes/candado.svg";
 
-export const Login =()=>{
+export const Login = () => {
     let intervalId = null;
 
     function createSquare(){
@@ -28,28 +30,62 @@ export const Login =()=>{
         intervalId = setInterval(createSquare , 150)
         return () => clearInterval(intervalId);
     }, []);
-  
-    return <section id="login"> 
+
+    return <section id="login">
+        <div className="login-form-cont">
+            <div className="input-grup">
+                <div className="titulo">
+                    <h2 className="letra" id="letrajdkcell">JDKCELL</h2>
+                    <h2 className="letra">Ingresar</h2>
+                </div>
+            </div>
+            <div className="input-grup">
+            <div class="icon">
+            <img src={usuarioimg} />
+            </div>
+
+                <input className="inputLogin"type="text" required="required" />
+                <label className="labelLogin">Nombre de Usuario</label>
+            </div>
+            <div className="input-grup">
+            <div class="icon">
+            <img src={candado} />
+            </div>
+                <div className="ojo" id="ojo"><i className="fa-solid fa-eye"></i></div>
+                <div className="ojoc" id="ojoc">
+                    <i className="fa-sharp fa-solid fa-eye-slash"></i>
+                </div>
+                <input className="inputLogin" type="password" required="required" />
+                <label className="labelLogin">Contraseña</label>
+            </div>
+            <div className="input-grup">
+                <a className="acceder" href="#/home">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Acceder
+                </a>
+            </div>
             
-        <div id="caja-login">
-            <div id="titulo">
-                <h1 id="jdk">JDK</h1>
-                <h1 id="cell">CELL</h1>
-                <h1 id="ingresa">INGRESA</h1>
-            </div>
-            <div>
-            <input type="text" id="usuario" name="nombre" placeholder="usuario"/>
-            <input type="password" name="password" placeholder="contraseña" />
-            </div>
-            <Link to="/home"> 
-                <Boton stilos={"guardar"} nombre={"acceder"}></Boton>
-            </Link>
-                       
+
         </div>
-        </section>
+    </section>
 }
 
-/*function createSquare(){
+/*
+
+
+
+<div>
+                <input type="text" id="usuario" name="nombre" placeholder="usuario" />
+                <input type="password" name="password" placeholder="contraseña" />
+            </div>
+            <Link to="/home">
+                <Boton stilos={"guardar"} nombre={"acceder"}></Boton>
+            </Link>
+
+function createSquare(){
     const section = document.querySelector('section');
     const square = document.createElement('span');
     var size = Math.random() * 20;

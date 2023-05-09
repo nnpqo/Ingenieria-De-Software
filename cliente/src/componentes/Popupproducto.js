@@ -83,33 +83,33 @@ const ContenidoTabla = ()=>{
   let list= lista.map((item)=>{
     {contador=contador+1}
     return<div id={item.imei} className="fila">
-      <p className="numero">{contador}</p>
-      <input type="number" className="imei" value={item.imei} disabled></input>
-      <input className="color" value={item.color} disabled></input>
-      <div className="modificar-vender">
+      <div className="ele"><p className="numero">{contador}</p></div>
+      <div className="ele"><input type="number" className="imei" value={item.imei} disabled></input></div>
+      <div className="ele"><input className="color" value={item.color} disabled></input></div>
+        <div className="modificar-vender ele">
           modificar vender
         </div>
-        <di className="aceptar-cancelar">
+        <div className="aceptar-cancelar ele">
           aceptar cancelar
-        </di>
+        </div>
     </div>
   })
   console.log(lista)
-  return <div>
-    <button id="añadir-producto" onClick={()=>{}}>
+  return <div className="pp2">
+    <button id="añadir-producto" className="bt-anadir"onClick={()=>{}}>
       <p>añadir</p>
       <p>producto</p>
       <img src="../imagenes/iconoAgregar.svg"></img>
     </button>
-    <div id="tabla">
-      <div id="titulos">Cabecera
+    <div id="tabla" className="tabla">
+      <div id="titulos">
         <h2>numero</h2>
         <h2>Imei</h2>
         <h2>color</h2>
         <h2>modificar</h2>
         <h2>vender</h2>
       </div>
-      <div id="lista">
+      <div id="lista" className="lista">
         {list}
         {/*añadir? <>input</>*/}
       </div>

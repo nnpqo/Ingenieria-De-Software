@@ -159,3 +159,33 @@
   /*Estilos para scroll*/
 }
 
+.pp2{
+  display: flex;
+  flex-direction: column;
+}
+.bt-anadir{
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: row;
+}
+#tabla{
+  display: flex;
+  flex-direction: column;
+}
+#titulos{
+  display: flex;
+  flex-direction: row;
+}
+.lista{
+  display: flex;
+  flex-direction: column;
+  }
+.ele{
+  border-radius: 13px;
+  border: 1px solid #0E84C7;
+
+}
+.fila{
+  display: flex;
+  flex-direction: row;
+}

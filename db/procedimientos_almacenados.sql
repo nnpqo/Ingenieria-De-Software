@@ -186,3 +186,25 @@ CREATE PROCEDURE modificar_modelo_sin_imagen(IN nombre_antiguo VARCHAR(150),
          WHERE id=@id_etiquet_modelo;
       END //
 delimiter ;
+
+
+/*----------------3ER SPRINT-----------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para obtener los datos de un producto (dispositivo celular)*/
+drop procedure if exists obtener_producto;
+delimiter //
+CREATE PROCEDURE obtener_producto(IN nomb_modelo VARCHAR(100))
+BEGIN
+SELECT modelos_dispositivos_moviles.nombre AS modelo, etiquetas.nombre AS marca,
+       imei, color, modelos_dispositivos_moviles.precio_venta_sugerido AS precio, modelos_dispositivos_moviles.ruta_imagen AS imagen
+FROM dispositivo_movil,modelos_dispositivos_moviles,etiquetas,etiqueta_modelo
+WHERE modelos_dispositivos_moviles.id=dispositivo_movil.id_modelo_dispositivo AND 
+modelos_dispositivos_moviles.id=etiqueta_modelo.id_modelo_dispositivo AND dispositivo_movil.vendido=0 AND 
+etiqueta_modelo.id_etiqueta=etiquetas.id AND modelos_dispositivos_moviles.nombre=nomb_modelo;
+END 
+//
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL obtener_producto('nombre_modelo');*/
+/*-------------------------------------------------*/

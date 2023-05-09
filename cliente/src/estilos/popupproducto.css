@@ -175,6 +175,8 @@
 #titulos{
   display: flex;
   flex-direction: row;
+  border-radius: 13px;
+  
 }
 .lista{
   display: flex;
@@ -183,8 +185,31 @@
 .ele{
   border-radius: 13px;
   border: 1px solid #0E84C7;
-
+  
 }
+.h{
+  display: flex;
+  flex-direction: column;
+  
+  flex-grow: 1;
+  width: 100%;
+}
+.m{
+  border: 1px solid #0E84C7;
+}
+.n{
+  border:1px solid #0E84C7;
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+  border-left: none;
+}
+.o{
+  border: 2px solid #0E84C7; /* borde */
+  border-top-left-radius: 1px; /* borde redondo superior izquierdo */
+  border-bottom-left-radius: 1px;
+  border-right: none;
+} 
+
 .fila{
   display: flex;
   flex-direction: row;

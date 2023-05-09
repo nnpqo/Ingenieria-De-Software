@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `dispositivo_movil` (
 -- TABLE USUARIO											-
 -- --------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `id` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
   `contrasenia` varchar(50) DEFAULT NULL,
   `rol` varchar(50) DEFAULT NULL,

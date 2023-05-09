@@ -199,14 +199,14 @@
 }
 .n{
   border:1px solid #0E84C7;
-  border-top-right-radius: 1px;
-  border-bottom-right-radius: 1px;
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
   border-left: none;
 }
 .o{
   border: 2px solid #0E84C7; /* borde */
-  border-top-left-radius: 1px; /* borde redondo superior izquierdo */
-  border-bottom-left-radius: 1px;
+  border-top-left-radius: 13px; /* borde redondo superior izquierdo */
+  border-bottom-left-radius: 13px;
   border-right: none;
 } 
 

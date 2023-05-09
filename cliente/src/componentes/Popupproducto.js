@@ -103,11 +103,11 @@ const ContenidoTabla = ()=>{
     </button>
     <div id="tabla" className="tabla">
       <div id="titulos">
-        <h2 className="h o">numero</h2>
+        <h2 className="o">numero</h2>
         <h2 className="h m">Imei</h2>
         <h2 className="h m">color</h2>
         <h2 className="h m">modificar</h2>
-        <h2 className="h n">vender</h2>
+        <h2 className="n">vender</h2>
       </div>
       <div id="lista" className="lista">
         {list}

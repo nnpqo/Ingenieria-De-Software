@@ -47,7 +47,6 @@ export const VentanaMostrarVenta = () => {
             <div className="titulo-Ventana">
                 <h1>VENTA DE PRODUCTO</h1>
             </div>
-            <div className="centrar">
             <div className="seguir-venta">
             <Boton nombre="SEGUIR VENDIENDO"
             estilos="guardar"
@@ -68,9 +67,6 @@ export const VentanaMostrarVenta = () => {
                 <p id="ar-precio">{total}</p>
                 </div>
             </div>
-            </div>
-
-
         </div>
     )
 }

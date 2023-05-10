@@ -1,0 +1,117 @@
+.fila{
+    background-color: transparent;
+    border-radius: 20px;
+    width: 90%;
+    border: 3px solid #0E84C7;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.imagen-venta{
+    border-radius: 20px;
+    width: 70%;
+    height: 90%;
+}
+.contenedor-img{
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    width: 15%;
+    height: 130px;
+    margin-left: 0.7%;
+    align-items: center;
+}
+.modelo-venta{
+    background-color: transparent;
+    display: flex;
+    height: 50%;
+    flex-grow: 1;
+    width: 450px;
+    align-items: center;
+}
+#dato{
+    font-size: 18px;
+    font-weight: bolder;
+    color: white;
+}
+.marca-venta{
+    background-color: transparent;
+    display: flex;
+    flex-grow: 1;
+    height: 50%;
+    width: 450px;
+    align-items: center;
+}
+.contenedor-precio{
+    background-color: transparent;
+    flex-grow: 1;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 3px solid #0E84C7;
+    flex-direction: column;
+}
+.contenedor-imei{
+    background-color: transparent;
+    display: flex;
+    height: 50%;
+    flex-grow: 1;
+    width: 450px;
+    align-items: center;
+}
+.contenedor-color{
+    background-color: transparent;
+    display: flex;
+    height: 50%;
+    flex-grow: 1;
+    width: 450px;
+    align-items: center;
+}
+#argumento{
+    color: white;
+    margin-left: 20px;
+}
+#ar-precio{
+    color: white;
+}
+
+.parteBaja{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    background-color: transparent;
+    height: 100px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 2px;
+    
+}
+.parteBaja > *:not(:last-child) {
+    margin-right: 20px; 
+  }
+
+.contenedor-total{
+    background-color: transparent;
+    border: 3px solid #0E84C7;
+    border-radius: 20px;
+    width: 20%;
+    height: 80%;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.seguir-venta{
+    background-color: transparent;
+    width: 90%;
+    display: flex;
+    justify-content: end;
+}
+.centrar{
+    display: flex;
+    flex-direction: column;
+    margin-left: 8%;
+}
+  
+

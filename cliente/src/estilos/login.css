@@ -14,11 +14,7 @@
     height: 200px;
     background-color: #081F4E;
     z-index: 9999;
-}*/
-
-body{
-    overflow:hidden;
-} 
+}*/ 
 .burbuja{
     border-radius:50%;
     pointer-events:none;

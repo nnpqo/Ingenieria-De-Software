@@ -208,3 +208,19 @@ END
 /*EJEMPLO: llamada al procedimiento almacenado*/
 /*CALL obtener_producto('nombre_modelo');*/
 /*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para ocultar un producto (dispositivo celular)*/
+drop procedure if exists ocultar_producto;
+delimiter //
+CREATE PROCEDURE ocultar_producto(IN imei_prod BIGINT(15))
+BEGIN 
+    UPDATE dispositivo_movil 
+    SET dispositivo_movil.vendido = 1
+    WHERE dispositivo_movil.imei=imei_prod;
+END //
+delimiter ;
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL ocultar_producto(1245789636547854);*/
+/*-------------------------------------------------*/

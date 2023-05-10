@@ -26,8 +26,12 @@ export const Cabecera = (props) => {
         <Busqueda visible={props.barra} actualizar={props.actualizar}></Busqueda>
         
         <div className="opciones-navbar">
+          
           <Link to="/productos">
             <Boton nombre={"Producto"} estilos={"boton-navbar-pro"} />
+          </Link>
+          <Link to="/venta">
+            <Boton nombre={"Venta"} estilos={"boton-navbar-pro"} />
           </Link>
         </div>
         <Boton estilos={"boton-usuario"} />

@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../estilos/producto.css";
 import { Aviso2, eliminar } from "./Aviso";
 import { Popupproducto } from "./Popupproducto";
 import samsung from "../imagenes/samsung_g.jpg";
 
 import { eliminarProducto } from "../API/productos";
+import { Context } from "../Context/Context";
 
 
 export const Producto = (props) => {
   const ruta = process.env.REACT_APP_API_URL + props.ruta;
+  const {visible, setVisible} = useContext(Context);
+
  // console.log(ruta);
   return (
     <Popupproducto
@@ -31,7 +34,7 @@ export const Producto = (props) => {
                   resolve(result);
                 });
                 elProducto.then(result => result)
-                props.funActualizar(!props.cambioVisible);
+                setVisible(!visible);
               }}
               bt2Nombre={"No"}
               bt2Estilo={"botonNo"}

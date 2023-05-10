@@ -20,6 +20,7 @@ import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
 import { borrar } from "./Aviso";
 import { Bienvenida } from "./Bienvenido";
+import {Context} from "../Context/Context";
 
 export const VentanaFormulario = (props) => {
   const [, guardar, setGuardar] = useContext(prueba);
@@ -215,6 +216,7 @@ export const VentanaFormulario = (props) => {
 };
 
 export const Ventana = (props) => {
+  const {buscar,setBuscar, visible} = useContext(Context);
   const [productos, setProductos] = useState([]);
   const [etiquetas, setEtiquetas] = useState([]);
   const [cambioVisible, setcambioVisible] = useState(false);
@@ -237,7 +239,7 @@ export const Ventana = (props) => {
     console.log(productos);
     setEtiquetas(props.lista);
     console.log(etiquetas);
-  }, [props.lista, cambioVisible, props.busqueda]);
+  }, [props.lista, visible, buscar]);
 
   let prod = productos?.map((pro) => {
     if (etiquetas.length === 0) {

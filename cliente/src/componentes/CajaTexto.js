@@ -105,15 +105,19 @@ export const TextArea = (props) => {
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleInput = (event) => {
+    const palabra = event.target.value.trim();
+    console.log(palabra + "s"+ palabra.length)
     setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
     setErrorMsg(event.target.validationMessage); // Actualiza el estado 'errorMsg' con el mensaje de error proporcionado por el navegador
-    if (event.target.value.trim() === '') {
+    if (palabra === '') {
+      setIsValid(false)
       setErrorMsg(`El campo es requerido`); // Establece un mensaje de error personalizado indicando el nombre del campo que falló
-    }else if (event.target.value.length < props.min) {
+    }else if (palabra.length < props.min) {
+      setIsValid(false);
       setErrorMsg(
         `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
       ); // Establece un mensaje de error personalizado si el valor es demasiado corto
-    } else if (event.target.value.match(props.regex)) {
+    } else if (palabra.match(props.regex)) {
       setErrorMsg(`El valor ingresado contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
     } else {
       setErrorMsg(""); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
@@ -132,7 +136,6 @@ export const TextArea = (props) => {
         type="text"
         pattern={props.regex}
         maxLength={props.max}
-        minLength={props.min}
         rows="3"
         cols="50"
         required

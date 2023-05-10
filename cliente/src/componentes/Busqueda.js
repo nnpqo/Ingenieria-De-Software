@@ -1,43 +1,43 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logo from "../imagenes/cruz-pequena.svg";
 import search from "../imagenes/search.svg";
+import { ContextProvider, Context } from "../Context/Context";
 
 export const Busqueda = (props) => {
-  const [buscar, setBuscar] = useState(false);
+  const {buscar, setBuscar} = useContext(Context);
   return (
     <div className="buscar-contenedor">
-    <div className={props.visible ? "barra-buscar" : "buscar-no-visible"}>
-      <input
-        type="text"
-        class="estilo-input"
-        placeholder="Buscar"
-        id="buscar"
-        maxLength={30}
-        onKeyUp={() => {
-          enterBusqueda(props, buscar, setBuscar);
-          eliminarEspacio();
-        }}
-      ></input>
+      <div className={props.visible ? "barra-buscar" : "buscar-no-visible"}>
+        <input
+          type="text"
+          class="estilo-input"
+          placeholder="Buscar"
+          id="buscar"
+          maxLength={30}
+          onKeyUp={() => {
+            enterBusqueda(props, buscar, setBuscar);
+            eliminarEspacio();
+          }}
+        ></input>
 
-      <button
-        id="boton-X"
-        onClick={() => {
-          eliminarBusqueda(props, buscar, setBuscar);
-        }}
-      >
-        <img classname="icon-close" src={logo}></img>
-      </button>
-      <button
-        class="contenedor-icono"
-        onClick={() => {
-          setBuscar(!buscar);
-          props.actualizar(buscar);
-          buscarAll();
-        }}
-      >
-        <img className="busqueda-icon" src={search}></img>
-      </button>
-    </div>
+        <button
+          id="boton-X"
+          onClick={() => {
+            eliminarBusqueda(props, buscar, setBuscar);
+          }}
+        >
+          <img classname="icon-close" src={logo}></img>
+        </button>
+        <button
+          class="contenedor-icono"
+          onClick={() => {
+            setBuscar(!buscar);
+            buscarAll();
+          }}
+        >
+          <img className="busqueda-icon" src={search}></img>
+        </button>
+      </div>
     </div>
   );
 };
@@ -70,7 +70,6 @@ const enterBusqueda = (props, buscar, setBuscar) => {
 const buscarAll = () => {
   const checkbox = document.getElementById("all");
   checkbox.checked = true;
-
   const event = new Event("change");
   checkbox.dispatchEvent(event);
 };

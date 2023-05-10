@@ -56,8 +56,8 @@ export const imagen = (event) => {
 };
 
 export const setModeloDispositivo = () => {
-  let nombre = document.getElementById("nombreModelo").value;
-  let descripcion = document.getElementById("descripcion").value;
+  let nombre = document.getElementById("nombreModelo").value.trim();
+  let descripcion = document.getElementById("descripcion").value.trim();
   let etiqueta = document.getElementById("etiqueta").value;
   let imagen = document.getElementById("image").files;
   let precio = document.getElementById("precio").value;
@@ -89,8 +89,8 @@ export const setModeloDispositivo = () => {
 
 export const updateModeloDispositivo = () => {
   let modelo = document.getElementById("modelo").value;
-  let nombre = document.getElementById("nombreModelo").value;
-  let descripcion = document.getElementById("descripcion").value;
+  let nombre = document.getElementById("nombreModelo").value.trim();
+  let descripcion = document.getElementById("descripcion").value.trim();
   let etiqueta = document.getElementById("etiqueta").value;
   let imagen = document.getElementById("image").files;
   let precio = document.getElementById("precio").value;

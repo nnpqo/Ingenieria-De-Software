@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Boton } from "./Boton";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
@@ -6,6 +6,7 @@ import "../estilos/aviso.css";
 import { CajaTexto } from "./CajaTexto";
 import { useState } from "react";
 import { inputArtificial } from "./Ventana";
+import { Context } from "../Context/Context";
 
 export const Aviso = (props) => {
   return (
@@ -200,6 +201,7 @@ export const Mensaje = (props) => {
   );
 };
 export const Aviso2 = (props) => {
+  const {visible, setVisible} = useContext(Context)
   return (
     <Popup
       trigger={
@@ -230,6 +232,7 @@ export const Aviso2 = (props) => {
               funcion={() => {
                 {
                   props.bt1Funcion && props.bt1Funcion();
+                  setVisible(!visible)
                 }
                 close();
               }}

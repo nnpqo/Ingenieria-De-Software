@@ -10,7 +10,7 @@ import { Context } from "../Context/Context";
 
 export const Producto = (props) => {
   const ruta = process.env.REACT_APP_API_URL + props.ruta;
-  const {visible, setVisible} = useContext(Context);
+  const {visible, setVisible, setBuscar, buscar} = useContext(Context);
 
  // console.log(ruta);
   return (
@@ -35,6 +35,7 @@ export const Producto = (props) => {
                 });
                 elProducto.then(result => result)
                 setVisible(!visible);
+                setBuscar(!buscar);
               }}
               bt2Nombre={"No"}
               bt2Estilo={"botonNo"}

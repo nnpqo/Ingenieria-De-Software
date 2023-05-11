@@ -63,9 +63,9 @@ export const Categoria = (props) => {
           bt1Estilo={"guardar"}
           bt1Funcion={() => {
             const nameEti =
-              document.getElementById("etiquetaFormulario").value === ""
+              document.getElementById("etiquetaFormulario").value.trim() === ""
                 ? "@"
-                : document.getElementById("etiquetaFormulario").value;
+                : document.getElementById("etiquetaFormulario").value.trim();
 
             agregarEtiqueta(nameEti).then((result) => {
               setEtiM(result);

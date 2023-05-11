@@ -239,7 +239,7 @@ export const Ventana = (props) => {
     console.log(productos);
     setEtiquetas(props.lista);
     console.log(etiquetas);
-  }, [props.lista, visible, buscar]);
+  }, [props.lista, visible, buscar, productos, etiquetas]);
 
   let prod = productos?.map((pro) => {
     if (etiquetas.length === 0) {

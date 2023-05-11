@@ -35,10 +35,13 @@ export const Login = () => {
         <div className="login-form-cont">
             <div className="input-grup">
                 <div className="titulo">
-                    <h2 className="letra" id="letrajdkcell">JDKCELL</h2>
-                    <h2 className="letra">Ingresar</h2>
+                    <h2 className="letra" id="letrajdkcell-1">JDK</h2>
+                    <h2 className="letra" id="letrajdkcell">CELL</h2>
+                    
                 </div>
+                
             </div>
+            <h2 className="letra">Ingresar</h2>
             <div className="input-grup">
             <div class="icon">
             <img src={usuarioimg} />

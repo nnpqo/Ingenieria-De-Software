@@ -1,13 +1,15 @@
 
-/*#login {
+#login {
     background-color: #071432;
     width: 100%;
     height: 100vh; 
     display: flex;
     justify-content: center; 
     align-items: center;
+    overflow-x: hidden; 
+    overflow-y: hidden;
     
-}*/
+}
   
 /*#caja-login{
     width: 200px;
@@ -17,10 +19,13 @@
 }*/ 
 .burbuja{
     border-radius:50%;
+    width: 90%;
+    height: 90vh;
     pointer-events:none;
     position:absolute;
     background:white;
     animation: animateBurbuja 5s linear infinite;
+    overflow: hidden;
   }
   @keyframes animateBurbuja{
     0%{
@@ -39,15 +44,16 @@
     }
   }
 
-  #login {
+  /*#login {
     
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     padding-top: 4rem;
     padding-bottom: 2rem;
     
-  }
+  }*/
 
   .login-form-cont {
     width: 400px;
@@ -69,32 +75,35 @@
   }
   
   .login-form-cont:hover {
-    border-bottom-right-radius: 50px;
-    border-top-left-radius: 50px;
+    border-radius: 30px;
     transform: scale(1.05);
   }
   
   .login-form-cont  .letra {
     /*margin: 0 0 1;*/
-    margin: 0.5rem;
     padding: 0;
     color: #ffffff;
     text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 1px;
     
   }
   
   .titulo{
-    display: flex;
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 100%;
+  background-color: transparent;
   }
   #letrajdkcell {
     font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  #letrajdkcell-1 {
+    font-size: 3rem;
+    font-weight: normal;
   }
   
   .login-form {
@@ -105,7 +114,7 @@
   
   .input-grup {
     position: relative;
-    margin: 8%;
+    margin: 7%;
     display: flex;
     align-items: center;
     /* width: 250px; */
@@ -116,6 +125,7 @@
     width: 100%;
     background: transparent;
     outline: none;
+    flex-direction: column;
     /*  border: none; */
     /* color: #222; */
     padding: 8px ;
@@ -181,7 +191,7 @@
     text-transform: uppercase;
     overflow: hidden;
     transition: 0.5s;
-    margin-top: 40px;
+    margin-top: 20px;
     letter-spacing: 3px;
   }
   

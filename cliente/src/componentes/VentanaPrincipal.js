@@ -6,13 +6,14 @@ import { Aviso } from "./Aviso";
 import { ComboBox } from "./ComboBox";
 import { useState, useEffect, useContext, createContext } from "react";
 import { Producto } from "./Producto";
+import { Context } from "../Context/Context";
 
 export const prueba = createContext();
 
 export const VentanaPrincipal = (props) => {
   const [guardar, setGuardar] = useState(false);
   const [ventana, setVentana] = useState(0);
-  const [checkboxesSeleccionados, setCheckboxesSeleccionados] = useState([]);
+  const{checkboxesSeleccionados,setCheckboxesSeleccionados}=useContext(Context)
   
  /* useEffect(()=>{
 

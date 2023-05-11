@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import logo from "../imagenes/cruz-pequena.svg";
 import search from "../imagenes/search.svg";
-import { ContextProvider, Context } from "../Context/Context";
+import {  Context } from "../Context/Context";
+
 
 export const Busqueda = (props) => {
-  const {buscar, setBuscar} = useContext(Context);
+  const {buscar, setBuscar,checkboxesSeleccionados} = useContext(Context);
   return (
     <div className="buscar-contenedor">
       <div className={props.visible ? "barra-buscar" : "buscar-no-visible"}>
@@ -15,7 +16,7 @@ export const Busqueda = (props) => {
           id="buscar"
           maxLength={30}
           onKeyUp={() => {
-            enterBusqueda(props, buscar, setBuscar);
+            enterBusqueda(props, buscar, setBuscar,checkboxesSeleccionados);
             eliminarEspacio();
           }}
         ></input>
@@ -32,7 +33,8 @@ export const Busqueda = (props) => {
           class="contenedor-icono"
           onClick={() => {
             setBuscar(!buscar);
-            buscarAll();
+            if(checkboxesSeleccionados.length===0){ buscarAll();}
+           
           }}
         >
           <img className="busqueda-icon" src={search}></img>
@@ -55,14 +57,15 @@ const eliminarBusqueda = (props, buscar, setBuscar) => {
   props.actualizar(buscar);
 };
 
-const enterBusqueda = (props, buscar, setBuscar) => {
+const enterBusqueda = (props, buscar, setBuscar,checkboxesSeleccionados) => {
   const input = document.getElementById("buscar");
   if (input != null) {
     input.addEventListener("keyup", (event) => {
       if (event.keyCode === 13) {
         setBuscar(!buscar);
         props.actualizar(buscar);
-        buscarAll();
+        if(checkboxesSeleccionados.length===0){ buscarAll();}
+        
       }
     });
   }
@@ -72,4 +75,21 @@ const buscarAll = () => {
   checkbox.checked = true;
   const event = new Event("change");
   checkbox.dispatchEvent(event);
+};
+const verificarEtiquetas = (setTodo) => {
+  return new Promise((resolve) => {
+    var checkboxes = Array.from(document.querySelectorAll('input[type=checkbox]'));
+  
+    console.log(checkboxes)
+    let todo = true;
+    for (var i = 0; i < checkboxes.length; i++) {
+      console.log("verificando:"+checkboxes[i]+" "+ checkboxes[i].checked);
+      if (checkboxes[i].checked) {
+        todo = false;
+        break;
+      }
+    }
+    setTodo(todo);
+    resolve(todo);
+  });
 };

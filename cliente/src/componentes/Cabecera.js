@@ -3,6 +3,7 @@ import "../estilos/cabecera.css";
 import { Link, Outlet } from "react-router-dom";
 import { Busqueda } from "./Busqueda";
 import { useState } from "react";
+import retrato from "../imagenes/retrato.jpg"
 
 export const Cabecera = (props) => {
   return (
@@ -34,7 +35,9 @@ export const Cabecera = (props) => {
             <Boton nombre={"Venta"} estilos={"boton-navbar-pro"} />
           </Link>
         </div>
-        <Boton estilos={"boton-usuario"} />
+        <div className="foto-u">
+        <img className="boton-usuario" src={retrato}></img>
+        </div>
       </header>
       <Outlet />
     </>

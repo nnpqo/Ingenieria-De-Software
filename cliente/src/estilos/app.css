@@ -1,17 +1,9 @@
-.cabecera-container {
-  flex: auto;
-  width: 100%;
-  height: 80px;
-  background-color: white;
-}
 
 .ventana-principal {
   display: flex;
-  flex: auto;
   background-color: #1a2f5b;
   width: 100%;
-  min-height: 90vh;
-  max-height: auto;
+  justify-content: end;
 }
 
 .nombre-etiqueta {

@@ -165,8 +165,23 @@
 }
 .bt-anadir{
   justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+    border-radius: 30px;
+    border: 1px solid #0E84C7;
+    background-color: #284073;
+    color: white;
+    flex-grow: 1;
+    height: 42px;
+}
+.icono-agregar{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center; /* centrado horizontal */
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }
 #tabla{
   display: flex;
@@ -176,16 +191,49 @@
   display: flex;
   flex-direction: row;
   border-radius: 13px;
-  
+  flex-grow: 1;
+  width: 100%;
 }
 .lista{
   display: flex;
   flex-direction: column;
   }
 .ele{
-  border-radius: 13px;
-  border: 1px solid #0E84C7;
   
+  background-color: #284073;
+}
+.color{
+  background-color:#284073 ;
+  border:none;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+
+}
+.pre{
+  border:1px solid #0E84C7;
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+  border-left: none;
+  width: 150px;
+}
+.imei{
+  background-color:#284073 ;
+  font-size: 20px;
+  border:1px solid #0E84C7;
+  color: white;
+  text-align: center;
+  width: 200px;
+
+  
+}
+.numero{
+  border: 1px solid #0E84C7; /* borde */
+  border-top-left-radius: 13px; /* borde redondo superior izquierdo */
+  border-bottom-left-radius: 13px;
+  border-right: none;
+  width: 90px;
+  font-size: 20px;
 }
 .h{
   display: flex;
@@ -194,23 +242,49 @@
   flex-grow: 1;
   width: 100%;
 }
-.m{
+.m1{
   border: 1px solid #0E84C7;
+  width: 200px;
+  background-color: #3CADFF;
+}
+.m2{
+  border: 1px solid #00A3FF;
+  width: 150px;
+  background-color: #00A3FF;
+}
+.m3{
+  border: 1px solid #0E84C7;
+  width: 150px;
+  background-color: #0C95FA;
 }
 .n{
   border:1px solid #0E84C7;
   border-top-right-radius: 13px;
   border-bottom-right-radius: 13px;
   border-left: none;
+  background-color: #1A6ED1;
+  width: 150px;
 }
 .o{
-  border: 2px solid #0E84C7; /* borde */
+  border: 1px solid #0E84C7; /* borde */
   border-top-left-radius: 13px; /* borde redondo superior izquierdo */
   border-bottom-left-radius: 13px;
   border-right: none;
+  width: 90px;
+  background-color: #49BDFF;
 } 
 
 .fila{
   display: flex;
   flex-direction: row;
+}
+.a1{
+  /* text-align: center;  */
+  margin: 5px;
+
+}
+.a2{
+  /* text-align: center; */
+  padding: 5px;
+
 }

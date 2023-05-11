@@ -85,7 +85,7 @@ const ContenidoTabla = ()=>{
     return<div id={item.imei} className="fila">
       <div className="ele"><p className="numero">{contador}</p></div>
       <div className="ele"><input type="number" className="imei" value={item.imei} disabled></input></div>
-      <div className="ele"><input className="color" value={item.color} disabled></input></div>
+      <div className="ele"><input className="color pre" value={item.color} disabled></input></div>
         <div className="modificar-vender ele">
           modificar vender
         </div>
@@ -97,17 +97,17 @@ const ContenidoTabla = ()=>{
   console.log(lista)
   return <div className="pp2">
     <button id="añadir-producto" className="bt-anadir"onClick={()=>{}}>
-      <p>añadir</p>
-      <p>producto</p>
-      <img src="../imagenes/iconoAgregar.svg"></img>
+        <div> <p className="a1">añadir</p>
+              <p className="a2">producto</p></div>
+      <div className="icono-agregar"><img src="../imagenes/iconoAgregar.svg"></img></div>
     </button>
     <div id="tabla" className="tabla">
       <div id="titulos">
-        <h2 className="o">numero</h2>
-        <h2 className="h m">Imei</h2>
-        <h2 className="h m">color</h2>
-        <h2 className="h m">modificar</h2>
-        <h2 className="n">vender</h2>
+        <h2 className="o">Num.</h2>
+        <h2 className="m1">IMEI</h2>
+        <h2 className="m2">Color</h2>
+        <h2 className="m3">Modificar</h2>
+        <h2 className="n">Vender</h2>
       </div>
       <div id="lista" className="lista">
         {list}

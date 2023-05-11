@@ -247,3 +247,24 @@ END //
 /*EJEMPLO: llamada al procedimiento almacenado*/
 /*CALL registrar_producto(123406789867897,'color nuevo','galaxy a71');*/
 /*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para modificar un producto (dispositivo celular)*/
+drop procedure if exists modificar_producto;
+delimiter //
+CREATE PROCEDURE modificar_producto(IN imei_antiguo bigint(15),
+                                  IN imei_nuevo bigint(15),
+                                  IN nuevo_color VARCHAR(50)
+                                  )
+      BEGIN 
+         SET @id_producto=(SELECT id FROM dispositivo_movil WHERE dispositivo_movil.imei=imei_antiguo);
+         UPDATE dispositivo_movil 
+         SET imei=imei_nuevo,
+             color = nuevo_color
+         WHERE dispositivo_movil.id=@id_producto;  
+      END //
+delimiter ;
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL modificar_producto(111111111111111,222222222222222,'color modificado');*/
+/*-------------------------------------------------*/

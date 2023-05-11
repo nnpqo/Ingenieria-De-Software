@@ -7,12 +7,11 @@ import samsung from "../imagenes/samsung_g.jpg";
 import { eliminarProducto } from "../API/productos";
 import { Context } from "../Context/Context";
 
-
 export const Producto = (props) => {
   const ruta = process.env.REACT_APP_API_URL + props.ruta;
-  const {visible, setVisible, setBuscar, buscar} = useContext(Context);
+  const { visible, setVisible, setBuscar, buscar } = useContext(Context);
 
- // console.log(ruta);
+  // console.log(ruta);
   return (
     <Popupproducto
       trigger={
@@ -21,10 +20,17 @@ export const Producto = (props) => {
             // onClick={(props, ruta) => {
             //   mostrarmodelo(props, ruta);
             // }}
-            className="san">
+            className="san"
+          >
             <Aviso2
               trigger={Basurero()}
-              mensaje={"¿Está seguro de eliminar "+props.etiqueta+" "+props.nombre+" ?"}
+              mensaje={
+                "¿Está seguro de eliminar " +
+                props.etiqueta +
+                " " +
+                props.nombre +
+                " ?"
+              }
               mensaje2="eliminado correctamente!"
               bt1Nombre={"Sí"}
               bt1Estilo={"botonSi"}
@@ -33,17 +39,16 @@ export const Producto = (props) => {
                   const result = eliminarProducto(props.id);
                   resolve(result);
                 });
-                elProducto.then(result => result)
+                elProducto.then((result) => result);
                 setVisible(!visible);
                 setBuscar(!buscar);
               }}
               bt2Nombre={"No"}
               bt2Estilo={"botonNo"}
-           />
+            />
             <img className="product" src={ruta} />
             <h4 className="tittle">{props.etiqueta}</h4>
             <h4 className="tittle">{props.nombre}</h4>
-  
           </div>
         </div>
       }
@@ -56,7 +61,6 @@ export const Producto = (props) => {
     />
   );
 };
-
 
 // const mostrarmodelo = (props, ruta) => {
 //   console.log("1");

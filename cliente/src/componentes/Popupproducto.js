@@ -97,7 +97,7 @@ const ContenidoTabla = ()=>{
   console.log(lista)
   return <div className="pp2">
     <button id="añadir-producto" className="bt-anadir"onClick={()=>{}}>
-        <div> <p className="a1">añadir</p>
+        <div className="anadirp"> <p className="a1">añadir</p>
               <p className="a2">producto</p></div>
       <div className="icono-agregar"><img src="../imagenes/iconoAgregar.svg"></img></div>
     </button>

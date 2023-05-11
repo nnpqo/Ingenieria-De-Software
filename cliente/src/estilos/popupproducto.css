@@ -158,4 +158,35 @@
   white-space: pre-wrap;
   /*Estilos para scroll*/
 }
+.boton-flecha{
+  background-color: transparent;
+  border-radius: 20px;
+  width: 14%;
+  height: 45%;
+  border: 2px solid #0E84C7;
+  display: flex;
+  justify-content: end;
+}
+.mostrar-pro{
+  font-size: 13px;
+}
+.icono-f{
+  border:none;
+}
+.icono-f:hover {
+  -webkit-border-radius: 50%;
+  box-shadow: 0px 0px 7px 7px #0e84c7;
+  -webkit-box-shadow: 0px 0px 7px 7px #0e84c7;
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  transition: transform 0.5s ease-in-out;
+}
 
+.icono-i:hover {
+  -webkit-border-radius: 50%;
+  box-shadow: 0px 0px 7px 7px #0e84c7;
+  -webkit-box-shadow: 0px 0px 7px 7px #0e84c7;
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  transition: transform 0.5s ease-in-out;
+}

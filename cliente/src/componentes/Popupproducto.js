@@ -3,7 +3,8 @@ import { Boton } from "./Boton";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "../estilos/popupproducto.css";
-
+import flechaderecha from "../imagenes/flecha-derecha.svg";
+import flechaizquierda from "../imagenes/flecha-izquierda.svg";
 export const Popupproducto = (props) => {
   const [descripcion,setDescripcion]=useState(true);
   return (
@@ -25,8 +26,13 @@ export const Popupproducto = (props) => {
         <>
           <div className="popupproucto">
             <div className="content">
-              {descripcion? <div onClick={()=>(setDescripcion(false))}>-D</div>:
-              <div onClick={()=>(setDescripcion(true))}>C-</div>}
+              {descripcion? <div className="boton-flecha" onClick={()=>(setDescripcion(false))}>
+                <p className="mostrar-pro">Mostrar productos</p>
+                <img className="icono-f" src={flechaderecha}></img>
+              </div>:
+              <div onClick={()=>(setDescripcion(true))}>
+                <img className="icono-i" src={flechaizquierda}></img>
+                </div>}
               
               <h1 className="nP">{props.nombre}</h1>
               <div class="close-container" onClick={()=>close()}>

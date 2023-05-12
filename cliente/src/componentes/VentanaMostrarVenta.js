@@ -66,9 +66,11 @@ export const VentanaMostrarVenta = () => {
                             <p id="dato">TOTAL:</p>
                             <p>{lista.length} productos</p>
                             <p id="ar-precio">{total}</p>
-                            <Boton nombre="NOTA DE VENTA"
-                                estilos="guardar"
-                            />
+                            <Link to="/NotaVenta">
+                                <Boton nombre="NOTA DE VENTA"
+                                    estilos="guardar"
+                                />
+                            </Link>
                             <Boton nombre="LIMPIAR"
                                 estilos="cancelar"
                             />

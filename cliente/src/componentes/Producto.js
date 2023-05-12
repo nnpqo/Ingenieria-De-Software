@@ -37,11 +37,15 @@ export const Producto = (props) => {
               bt1Funcion={() => {
                 const elProducto = new Promise((resolve, reject) => {
                   const result = eliminarProducto(props.id);
+                  setVisible(!visible);
+                  console.log(visible);
                   resolve(result);
                 });
-                elProducto.then((result) => result);
-                setVisible(!visible);
-                setBuscar(!buscar);
+                elProducto.then((result) => {
+                  console.log("borrar");
+                  setVisible(!visible);
+                });
+                
               }}
               bt2Nombre={"No"}
               bt2Estilo={"botonNo"}

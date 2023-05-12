@@ -157,7 +157,7 @@ BEGIN
    select distinct m.id, m.visible, m.nombre, m.ruta_imagen, m.descripcion, m.precio_venta_sugerido as precio, e.nombre as etiqueta
    from modelos_dispositivos_moviles m, etiqueta_modelo em, etiquetas e
    where m.id = em.id_modelo_dispositivo and em.id_etiqueta = e.id and e.id_categoria = 1 
-        and m.nombre like CONCAT('%',nombre_modelo,'%') 
+        and m.nombre like CONCAT('%',nombre_modelo,'%') and m.visible = 1
    ORDER BY m.nombre ASC;
 END //
 delimiter ;

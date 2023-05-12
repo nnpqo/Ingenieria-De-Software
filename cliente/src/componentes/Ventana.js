@@ -20,7 +20,7 @@ import React, { useState, useEffect, createContext, useContext } from "react";
 import { prueba } from "./VentanaPrincipal";
 import { borrar } from "./Aviso";
 import { Bienvenida } from "./Bienvenido";
-import {Context} from "../Context/Context";
+import { Context } from "../Context/Context";
 
 export const VentanaFormulario = (props) => {
   const [, guardar, setGuardar] = useContext(prueba);
@@ -52,7 +52,7 @@ export const VentanaFormulario = (props) => {
           const combox = document.getElementById("modelo").value;
 
           getProducto(combox).then((res) => {
-            console.log(res)
+            console.log(res);
             const pro = res.producto[0][0];
             document.getElementById("descripcion").value = pro.descripcion;
             document.getElementById("nombreModelo").value = pro.modelo;
@@ -216,7 +216,7 @@ export const VentanaFormulario = (props) => {
 };
 
 export const Ventana = (props) => {
-  const {buscar, visible} = useContext(Context);
+  const { buscar, visible, setVisible } = useContext(Context);
   const [productos, setProductos] = useState([]);
   const [etiquetas, setEtiquetas] = useState([]);
   const [cambioVisible, setcambioVisible] = useState(false);
@@ -259,22 +259,20 @@ export const Ventana = (props) => {
       return etiquetas.map((eti) => {
         if (pro.etiqueta === eti) {
           console.log(eti);
-          if (pro.visible === 1) {
-            return (
-              <>
-                <Producto
-                  cambioVisible={cambioVisible}
-                  funActualizar={setcambioVisible}
-                  id={pro.id}
-                  ruta={pro.ruta_imagen}
-                  etiqueta={pro.etiqueta}
-                  nombre={pro.nombre}
-                  caracteristicas={pro.descripcion}
-                  precio={pro.precio}
-                />
-              </>
-            );
-          }
+          return (
+            <>
+              <Producto
+                cambioVisible={cambioVisible}
+                funActualizar={setcambioVisible}
+                id={pro.id}
+                ruta={pro.ruta_imagen}
+                etiqueta={pro.etiqueta}
+                nombre={pro.nombre}
+                caracteristicas={pro.descripcion}
+                precio={pro.precio}
+              />
+            </>
+          );
         } else {
           return false;
         }

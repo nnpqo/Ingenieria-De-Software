@@ -63,6 +63,32 @@ CREATE TABLE modelos_dispositivos_moviles (
   UNIQUE (nombre)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------------
+-- TABLE DISPOSITIVO_MOVIL											-
+-- --------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `dispositivo_movil` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `imei` bigint(15) NOT NULL,
+  `color` varchar(50) DEFAULT NULL,
+  `vendido` tinyint(4) NOT NULL DEFAULT 0,
+  `ultima_actualizacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `id_modelo_dispositivo` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_modelo_dispositivo` (`id_modelo_dispositivo`),
+  CONSTRAINT `pertenece_modelo` FOREIGN KEY (`id_modelo_dispositivo`) REFERENCES `modelos_dispositivos_moviles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------------
+-- TABLE USUARIO											-
+-- --------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  `contrasenia` varchar(50) DEFAULT NULL,
+  `rol` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

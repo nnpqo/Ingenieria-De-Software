@@ -186,3 +186,85 @@ CREATE PROCEDURE modificar_modelo_sin_imagen(IN nombre_antiguo VARCHAR(150),
          WHERE id=@id_etiquet_modelo;
       END //
 delimiter ;
+
+
+/*----------------3ER SPRINT-----------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para obtener los datos de un producto (dispositivo celular)*/
+drop procedure if exists obtener_producto;
+delimiter //
+CREATE PROCEDURE obtener_producto(IN nomb_modelo VARCHAR(100))
+BEGIN
+SELECT modelos_dispositivos_moviles.nombre AS modelo, etiquetas.nombre AS marca,
+       imei, color, modelos_dispositivos_moviles.precio_venta_sugerido AS precio, modelos_dispositivos_moviles.ruta_imagen AS imagen
+FROM dispositivo_movil,modelos_dispositivos_moviles,etiquetas,etiqueta_modelo
+WHERE modelos_dispositivos_moviles.id=dispositivo_movil.id_modelo_dispositivo AND 
+modelos_dispositivos_moviles.id=etiqueta_modelo.id_modelo_dispositivo AND dispositivo_movil.vendido=0 AND 
+etiqueta_modelo.id_etiqueta=etiquetas.id AND modelos_dispositivos_moviles.nombre=nomb_modelo;
+END 
+//
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL obtener_producto('nombre_modelo');*/
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para ocultar un producto (dispositivo celular)*/
+drop procedure if exists ocultar_producto;
+delimiter //
+CREATE PROCEDURE ocultar_producto(IN imei_prod BIGINT(15))
+BEGIN 
+    UPDATE dispositivo_movil 
+    SET dispositivo_movil.vendido = 1
+    WHERE dispositivo_movil.imei=imei_prod;
+END //
+delimiter ;
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL ocultar_producto(1245789636547854);*/
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para registrar un producto (dispositivo celular)*/
+drop procedure if exists registrar_producto;
+delimiter // 
+CREATE PROCEDURE registrar_producto(
+    IN imei_nuevo bigint(15),
+    IN color_nuevo VARCHAR(50),
+    IN modelo VARCHAR(30)
+) BEGIN
+    DECLARE CONTINUE HANDLER FOR 1062 
+    BEGIN 
+        SIGNAL SQLSTATE '45000'
+        set MESSAGE_TEXT = 'Error: Dispositivo movil ya existe';
+    END;
+    SET @id_modelo=(SELECT id FROM modelos_dispositivos_moviles WHERE modelos_dispositivos_moviles.nombre=modelo);
+    INSERT INTO dispositivo_movil (imei, color, id_modelo_dispositivo)
+    VALUES (imei_nuevo, color_nuevo, @id_modelo);
+END //
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL registrar_producto(123406789867897,'color nuevo','galaxy a71');*/
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/*procedimiento almacenado para modificar un producto (dispositivo celular)*/
+drop procedure if exists modificar_producto;
+delimiter //
+CREATE PROCEDURE modificar_producto(IN imei_antiguo bigint(15),
+                                  IN imei_nuevo bigint(15),
+                                  IN nuevo_color VARCHAR(50)
+                                  )
+      BEGIN 
+         SET @id_producto=(SELECT id FROM dispositivo_movil WHERE dispositivo_movil.imei=imei_antiguo);
+         UPDATE dispositivo_movil 
+         SET imei=imei_nuevo,
+             color = nuevo_color
+         WHERE dispositivo_movil.id=@id_producto;  
+      END //
+delimiter ;
+/*EJEMPLO: llamada al procedimiento almacenado*/
+/*CALL modificar_producto(111111111111111,222222222222222,'color modificado');*/
+/*-------------------------------------------------*/

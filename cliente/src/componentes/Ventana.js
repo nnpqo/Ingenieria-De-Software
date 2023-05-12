@@ -17,13 +17,12 @@ import "../estilos/boton.css";
 import { Aviso, Mensaje3 } from "./Aviso";
 import { Producto } from "./Producto";
 import React, { useState, useEffect, createContext, useContext } from "react";
-import { prueba } from "./VentanaPrincipal";
+
 import { borrar } from "./Aviso";
 import { Bienvenida } from "./Bienvenido";
 import { Context } from "../Context/Context";
 
 export const VentanaFormulario = (props) => {
-  const [, guardar, setGuardar] = useContext(prueba);
   //const modelos = ["p30 pro", "galaxy s20", "redmi note 11"];
   const [modelos, setmodelos] = useState([]);
   const [etiquetas, setEtiquetas] = useState([]);

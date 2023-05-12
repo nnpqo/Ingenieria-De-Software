@@ -3,13 +3,14 @@ import "../estilos/cabecera.css";
 import { Link, Outlet } from "react-router-dom";
 import { Busqueda } from "./Busqueda";
 import { useContext, useState } from "react";
+import retrato from "../imagenes/retrato.jpg"
 
 export const Cabecera = (props) => {
   return (
     <>
       <header className="cabecera">
         <div className="home">
-          <Link to="/">
+          <Link to="/home">
             <Boton
               nombre={
                 <>
@@ -28,11 +29,17 @@ export const Cabecera = (props) => {
         ></Busqueda>
 
         <div className="opciones-navbar">
+          
           <Link to="/productos">
             <Boton nombre={"Producto"} estilos={"boton-navbar-pro"} />
           </Link>
+          <Link to="/venta">
+            <Boton nombre={"Venta"} estilos={"boton-navbar-pro"} />
+          </Link>
         </div>
-        <Boton estilos={"boton-usuario"} />
+        <div className="foto-u">
+        <img className="boton-usuario" src={retrato}></img>
+        </div>
       </header>
       <Outlet />
     </>

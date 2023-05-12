@@ -220,6 +220,11 @@ export const Ventana = (props) => {
   const [productos, setProductos] = useState([]);
   const [etiquetas, setEtiquetas] = useState([]);
   const [cambioVisible, setcambioVisible] = useState(false);
+  const [reload, setReload] = useState(false);
+
+  useEffect(()=>{
+    setReload(!reload)
+  },[visible])
 
   useEffect(() => {
     const getProdructos = new Promise((resolve, reject) => {
@@ -239,7 +244,7 @@ export const Ventana = (props) => {
     console.log(productos);
     setEtiquetas(props.lista);
     console.log(etiquetas);
-  }, [props.lista, visible, buscar]);
+  }, [props.lista, visible, buscar, reload]);
 
   let prod = productos?.map((pro) => {
     if (etiquetas.length === 0) {

@@ -74,7 +74,7 @@ export const Categoria = (props) => {
             nuevaEti ? setNuevaEti(false) : setNuevaEti(true);
             setEtiM({})
           }}
-          bt2Nombre={"Cancelar"}
+          bt2Nombre={"CANCELAR"}
           bt2Estilo={"cancelar"}
           mensaje2={etiM.message}
           error={etiM.error}

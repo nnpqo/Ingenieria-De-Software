@@ -91,7 +91,7 @@ const ContenidoDescripcion = (prop) => {
 };
 const ContenidoTabla = () => {
   const [modificar, setModificar]=useState(false);
-  const [comprar, setComprar] = useState(false);
+  const [comprar, setComprar] = useState(true);
   // const [añadir, setAñadir] = useState(false);
   const lista = [
     { imei: 15225, color: "blanco" },
@@ -119,18 +119,20 @@ const ContenidoTabla = () => {
         <td className="ele">
           <input className="color pre" value={item.color} disabled></input>
         </td>
-        {!modificar?<>
+        {modificar?<>
+          <td>
+          <button className="vender-cancelar"> ✔ </button></td>
+          <td><button className="vender-cancelar">
+          <img src={cruz}>
+          </img> </button></td></>:comprar?<></>:
+          <>
           <td className="ele" ><button className="modificar-aceptar">
           <img src={lapiz}>
           </img></button></td>
           <td className="ele"><button className="vender-cancelar">
           <img src={imgVender}>
-          </img></button></td></>:<><td >
-          <button className="vender-cancelar"> ✔ </button></td>
-          <td><button className="vender-cancelar">
-          <img src={cruz}>
-          </img> </button></td></>}
-        
+          </img></button></td>
+          </>}
       </tr>
     );
   });
@@ -157,13 +159,14 @@ const ContenidoTabla = () => {
         </thead>
         <tbody>
           {list}
-          {/*añadir? <>input</>*/}
+          {modificar? <></>:<></>}
           <tr></tr>
         </tbody>
       </table>
     </div>
   );
 };
+
 //  <Popup className="popup">
 
 // </Popup>

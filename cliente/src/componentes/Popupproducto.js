@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Boton } from "./Boton";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
@@ -91,14 +91,15 @@ const ContenidoDescripcion = (prop) => {
 };
 const ContenidoTabla = () => {
   const [modificar, setModificar]=useState(false);
-  const [comprar, setComprar] = useState(true);
-  // const [añadir, setAñadir] = useState(false);
-  const lista = [
+  const [comprar, setComprar] = useState(false);
+  const [añadir, setAñadir] = useState(false);
+  const [lista,setLista] = useState([
     { imei: 15225, color: "blanco" },
     { imei: 15225, color: "blanco" },
     { imei: 15225, color: "blanco" },
-  ];
+  ]) ;
   let contador = 0;
+
   let list = lista.map((item) => {
     {
       contador = contador + 1;
@@ -136,10 +137,17 @@ const ContenidoTabla = () => {
       </tr>
     );
   });
-  console.log(lista);
+
+  useEffect(()=>{
+    if(añadir){
+      const tabla=document.getElementById("lista-tabla")
+      tabla.scrollTop= tabla.scrollHeight
+    }
+  },[añadir])
   return (
     <div className="pp2">
-      <button id="añadir-producto" className="bt-anadir" onClick={() => {}}>
+      <button id="añadir-producto" className="bt-anadir" onClick={() => {setAñadir(true)
+      }}>
         <div className="anadirp">
           {" "}
           <p className="a1">Añadir</p>
@@ -157,15 +165,40 @@ const ContenidoTabla = () => {
           <th className="m3">Modificar</th>
           <th className="n">Vender</th>
         </thead>
-        <tbody>
+        <tbody id="lista-tabla">
           {list}
-          {modificar? <></>:<></>}
+          {añadir? <>
+          <td className="ele" ></td>
+          <td className="ele">
+          <input
+            type="number"
+            className="imei"
+            id="añadirImei" 
+          ></input>
+        </td>
+        <td className="ele">
+          <input className="color pre" id="añadirColor"></input>
+        </td>
+        <td>
+          <button className="vender-cancelar" onClick={()=>{añadirProducto(lista,setAñadir)
+          setAñadir(false)
+          }}> ✔ </button></td>
+          <td><button className="vender-cancelar">
+          <img src={cruz}>
+          </img> </button></td>
+        </>:<></>}
           <tr></tr>
         </tbody>
       </table>
     </div>
   );
 };
+
+const añadirProducto=(lista)=>{
+  const imei=document.getElementById("añadirImei")
+  const color=document.getElementById("añadirColor")
+  lista.push({ imei: imei.value, color: color.value }); 
+}
 
 //  <Popup className="popup">
 

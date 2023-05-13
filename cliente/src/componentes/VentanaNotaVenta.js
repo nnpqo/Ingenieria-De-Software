@@ -7,6 +7,21 @@ export const VentanaNotaVenta = () => {
     const [fecha, setFecha] = useState()
     const lista = [{ ruta: "", modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
     { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "3000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "8000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "GALAXY S22", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "9000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "GALAXY A20", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "9000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "negro" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "900", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
+    { modelo: "IPHONE 13 PRO MAX", precio: "8000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
     { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" }]
     let total = 0;
     let list = lista.map((item) => {
@@ -78,7 +93,7 @@ export const VentanaNotaVenta = () => {
                             </tr>
                         </tfoot>
                     </table>
-                    <div className="botones">
+                    <div className="cont-botones">
                     <Mensaje3
                         nombre="VENDER"
                         estilos={"guardar"}

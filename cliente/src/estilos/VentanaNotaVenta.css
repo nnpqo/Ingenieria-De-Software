@@ -142,11 +142,12 @@
     width: 80%;
     border: none;
 }
-.botones{
+.cont-botones{
     width: 95%;
     display: flex;
     justify-content: end;
     gap: 5%;
+    margin-top: 4%;
 }
 .lista-body{
     display: flex;

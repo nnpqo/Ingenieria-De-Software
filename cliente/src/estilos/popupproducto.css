@@ -203,13 +203,14 @@
   justify-content: flex-start;
     display: flex;
     flex-direction: row;
-    width: 150px;
+    width: 110px;
     border-radius: 30px;
     border: 2px solid #0E84C7; /* borde */
     background-color: #284073;
     color: white;
     height: 40px;
     align-self: self-start;
+    padding: 5px;
 }
 .icono-agregar{
   display: flex;
@@ -250,8 +251,7 @@
 }
 
 #titulos{
- 
- 
+  /* justify-content: space-around; */
 }
 .lista{
   display: flex;
@@ -269,14 +269,15 @@
   color: white;
   font-size: 25px;
   text-align: center;
-
+  width: 170px;
+   
 }
 .pre{
   border: 2px solid #0E84C7; /* borde */
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-left: none;
-  width: 150px;
+  width: 170px;
 }
 .imei{
   background-color:#284073 ;
@@ -286,14 +287,16 @@
   text-align: center;
   width: 200px;
   height: 100%;
+   
 }
 .numero{
   border: 2px solid #0E84C7; /* borde */
   border-top-left-radius: 8px; /* borde redondo superior izquierdo */
   border-bottom-left-radius: 8px;
   border-right: none;
-  width: 90px;
+  width: 110px;
   font-size: 25px;
+   
 }
 .h{
   display: flex;
@@ -309,12 +312,13 @@
 }
 .m2{
   border: 1px solid #00A3FF;
-  width: 150px;
+  width: 170px;
   background-color: #00A3FF;
 }
 .m3{
+  
   border: 1px solid #0E84C7;
-  width: 150px;
+  width: 80px;
   background-color: #0C95FA;
 }
 .n{
@@ -323,32 +327,56 @@
   border-bottom-right-radius: 8px;
   border-left: none;
   background-color: #1A6ED1;
-  width: 150px;
+  width: 80px;
 }
 .o{
+  width: 110px;
   border: 1px solid #0E84C7; /* borde */
   border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   border-right: none;
-  width: 10px;
   background-color: #49BDFF;
 } 
 
 .fila{
-  display: flex;
-  flex-direction: row;
-  margin-top: 10px;
+  justify-content: space-around;
 }
 .a1{
   /* text-align: center;  */
-  margin-top: 3px;
-  margin-left: 5px;
+  
 
 }
 
 .anadirp{
-  margin-left: 20px;
+  margin-left: 10px;
   display:flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.modificar-aceptar{
+  color: white;
+  background-color: #0C95FA;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #0C95FA;
+  width: 75px;
+  height: 33px;
+}
+.vender-cancelar{
+  color: white;
+  background-color: #0DC832;
+  border: 2px solid #0E84C7;
+  padding: 5px;
+  border-radius: 5px;
+  width: 75px;
+  height: 33px;
+}
+.bt-anadir{
+  display: flex;
+  justify-content: left;
+  padding: 5px;
+  color: white;
+  background-color: #284073;
+  margin: solid 1px white;
+  
 }

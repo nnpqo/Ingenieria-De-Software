@@ -84,6 +84,8 @@ const ContenidoDescripcion = (prop) => {
   );
 };
 const ContenidoTabla = () => {
+  const [modificar, setModificar]=useState(false);
+  // const [comprar, setComprar] = useState(false);
   const [añadir, setAñadir] = useState(false);
   const lista = [
     { imei: 15225, color: "blanco" },
@@ -111,8 +113,13 @@ const ContenidoTabla = () => {
         <td className="ele">
           <input className="color pre" value={item.color} disabled></input>
         </td>
-        <td className="modificar-vender ele">modificar vender</td>
-        <td className="aceptar-cancelar ele">aceptar cancelar</td>
+        {!modificar?<><td className="ele" ><button className="modificar-aceptar"><img src="../imagenes/modificar.svg"></img></button></td>
+            <td className="ele"><button className="vender-cancelar"><img src="../imagenes/modificar.svg"></img></button></td></>
+            :<><td ><button className="vender-cancelar"> ✔ </button></td><td><button className="vender-cancelar"> <img src="../imagenes/cruz.svg"></img> </button></td></>}
+        {/* {comprar?<><td className="ele" ><button className="modificar-aceptar"><img src="../imagenes/modificar.svg"></img></button></td>
+            <td className="ele"><button className="vender-cancelar">vender</button></td></>
+            :<><td ><button className="vender-cancelar"> ✔ </button></td><td><button className="vender-cancelar"> <img src="../imagenes/cruz.svg"></img> </button></td></>} */}
+      
       </tr>
     );
   });
@@ -122,7 +129,7 @@ const ContenidoTabla = () => {
       <button id="añadir-producto" className="bt-anadir" onClick={() => {}}>
         <div className="anadirp">
           {" "}
-          <p className="a1">añadir</p>
+          <p className="a1">Añadir</p>
           <p className="a2">producto</p>
         </div>
         <div className="icono-agregar">

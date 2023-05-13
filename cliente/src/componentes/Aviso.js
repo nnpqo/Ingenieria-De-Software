@@ -7,6 +7,7 @@ import { CajaTexto } from "./CajaTexto";
 import { useState } from "react";
 import { inputArtificial } from "./Ventana";
 import { Context } from "../Context/Context";
+import { Link } from "react-router-dom";
 
 export const Aviso = (props) => {
   return (
@@ -282,5 +283,54 @@ export const Mensaje3 = (props) => {
         </div>
       </Popup>
     </div>
+  );
+};
+
+export const Aviso4 = (props) => {
+  return (
+    <Popup
+      trigger={
+        props.trigger ? (
+          props.trigger
+        ) : (
+          <button className={props.estilos}>
+            <h2>{props.nombre}</h2>
+          </button>
+        )
+      }
+      modal
+      nested
+      className="aviso"
+    >
+      {(close) => (
+        <>
+          {props.titulo && <h1 className="titulo">{props.titulo}</h1>}
+          {props.mensaje && <p className="mensaje">{props.mensaje}</p>}
+
+          {props.extra}
+          <div className="botonesAviso">
+            <Link to="/venta">
+            <Boton
+              nombre={props.bt1Nombre}
+              estilos={props.bt1Estilo}
+              funcion={() => {
+                {
+                  props.bt1Funcion && props.bt1Funcion();
+                }
+                close();
+              }}
+            />
+            </Link>
+            {props.bt2Nombre && (
+              <Boton
+                nombre={props.bt2Nombre}
+                estilos={props.bt2Estilo}
+                funcion={close}
+              />
+            )}
+          </div>
+        </>
+      )}
+    </Popup>
   );
 };

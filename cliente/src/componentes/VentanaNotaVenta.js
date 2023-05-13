@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { CajaTexto } from "./CajaTexto";
-import { Boton } from "./Boton";
+import { Aviso4, Mensaje3 } from "./Aviso";
 
 export const VentanaNotaVenta = () => {
     const [fecha, setFecha] = useState()
@@ -71,12 +71,25 @@ export const VentanaNotaVenta = () => {
                         </tr>
                     </tfoot>
                 </table>
-                <div className="botonesNotaVenta">
-                    <Boton nombre= {"VENDER"}
-                    estilos="guardar"/>
-                    <Boton nombre= {"CANCELAR"}
-                    estilos="cancelar"/>
-                </div>
+                <Mensaje3
+                    nombre="VENDER"
+                    estilos={"guardar"}
+                    funcion={() => {
+                        console.log("hola");
+                      }}
+                    mensaje={"¡venta exitosa!"}
+                    error={false}
+                 />
+                 <Aviso4
+                  nombre="CANCELAR"
+                  mensaje="¿Está seguro de cancelar la venta?"
+                  estilos={"cancelar"}
+                  bt1Nombre={"Sí"}
+                  bt1Estilo={"botonSi"}
+                  bt1Funcion={console.log("hola")}
+                  bt2Nombre={"No"}
+                  bt2Estilo={"botonNo"}
+                />
             </div>
 
         </div>

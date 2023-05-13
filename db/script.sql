@@ -74,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `dispositivo_movil` (
   `ultima_actualizacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `id_modelo_dispositivo` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
+  unique(imei),
   KEY `id_modelo_dispositivo` (`id_modelo_dispositivo`),
   CONSTRAINT `pertenece_modelo` FOREIGN KEY (`id_modelo_dispositivo`) REFERENCES `modelos_dispositivos_moviles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

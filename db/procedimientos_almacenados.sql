@@ -233,16 +233,10 @@ delimiter //
 CREATE PROCEDURE registrar_producto(
     IN imei_nuevo bigint(15),
     IN color_nuevo VARCHAR(50),
-    IN modelo VARCHAR(30)
+    IN id INT
 ) BEGIN
-    DECLARE CONTINUE HANDLER FOR 1062 
-    BEGIN 
-        SIGNAL SQLSTATE '45000'
-        set MESSAGE_TEXT = 'Error: Dispositivo movil ya existe';
-    END;
-    SET @id_modelo=(SELECT id FROM modelos_dispositivos_moviles WHERE modelos_dispositivos_moviles.nombre=modelo);
     INSERT INTO dispositivo_movil (imei, color, id_modelo_dispositivo)
-    VALUES (imei_nuevo, color_nuevo, @id_modelo);
+    VALUES (imei_nuevo, color_nuevo, id);
 END //
 /*EJEMPLO: llamada al procedimiento almacenado*/
 /*CALL registrar_producto(123406789867897,'color nuevo','galaxy a71');*/
@@ -253,16 +247,15 @@ END //
 /*procedimiento almacenado para modificar un producto (dispositivo celular)*/
 drop procedure if exists modificar_producto;
 delimiter //
-CREATE PROCEDURE modificar_producto(IN imei_antiguo bigint(15),
+CREATE PROCEDURE modificar_producto(IN id mediumint(15),
                                   IN imei_nuevo bigint(15),
                                   IN nuevo_color VARCHAR(50)
                                   )
       BEGIN 
-         SET @id_producto=(SELECT id FROM dispositivo_movil WHERE dispositivo_movil.imei=imei_antiguo);
          UPDATE dispositivo_movil 
          SET imei=imei_nuevo,
              color = nuevo_color
-         WHERE dispositivo_movil.id=@id_producto;  
+         WHERE dispositivo_movil.id=id;  
       END //
 delimiter ;
 /*EJEMPLO: llamada al procedimiento almacenado*/

@@ -197,7 +197,7 @@ router.put("/setVisible/:id", (req, res) => {
 });
 
 router.get("/getProducto/:nombre", (req, res) => {
-  console.log(req.params.nombre)
+  console.log(req.params.nombre);
   const nombre = req.params.nombre;
   const sql = "call obtener_caracteristicas_modelo(?)";
   db.query(sql, [nombre], (error, results, fields) => {
@@ -243,4 +243,60 @@ router.post("/setEtiqueta/:etiqueta", (req, res) => {
     }
   });
 });
+
+router.post("/registrarProducto", (req, res) => {
+  const imei = req.body.imei;
+  const color = req.body.color;
+  const id_modelo = req.body.id_modelo;
+  const sql = "call registrar_producto(?,?,?)";
+  db.query(sql, [imei, color, id_modelo], (error, results, fields) => {
+    if (error) {
+      if (error.code === "ER_DUP_ENTRY") {
+        res.send({
+          message: "Error al guardar: producto ya existe",
+          error: true,
+        });
+      } else {
+        res.send({ message: "Error al guardar producto.", error: true });
+      }
+    } else {
+      res.send({ message: "Guardado correctamente.", error: false });
+    }
+  });
+});
+
+router.put("/modificarProducto", (req, res) => {
+  const id = req.body.id;
+  const imei = req.body.imei;
+  const color = req.body.color;
+  const sql = "call modificar_producto(?,?,?)";
+
+  db.query(sql, [id, imei, color], (error, results, fields) => {
+    if (error) {
+      if (error.code === "ER_DUP_ENTRY") {
+        res.send({
+          message: "Error al modificar: producto ya existe.",
+          error: true,
+        });
+      } else {
+        res.send({ message: "Error al modificar producto.", error: true });
+      }
+    } else {
+      res.send({ message: "Modificado correctamente.", error: false });
+    }
+  });
+});
+
+router.get("/getProductos/:modelo", (req, res) => {
+  const modelo = req.params.modelo;
+  const sql = "call obtener_producto(?)";
+  db.query(sql, [modelo], (error, results, fields) => {
+    if (error) {
+      res.send({ message: "Error al obtener moviles.", error: true });
+    } else {
+      res.json({ dispositivos: results })
+    }
+  });
+});
+
 module.exports = router;

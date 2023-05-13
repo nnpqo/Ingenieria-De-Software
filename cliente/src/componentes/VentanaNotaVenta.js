@@ -88,8 +88,12 @@ export const VentanaNotaVenta = () => {
                         </tbody>
                         <tfoot className="cont-to">
                             <tr className="total">
+                                <div className="total-abajo">
                                 <td id="nombre-ven-1" colspan="2">Total:</td>
+                                </div>
+                                <div className="res-abajo">
                                 <td id="resultado-2">{total} Bs</td>
+                                </div>
                             </tr>
                         </tfoot>
                     </table>

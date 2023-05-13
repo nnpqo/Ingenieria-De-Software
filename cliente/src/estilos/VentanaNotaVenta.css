@@ -34,7 +34,7 @@
     color: white;
     font-weight: bolder;
     font-size: 20px;
-    margin-right: 75%;
+    margin-left: 5%;
 }
 #resultados{
     color: white;
@@ -165,7 +165,7 @@
     height: 100%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
 }
 .resultados-venta{
@@ -177,4 +177,13 @@
 .cont-to{
     height: 10%;
     display: flex;
+}
+.total-abajo{
+    width: 50%;
+    display: flex;
+}
+.res-abajo{
+    width: 50%;
+    display: flex;
+    justify-content: end;
 }

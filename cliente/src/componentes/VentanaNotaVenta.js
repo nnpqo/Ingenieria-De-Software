@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { CajaTexto } from "./CajaTexto";
 import { Aviso4, Mensaje3 } from "./Aviso";
+import "../estilos/VentanaNotaVenta.css"
 
 export const VentanaNotaVenta = () => {
     const [fecha, setFecha] = useState()
@@ -10,10 +11,10 @@ export const VentanaNotaVenta = () => {
     let total = 0;
     let list = lista.map((item) => {
         total += Number(item.precio);
-        return (<tr>
-            <td>{item.modelo}</td>
-            <td>{item.imei}</td>
-            <td>{item.precio}</td>
+        return (<tr className="resultados-venta">
+            <td id="resultados-1">{item.modelo}</td>
+            <td id="resultados-2">{item.imei}</td>
+            <td id="resultados-3">{item.precio}</td>
         </tr>
         )
     })
@@ -36,62 +37,70 @@ export const VentanaNotaVenta = () => {
             <div className="titulo-Ventana">
                 <h1>NOTA DE VENTA</h1>
             </div>
-            <div className="notaVentaIzquierda">
-                <div className="datosVendedor">
-                    <p>Vendedor:</p>
-                    <p>Richar Parker Choque</p>
-                    <p>Fecha:</p>
-                    <p>{fecha}</p>
+            <div className="conte-Nota">
+                <div className="notaVentaIzquierda">
+                    <div className="contenedor-datos">
+                        <div className="datosVendedor">
+                            <div className="argumento">
+                            <p id="nombre-ven">Vendedor:</p>
+                            <p id="resultados">Richar Parker Choque</p>
+                            </div>
+                            <div className="argumento">
+                            <p id="nombre-ven">Fecha:</p>
+                            <p id="resultados">{fecha}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="inputsNotaVenta">
+                        <CajaTexto
+                            nombre={"Cliente*"}
+                            id={"precio"} />
+                        <CajaTexto
+                            nombre={"Cedula de identidad o NIT*"}
+                            id={"precio"} />
+                    </div>
                 </div>
-                <div className="inputsNotaVenta">
-                    <CajaTexto
-                        nombre={"Cliente*"}
-                        id={"precio"} />
-                    <CajaTexto
-                        nombre={"Cedula de identidad o NIT*"}
-                        id={"precio"} />
-                </div>
-            </div>
-            <div className="notaVentaDerecha">
-                <table className="tabla">
-                    <thead>
-                        <tr>
-                            <th>PRODUCTO</th>
-                            <th>IMEI</th>
-                            <th>IMPORTE en Bs</th>
+                <div className="notaVentaDerecha">
+                    <table className="tabla">                       
+                        <tr className="contenedor-titulos">
+                            <th id="titulo-producto">PRODUCTO</th>
+                            <th id="titulo-imei">IMEI</th>
+                            <th id="titulo-importe">IMPORTE en Bs</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {list}
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2">Total:</td>
-                            <td>{total} Bs</td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <Mensaje3
-                    nombre="VENDER"
-                    estilos={"guardar"}
-                    funcion={() => {
-                        console.log("hola");
-                      }}
-                    mensaje={"¡venta exitosa!"}
-                    error={false}
-                 />
-                 <Aviso4
-                  nombre="CANCELAR"
-                  mensaje="¿Está seguro de cancelar la venta?"
-                  estilos={"cancelar"}
-                  bt1Nombre={"Sí"}
-                  bt1Estilo={"botonSi"}
-                  bt1Funcion={console.log("hola")}
-                  bt2Nombre={"No"}
-                  bt2Estilo={"botonNo"}
-                />
-            </div>
 
+                        <tbody className="lista-body">
+                            {list}
+                        </tbody>
+                        <tfoot className="cont-to">
+                            <tr className="total">
+                                <td id="nombre-ven-1" colspan="2">Total:</td>
+                                <td id="resultado-2">{total} Bs</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div className="botones">
+                    <Mensaje3
+                        nombre="VENDER"
+                        estilos={"guardar"}
+                        funcion={() => {
+                            console.log("hola");
+                        }}
+                        mensaje={"¡venta exitosa!"}
+                        error={false}
+                    />
+                    <Aviso4
+                    nombre="CANCELAR"
+                    mensaje="¿Está seguro de cancelar la venta?"
+                    estilos={"cancelar"}
+                    bt1Nombre={"Sí"}
+                    bt1Estilo={"botonSi"}
+                    bt1Funcion={console.log("hola")}
+                    bt2Nombre={"No"}
+                    bt2Estilo={"botonNo"}
+                    />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

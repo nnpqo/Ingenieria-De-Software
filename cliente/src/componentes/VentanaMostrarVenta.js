@@ -69,9 +69,11 @@ export const VentanaMostrarVenta = () => {
                             <p id="ar-precio">{total}</p>
                             </div>
                             <div className="inferior">
-                            <Boton nombre="NOTA DE VENTA"
-                                estilos="guardar"
-                            />
+                            <Link to="/NotaVenta">
+                                <Boton nombre="NOTA DE VENTA"
+                                    estilos="guardar"
+                                />
+                            </Link>
                             <Boton nombre="LIMPIAR"
                                 estilos="cancelar"
                             />

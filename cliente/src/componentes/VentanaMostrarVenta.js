@@ -63,15 +63,19 @@ export const VentanaMostrarVenta = () => {
                             </Link>
                         </div>
                         <div className="contenedor-total">
+                            <div className="superior">
                             <p id="dato">TOTAL:</p>
-                            <p>{lista.length} productos</p>
+                            <p id="ar-precio">{lista.length} productos</p>
                             <p id="ar-precio">{total}</p>
+                            </div>
+                            <div className="inferior">
                             <Boton nombre="NOTA DE VENTA"
                                 estilos="guardar"
                             />
                             <Boton nombre="LIMPIAR"
                                 estilos="cancelar"
                             />
+                            </div>
                         </div>
                     </div>
                 </div>) : (<VentaVacia />)

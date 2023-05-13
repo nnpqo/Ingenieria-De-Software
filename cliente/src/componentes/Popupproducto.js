@@ -5,6 +5,12 @@ import "reactjs-popup/dist/index.css";
 import "../estilos/popupproducto.css";
 import flechaderecha from "../imagenes/flecha-derecha.svg";
 import flechaizquierda from "../imagenes/flecha-izquierda.svg";
+import iconoAgregar from "../imagenes/iconoAgregar.svg"
+import imgVender from "../imagenes/imgVender.svg"
+import lapiz from "../imagenes/lapiz.svg"
+import cruz from  "../imagenes/cruz.svg"
+import { agregarEtiqueta } from "../API/etiquetas";
+
 export const Popupproducto = (props) => {
   const [descripcion, setDescripcion] = useState(true);
   return (
@@ -85,8 +91,8 @@ const ContenidoDescripcion = (prop) => {
 };
 const ContenidoTabla = () => {
   const [modificar, setModificar]=useState(false);
-  // const [comprar, setComprar] = useState(false);
-  const [añadir, setAñadir] = useState(false);
+  const [comprar, setComprar] = useState(false);
+  // const [añadir, setAñadir] = useState(false);
   const lista = [
     { imei: 15225, color: "blanco" },
     { imei: 15225, color: "blanco" },
@@ -113,13 +119,18 @@ const ContenidoTabla = () => {
         <td className="ele">
           <input className="color pre" value={item.color} disabled></input>
         </td>
-        {!modificar?<><td className="ele" ><button className="modificar-aceptar"><img src="../imagenes/modificar.svg"></img></button></td>
-            <td className="ele"><button className="vender-cancelar"><img src="../imagenes/modificar.svg"></img></button></td></>
-            :<><td ><button className="vender-cancelar"> ✔ </button></td><td><button className="vender-cancelar"> <img src="../imagenes/cruz.svg"></img> </button></td></>}
-        {/* {comprar?<><td className="ele" ><button className="modificar-aceptar"><img src="../imagenes/modificar.svg"></img></button></td>
-            <td className="ele"><button className="vender-cancelar">vender</button></td></>
-            :<><td ><button className="vender-cancelar"> ✔ </button></td><td><button className="vender-cancelar"> <img src="../imagenes/cruz.svg"></img> </button></td></>} */}
-      
+        {!modificar?<>
+          <td className="ele" ><button className="modificar-aceptar">
+          <img src={lapiz}>
+          </img></button></td>
+          <td className="ele"><button className="vender-cancelar">
+          <img src={imgVender}>
+          </img></button></td></>:<><td >
+          <button className="vender-cancelar"> ✔ </button></td>
+          <td><button className="vender-cancelar">
+          <img src={cruz}>
+          </img> </button></td></>}
+        
       </tr>
     );
   });
@@ -133,7 +144,7 @@ const ContenidoTabla = () => {
           <p className="a2">producto</p>
         </div>
         <div className="icono-agregar">
-          <img src="../imagenes/iconoAgregar.svg"></img>
+          <img src={iconoAgregar}></img>
         </div>
       </button>
       <table id="tabla" className="tabla">

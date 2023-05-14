@@ -6,7 +6,7 @@
     flex-direction: row;
     margin-top: 10px;
     width: 95%;
-    height: 28%;
+    height: 30%;
 }
 .imagen-venta{
     border-radius: 10px;
@@ -51,7 +51,7 @@
     border: 3px solid #0E84C7;
     border-radius: 20px;
     width: 80%;
-    height: 80%;
+    height: 50%;
     margin-top: 3%;
     display: flex;
     flex-direction: column;
@@ -127,17 +127,19 @@
 
 .contenido{
     display: flex;
-    width: 100%;
-    height: 70vh;
+    width: 95%;
+    height: 75vh;
     flex-direction:row;
+    align-items: center;
 }
 
 .parteIzq{
     display: flex;
     width: 20%;
-    height: 60%;
+    height: 90%;
     flex-direction: column;
     align-items: center;
+    justify-content: start;
 }
 .inferior{
     display: flex;
@@ -157,3 +159,103 @@
     justify-content: center;
     align-items: center;
 }
+
+#container {
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    flex-direction: column;
+}
+.inf{
+    display: flex;
+    width: 100%;
+    height:18vh;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}
+  
+  .face2 {
+    display: flex;
+    position:absolute;
+    width: 200px;
+    height: 200px;
+    top: 22%;
+    z-index: 1;
+    background: white;
+    border-radius: 50%;
+    border: 1px solid #777777;
+    animation: roll 5s ease-in-out infinite;
+  }
+  
+  .eye {
+    position: absolute;
+    display: flex;
+    width: 8%;
+    height: 8%;
+    background: black;
+    border-radius: 50%;
+    top: 36%;
+    left: 20%;
+  }
+  
+  .right {
+    left: 68%;
+  }
+  
+  .mouth {
+    position:absolute;
+    top: 60%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+  }
+  
+  .sad {
+    top: 55%;
+    border: 3px solid;
+    border-color: black transparent transparent black;
+    transform: rotate(45deg);
+  }
+  
+  .shadow {
+    display: flex;
+    width: 40%;
+    height: 8%;
+    opacity: .5;
+    background: #777777;
+    border-radius: 50%;
+    
+  }
+  .redondo{
+    display: flex;
+    width: 100%;
+    height: 60%;
+    justify-content: center;
+    align-items: end;
+  }
+  
+  
+  
+  
+  @keyframes roll {
+    0% {
+      transform: rotate(0deg);
+      left: 25%;
+    }
+    50% {
+      left: 60%;
+      transform: rotate(168deg);
+    }
+    100% {
+      transform: rotate(0deg);
+      left: 25%;
+    }
+  }
+  

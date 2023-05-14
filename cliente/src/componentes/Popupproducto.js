@@ -10,6 +10,7 @@ import imgVender from "../imagenes/imgVender.svg"
 import lapiz from "../imagenes/lapiz.svg"
 import cruz from  "../imagenes/cruz.svg"
 import { agregarEtiqueta } from "../API/etiquetas";
+import { FilaProducto } from "./FilaProducto";
 
 export const Popupproducto = (props) => {
   const [descripcion, setDescripcion] = useState(true);
@@ -90,8 +91,6 @@ const ContenidoDescripcion = (prop) => {
   );
 };
 const ContenidoTabla = () => {
-  const [modificar, setModificar]=useState(false);
-  const [comprar, setComprar] = useState(false);
   const [añadir, setAñadir] = useState(false);
   const [lista,setLista] = useState([
     { imei: 15225, color: "blanco" },
@@ -99,45 +98,13 @@ const ContenidoTabla = () => {
     { imei: 15225, color: "blanco" },
   ]) ;
   let contador = 0;
-
-  let list = lista.map((item) => {
-    {
-      contador = contador + 1;
-    }
-    return (
-      <tr id={item.imei} className="fila">
-        <td className="ele">
-          <p className="numero">{contador}</p>
-        </td>
-        <td className="ele">
-          <input
-            type="number"
-            className="imei"
-            value={item.imei}
-            disabled
-          ></input>
-        </td>
-        <td className="ele">
-          <input className="color pre" value={item.color} disabled></input>
-        </td>
-        {modificar?<>
-          <td>
-          <button className="vender-cancelar"> ✔ </button></td>
-          <td><button className="vender-cancelar">
-          <img src={cruz}>
-          </img> </button></td></>:comprar?<></>:
-          <>
-          <td className="ele" ><button className="modificar-aceptar">
-          <img src={lapiz}>
-          </img></button></td>
-          <td className="ele"><button className="vender-cancelar">
-          <img src={imgVender}>
-          </img></button></td>
-          </>}
-      </tr>
-    );
-  });
-
+  const list=[<FilaProducto item={{ imei: 15225, color: "blanco" }}></FilaProducto>,<FilaProducto ></FilaProducto>];
+  /*lista.map((item) => {
+      {contador = contador + 1;}
+      list.push(<FilaProducto item={item} contador={contador}/>)
+    
+  });*/
+  console.log(list)
   useEffect(()=>{
     if(añadir){
       const tabla=document.getElementById("lista-tabla")
@@ -166,7 +133,12 @@ const ContenidoTabla = () => {
           <th className="n">Vender</th>
         </thead>
         <tbody id="lista-tabla">
-          {list}
+          {lista.map((item) => {
+            {console.log(item)}
+          return 
+          <FilaProducto item={item} contador={1}/>
+          })}
+          
           {añadir? <>
           <td className="ele" ></td>
           <td className="ele">
@@ -187,7 +159,6 @@ const ContenidoTabla = () => {
           <img src={cruz}>
           </img> </button></td>
         </>:<></>}
-          <tr></tr>
         </tbody>
       </table>
     </div>

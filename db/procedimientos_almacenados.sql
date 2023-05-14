@@ -137,7 +137,7 @@ drop procedure if exists obtener_caracteristicas_modelo;
 delimiter //
 CREATE PROCEDURE obtener_caracteristicas_modelo(IN nomb_modelo VARCHAR(150))
 BEGIN
-    SELECT etiquetas.nombre AS marca, modelos_dispositivos_moviles.nombre AS modelo, precio_venta_sugerido AS precio, descripcion, ruta_image as ruta
+    SELECT etiquetas.nombre AS marca, modelos_dispositivos_moviles.nombre AS modelo, precio_venta_sugerido AS precio, descripcion, ruta_imagen as ruta
     FROM etiquetas, modelos_dispositivos_moviles, etiqueta_modelo
     WHERE etiqueta_modelo.id_modelo_dispositivo=modelos_dispositivos_moviles.id 
 	       AND etiqueta_modelo.id_etiqueta=etiquetas.id AND modelos_dispositivos_moviles.nombre=nomb_modelo; 

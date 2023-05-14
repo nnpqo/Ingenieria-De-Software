@@ -1,7 +1,5 @@
 import { Boton } from "./Boton";
-
 import {
-  instancia,
   setModeloDispositivo,
   updateModeloDispositivo,
   getNombreModeloDispositivos,
@@ -16,7 +14,7 @@ import "../estilos/ventana.css";
 import "../estilos/boton.css";
 import { Aviso, Mensaje3 } from "./Aviso";
 import { Producto } from "./Producto";
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { borrar } from "./Aviso";
 import { Bienvenida } from "./Bienvenido";
@@ -49,7 +47,6 @@ export const VentanaFormulario = (props) => {
         }}
         recuperar={() => {
           const combox = document.getElementById("modelo").value;
-
           getProducto(combox).then((res) => {
             console.log(res);
             const pro = res.producto[0][0];
@@ -283,6 +280,7 @@ export const Ventana = (props) => {
       });
     }
   });
+
   let prodFiltrado = prod?.flat().filter((valor) => {
     return valor;
   });

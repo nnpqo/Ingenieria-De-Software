@@ -12,7 +12,6 @@ export const CajaTexto = (props) => {
     setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
     const aux = props.id;
     if (aux === "precio" || aux === "Cambiar precio") {
-      
       if (event.target.value.trim() === '') {
         setErrorMsg(`El campo es requerido`); // Establece un mensaje de error personalizado indicando el nombre del campo que falló
       } else  if (isNaN(event.target.value)) {
@@ -35,7 +34,6 @@ export const CajaTexto = (props) => {
         setErrorMsg(
           `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
         );}
-    
     }else{
       if (event.target.value.trim() === '') {
         setErrorMsg(`El campo es requerido`); // Establece un mensaje de error personalizado indicando el nombre del campo que falló

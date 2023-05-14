@@ -10,7 +10,6 @@ import imgVender from "../imagenes/imgVender.svg"
 import lapiz from "../imagenes/lapiz.svg"
 import cruz from  "../imagenes/cruz.svg"
 import { agregarEtiqueta } from "../API/etiquetas";
-import { FilaProducto } from "./FilaProducto";
 
 export const Popupproducto = (props) => {
   const [descripcion, setDescripcion] = useState(true);
@@ -94,23 +93,24 @@ const ContenidoTabla = () => {
   const [añadir, setAñadir] = useState(false);
   const [lista,setLista] = useState([
     { imei: 15225, color: "blanco" },
-    { imei: 15225, color: "blanco" },
-    { imei: 15225, color: "blanco" },
+    { imei: 15227, color: "rojo" },
+    { imei: 15228, color: "verde" },
   ]) ;
   let contador = 0;
-  const list=[<FilaProducto item={{ imei: 15225, color: "blanco" }}></FilaProducto>,<FilaProducto ></FilaProducto>];
-  /*lista.map((item) => {
-      {contador = contador + 1;}
+  const list= []
+  lista.map((item) => {
+      contador = contador + 1;
       list.push(<FilaProducto item={item} contador={contador}/>)
+      
     
-  });*/
-  console.log(list)
+  });
   useEffect(()=>{
     if(añadir){
       const tabla=document.getElementById("lista-tabla")
       tabla.scrollTop= tabla.scrollHeight
     }
   },[añadir])
+
   return (
     <div className="pp2">
       <button id="añadir-producto" className="bt-anadir" onClick={() => {setAñadir(true)
@@ -133,11 +133,8 @@ const ContenidoTabla = () => {
           <th className="n">Vender</th>
         </thead>
         <tbody id="lista-tabla">
-          {lista.map((item) => {
-            {console.log(item)}
-          return 
-          <FilaProducto item={item} contador={1}/>
-          })}
+
+          {list}
           
           {añadir? <>
           <td className="ele" ></td>
@@ -153,9 +150,8 @@ const ContenidoTabla = () => {
         </td>
         <td>
           <button className="vender-cancelar" onClick={()=>{añadirProducto(lista,setAñadir)
-          setAñadir(false)
           }}> ✔ </button></td>
-          <td><button className="vender-cancelar">
+          <td><button className="vender-cancelar" onClick={()=>{setAñadir(false)}}>
           <img src={cruz}>
           </img> </button></td>
         </>:<></>}
@@ -165,12 +161,73 @@ const ContenidoTabla = () => {
   );
 };
 
-const añadirProducto=(lista)=>{
+const añadirProducto=(lista,setAñadir)=>{
   const imei=document.getElementById("añadirImei")
   const color=document.getElementById("añadirColor")
-  lista.push({ imei: imei.value, color: color.value }); 
+  lista.push({ imei: imei.value, color: color.value });
+  setAñadir(false)
 }
 
+ const FilaProducto=(props)=>{
+  const [modificar, setModificar]=useState(false);
+  const [comprar, setComprar] = useState(false);
+
+  return (<><tr id={props.item.imei} className="fila">
+  <td className="ele">
+    <p className="numero">{props.contador}</p>
+  </td>
+  <td className="ele">
+    <input
+      type="number"
+      className="imei"
+      id={props.item.imei+"imei"}
+      placeholder={props.item.imei}
+      disabled
+    ></input>
+  </td>
+  <td className="ele">
+    <input className="color pre" id={props.item.imei+"color"} placeholder={props.item.color} disabled></input>
+  </td>
+  {modificar?<>
+    <td>
+    <button className="vender-cancelar" onClick={()=>{aceptarCancelar(props.item,setModificar,true)}}> ✔ 
+    </button></td>
+    <td><button className="vender-cancelar" onClick={()=>{aceptarCancelar(props.item,setModificar,false)}}>
+    <img src={cruz}>
+    </img> </button></td></>:comprar?<></>:
+    <>
+    <td className="ele" ><button className="modificar-aceptar" onClick={()=>{modificarProducto(props.item,setModificar)
+    }}>
+    <img src={lapiz}>
+    </img></button></td>
+    <td className="ele"><button className="vender-cancelar">
+    <img src={imgVender}>
+    </img></button></td>
+    </>}
+</tr></>)
+}
+const modificarProducto=(producto,setModificar)=>{
+  const imei=document.getElementById(producto.imei+"imei")
+  const color=document.getElementById(producto.imei+"color")
+  imei.disabled=false;
+  imei.value=producto.imei;
+  color.disabled=false;
+  color.value=producto.color;
+  setModificar(true);
+}
+const aceptarCancelar=(producto,setModificar,aceptar)=>{
+  const imei=document.getElementById(producto.imei+"imei")
+  const color=document.getElementById(producto.imei+"color")
+  imei.disabled=true;
+  color.disabled=true;
+  setModificar(false)
+  if(aceptar){
+    producto.imei=imei.value;
+    producto.color=color.value;
+  }
+  color.value="";
+  imei.value="";
+}
 //  <Popup className="popup">
 
 // </Popup>

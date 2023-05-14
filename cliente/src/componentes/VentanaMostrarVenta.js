@@ -52,7 +52,7 @@ export const VentanaMostrarVenta = () => {
                     <p id="dato">PRECIO:</p>
                     <p id="ar-precio">{item.precio}</p>
                 </div>
-                <div>
+                <div className="contenedor-cruz">
                     <Aviso
                         trigger={<button className={"cruzVenta"}>
                             <img src={cruz}></img>

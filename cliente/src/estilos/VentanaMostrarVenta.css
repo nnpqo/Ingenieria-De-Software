@@ -45,7 +45,7 @@
     align-items: center;
     border-left: 3px solid #0E84C7;
     flex-direction: column;
-    width: 30%;
+    width: 20%;
 }
 .contenedor-total{
     border: 3px solid #0E84C7;
@@ -258,4 +258,19 @@
       left: 25%;
     }
   }
-  
+  .cruzVenta{
+    background-color: #FF2E00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 0 17px 17px 0;
+    cursor: pointer;
+  }
+  .contenedor-cruz{
+    display: flex;
+    width: 5%;
+    height: 100%;
+  }

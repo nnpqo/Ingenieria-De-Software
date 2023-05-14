@@ -5,6 +5,8 @@
     /* display: flex; */
     flex-direction: row;
     margin-top: 10px;
+    width: 95%;
+    height: 27%;
 }
 .imagen-venta{
     border-radius: 10px;
@@ -15,7 +17,7 @@
     display: flex;
     width: 15%;
     height: 100%;
-    margin:0.5%;
+    margin-left: 0.5%;
     align-items: center;
 }
 .modelo-venta{
@@ -43,19 +45,16 @@
     align-items: center;
     border-left: 3px solid #0E84C7;
     flex-direction: column;
-    width: 30%;
+    width: 20%;
 }
 .contenedor-total{
-    background-color: transparent;
     border: 3px solid #0E84C7;
     border-radius: 20px;
-    width: 24%;
-    height: 80%;
-    margin-left: 20px;
+    width: 80%;
+    height: 50%;
+    margin-top: 3%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     
 }
 .contenedor-imei{
@@ -96,9 +95,8 @@
 }
 .seguir-venta{
     background-color: transparent;
-    width: 85%;
+    width: 80%;
     display: flex;
-    justify-content: end;
 }
   
 #ventanaVenta{
@@ -110,8 +108,10 @@
 .listaVenta{
     display: flex;
     flex-direction: column;
-    width: 85%;
+    align-items: center;
+    width: 80%;
     height: 90%;
+    overflow: auto;
 }
 .contenedor-mm{
     display: flex;
@@ -124,3 +124,153 @@
     width: 40%;
     flex-direction: column;
 }
+
+.contenido{
+    display: flex;
+    width: 95%;
+    height: 75vh;
+    flex-direction:row;
+    align-items: center;
+}
+
+.parteIzq{
+    display: flex;
+    width: 20%;
+    height: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+.inferior{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 45%;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+.superior{
+    width: 100%;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    flex-direction: column;
+}
+.inf{
+    display: flex;
+    width: 100%;
+    height:18vh;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}
+  
+  .face2 {
+    display: flex;
+    position:absolute;
+    width: 200px;
+    height: 200px;
+    top: 22%;
+    z-index: 1;
+    background: white;
+    border-radius: 50%;
+    border: 1px solid #777777;
+    animation: roll 5s ease-in-out infinite;
+  }
+  
+  .eye {
+    position: absolute;
+    display: flex;
+    width: 8%;
+    height: 8%;
+    background: black;
+    border-radius: 50%;
+    top: 36%;
+    left: 20%;
+  }
+  
+  .right {
+    left: 68%;
+  }
+  
+  .mouth {
+    position:absolute;
+    top: 60%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+  }
+  
+  .sad {
+    top: 55%;
+    border: 3px solid;
+    border-color: black transparent transparent black;
+    transform: rotate(45deg);
+  }
+  
+  .shadow {
+    display: flex;
+    width: 40%;
+    height: 8%;
+    opacity: .5;
+    background: #777777;
+    border-radius: 50%;
+    
+  }
+  .redondo{
+    display: flex;
+    width: 100%;
+    height: 60%;
+    justify-content: center;
+    align-items: end;
+  }
+  
+  
+  
+  
+  @keyframes roll {
+    0% {
+      transform: rotate(0deg);
+      left: 25%;
+    }
+    50% {
+      left: 60%;
+      transform: rotate(168deg);
+    }
+    100% {
+      transform: rotate(0deg);
+      left: 25%;
+    }
+  }
+  .cruzVenta{
+    background-color: #FF2E00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 0 17px 17px 0;
+    cursor: pointer;
+  }
+  .contenedor-cruz{
+    display: flex;
+    width: 5%;
+    height: 100%;
+  }

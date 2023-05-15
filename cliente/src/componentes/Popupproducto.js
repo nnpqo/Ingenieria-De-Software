@@ -32,25 +32,29 @@ export const Popupproducto = (props) => {
         <>
           <div className="popupproucto">
             <div className="content">
+              <div className="contenido-encabezado">
               {descripcion? <div className="boton-flecha" onClick={()=>(setDescripcion(false))}>
+              <img className="icono-f" src={flechaderecha}></img>
                 <p className="mostrar-pro">Mostrar productos</p>
-                <img className="icono-f" src={flechaderecha}></img>
               </div>:
-              <div onClick={()=>(setDescripcion(true))}>
+              <div className="contenedor-izquierda" onClick={()=>(setDescripcion(true))}>
                 <img className="icono-i" src={flechaizquierda}></img>
                 </div>}
               
               <h1 className="nP">{props.nombre}</h1>
-              <div class="close-container" onClick={() => close()}>
-                <div class="leftright"></div>
-                <div class="rightleft"></div>
+              <div className="contenedor-cruzanimado">
+                <div class="close-container" onClick={() => close()}>
+                  <div class="leftright"></div>
+                  <div class="rightleft"></div>
+                </div>
               </div>
             </div>
-            {descripcion ? (
-              <ContenidoDescripcion props={props}></ContenidoDescripcion>
-            ) : (
-              <ContenidoTabla></ContenidoTabla>
-            )}
+              {descripcion ? (
+                <ContenidoDescripcion props={props}></ContenidoDescripcion>
+              ) : (
+                <ContenidoTabla></ContenidoTabla>
+              )}
+            </div>
           </div>
         </>
       )}

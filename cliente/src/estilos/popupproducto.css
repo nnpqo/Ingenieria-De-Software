@@ -1,19 +1,20 @@
 .pr-content {
-  background-color: #284073;
+  background-color: #1A2F5B;
   display: flex;
   border-radius: 10px;
   border: 4px solid #0e84c7 !important;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   border-radius: 20px;
-  gap: 20px;
-  flex-wrap: wrap;
-  border: none;
-  height: 450px;
-  width: 800px;
-  padding: 40px;
-  padding-top: 0;
+  height: 420px;
+  width: 730px;
+}
+
+.contenido-encabezado{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 17%;
+  align-items: center;
 }
 
 .popupproucto {
@@ -22,14 +23,16 @@
   text-align: center;
   border-radius: 13px;
   color: white;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
 }
 .popupcontenido {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  height: 80%;
+  width: 93%;
+  justify-content: center;
+  align-items: center;
   
 }
 .med {
@@ -40,7 +43,7 @@
   border-radius: 11px;
   width: 200px;
   word-wrap: break-word;
-  height: 100%;
+  height: 95%;
   justify-content: space-between;
 
 }
@@ -48,8 +51,8 @@
 .imagenpop {
   display: flex;
   border-radius: 10px;
-  height: 100%;
-  width: 250px;
+  height: 95%;
+  width: 35%;
 }
 .centreado1 {
   display: flex;
@@ -60,8 +63,7 @@
   border: 2px solid #0e84c7;
   padding: 10px;
   width: 90%;
-  max-height: 150px;
-  min-height: 150px;
+  height: 45%;
   
 }
 
@@ -77,8 +79,7 @@
   border: 2px solid #0e84c7;
   padding: 10px;
   width: 90%;
-  max-height: 150px;
-  min-height: 150px;
+  height: 45%;
 
 }
 .cate {
@@ -86,11 +87,10 @@
   flex-direction: column;
   border: 2px solid #0e84c7;
   border-radius: 13px;
-  width: 280px;
-  padding: 10px;
-  min-height: 60%;
-  height: 100%;
+  width: 40%;
+  height: 95%;
   overflow: auto;
+  padding-top : 10px; 
 }
 
 .cate p {
@@ -101,31 +101,41 @@
 
 .content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
+  height: 100%;
+  align-items: center;
 }
 
 .nP {
-  width: 80%;
+  display: flex;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 15px;
   height: 100%;
-  margin-bottom: 20px;
+  font-size: 25px;
 }
 
 .close-container {
-  margin-left: 7%;
-  display: block;
-  bottom: 30px;
   cursor: pointer;
-  background-color:bisque;
+  display: flex;
+  margin-left: 45%;
+  margin-bottom: 36%;
+}
+.contenedor-cruzanimado{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 100%;
 }
 
 .leftright {
+  display: flex;
   height: 4px;
   width: 30px;
   position: absolute;
-  margin-top: 2.5%;
   background-color: white;
   border-radius: 2px;
   transform: rotate(45deg);
@@ -135,8 +145,8 @@
 .rightleft {
   height: 4px;
   width: 30px;
+  display:flex;
   position: absolute;
-  margin-top: 2.5%;
   background-color: white;
   border-radius: 2px;
   transform: rotate(-45deg);
@@ -160,12 +170,10 @@
 .boton-flecha{
   background-color:transparent;
   border-radius: 20px;
-  width: 14%;
-  height: 45%;
+  width: 15%;
+  height: 52%;
   border: 2px solid #0E84C7;
   display: flex;
-  justify-content: end;
-  margin-top: 2%;
 }
 .mostrar-pro{
   font-size: 80%;
@@ -375,4 +383,8 @@
   background-color: #284073;
   margin: solid 1px white;
   
+}
+.contenedor-izquierda{
+  display: flex;
+  width: 15%;
 }

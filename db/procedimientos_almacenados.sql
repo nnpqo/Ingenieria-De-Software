@@ -197,7 +197,7 @@ drop procedure if exists obtener_producto;
 delimiter //
 CREATE PROCEDURE obtener_producto(IN nomb_modelo VARCHAR(100))
 BEGIN
-SELECT modelos_dispositivos_moviles.nombre AS modelo, etiquetas.nombre AS marca,
+SELECT dispositivo_movil.id as id, modelos_dispositivos_moviles.nombre AS modelo, etiquetas.nombre AS marca,
        imei, color, modelos_dispositivos_moviles.precio_venta_sugerido AS precio, modelos_dispositivos_moviles.ruta_imagen AS imagen
 FROM dispositivo_movil,modelos_dispositivos_moviles,etiquetas,etiqueta_modelo
 WHERE modelos_dispositivos_moviles.id=dispositivo_movil.id_modelo_dispositivo AND 

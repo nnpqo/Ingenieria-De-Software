@@ -62,6 +62,7 @@ export const Producto = (props) => {
       caracteristicas={props.caracteristicas}
       nombre={props.nombre}
       precio={props.precio}
+      id_modelo = {props.id}
     />
   );
 };

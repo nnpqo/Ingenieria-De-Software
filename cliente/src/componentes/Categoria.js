@@ -9,12 +9,13 @@ import arriba from "../imagenes/iconoArriba.svg";
 import abajo from "../imagenes/iconoAbajo.svg";
 
 import { prueba } from "./VentanaPrincipal";
+import { Context } from "../Context/Context";
 
 export const Categoria = (props) => {
   const [desplegado, setdesplegado] = useState(true);
   const [etiquetas, setEtiquetas] = useState([]);
   const [nuevaEti, setNuevaEti] = useState(false);
-  const [, , , setEtiquetass] = useContext(prueba);
+  const {setCheckboxesSeleccionados} = useContext(Context);
   const [isChecked, setIsChecked] = useState(false);
   const [etiM, setEtiM] = useState({});
   useEffect(() => {
@@ -40,7 +41,7 @@ export const Categoria = (props) => {
   useEffect(() => {
     const checkbox = document.getElementById("all");
     checkbox.addEventListener("change", () => {
-      chackeAll(setEtiquetass);
+      chackeAll(setCheckboxesSeleccionados);
     });
   }, []);
   return (

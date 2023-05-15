@@ -77,8 +77,19 @@
   width: 80%;
 }
 
-.menuIzquierda .boton-registro:focus,
-.menuIzquierda .boton-registro:active {
+
+.menuIzquierda .boton-registro-activado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  background-color: #284073;
+  width: 80%;
   border: 2px solid floralwhite;
   border-radius: 10px;
 }
@@ -97,8 +108,19 @@
   width: 80%;
 }
 
-.menuIzquierda .boton-modificar:focus,
-.menuIzquierda .boton-modificar:active {
+
+.menuIzquierda .boton-modificar-activado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  background-color: #284073;
+  width: 80%;
   border: 2px solid floralwhite;
   border-radius: 10px;
 }

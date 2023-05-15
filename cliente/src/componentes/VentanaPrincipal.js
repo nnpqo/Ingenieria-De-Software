@@ -13,7 +13,7 @@ export const prueba = createContext();
 export const VentanaPrincipal = (props) => {
   const [guardar, setGuardar] = useState(false);
   const [ventana, setVentana] = useState(0);
-  const{checkboxesSeleccionados,setCheckboxesSeleccionados}=useContext(Context)
+  const {checkboxesSeleccionados,setCheckboxesSeleccionados}=useContext(Context)
   
  /* useEffect(()=>{
 
@@ -36,7 +36,7 @@ export const VentanaPrincipal = (props) => {
   }
 
   return (
-    <prueba.Provider value={[setVentana, guardar, setGuardar,setCheckboxesSeleccionados]}>
+    <prueba.Provider value={{setVentana, guardar, setGuardar, ventana}}>
       <div className="ventana-principal">
         {props.menu === 1 && (
           <>

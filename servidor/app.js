@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express();
+const hola = juanito;
 const port = 3001;
 
 app.get("/", (req, res) => {

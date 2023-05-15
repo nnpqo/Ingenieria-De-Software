@@ -76,14 +76,13 @@
   background-color: #284073;
   width: 80%;
 }
-.boton-registro:hover {
-  color: white;
-  background-color: #284073;
+
+.menuIzquierda .boton-registro:focus,
+.menuIzquierda .boton-registro:active {
   border: 2px solid floralwhite;
   border-radius: 10px;
-  width: 80%;
-  height: 50px;
 }
+
 .boton-modificar {
   display: flex;
   justify-content: center;
@@ -97,17 +96,13 @@
   background-color: #284073;
   width: 80%;
 }
-.boton-modificar:hover {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: white;
-  background-color: #284073;
+
+.menuIzquierda .boton-modificar:focus,
+.menuIzquierda .boton-modificar:active {
   border: 2px solid floralwhite;
   border-radius: 10px;
-  height: 50px;
 }
+
 .contenedor-categoria {
   background-color: #284073;
   display: flex;

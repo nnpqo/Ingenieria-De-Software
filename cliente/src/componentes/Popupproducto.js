@@ -155,11 +155,11 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
       >
         <div className="anadirp">
           {" "}
-          <p className="a1">Aniadir</p>
+          <p className="a1">Añadir</p>
           <p className="a2">producto</p>
         </div>
         <div className="icono-agregar">
-          <img src={iconoAgregar}></img>
+          <img className="IcoA" src={iconoAgregar}></img>
         </div>
       </button>
       <table id="tabla" className="tabla">
@@ -175,7 +175,9 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
 
           {aniadir ? (
             <>
-              <td className="ele"></td>
+              <td className="ele">
+                <div className="vacioEle"></div>
+              </td>
               <td className="ele">
                 <input type="number" className="imei" id="aniadirImei"></input>
               </td>
@@ -184,7 +186,7 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
               </td>
               <td>
                 <button
-                  className="vender-cancelar"
+                  className="modificar-aceptar"
                   onClick={() => {
                     aniadirProducto(lista, setAniadir);
                   }}
@@ -195,12 +197,12 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
               </td>
               <td>
                 <button
-                  className="vender-cancelar"
+                  className="cancelarPP"
                   onClick={() => {
                     setAniadir(false);
                   }}
                 >
-                  <img src={cruz}></img>{" "}
+                  <img className="cruzmodcan" src={cruz}></img>{" "}
                 </button>
               </td>
             </>
@@ -279,7 +281,7 @@ const FilaProducto = (props) => {
           <>
             <td>
               <button
-                className="vender-cancelar"
+                className="modificar-aceptar"
                 onClick={() => {
                   aceptarCancelar(true).then((res) => {
                     console.log(res);

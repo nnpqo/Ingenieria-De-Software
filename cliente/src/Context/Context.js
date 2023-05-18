@@ -6,6 +6,7 @@ const ContextProvider = ({ children }) => {
   const [buscar, setBuscar] = useState(false);
   const [visible, setVisible] = useState(false);
   const [checkboxesSeleccionados, setCheckboxesSeleccionados] = useState([]);
+  const [listaVenta,sertListaVenta]=useState([])
   const datos = {
     buscar,
     setBuscar,
@@ -13,6 +14,8 @@ const ContextProvider = ({ children }) => {
     setVisible,
     checkboxesSeleccionados,
     setCheckboxesSeleccionados,
+    listaVenta,
+    sertListaVenta
   };
   return <Context.Provider value={datos}>{children}</Context.Provider>;
 };

@@ -166,6 +166,7 @@
   word-wrap: break-word;
   white-space: pre-wrap;
   /*Estilos para scroll*/
+  background-color: blue;
 }
 .boton-flecha{
   background-color:transparent;
@@ -265,6 +266,7 @@
   
 .ele{
   background-color: #284073;
+  color: white;
 }
 #lista-tabla {
   margin-top: 5px;
@@ -272,6 +274,22 @@
   overflow-x: hidden;
   border-collapse: separate;
   border-spacing: 0px 5px;}
+  #lista-tabla::-webkit-scrollbar {
+    width: 10px; /* Ajusta el ancho según sea necesario */
+  }
+  
+  #lista-tabla::-webkit-scrollbar-thumb {
+    background-color: #FFFFFF; /* Cambia "blue" al color deseado */
+  }
+  
+  #lista-tabla::-webkit-scrollbar-track {
+    background-color: #989696; /* Cambia "lightgray" al color deseado */
+  }
+  
+  #lista-tabla::-webkit-scrollbar-thumb:hover {
+    background-color: #FFFFFF; /* Cambia "darkblue" al color deseado para el estado hover */
+  }
+  
 .color{
   background-color:#284073 ;
   border:none;
@@ -298,6 +316,13 @@
   width: 250px;
   height: 100%;
 }
+.imei::placeholder{
+  color: white;
+}
+.color::placeholder{
+  color:white;
+}
+
 .numero{
   border: 2px solid #0E84C7; /* borde */
   border-top-left-radius: 8px; /* borde redondo superior izquierdo */

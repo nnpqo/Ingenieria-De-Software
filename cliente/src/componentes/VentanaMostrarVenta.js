@@ -3,105 +3,20 @@ import samsung from "../imagenes/samsung_g.jpg";
 import "../estilos/VentanaMostrarVenta.css";
 import x from "../imagenes/cruz-peque.svg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { Aviso, Aviso4 } from "./Aviso";
 import cruz from "../imagenes/cruz-peque.svg";
+import { Context } from "../Context/Context"; 
 export const VentanaMostrarVenta = () => {
-  const [lista, setLista] = useState([
-    {
-      ruta: "",
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012345,
-      color: "blanco",
-    },
-    {
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012301,
-      color: "blanco",
-    },
-    {
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012302,
-      color: "blanco",
-    },
-    {
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012303,
-      color: "blanco",
-    },
-    {
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012304,
-      color: "blanco",
-    },
-    {
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012305,
-      color: "blanco",
-    },
-    {
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012306,
-      color: "blanco",
-    },
-    {
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012307,
-      color: "blanco",
-    },
-    {
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012308,
-      color: "blanco",
-    },
-    {
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012309,
-      color: "blanco",
-    },
-    {
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012310,
-      color: "blanco",
-    },
-    {
-      modelo: "IPHONE 13 PRO MAX",
-      precio: "90000",
-      marca: "APPLE",
-      imei: 123456789012311,
-      color: "blanco",
-    },
-  ]);
-
+  const {listaVenta,setListaVenta} =useContext(Context)
+  
   let total = 0;
-  let list = lista.map((item) => {
+  let list = listaVenta.map((item) => {
     total += Number(item.precio);
     return (
       <div id={item.imei} className="fila2">
         <div className="contenedor-img">
-          <img className="imagen-venta" src={samsung} />
+          <img className="imagen-venta" src={item.ruta} />
         </div>
         <div className="contenedor-mm">
           <div className="modelo-venta">
@@ -140,7 +55,7 @@ export const VentanaMostrarVenta = () => {
             bt2Nombre={"NO"}
             bt2Estilo={"botonNo"}
             bt1Funcion={() => {
-              setLista(lista.filter((elemento) => elemento.imei !== item.imei));
+              setListaVenta(listaVenta.filter((elemento) => elemento.imei !== item.imei));
             }}
           />
         </div>
@@ -154,7 +69,7 @@ export const VentanaMostrarVenta = () => {
         <h1>VENTA DE PRODUCTO</h1>
       </div>
 
-      {lista.length > 0 ? (
+      {listaVenta.length > 0 ? (
         <div className="contenido">
           <div className="listaVenta">{list}</div>
           <div className="parteIzq">
@@ -166,7 +81,7 @@ export const VentanaMostrarVenta = () => {
             <div className="contenedor-total">
               <div className="superior">
                 <p id="dato">TOTAL:</p>
-                <p id="ar-precio">{lista.length} productos</p>
+                <p id="ar-precio">{listaVenta.length} productos</p>
                 <p id="ar-precio">{total}</p>
               </div>
               <div className="inferior">
@@ -180,7 +95,7 @@ export const VentanaMostrarVenta = () => {
                   bt1Nombre={"Sí"}
                   bt1Estilo={"botonSi"}
                   bt1Funcion={() => {
-                    setLista([]);
+                    setListaVenta([]);
                   }}
                   bt2Nombre={"No"}
                   bt2Estilo={"botonNo"}

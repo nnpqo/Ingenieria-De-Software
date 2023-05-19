@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Boton } from "./Boton";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+
 import "../estilos/popupproducto.css";
 import flechaderecha from "../imagenes/flecha-derecha.svg";
 import flechaizquierda from "../imagenes/flecha-izquierda.svg";
@@ -107,9 +108,17 @@ const ContenidoDescripcion = (prop) => {
     </div>
   );
 };
+const limitarDigitos = (input,limiteDigitos) => {
+  const maxLength = limiteDigitos;
+  if (input.value.length > maxLength) {
+    input.value = input.value.slice(0, maxLength);
+  }
+};
 const ContenidoTabla = ({ id_modelo, nombre }) => {
   const [aniadir, setAniadir] = useState(false);
   const [lista, setLista] = useState([]);
+  const [errorImei, setErrorImei] = useState(false); // Estado para controlar el mensaje de error
+
 
   let contador = 0;
   const list = [];
@@ -139,18 +148,33 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
   const aniadirProducto = () => {
     const imei = document.getElementById("aniadirImei").value;
     const color = document.getElementById("aniadirColor").value;
-    const datos = { imei: imei, color: color, id_modelo: id_modelo };
+    if (imei.length !== 15) {
+      setErrorImei(true); // Mostrar mensaje de error si el IMEI no tiene 15 dígitos
+    }else{
+      setErrorImei(false);
+      const datos = { imei: imei, color: color, id_modelo: id_modelo };
     lista.push({ imei: imei, color: color, id_modelo: id_modelo });
     agregarMovil(datos).then((res) => setAniadir(!aniadir));
+    }
+    
   };
-
+  const handleImeiChange = (event) => {
+    const imei = event.target.value;
+    if (imei.length !== 15) {
+      setErrorImei(true); // Mostrar mensaje de error si el IMEI no tiene 15 dígitos
+    } else {
+      setErrorImei(false); // Limpiar el mensaje de error si el IMEI tiene 15 dígitos
+    }
+  };
   return (
     <div className="pp2">
+       
       <button
         id="añadir-producto"
         className="bt-anadir"
         onClick={() => {
           setAniadir(true);
+          setErrorImei(false);
         }}
       >
         <div className="anadirp">
@@ -179,8 +203,10 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
                 <div className="vacioEle"></div>
               </td>
               <td className="ele">
-                <input type="number" className="imei" id="aniadirImei"></input>
+               <div className="mens123"> <input type="number" className="imei" id="aniadirImei" onChange={handleImeiChange} onInput={(e) => limitarDigitos(e.target,15)}></input>
+                {errorImei && <p className="errorMensaje">El IMEI debe tener 15 dígitos.</p>}</div>
               </td>
+              
               <td className="ele">
                 <input className="color pre" id="aniadirColor"></input>
               </td>
@@ -194,8 +220,11 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
                   {" "}
                   ✔{" "}
                 </button>
+                
               </td>
+              
               <td>
+                
                 <button
                   className="cancelarPP"
                   onClick={() => {
@@ -204,7 +233,9 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
                 >
                   <img className="cruzmodcan" src={cruz}></img>{" "}
                 </button>
+                
               </td>
+              
             </>
           ) : (
             <></>
@@ -219,6 +250,7 @@ const FilaProducto = (props) => {
   const [modificar, setModificar] = useState(false);
   const [comprar, setComprar] = useState(false);
   const [datos, setDatos] = useState({});
+  const [errorImei, setErrorImei] = useState(false);
 
   const modificarProducto = () => {
     const imei = document.getElementById(props.item.imei + "imei");
@@ -253,7 +285,15 @@ const FilaProducto = (props) => {
       resolve(result);
     });
   };
+  const handleImeiChange = (event) => {
+    const imei = event.target.value;
 
+    if (imei.length !== 15) {
+      setErrorImei(true); // Mostrar mensaje de error si el IMEI no tiene 15 dígitos
+    } else {
+      setErrorImei(false); // Limpiar el mensaje de error si el IMEI tiene 15 dígitos
+    }
+  };
   return (
     <>
       <tr id={props.item.imei} className="fila">
@@ -266,8 +306,13 @@ const FilaProducto = (props) => {
             className="imei"
             id={props.item.imei + "imei"}
             placeholder={props.item.imei}
+            onInput={(e) => limitarDigitos(e.target,15)}
             disabled
+            onChange={handleImeiChange}
           ></input>
+          {errorImei && (
+            <p className="errorMensaje">El IMEI debe tener 15 dígitos.</p>
+          )}
         </td>
         <td className="ele">
           <input

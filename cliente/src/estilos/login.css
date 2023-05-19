@@ -176,12 +176,12 @@
   cursor: pointer;
 }
 
-#ojo {
-  display: none;
+.mostrar {
+  display: block;
 }
 
-#ojoc {
-  display: block;
+.ocultar {
+  display: none;
 }
 
 .acceder {

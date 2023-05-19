@@ -18,11 +18,11 @@ export const Router = () => {
   }
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <ContextProvider>
         <Routes>
-          <Route path="/login" element={<Login logueado={logueado} setLogueado={setLogueado} /> }/>
-          <Route path="/" element={logueado ?(<Cabecera actualizar={actualizarBusqueda} barra={barraBusqueda}/>):( <Navigate to="/login"/>)}>
+          <Route index element={<Login logueado={logueado} setLogueado={setLogueado} /> }/>
+          <Route path="/" element={logueado ?(<Cabecera actualizar={actualizarBusqueda} barra={barraBusqueda}/>):( <Navigate to="/"/>)}>
             <Route path="/home" element={<VentanaPrincipal menu={1} busqueda={buscar} setBarraBusqueda={setBarraBusqueda}/>} />
             <Route path="/productos" element={<VentanaPrincipal menu={2} setBarraBusqueda={setBarraBusqueda} />} />
             <Route path="/venta" element={<VentanaMostrarVenta />} />
@@ -32,7 +32,7 @@ export const Router = () => {
           </Route>
         </Routes>
         </ContextProvider>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 };

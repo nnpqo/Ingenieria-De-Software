@@ -275,3 +275,9 @@
     width: 5%;
     height: 100%;
   }
+  .imei{
+    outline: none;
+  }
+  .ele input{
+    outline: none;
+  }

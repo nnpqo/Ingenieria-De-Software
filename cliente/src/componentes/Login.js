@@ -5,10 +5,19 @@ import "../estilos/login.css";
 import usuarioimg from "../imagenes/usuario.svg";
 import candado from "../imagenes/candado.svg";
 
-export const Login = () => {
+export const Login = (props) => {
   const [mostrarOjo, setMostrarOjo] = useState(false);
   const [mostrarOjoc, setMostrarOjoc] = useState(true);
+  
   let intervalId = null;
+  const [usuario, setUsuario] = useState("");
+  const [contrasenia, setContrasenia] = useState("");
+  
+  const validar = () => {
+    if (usuario === "kevin" && contrasenia === "jdkcell123") {
+      props.setLogueado(true);
+    }
+  };
 
   function createSquare() {
     const section = document.querySelector("section");
@@ -52,7 +61,7 @@ export const Login = () => {
             <img src={usuarioimg} />
           </div>
 
-          <input className="inputLogin" type="text" required="required" />
+          <input className="inputLogin" type="text" maxLength={15} minLength={3} required="required" onChange={(e) => setUsuario(e.target.value)}/>
           <label className="labelLogin">Nombre de Usuario</label>
         </div>
         <div className="input-grup">
@@ -125,54 +134,19 @@ export const Login = () => {
               </svg>
             </div>
           </button>
-          <input
-            id="inputContraseña"
-            className="inputLogin"
-            type="password"
-            required="required"
-          />
+          <input className="inputLogin" maxLength={16} minLength={8} type="password" required="required" onChange={(e) => setContrasenia(e.target.value)}/>
           <label className="labelLogin">Contraseña</label>
         </div>
         <div className="input-grup">
-          <a className="acceder" href="#/home">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Acceder
-          </a>
+        <Link className="acceder" to="/home" onClick={validar}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Acceder
+        </Link>
         </div>
       </div>
     </section>
   );
 };
-
-/*
-
-
-
-<div>
-                <input type="text" id="usuario" name="nombre" placeholder="usuario" />
-                <input type="password" name="password" placeholder="contraseña" />
-            </div>
-            <Link to="/home">
-                <Boton stilos={"guardar"} nombre={"acceder"}></Boton>
-            </Link>
-
-function createSquare(){
-    const section = document.querySelector('section');
-    const square = document.createElement('span');
-    var size = Math.random() * 20;
-    
-    square.style.width = 20 + size + 'px';
-    square.style.height = 20 + size + 'px';
-    
-      square.style.top = Math.random() * window.innerHeight + 'px';
-    square.style.left = Math.random() * window.innerWidth + 'px';
-    
-    section.appendChild(square);
-      setTimeout(() =>{
-      square.remove()
-    }, 5000)
-  }
-  setInterval(createSquare , 150)*/

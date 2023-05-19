@@ -148,11 +148,14 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
     const imei = document.getElementById("aniadirImei").value;
     const color = document.getElementById("aniadirColor").value;
     const datos = { imei: imei, color: color, id_modelo: id_modelo };
-    lista.push({ imei: imei, color: color, id_modelo: id_modelo });
     agregarMovil(datos).then((result) => {
       setMensaje(result.data.message);
       console.log(result)
-      setError(result.data.error)})
+      setError(result.data.error)
+      if(!error){
+        lista.push({ imei: imei, color: color, id_modelo: id_modelo });
+      }}
+      )
   }
 
   return (

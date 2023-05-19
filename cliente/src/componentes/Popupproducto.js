@@ -12,6 +12,7 @@ import cruz from "../imagenes/cruz.svg";
 import { agregarEtiqueta } from "../API/etiquetas";
 import { agregarMovil, modificarMovil, obtenerMoviles } from "../API/productos";
 import { mdiConsoleNetworkOutline } from "@mdi/js";
+import { Mensaje3 } from "./Aviso";
 
 export const Popupproducto = (props) => {
   const [descripcion, setDescripcion] = useState(true);
@@ -110,7 +111,6 @@ const ContenidoDescripcion = (prop) => {
 const ContenidoTabla = ({ id_modelo, nombre }) => {
   const [aniadir, setAniadir] = useState(false);
   const [lista, setLista] = useState([]);
-
   let contador = 0;
   const list = [];
   if (lista) {
@@ -185,7 +185,17 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
                 <input className="color pre" id="aniadirColor"></input>
               </td>
               <td>
-                <button
+                
+
+                <Mensaje3
+                   nombre=" ✔ "
+                   estilos={"modificar-aceptar"}
+                   funcion={() => {
+                    console.log("hola");
+                  }}
+                  mensaje="guardado correctamente"
+                />
+                {/* <button
                   className="modificar-aceptar"
                   onClick={() => {
                     aniadirProducto(lista, setAniadir);
@@ -193,7 +203,7 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
                 >
                   {" "}
                   ✔{" "}
-                </button>
+                </button> */}
               </td>
               <td>
                 <button

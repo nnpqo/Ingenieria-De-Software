@@ -152,15 +152,17 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
   const aniadirProducto = () => {
     const imei = document.getElementById("aniadirImei").value;
     const color = document.getElementById("aniadirColor").value;
+
     if (imei.length !== 15) {
-      setErrorImei(true); // Mostrar mensaje de error si el IMEI no tiene 15 dígitos
-    }else{
+      setErrorImei(true);
+    } else  {
       setErrorImei(false);
+      setErrorColor(false);
+
       const datos = { imei: imei, color: color, id_modelo: id_modelo };
-    lista.push({ imei: imei, color: color, id_modelo: id_modelo });
-    agregarMovil(datos).then((res) => setAniadir(!aniadir));
+      lista.push({ imei: imei, color: color, id_modelo: id_modelo });
+      agregarMovil(datos).then((res) => setAniadir(!aniadir));
     }
-    
   };
   const handleImeiChange = (event) => {
     const imei = event.target.value;
@@ -227,11 +229,11 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
               </td>
               <td className="ele">
                <div className="mens123"> <input type="number" className="imei" id="aniadirImei" onChange={handleImeiChange} onInput={(e) => limitarDigitos(e.target,15)}></input>
-                {errorImei && <p className="errorMensaje">El IMEI debe tener 15 dígitos.</p>}</div>
+               {errorImei && <p className="errorMensaje">El IMEI debe tener 15 dígitos.</p>}</div>
               </td>
               
               <td className="ele">
-              <div className="mens123"><input className="color pre" id="aniadirColor" value={color} onChange={handleColorChange}></input>
+              <div className="mens123"><input className="color pre" id="aniadirColor"  onChange={handleColorChange} ></input>
               {errorColor && <p className="errorMensaje">{errorColor}</p>}</div>
               </td>
               <td>
@@ -239,6 +241,7 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
                   className="modificar-aceptar"
                   onClick={() => {
                     aniadirProducto(lista, setAniadir);
+                    
                   }}
                 >
                   {" "}
@@ -423,9 +426,12 @@ const FilaProducto = (props) => {
                 <img src={imgVender}></img>
               </button>
             </td>
+            
           </>
         )}
+        
       </tr>
+      
     </>
   );
 };

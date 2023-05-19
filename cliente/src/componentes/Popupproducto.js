@@ -13,6 +13,7 @@ import { agregarEtiqueta } from "../API/etiquetas";
 import { agregarMovil, modificarMovil, obtenerMoviles } from "../API/productos";
 import { mdiConsoleNetworkOutline } from "@mdi/js";
 import { Context } from "../Context/Context"; 
+import { Mensaje3 } from "./Aviso";
 
 export const Popupproducto = (props) => {
   const [descripcion, setDescripcion] = useState(true);
@@ -114,6 +115,8 @@ const ContenidoDescripcion = (prop) => {
 const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
   const [aniadir, setAniadir] = useState(false);
   const [lista, setLista] = useState([]);
+  const [men, setMensaje] = useState("");
+  const [error, setError] = useState(false);
 
   let contador = 0;
   const list = [];
@@ -146,8 +149,10 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
     const color = document.getElementById("aniadirColor").value;
     const datos = { imei: imei, color: color, id_modelo: id_modelo };
     lista.push({ imei: imei, color: color, id_modelo: id_modelo });
-    agregarMovil(datos).then((res) => setAniadir(!aniadir));
-  };
+    agregarMovil(datos).then((result) => {
+      setMensaje(result.message);
+      setError(result.error)})
+  }
 
   return (
     <div className="pp2">
@@ -190,15 +195,18 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
                 <input className="color pre" id="aniadirColor"></input>
               </td>
               <td>
-                <button
-                  className="modificar-aceptar"
-                  onClick={() => {
-                    aniadirProducto(lista, setAniadir);
+              <Mensaje3
+                   nombre=" ✔ "
+                   estilos={"modificar-aceptar"}
+                   funcion={() => {
+                    console.log("hola");
+                    aniadirProducto(); 
                   }}
-                >
-                  {" "}
-                  ✔{" "}
-                </button>
+                  mensaje={men}
+                  error={error}
+                  setAniadir={setAniadir}
+                  aniadir={aniadir}
+                />
               </td>
               <td>
                 <button

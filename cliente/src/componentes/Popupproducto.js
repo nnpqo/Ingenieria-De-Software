@@ -132,7 +132,7 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
   useEffect(() => {
     if (aniadir) {
       const tabla = document.getElementById("lista-tabla");
-      <div className="scroll">tabla.scrollTop = tabla.scrollHeight;</div>
+      tabla.scrollTop = tabla.scrollHeight;
     }
   }, [aniadir]);
 

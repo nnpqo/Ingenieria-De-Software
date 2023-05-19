@@ -272,7 +272,8 @@
   overflow-y: scroll;
   overflow-x: hidden;
   border-collapse: separate;
-  border-spacing: 0px 5px;}
+  /* border-spacing: 0px 5px; */
+}
   #lista-tabla::-webkit-scrollbar {
     width: 10px; /* Ajusta el ancho según sea necesario */
   }
@@ -349,30 +350,30 @@
 }
 .o{
   width: 80px;
-  border: 1px solid #0E84C7;
+  border: 1px solid #0655FF;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-right: none;
   background-color: #0655FF;
 }
 .m1{
-  border: 1px solid #0E84C7;
+  border: 1px solid #0655FF;
   width: 341px;
   background-color: #0655FF;
 }
 .m2{
-  border: 1px solid #0E84C7;
+  border: 1px solid #0655FF;
   width: 200px;
   background-color: #0655FF;
 }
 .m3{
   
-  border: 1px solid #0E84C7;
+  border: 1px solid #0655FF;
   width: 20%;
   background-color: #0655FF;
 }
 .n{
-  border:1px solid #0E84C7;
+  border:4px solid #0655FF;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-left: none;

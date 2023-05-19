@@ -261,7 +261,7 @@ const FilaProducto = (props) => {
   };
   const agregarALista=()=>{
     const producto={ruta:props.ruta ,modelo:props.modelo , precio:props.precio , marca:props.marca , 
-      imei:props.item.imei , color:props.item.color}
+      imei:props.item.imei , color:props.item.color, id:props.item.id}
       listaVenta.push(producto)
       setComprar(true)
     console.log(listaVenta)

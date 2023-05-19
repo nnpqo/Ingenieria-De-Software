@@ -108,6 +108,7 @@ const ContenidoDescripcion = (prop) => {
     </div>
   );
 };
+
 const limitarDigitos = (input,limiteDigitos) => {
   const maxLength = limiteDigitos;
   if (input.value.length > maxLength) {
@@ -118,6 +119,9 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
   const [aniadir, setAniadir] = useState(false);
   const [lista, setLista] = useState([]);
   const [errorImei, setErrorImei] = useState(false); // Estado para controlar el mensaje de error
+
+  const [color, setColor] = useState("");
+  const [errorColor, setErrorColor] = useState(false);
 
 
   let contador = 0;
@@ -166,6 +170,24 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
       setErrorImei(false); // Limpiar el mensaje de error si el IMEI tiene 15 dígitos
     }
   };
+  const handleColorChange = (event) => {
+    const inputValue = event.target.value;
+    const validCharacters = /^[A-Za-z]+$/;
+    const isValidLength = inputValue.length >= 3 && inputValue.length <= 15;
+
+    if (isValidLength) {
+      if (validCharacters.test(inputValue)) {
+        setColor(inputValue);
+        setErrorColor("");
+      } else {
+        setColor(inputValue);
+        setErrorColor("El color solo debe contener letras.");
+      }
+    } else {
+      setColor(inputValue);
+      setErrorColor("El color debe tener entre 3 y 15 caracteres.");
+    }
+  };
   return (
     <div className="pp2">
        
@@ -175,6 +197,7 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
         onClick={() => {
           setAniadir(true);
           setErrorImei(false);
+          setErrorColor(false);
         }}
       >
         <div className="anadirp">
@@ -208,7 +231,8 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
               </td>
               
               <td className="ele">
-                <input className="color pre" id="aniadirColor"></input>
+              <div className="mens123"><input className="color pre" id="aniadirColor" value={color} onChange={handleColorChange}></input>
+              {errorColor && <p className="errorMensaje">{errorColor}</p>}</div>
               </td>
               <td>
                 <button
@@ -251,12 +275,16 @@ const FilaProducto = (props) => {
   const [comprar, setComprar] = useState(false);
   const [datos, setDatos] = useState({});
   const [errorImei, setErrorImei] = useState(false);
+  const [color, setColor] = useState("");
+  const [errorColor, setErrorColor] = useState(false);
 
   const modificarProducto = () => {
     const imei = document.getElementById(props.item.imei + "imei");
     const color = document.getElementById(props.item.imei + "color");
     imei.disabled = false;
     imei.value = props.item.imei;
+    color.disabled = false;
+    color.value = props.item.color;
     color.disabled = false;
     color.value = props.item.color;
     setModificar(true);
@@ -294,6 +322,24 @@ const FilaProducto = (props) => {
       setErrorImei(false); // Limpiar el mensaje de error si el IMEI tiene 15 dígitos
     }
   };
+  const handleColorChange = (event) => {
+    const inputValue = event.target.value;
+    const validCharacters = /^[A-Za-z]+$/;
+    const isValidLength = inputValue.length >= 3 && inputValue.length <= 15;
+
+    if (isValidLength) {
+      if (validCharacters.test(inputValue)) {
+        setColor(inputValue);
+        setErrorColor("");
+      } else {
+        setColor(inputValue);
+        setErrorColor("El color solo debe contener letras.");
+      }
+    } else {
+      setColor(inputValue);
+      setErrorColor("El color debe tener entre 3 y 15 caracteres.");
+    }
+  };
   return (
     <>
       <tr id={props.item.imei} className="fila">
@@ -320,7 +366,9 @@ const FilaProducto = (props) => {
             id={props.item.imei + "color"}
             placeholder={props.item.color}
             disabled
+            onChange={handleColorChange}
           ></input>
+          {errorColor && <p className="errorMensaje">{errorColor}</p>}
         </td>
         {modificar ? (
           <>

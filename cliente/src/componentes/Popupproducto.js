@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Boton } from "./Boton";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
@@ -12,6 +12,7 @@ import cruz from "../imagenes/cruz.svg";
 import { agregarEtiqueta } from "../API/etiquetas";
 import { agregarMovil, modificarMovil, obtenerMoviles } from "../API/productos";
 import { mdiConsoleNetworkOutline } from "@mdi/js";
+import { Context } from "../Context/Context"; 
 
 export const Popupproducto = (props) => {
   const [descripcion, setDescripcion] = useState(true);
@@ -64,6 +65,9 @@ export const Popupproducto = (props) => {
                 <ContenidoDescripcion props={props}></ContenidoDescripcion>
               ) : (
                 <ContenidoTabla
+                  ruta={props.ruta} 
+                  marca={props.etiqueta}  
+                  precio={props.precio}
                   id_modelo={props.id_modelo}
                   nombre={props.nombre}
                 ></ContenidoTabla>
@@ -107,7 +111,7 @@ const ContenidoDescripcion = (prop) => {
     </div>
   );
 };
-const ContenidoTabla = ({ id_modelo, nombre }) => {
+const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
   const [aniadir, setAniadir] = useState(false);
   const [lista, setLista] = useState([]);
 
@@ -116,7 +120,8 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
   if (lista) {
     lista?.map((item) => {
       contador = contador + 1;
-      list.push(<FilaProducto item={item} contador={contador} />);
+      list.push(<FilaProducto modelo={nombre} ruta={ruta} marca={marca}  
+        precio={precio} item={item} contador={contador} />);
     });
   }
 
@@ -219,6 +224,7 @@ const FilaProducto = (props) => {
   const [modificar, setModificar] = useState(false);
   const [comprar, setComprar] = useState(false);
   const [datos, setDatos] = useState({});
+  const {listaVenta} =useContext(Context)
 
   const modificarProducto = () => {
     const imei = document.getElementById(props.item.imei + "imei");
@@ -253,14 +259,21 @@ const FilaProducto = (props) => {
       resolve(result);
     });
   };
+  const agregarALista=()=>{
+    const producto={ruta:props.ruta ,modelo:props.modelo , precio:props.precio , marca:props.marca , 
+      imei:props.item.imei , color:props.item.color, id:props.item.id}
+      listaVenta.push(producto)
+      setComprar(true)
+    console.log(listaVenta)
 
+  }
   return (
     <>
       <tr id={props.item.imei} className="fila">
         <td className="ele">
           <p className="numero">{props.contador}</p>
         </td>
-        <td className="ele">
+        <td className={comprar? "eleComprado" : "ele"}>
           <input
             type="number"
             className="imei"
@@ -269,7 +282,7 @@ const FilaProducto = (props) => {
             disabled
           ></input>
         </td>
-        <td className="ele">
+        <td className={comprar? "eleComprado" : "ele"}>
           <input
             className="color pre"
             id={props.item.imei + "color"}
@@ -326,7 +339,7 @@ const FilaProducto = (props) => {
               </button>
             </td>
             <td className="ele">
-              <button className="vender-cancelar">
+              <button className="vender-cancelar" onClick={agregarALista}>
                 <img src={imgVender}></img>
               </button>
             </td>

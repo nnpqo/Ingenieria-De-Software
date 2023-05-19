@@ -1,30 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { CajaTexto } from "./CajaTexto";
 import { Aviso4, Mensaje3 } from "./Aviso";
 import "../estilos/VentanaNotaVenta.css"
+import { Context } from "../Context/Context"; 
 
 export const VentanaNotaVenta = () => {
     const [fecha, setFecha] = useState()
-    const lista = [{ ruta: "", modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "3000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "8000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "GALAXY S22", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "9000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "GALAXY A20", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "9000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "negro" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "900", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "8000", marca: "APPLE", imei: 123456789012345, color: "blanco" },
-    { modelo: "IPHONE 13 PRO MAX", precio: "90000", marca: "APPLE", imei: 123456789012345, color: "blanco" }]
+    const {listaVenta,setListaVenta} =useContext(Context)
+    
     let total = 0;
-    let list = lista.map((item) => {
+    let list = listaVenta.map((item) => {
         total += Number(item.precio);
         return (<tr className="resultados-venta">
             <td id="resultados-1">{item.modelo}</td>

@@ -96,7 +96,16 @@ export const Login = () => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 ></g>
-                <g id="SVGRepo_iconCarrier">
+                <g id="SVGRepo_iconCarrier"  onMouseDown={()=>{
+                  const input = document.getElementById("inputContraseña");
+                  input.type = "text";
+                  console.log("como estas")}}
+                  onMouseUp={()=>{
+                    const input = document.getElementById("inputContraseña");
+                    input.type = "password";
+                    console.log("hiii");
+                  }}
+                  >
                   <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
@@ -107,7 +116,7 @@ export const Login = () => {
               </svg>
             </div>
           </button>
-          <input className="inputLogin" type="password" required="required" />
+          <input id="inputContraseña" className="inputLogin" type="password" required="required" />
           <label className="labelLogin">Contraseña</label>
         </div>
         <div className="input-grup">

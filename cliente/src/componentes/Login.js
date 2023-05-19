@@ -11,7 +11,7 @@ export const Login = (props) => {
   const [contrasenia, setContrasenia] = useState("");
   
   const validar = () => {
-    if (usuario === "hola" && contrasenia === "123") {
+    if (usuario === "kevin" && contrasenia === "jdkcell123") {
       props.setLogueado(true);
     }
   };

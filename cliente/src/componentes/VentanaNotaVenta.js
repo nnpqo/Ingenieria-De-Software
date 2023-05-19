@@ -69,10 +69,18 @@ export const VentanaNotaVenta = () => {
                     <div className="inputsNotaVenta">
                         <CajaTexto
                             nombre={"Cliente*"}
-                            id={"precio"} />
+                            id={"notaVenta"}
+                            max={50}
+                            min={0}
+                            regex={"/^[a-zA-Z\s]+$/"}
+                        />
                         <CajaTexto
                             nombre={"Cedula de identidad o NIT*"}
-                            id={"precio"} />
+                            id={"notaVentaCedula"}
+                            max={12}
+                            min={7}
+                            regex={"/^\d+$/"}
+                        />
                     </div>
                 </div>
                 <div className="notaVentaDerecha">

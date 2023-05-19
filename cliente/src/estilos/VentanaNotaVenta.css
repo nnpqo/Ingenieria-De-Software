@@ -130,6 +130,7 @@
 .inputsNotaVenta{
     display: flex;
     height: 50%;
+    width: 100%;
     flex-direction: column;
 }
 .contenedor-datos{
@@ -138,7 +139,14 @@
     align-items: center;
 }
 
-.inputsNotaVenta #precio{
+
+#notaVenta{
+    display: flex;
+    width: 80%;
+    border: none;
+}
+#notaVentaCedula{
+    display: flex;
     width: 80%;
     border: none;
 }

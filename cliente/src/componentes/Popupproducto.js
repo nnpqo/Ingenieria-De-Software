@@ -150,8 +150,9 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
     const datos = { imei: imei, color: color, id_modelo: id_modelo };
     lista.push({ imei: imei, color: color, id_modelo: id_modelo });
     agregarMovil(datos).then((result) => {
-      setMensaje(result.message);
-      setError(result.error)})
+      setMensaje(result.data.message);
+      console.log(result)
+      setError(result.data.error)})
   }
 
   return (

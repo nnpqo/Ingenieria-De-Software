@@ -167,6 +167,11 @@
   white-space: pre-wrap;
   /*Estilos para scroll*/
 }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  
+}
 .boton-flecha{
   background-color:transparent;
   border-radius: 20px;
@@ -206,6 +211,15 @@
   align-self: center;
   width: 90%;
   height: 350px;
+}
+.mens123{
+  
+
+}
+.errorMensaje {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }
 .bt-anadir{
     display: flex;

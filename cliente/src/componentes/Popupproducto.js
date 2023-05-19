@@ -13,7 +13,8 @@ import cruz from "../imagenes/cruz.svg";
 import { agregarEtiqueta } from "../API/etiquetas";
 import { agregarMovil, modificarMovil, obtenerMoviles } from "../API/productos";
 import { mdiConsoleNetworkOutline } from "@mdi/js";
-import { Context } from "../Context/Context"; 
+import { Context } from "../Context/Context";
+import { Mensaje3 } from "./Aviso";
 
 export const Popupproducto = (props) => {
   const [descripcion, setDescripcion] = useState(true);
@@ -66,8 +67,8 @@ export const Popupproducto = (props) => {
                 <ContenidoDescripcion props={props}></ContenidoDescripcion>
               ) : (
                 <ContenidoTabla
-                  ruta={props.ruta} 
-                  marca={props.etiqueta}  
+                  ruta={props.ruta}
+                  marca={props.etiqueta}
                   precio={props.precio}
                   id_modelo={props.id_modelo}
                   nombre={props.nombre}
@@ -113,14 +114,13 @@ const ContenidoDescripcion = (prop) => {
   );
 };
 
-
-const limitarDigitos = (input,limiteDigitos) => {
+const limitarDigitos = (input, limiteDigitos) => {
   const maxLength = limiteDigitos;
   if (input.value.length > maxLength) {
     input.value = input.value.slice(0, maxLength);
   }
 };
-const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
+const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
   const [aniadir, setAniadir] = useState(false);
   const [lista, setLista] = useState([]);
   const [errorImei, setErrorImei] = useState(false); // Estado para controlar el mensaje de error
@@ -128,14 +128,24 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
   const [color, setColor] = useState("");
   const [errorColor, setErrorColor] = useState(false);
 
+  const [men, setMensaje] = useState("");
+  const [error, setError] = useState(false);
 
   let contador = 0;
   const list = [];
   if (lista) {
     lista?.map((item) => {
       contador = contador + 1;
-      list.push(<FilaProducto modelo={nombre} ruta={ruta} marca={marca}  
-        precio={precio} item={item} contador={contador} />);
+      list.push(
+        <FilaProducto
+          modelo={nombre}
+          ruta={ruta}
+          marca={marca}
+          precio={precio}
+          item={item}
+          contador={contador}
+        />
+      );
     });
   }
 
@@ -158,18 +168,23 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
   const aniadirProducto = () => {
     const imei = document.getElementById("aniadirImei").value;
     const color = document.getElementById("aniadirColor").value;
-
     if (imei.length !== 15) {
       setErrorImei(true);
-    } else  {
+    } else {
       setErrorImei(false);
       setErrorColor(false);
-
       const datos = { imei: imei, color: color, id_modelo: id_modelo };
-      lista.push({ imei: imei, color: color, id_modelo: id_modelo });
-      agregarMovil(datos).then((res) => setAniadir(!aniadir));
+      agregarMovil(datos).then((result) => {
+        setMensaje(result.data.message);
+        console.log(result);
+        setError(result.data.error);
+        if (!error) {
+          lista.push({ imei: imei, color: color, id_modelo: id_modelo });
+        }
+      });
     }
   };
+
   const handleImeiChange = (event) => {
     const imei = event.target.value;
     if (imei.length !== 15) {
@@ -198,7 +213,6 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
   };
   return (
     <div className="pp2">
-       
       <button
         id="añadir-producto"
         className="bt-anadir"
@@ -211,12 +225,12 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
         <div className="anadirp">
           {" "}
           <div className="palabras">
-          <p className="a1">Añadir</p>
-          <p className="a2">producto</p>
+            <p className="a1">Añadir</p>
+            <p className="a2">producto</p>
           </div>
           <div className="icono-agregar">
-          <img className="IcoA" src={iconoAgregar}></img>
-        </div>
+            <img className="IcoA" src={iconoAgregar}></img>
+          </div>
         </div>
       </button>
       <table id="tabla" className="tabla">
@@ -236,30 +250,49 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
                 <div className="vacioEle"></div>
               </td>
               <td className="ele">
-               <div className="mens123"> <input type="number" className="imei" id="aniadirImei" onChange={handleImeiChange} onInput={(e) => limitarDigitos(e.target,15)}></input>
-               {errorImei && <p className="errorMensaje">El IMEI debe tener 15 dígitos.</p>}</div>
-              </td>
-              
-              <td className="ele">
-              <div className="mens123"><input className="color pre" id="aniadirColor"  onChange={handleColorChange} ></input>
-              {errorColor && <p className="errorMensaje">{errorColor}</p>}</div>
-              </td>
-              <td>
-                <button
-                  className="modificar-aceptar"
-                  onClick={() => {
-                    aniadirProducto(lista, setAniadir);
-                    
-                  }}
-                >
+                <div className="mens123">
                   {" "}
-                  ✔{" "}
-                </button>
-                
+                  <input
+                    type="number"
+                    className="imei"
+                    id="aniadirImei"
+                    onChange={handleImeiChange}
+                    onInput={(e) => limitarDigitos(e.target, 15)}
+                  ></input>
+                  {errorImei && (
+                    <p className="errorMensaje">
+                      El IMEI debe tener 15 dígitos.
+                    </p>
+                  )}
+                </div>
               </td>
-              
+
+              <td className="ele">
+                <div className="mens123">
+                  <input
+                    className="color pre"
+                    id="aniadirColor"
+                    onChange={handleColorChange}
+                  ></input>
+                  {errorColor && <p className="errorMensaje">{errorColor}</p>}
+                </div>
+              </td>
               <td>
-                
+                <Mensaje3
+                  nombre=" ✔ "
+                  estilos={"modificar-aceptar"}
+                  funcion={() => {
+                    console.log("hola");
+                    aniadirProducto();
+                  }}
+                  mensaje={men}
+                  error={error}
+                  setAniadir={setAniadir}
+                  aniadir={aniadir}
+                />
+              </td>
+
+              <td>
                 <button
                   className="cancelarPP"
                   onClick={() => {
@@ -268,9 +301,7 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
                 >
                   <img className="contBotones" src={cruz}></img>{" "}
                 </button>
-                
               </td>
-              
             </>
           ) : (
             <></>
@@ -285,7 +316,7 @@ const FilaProducto = (props) => {
   const [modificar, setModificar] = useState(false);
   const [comprar, setComprar] = useState(false);
   const [datos, setDatos] = useState({});
-  const {listaVenta} =useContext(Context)
+  const { listaVenta } = useContext(Context);
   const [errorImei, setErrorImei] = useState(false);
   const [color, setColor] = useState("");
   const [errorColor, setErrorColor] = useState(false);
@@ -325,14 +356,20 @@ const FilaProducto = (props) => {
       resolve(result);
     });
   };
-  const agregarALista=()=>{
-    const producto={ruta:props.ruta ,modelo:props.modelo , precio:props.precio , marca:props.marca , 
-      imei:props.item.imei , color:props.item.color}
-      listaVenta.push(producto)
-      setComprar(true)
-    console.log(listaVenta)
-
-  }
+  const agregarALista = () => {
+    const producto = {
+      ruta: props.ruta,
+      modelo: props.modelo,
+      precio: props.precio,
+      marca: props.marca,
+      imei: props.item.imei,
+      color: props.item.color,
+      id: props.item.id,
+    };
+    listaVenta.push(producto);
+    setComprar(true);
+    console.log(listaVenta);
+  };
   const handleImeiChange = (event) => {
     const imei = event.target.value;
 
@@ -366,13 +403,13 @@ const FilaProducto = (props) => {
         <td className="ele">
           <p className="numero">{props.contador}</p>
         </td>
-        <td className={comprar? "eleComprado" : "ele"}>
+        <td className={comprar ? "eleComprado" : "ele"}>
           <input
             type="number"
             className="imei"
             id={props.item.imei + "imei"}
             placeholder={props.item.imei}
-            onInput={(e) => limitarDigitos(e.target,15)}
+            onInput={(e) => limitarDigitos(e.target, 15)}
             disabled
             onChange={handleImeiChange}
           ></input>
@@ -380,7 +417,7 @@ const FilaProducto = (props) => {
             <p className="errorMensaje">El IMEI debe tener 15 dígitos.</p>
           )}
         </td>
-        <td className={comprar? "eleComprado" : "ele"}>
+        <td className={comprar ? "eleComprado" : "ele"}>
           <input
             className="color pre"
             id={props.item.imei + "color"}
@@ -420,7 +457,7 @@ const FilaProducto = (props) => {
                   aceptarCancelar(false);
                 }}
               >
-                <img  className="contBotones" src={cruz}></img>{" "}
+                <img className="contBotones" src={cruz}></img>{" "}
               </button>
             </td>
           </>
@@ -443,16 +480,9 @@ const FilaProducto = (props) => {
                 <img className="contBotones" src={imgVender}></img>
               </button>
             </td>
-            
           </>
         )}
-        
       </tr>
-      
     </>
   );
 };
-
-//  <Popup className="popup">
-
-// </Popup>

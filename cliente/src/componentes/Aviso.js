@@ -259,7 +259,8 @@ export const Mensaje3 = (props) => {
       setTimeout(closeModal, 2000);
     }
   }, [open]);
-  const closeModal = () => setOpen(false);
+  const closeModal = () => {setOpen(false);
+  props.setAniadir&&props.setAniadir(!props.aniadir); }
   return (
     <div>
       <button

@@ -132,7 +132,7 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
   useEffect(() => {
     if (aniadir) {
       const tabla = document.getElementById("lista-tabla");
-      tabla.scrollTop = tabla.scrollHeight;
+      <div className="scroll">tabla.scrollTop = tabla.scrollHeight;</div>
     }
   }, [aniadir]);
 
@@ -164,11 +164,11 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
       </button>
       <table id="tabla" className="tabla">
         <thead id="titulos">
-          <th className="o">Num.</th>
+          <th className="o">NUM.</th>
           <th className="m1">IMEI</th>
-          <th className="m2">Color</th>
-          <th className="m3">Modificar</th>
-          <th className="n">Vender</th>
+          <th className="m2">COLOR</th>
+          <th className="m3">MODIF.</th>
+          <th className="n">VENDER</th>
         </thead>
         <tbody id="lista-tabla">
           {list}

@@ -124,7 +124,7 @@ const VentaVacia = () => {
         <div class="mouth sad"></div>
       </div>
       <div className="redondo">
-        <div class="shadow move"></div>
+        
       </div>
       <div className="inf">
         <p>NO HAY PRODUCTOS SELECCIONADOS A LA VENTA</p>

@@ -45,7 +45,32 @@ export const CajaTexto = (props) => {
         setErrorMsg(`El valor ingresado contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
       } 
     }
+    if(aux === "notaVenta"){
+      if (event.target.value.trim() === '') {
+        setErrorMsg(`El campo es requerido`); // Establece un mensaje de error personalizado indicando el nombre del campo que falló
+      }else if (!event.target.value.match(/^[a-zA-Z\s]+$/)) {
+        setErrorMsg(`El valor ingresado contiene caracteres no permitidos`); // Establece un mensaje de error personalizado si el valor contiene caracteres no permitidos
+      }else {
+        setErrorMsg(""); // Limpiar el mensaje de error si el valor es válido
+        setIsValid(true)
+      }
+    }
+    if (aux === "notaVentaCedula") {
+      if (event.target.value.trim() === '') {
+        setErrorMsg(`El campo es requerido`);
+      } else if (!/^\d+$/.test(event.target.value.trim())) {
+        setErrorMsg(`El valor ingresado debe ser numérico`);
+      } else if (event.target.value.length < props.min) {
+          setErrorMsg(
+            `El valor ingresado es demasiado corto (mínimo ${props.min} caracteres)`
+          );
+      } else {
+        setErrorMsg(""); // Limpiar el mensaje de error si el valor es válido
+        setIsValid(true)
+      }
+    }    
   };
+
 
   const handleInvalid = (event) => {
     setErrorMsg(props.errorMsg || event.target.validationMessage); // Actualiza el estado 'errorMsg' con la propiedad 'errorMsg' proporcionada o el mensaje de error proporcionado por el navegador

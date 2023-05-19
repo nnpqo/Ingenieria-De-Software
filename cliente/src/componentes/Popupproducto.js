@@ -207,7 +207,7 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
                     setAniadir(false);
                   }}
                 >
-                  <img className="cruzmodcan" src={cruz}></img>{" "}
+                  <img className="contBotones" src={cruz}></img>{" "}
                 </button>
               </td>
             </>
@@ -261,7 +261,7 @@ const FilaProducto = (props) => {
   };
   const agregarALista=()=>{
     const producto={ruta:props.ruta ,modelo:props.modelo , precio:props.precio , marca:props.marca , 
-      imei:props.item.imei , color:props.item.color, id:props.item.id}
+      imei:props.item.imei , color:props.item.color}
       listaVenta.push(producto)
       setComprar(true)
     console.log(listaVenta)
@@ -315,12 +315,12 @@ const FilaProducto = (props) => {
             </td>
             <td>
               <button
-                className="vender-cancelar"
+                className="cancelarPP"
                 onClick={() => {
                   aceptarCancelar(false);
                 }}
               >
-                <img src={cruz}></img>{" "}
+                <img  className="contBotones" src={cruz}></img>{" "}
               </button>
             </td>
           </>
@@ -335,12 +335,12 @@ const FilaProducto = (props) => {
                   modificarProducto();
                 }}
               >
-                <img src={lapiz}></img>
+                <img className="contBotones" src={lapiz}></img>
               </button>
             </td>
             <td className="ele">
               <button className="vender-cancelar" onClick={agregarALista}>
-                <img src={imgVender}></img>
+                <img className="contBotones" src={imgVender}></img>
               </button>
             </td>
           </>

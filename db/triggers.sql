@@ -56,3 +56,25 @@ begin
     end if;
 end 
 $$
+
+drop trigger if exists validacion_producto; 
+DELIMITER $$ 
+create trigger validacion_producto before insert on dispositivo_movil for each row
+begin 
+    if not (new.color REGEXP '^[ a_zA-Z]+$'  and length(new.color) >= '3' and length(new.color) <= '15')
+        then SIGNAL SQLSTATE '45000'
+        set MESSAGE_TEXT = "El campo 'nombre' no cumple el formato requerido" ;
+    end if;
+end 
+$$
+
+drop trigger if exists validacion_producto; 
+DELIMITER $$ 
+create trigger validacion_producto before update on dispositivo_movil for each row
+begin 
+    if not (new.color REGEXP '^[ a_zA-Z]+$'  and length(new.color) >= '3' and length(new.color) <= '15')
+        then SIGNAL SQLSTATE '45000'
+        set MESSAGE_TEXT = "El campo 'nombre' no cumple el formato requerido" ;
+    end if;
+end 
+$$

@@ -66,3 +66,14 @@ export const agregarMovil = (data) => {
       return err;
     });
 };
+
+export const vender = (id) => {
+  return instancia
+    .put("/ventas/" + id)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      return err;
+    });
+};

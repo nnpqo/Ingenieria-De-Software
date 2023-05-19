@@ -299,4 +299,18 @@ router.get("/getProductos/:modelo", (req, res) => {
   });
 });
 
+router.put("/ventas/:id", (req, res) => {
+  const id = req.params.id; 
+
+  const sql = "update dispositivo_movil set vendido = 1 where id = ?";
+  db.query(sql,[id], (error, results, fields) => {
+    if(error) {
+      res.send({message: "Error al vender", error : true}); 
+    }else{
+      res.send({messege: "Vendido correctamente", error :false})
+    }
+
+  })
+}) 
+
 module.exports = router;

@@ -6,6 +6,8 @@ import usuarioimg from "../imagenes/usuario.svg";
 import candado from "../imagenes/candado.svg";
 
 export const Login = () => {
+  const [mostrarOjo, setMostrarOjo] = useState(false);
+  const [mostrarOjoc, setMostrarOjoc] = useState(true);
   let intervalId = null;
 
   function createSquare() {
@@ -57,7 +59,15 @@ export const Login = () => {
           <div class="icon">
             <img src={candado} />
           </div>
-          <button class="ojo">
+          <button
+            className={`ojo ${mostrarOjo ? "mostrar" : "ocultar"}`}
+            onClick={() => {
+              const input = document.getElementById("inputContraseña");
+              input.type = "password";
+              setMostrarOjoc(true);
+              setMostrarOjo(false);
+            }}
+          >
             <div class="ojot" id="ojo">
               <svg
                 viewBox="0 0 24 24"
@@ -82,7 +92,15 @@ export const Login = () => {
               </svg>
             </div>
           </button>
-          <button class="ojo">
+          <button
+            className={`ojo ${mostrarOjoc ? "mostrar" : "ocultar"}`}
+            onClick={() => {
+              const input = document.getElementById("inputContraseña");
+              input.type = "text";
+              setMostrarOjoc(false);
+              setMostrarOjo(true);
+            }}
+          >
             <div class="ojot" id="ojoc">
               <svg
                 viewBox="0 0 24 24"
@@ -96,16 +114,7 @@ export const Login = () => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 ></g>
-                <g id="SVGRepo_iconCarrier"  onMouseDown={()=>{
-                  const input = document.getElementById("inputContraseña");
-                  input.type = "text";
-                  console.log("como estas")}}
-                  onMouseUp={()=>{
-                    const input = document.getElementById("inputContraseña");
-                    input.type = "password";
-                    console.log("hiii");
-                  }}
-                  >
+                <g id="SVGRepo_iconCarrier">
                   <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
@@ -116,7 +125,12 @@ export const Login = () => {
               </svg>
             </div>
           </button>
-          <input id="inputContraseña" className="inputLogin" type="password" required="required" />
+          <input
+            id="inputContraseña"
+            className="inputLogin"
+            type="password"
+            required="required"
+          />
           <label className="labelLogin">Contraseña</label>
         </div>
         <div className="input-grup">

@@ -160,11 +160,13 @@ const ContenidoTabla = ({ ruta,marca,precio,id_modelo, nombre }) => {
       >
         <div className="anadirp">
           {" "}
+          <div className="palabras">
           <p className="a1">Añadir</p>
           <p className="a2">producto</p>
-        </div>
-        <div className="icono-agregar">
+          </div>
+          <div className="icono-agregar">
           <img className="IcoA" src={iconoAgregar}></img>
+        </div>
         </div>
       </button>
       <table id="tabla" className="tabla">

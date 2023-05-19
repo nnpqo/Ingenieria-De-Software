@@ -412,7 +412,7 @@
 .vender-cancelar{
   color: white;
   background-color: #0DC832;
-  /* border: 2px solid #0E84C7; */
+  border: 2px solid #0dc832a9;
   border-radius: 5px;
   width: 79px;
   height: 33px;
@@ -420,7 +420,7 @@
 }
 .cancelarPP{
   background-color: #F3450F;
-  /* border: 2px solid #0E84C7; */
+  border: 2px solid #dd3116;
   border-radius: 5px;
   width: 79px;
   height: 33px;
@@ -437,9 +437,9 @@
   display: flex;
   width: 15%;
 }
-.cruzmodcan{
-  height: 20px;
-  width: 20px;
+.contBotones{
+  height: 23px;
+  width: 23px;
 }
 .IcoA{
   height: 30px;

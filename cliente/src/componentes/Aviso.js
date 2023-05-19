@@ -359,7 +359,7 @@ export const Mensaje4 = (props) => {
           setOpen((o) => !o);
         }}
       >
-        <h2>{props.nombre}</h2>
+        <h3>{props.nombre}</h3>
       </button>
       <Popup
         className={props.error ? "mensaje3E" : "mensaje3"}

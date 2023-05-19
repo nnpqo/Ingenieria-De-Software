@@ -281,3 +281,9 @@
   .ele input{
     outline: none;
   }
+
+  .imei::-webkit-inner-spin-button,
+  .imei::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  }

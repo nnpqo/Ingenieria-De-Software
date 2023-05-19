@@ -334,3 +334,43 @@ export const Aviso4 = (props) => {
     </Popup>
   );
 };
+
+export const Mensaje4 = (props) => {
+  const [open, setOpen] = useState(false);
+  const [funcionar, setFuncionar]=useState(true);
+  useEffect(() => {
+    if (open) {
+      setTimeout(closeModal, 2000);
+    }
+  }, [open]);
+  const closeModal = () => {setOpen(false);
+                            if(funcionar){
+                              props.funcion();
+                            console.log("aviso");
+                            setFuncionar(false);
+                            }
+                           };
+  return (
+    <div>
+      <button
+        type="button"
+        className={props.estilos}
+        onClick={() => {
+          setOpen((o) => !o);
+        }}
+      >
+        <h2>{props.nombre}</h2>
+      </button>
+      <Popup
+        className={props.error ? "mensaje3E" : "mensaje3"}
+        open={open}
+        closeOnDocumentClick
+        onClose={closeModal}
+      >
+        <div>
+          <span className="mensaje">{props.mensaje}</span>
+        </div>
+      </Popup>
+    </div>
+  );
+};

@@ -12,7 +12,7 @@ import cruz from "../imagenes/cruz.svg";
 import { agregarEtiqueta } from "../API/etiquetas";
 import { agregarMovil, modificarMovil, obtenerMoviles } from "../API/productos";
 import { mdiConsoleNetworkOutline } from "@mdi/js";
-import { Mensaje3 } from "./Aviso";
+import { Mensaje4 } from "./Aviso";
 
 export const Popupproducto = (props) => {
   const [descripcion, setDescripcion] = useState(true);
@@ -108,7 +108,9 @@ const ContenidoDescripcion = (prop) => {
     </div>
   );
 };
+
 const ContenidoTabla = ({ id_modelo, nombre }) => {
+  
   const [aniadir, setAniadir] = useState(false);
   const [lista, setLista] = useState([]);
   let contador = 0;
@@ -142,6 +144,7 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
     const datos = { imei: imei, color: color, id_modelo: id_modelo };
     lista.push({ imei: imei, color: color, id_modelo: id_modelo });
     agregarMovil(datos).then((res) => setAniadir(!aniadir));
+    
   };
 
   return (
@@ -186,24 +189,15 @@ const ContenidoTabla = ({ id_modelo, nombre }) => {
               </td>
               <td>
                 
-
-                <Mensaje3
+                  <Mensaje4
                    nombre=" ✔ "
                    estilos={"modificar-aceptar"}
                    funcion={() => {
-                    console.log("hola");
+                    aniadirProducto();
                   }}
                   mensaje="guardado correctamente"
-                />
-                {/* <button
-                  className="modificar-aceptar"
-                  onClick={() => {
-                    aniadirProducto(lista, setAniadir);
-                  }}
-                >
-                  {" "}
-                  ✔{" "}
-                </button> */}
+                  error={false}
+                />  
               </td>
               <td>
                 <button

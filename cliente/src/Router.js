@@ -23,7 +23,7 @@ export const Router = () => {
       <HashRouter>
         <ContextProvider>
         <Routes>
-          <Route path="/login" element={<Login logueado={logueado} setLogueado={setLogueado} /> }/>
+          <Route path="/login" element={logueado || token ? ( <Navigate to="/"/>): (<Login logueado={logueado} setLogueado={setLogueado}/>)}/>
           <Route path="/" element={logueado || token ?(<Cabecera actualizar={actualizarBusqueda} barra={barraBusqueda}/>):( <Navigate to="/login"/>)}>
             <Route path="/" element={<VentanaPrincipal menu={1} busqueda={buscar} setBarraBusqueda={setBarraBusqueda}/>} />
             <Route path="/productos" element={<VentanaPrincipal menu={2} setBarraBusqueda={setBarraBusqueda} />} />

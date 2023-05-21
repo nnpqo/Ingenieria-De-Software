@@ -37,7 +37,13 @@ export const Cabecera = (props) => {
             <Boton nombre={"Venta"} estilos={"boton-navbar-pro"} />
           </Link>
         </div>
-        <div className="foto-u">
+        <div className="foto-u"
+          title = {"Cerrar sesión"}
+          onClick={()=>{
+            localStorage.removeItem('token');
+            window.location.reload();
+          }}
+        >
         <img className="boton-usuario" src={retrato}></img>
         </div>
       </header>

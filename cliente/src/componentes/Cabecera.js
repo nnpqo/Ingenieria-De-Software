@@ -10,7 +10,7 @@ export const Cabecera = (props) => {
     <>
       <header className="cabecera">
         <div className="home">
-          <Link to="/home">
+          <Link to="/">
             <Boton
               nombre={
                 <>

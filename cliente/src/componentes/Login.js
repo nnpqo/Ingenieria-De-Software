@@ -8,13 +8,15 @@ import candado from "../imagenes/candado.svg";
 export const Login = (props) => {
   const [mostrarOjo, setMostrarOjo] = useState(false);
   const [mostrarOjoc, setMostrarOjoc] = useState(true);
-  
+
   let intervalId = null;
   const [usuario, setUsuario] = useState("");
   const [contrasenia, setContrasenia] = useState("");
-  
+
   const validar = () => {
     if (usuario === "kevin" && contrasenia === "jdkcell123") {
+      const token = "miTokenDeAutenticacion";
+      localStorage.setItem("token", token);
       props.setLogueado(true);
     }
   };
@@ -61,7 +63,14 @@ export const Login = (props) => {
             <img src={usuarioimg} />
           </div>
 
-          <input className="inputLogin" type="text" maxLength={15} minLength={3} required="required" onChange={(e) => setUsuario(e.target.value)}/>
+          <input
+            className="inputLogin"
+            type="text"
+            maxLength={15}
+            minLength={3}
+            required="required"
+            onChange={(e) => setUsuario(e.target.value)}
+          />
           <label className="labelLogin">Nombre de Usuario</label>
         </div>
         <div className="input-grup">
@@ -71,7 +80,7 @@ export const Login = (props) => {
           <button
             className={`ojo ${mostrarOjo ? "mostrar" : "ocultar"}`}
             onClick={() => {
-              const input = document.getElementById("inputContraseña");
+              const input = document.getElementById("contrasenia");
               input.type = "password";
               setMostrarOjoc(true);
               setMostrarOjo(false);
@@ -104,7 +113,7 @@ export const Login = (props) => {
           <button
             className={`ojo ${mostrarOjoc ? "mostrar" : "ocultar"}`}
             onClick={() => {
-              const input = document.getElementById("inputContraseña");
+              const input = document.getElementById("contrasenia");
               input.type = "text";
               setMostrarOjoc(false);
               setMostrarOjo(true);
@@ -134,17 +143,25 @@ export const Login = (props) => {
               </svg>
             </div>
           </button>
-          <input className="inputLogin" maxLength={16} minLength={8} type="password" required="required" onChange={(e) => setContrasenia(e.target.value)}/>
+          <input
+            id="contrasenia"
+            className="inputLogin"
+            maxLength={16}
+            minLength={8}
+            type="password"
+            required="required"
+            onChange={(e) => setContrasenia(e.target.value)}
+          />
           <label className="labelLogin">Contraseña</label>
         </div>
         <div className="input-grup">
-        <Link className="acceder" to="/home" onClick={validar}>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          Acceder
-        </Link>
+          <Link className="acceder" to="/" onClick={validar}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Acceder
+          </Link>
         </div>
       </div>
     </section>

@@ -13,6 +13,8 @@ export const Router = () => {
   const [buscar, setBuscar] = useState(false)
   const [logueado,setLogueado]= useState(false)
   
+  const token = localStorage.getItem('token');
+  
   const actualizarBusqueda = (nuevaBusqueda) => {
     setBuscar(nuevaBusqueda);
   }
@@ -21,9 +23,9 @@ export const Router = () => {
       <HashRouter>
         <ContextProvider>
         <Routes>
-          <Route index element={<Login logueado={logueado} setLogueado={setLogueado} /> }/>
-          <Route path="/" element={logueado ?(<Cabecera actualizar={actualizarBusqueda} barra={barraBusqueda}/>):( <Navigate to="/"/>)}>
-            <Route path="/home" element={<VentanaPrincipal menu={1} busqueda={buscar} setBarraBusqueda={setBarraBusqueda}/>} />
+          <Route path="/login" element={<Login logueado={logueado} setLogueado={setLogueado} /> }/>
+          <Route path="/" element={logueado || token ?(<Cabecera actualizar={actualizarBusqueda} barra={barraBusqueda}/>):( <Navigate to="/login"/>)}>
+            <Route path="/" element={<VentanaPrincipal menu={1} busqueda={buscar} setBarraBusqueda={setBarraBusqueda}/>} />
             <Route path="/productos" element={<VentanaPrincipal menu={2} setBarraBusqueda={setBarraBusqueda} />} />
             <Route path="/venta" element={<VentanaMostrarVenta />} />
             <Route path="/NotaVenta" element={<VentanaNotaVenta />} />

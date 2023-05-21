@@ -119,7 +119,6 @@ export const VentanaNotaVenta = () => {
                     setListaVenta([]);
                     setTimeout(()=>{
                         navigate("/home")
-                        window.location.reload();
                     },2000)
                   });
 

@@ -118,7 +118,7 @@ export const VentanaNotaVenta = () => {
                     setStatus({ message: "¡Venta exitosa!", error: false });
                     setListaVenta([]);
                     setTimeout(()=>{
-                        navigate("/home")
+                        navigate("/")
                     },2000)
                   });
 

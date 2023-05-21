@@ -74,7 +74,7 @@ export const VentanaMostrarVenta = () => {
           <div className="listaVenta">{list}</div>
           <div className="parteIzq">
             <div className="seguir-venta">
-              <Link to="/home">
+              <Link to="/">
                 <Boton nombre="SEGUIR VENDIENDO" estilos="guardar" />
               </Link>
             </div>

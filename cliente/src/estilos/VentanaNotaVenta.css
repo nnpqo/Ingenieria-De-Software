@@ -91,6 +91,11 @@
     flex-direction: row;
     margin-left: 5%;
 }
+.argumentoFecha{
+    display: flex;
+    flex-direction: row;
+    margin-left: 12.5%;
+}
 #titulo-producto{
     width: 50%;
     color: white;

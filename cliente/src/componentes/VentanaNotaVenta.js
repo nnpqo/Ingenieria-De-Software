@@ -57,7 +57,7 @@ export const VentanaNotaVenta = () => {
                 <p id="nombre-ven">Vendedor:</p>
                 <p id="resultados">Richar Parker Choque</p>
               </div>
-              <div className="argumento">
+              <div className="argumentoFecha">
                 <p id="nombre-ven">Fecha:</p>
                 <p id="resultados">{fecha}</p>
               </div>

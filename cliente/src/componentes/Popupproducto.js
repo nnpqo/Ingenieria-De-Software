@@ -273,6 +273,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
                     className="color pre"
                     id="aniadirColor"
                     onChange={handleColorChange}
+                    onInput={(e) => limitarDigitos(e.target,15)}
                   ></input>
                   {errorColor && <p className="errorMensaje">{errorColor}</p>}
                 </div>
@@ -379,6 +380,8 @@ const FilaProducto = (props) => {
       setErrorImei(false); // Limpiar el mensaje de error si el IMEI tiene 15 dígitos
     }
   };
+ 
+
   const handleColorChange = (event) => {
     const inputValue = event.target.value;
     const validCharacters = /^[A-Za-z]+$/;
@@ -410,9 +413,9 @@ const FilaProducto = (props) => {
             id={props.item.imei + "imei"}
             placeholder={props.item.imei}
             onInput={(e) => limitarDigitos(e.target, 15)}
-            disabled
             onChange={handleImeiChange}
-          ></input>
+            disabled
+            ></input>
           {errorImei && (
             <p className="errorMensaje">El IMEI debe tener 15 dígitos.</p>
           )}
@@ -424,6 +427,7 @@ const FilaProducto = (props) => {
             placeholder={props.item.color}
             disabled
             onChange={handleColorChange}
+            onInput={(e) => limitarDigitos(e.target,15)}
           ></input>
           {errorColor && <p className="errorMensaje">{errorColor}</p>}
         </td>

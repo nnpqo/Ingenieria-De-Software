@@ -274,6 +274,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
   
 .ele{
+ 
   background-color: #284073;
   color: white;
   border-top-left-radius: 8px;
@@ -307,27 +308,30 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color:#284073 ;
   border:none;
   color: white;
-  font-size: 25px;
+  font-size: 17px;
   text-align: center;
   width: 200px;
   margin-right: 5px;
-   
+  padding-top: 5px; /* Espaciado de 20 píxeles en la parte superior */
+  padding-bottom: 5px; /* Espaciado de 20 píxeles en la parte inferior */   
 }
 .pre{ 
   border: 2px solid #0E84C7; /* borde */
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-left: none;
-  width: 145px;
+  width: 155px;
 }
 .imei{
   background-color:#284073 ;
-  font-size: 25px;
+  font-size: 17px;
   border: 2px solid #0E84C7; /* borde */
   color: white;
   text-align: center;
-  width: 250px;
+  width: 240px;
   height: 100%;
+  padding-top: 5px; /* Espaciado de 20 píxeles en la parte superior */
+  padding-bottom: 5px; /* Espaciado de 20 píxeles en la parte inferior */
 }
 .imei::placeholder{
   color: white;
@@ -342,7 +346,9 @@ input[type="number"]::-webkit-outer-spin-button {
   border-bottom-left-radius: 8px;
   border-right: none;
   width: 60px;
-  font-size: 25px;
+  font-size: 17px;
+  padding-top: 5px; /* Espaciado de 20 píxeles en la parte superior */
+  padding-bottom: 5px; /* Espaciado de 20 píxeles en la parte inferior */
    
 }
 .vacioEle{
@@ -480,4 +486,13 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-transform: rotate(360deg);
   transition: transform 0.5s ease-in-out; 
   
+}
+input::placeholder {
+  font-size: 17px; /* Ajusta el tamaño de fuente según tus necesidades */
+  /* font-weight: bold; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }

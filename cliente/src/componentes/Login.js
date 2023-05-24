@@ -12,35 +12,31 @@ export const Login = (props) => {
   let intervalId = null;
   const [usuario, setUsuario] = useState("");
   const [contrasenia, setContrasenia] = useState("");
-  const [tiempo,setTiempo]=useState(true)
-  const [intentos,setIntentos]=useState()
-
+  const [tiempo, setTiempo] = useState(true);
+  const [intentos, setIntentos] = useState();
 
   const MAX_INTENTOS_FALLIDOS = 0;
   const TIEMPO_BLOQUEO = 100;
-  
-  
-  
-  useEffect(()=>{
-    const intentoslS = parseInt (localStorage.getItem("intentos"));
-    setIntentos(intentoslS)
-  },[tiempo])
+
+  useEffect(() => {
+    const intentoslS = parseInt(localStorage.getItem("intentos"));
+    setIntentos(intentoslS);
+  }, [tiempo]);
   const validar = () => {
     if (intentos === MAX_INTENTOS_FALLIDOS) {
       // Bloquear inicio de sesión por un período de tiempo
       setTimeout(() => {
-        setTiempo(!tiempo)
-        console.log("tiempo"+tiempo)
+        setTiempo(!tiempo);
+        console.log("tiempo" + tiempo);
         localStorage.setItem("intentos", 3);
       }, TIEMPO_BLOQUEO);
     } else if (usuario === "kevin" && contrasenia === "jdkcell123") {
       const token = "miTokenDeAutenticacion";
       localStorage.setItem("token", token);
       props.setLogueado(true);
-    }
-    else {
-      localStorage.setItem("intentos",intentos-1);
-      console.log("intentos:"+intentos)
+    } else {
+      localStorage.setItem("intentos", intentos - 1);
+      console.log("intentos:" + intentos);
     }
   };
 
@@ -186,7 +182,25 @@ export const Login = (props) => {
             Acceder
           </Link>
         </div>
-        <p>te quetan {intentos} restantes</p>
+        <div className="errorMensaje">
+          <div className="fondo">
+            <div className="icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="#ffffff"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm-1.5-5.009c0-.867.659-1.491 1.491-1.491.85 0 1.509.624 1.509 1.491 0 .867-.659 1.509-1.509 1.509-.832 0-1.491-.642-1.491-1.509zM11.172 6a.5.5 0 0 0-.499.522l.306 7a.5.5 0 0 0 .5.478h1.043a.5.5 0 0 0 .5-.478l.305-7a.5.5 0 0 0-.5-.522h-1.655z"
+                  fill="#ff2e00"
+                />
+              </svg>
+            </div>
+          </div>
+          &nbsp; &nbsp; &nbsp; &nbsp;Te quedan {intentos} intentos
+        </div>
       </div>
     </section>
   );

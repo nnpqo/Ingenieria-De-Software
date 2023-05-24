@@ -27,6 +27,7 @@ export const VentanaFormulario = (props) => {
   const [men, setMensaje] = useState("");
   const [error, setError] = useState(false);
   const [seleccion, setSeleccion] = useState(false);
+  const {listaVenta,setListaVenta} =useContext(Context)
 
   useEffect(() => {
     getEtiquetas().then((nombres) => setEtiquetas(nombres));
@@ -117,6 +118,23 @@ export const VentanaFormulario = (props) => {
       <br />
     </div>
   );
+  const actualizarListaCompra = () => {
+    const modelo = document.getElementById("modelo").value;
+    const nombre = document.getElementById("nombreModelo").value.trim();
+    const etiqueta = document.getElementById("etiqueta").value;
+    const imagen = document.getElementById("image").files;
+    const precio = document.getElementById("precio").value;
+    const rutaImg = imagen[0] ? "/images/" + imagen[0].name : "";
+    console.log('ruta:' + rutaImg)
+    let nuevaLista = listaVenta.map((item) => {
+      if (item.modelo === modelo) {
+        if(rutaImg===""){ return { ...item, modelo:nombre,marca:etiqueta,precio:precio};}
+        else{ return { ...item,ruta: rutaImg, modelo:nombre,marca:etiqueta,precio:precio};}
+      }
+      return item;
+    })
+    setListaVenta(nuevaLista);
+  }
 
   return (
     <div className="ventana-formulario">
@@ -174,6 +192,7 @@ export const VentanaFormulario = (props) => {
                         setMensaje(result.message);
                         setError(result.error);
                       });
+                      actualizarListaCompra();
                     }
                   }}
                   mensaje={men}
@@ -218,9 +237,9 @@ export const Ventana = (props) => {
   const [cambioVisible, setcambioVisible] = useState(false);
   const [reload, setReload] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     setReload(!reload)
-  },[visible])
+  }, [visible])
 
   useEffect(() => {
     const getProdructos = new Promise((resolve, reject) => {

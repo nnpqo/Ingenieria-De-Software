@@ -13,11 +13,28 @@ export const Login = (props) => {
   const [usuario, setUsuario] = useState("");
   const [contrasenia, setContrasenia] = useState("");
 
+  const [intentosFallidos, setIntentosFallidos] = useState(0);
+  const MAX_INTENTOS_FALLIDOS = 3;
+  const TIEMPO_BLOQUEO = 50000; // 5 segundos
+  
+  
+  const intentos = parseInt (localStorage.getItem("intentos"));
   const validar = () => {
-    if (usuario === "kevin" && contrasenia === "jdkcell123") {
+    if (intentos >= MAX_INTENTOS_FALLIDOS) {
+      // Bloquear inicio de sesión por un período de tiempo
+      setTimeout(() => {
+        localStorage.setItem("intentos", 0);
+        setIntentosFallidos(0); // Reiniciar los intentos fallidos después del bloqueo
+      }, TIEMPO_BLOQUEO);
+    } else if (usuario === "kevin" && contrasenia === "jdkcell123") {
       const token = "miTokenDeAutenticacion";
       localStorage.setItem("token", token);
       props.setLogueado(true);
+    }
+    else {
+      localStorage.setItem("intentos",intentos+1);
+      setIntentosFallidos(intentosFallidos + 1);
+      console.log("intentos:"+intentos)
     }
   };
 

@@ -211,6 +211,16 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
       setErrorColor("El color debe tener entre 3 y 15 caracteres.");
     }
   };
+  const handleKeyDown = (event) => {
+    if (
+      event.key === "e" ||
+      event.key === "+" ||
+      event.key === "-"
+    ) {
+      event.preventDefault();
+      console.log("entramos?")
+    }
+  };
   return (
     <div className="pp2">
       <button
@@ -256,6 +266,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
                     type="number"
                     className="imei"
                     id="aniadirImei"
+                    onKeyDown={handleKeyDown}
                     onChange={handleImeiChange}
                     onInput={(e) => limitarDigitos(e.target, 15)}
                   ></input>
@@ -379,6 +390,16 @@ const FilaProducto = (props) => {
       setErrorImei(false); // Limpiar el mensaje de error si el IMEI tiene 15 dígitos
     }
   };
+  const handleKeyDown = (event) => {
+    if (
+      event.key === "e" ||
+      event.key === "+" ||
+      event.key === "-"
+    ) {
+      event.preventDefault();
+      console.log("entramos?")
+    }
+  };
   const handleColorChange = (event) => {
     const inputValue = event.target.value;
     const validCharacters = /^[A-Za-z]+$/;
@@ -411,6 +432,7 @@ const FilaProducto = (props) => {
             placeholder={props.item.imei}
             onInput={(e) => limitarDigitos(e.target, 15)}
             disabled
+            
             onChange={handleImeiChange}
           ></input>
           {errorImei && (

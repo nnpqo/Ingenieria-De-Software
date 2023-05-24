@@ -126,7 +126,7 @@ const Etiqueta = (props) => {
       <input
         type="checkbox"
         className={props.checked}
-          id={props.nombre}  //AQUI ESTA EL ERROR DE NO MOSTRAR LA ETIQUETA CON NOMBRE ETIQUETA
+          id={props.nombre} 
         //checked={props.isCheckd}
         onChange={handleChange}
       />

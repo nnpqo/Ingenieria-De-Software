@@ -387,7 +387,6 @@ const FilaProducto = (props) => {
     if (isValidLength) {
       if (validCharacters.test(inputValue)) {
         setColor(inputValue);
-        setErrorColor("");
       } else {
         setColor(inputValue);
         setErrorColor("El color solo debe contener letras.");
@@ -396,6 +395,12 @@ const FilaProducto = (props) => {
       setColor(inputValue);
       setErrorColor("El color debe tener entre 3 y 15 caracteres.");
     }
+    if (inputValue.length==0) {
+      setErrorColor(true); 
+      setErrorColor("El campo es obligatorio");// Mostrar mensaje de error si el color no tiene 3 o15 dígitos
+    } else {
+      setErrorColor(false); // Limpiar el mensaje de error si el color tiene 3 o15 dígitos
+    }    
   };
   return (
     <>

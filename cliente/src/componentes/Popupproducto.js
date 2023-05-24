@@ -301,6 +301,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
                   bt1Nombre={"Sí"}
                   bt1Estilo={"botonSi"}
                   bt1Funcion={() => {
+                    console.log("borrar");
                     setAniadir(false);
                   }}
                   bt2Nombre={"No"}

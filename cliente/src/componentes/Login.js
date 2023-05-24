@@ -12,19 +12,26 @@ export const Login = (props) => {
   let intervalId = null;
   const [usuario, setUsuario] = useState("");
   const [contrasenia, setContrasenia] = useState("");
+  const [tiempo,setTiempo]=useState(true)
+  const [intentos,setIntentos]=useState()
 
-  const [intentosFallidos, setIntentosFallidos] = useState(0);
-  const MAX_INTENTOS_FALLIDOS = 3;
-  const TIEMPO_BLOQUEO = 50000; // 5 segundos
+
+  const MAX_INTENTOS_FALLIDOS = 0;
+  const TIEMPO_BLOQUEO = 100;
   
   
-  const intentos = parseInt (localStorage.getItem("intentos"));
+  
+  useEffect(()=>{
+    const intentoslS = parseInt (localStorage.getItem("intentos"));
+    setIntentos(intentoslS)
+  },[tiempo])
   const validar = () => {
-    if (intentos >= MAX_INTENTOS_FALLIDOS) {
+    if (intentos === MAX_INTENTOS_FALLIDOS) {
       // Bloquear inicio de sesión por un período de tiempo
       setTimeout(() => {
-        localStorage.setItem("intentos", 0);
-        setIntentosFallidos(0); // Reiniciar los intentos fallidos después del bloqueo
+        setTiempo(!tiempo)
+        console.log("tiempo"+tiempo)
+        localStorage.setItem("intentos", 3);
       }, TIEMPO_BLOQUEO);
     } else if (usuario === "kevin" && contrasenia === "jdkcell123") {
       const token = "miTokenDeAutenticacion";
@@ -32,8 +39,7 @@ export const Login = (props) => {
       props.setLogueado(true);
     }
     else {
-      localStorage.setItem("intentos",intentos+1);
-      setIntentosFallidos(intentosFallidos + 1);
+      localStorage.setItem("intentos",intentos-1);
       console.log("intentos:"+intentos)
     }
   };
@@ -180,6 +186,7 @@ export const Login = (props) => {
             Acceder
           </Link>
         </div>
+        <p>te quetan {intentos} restantes</p>
       </div>
     </section>
   );

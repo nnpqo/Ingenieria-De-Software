@@ -7,7 +7,7 @@ import "./estilos/index.css";
 import { ContextProvider } from "./Context/Context";
 import { Login } from "./componentes/Login";
 import { VentanaNotaVenta } from "./componentes/VentanaNotaVenta";
-localStorage.setItem("intentos", 0);
+localStorage.setItem("intentos", 3);
 
 export const Router = () => {
   const [barraBusqueda,setBarraBusqueda]= useState(false)

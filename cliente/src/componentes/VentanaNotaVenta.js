@@ -6,12 +6,20 @@ import { Context } from "../Context/Context";
 import { vender } from "../API/productos";
 import { inputArtificial } from "./Ventana";
 import { Navigate, useNavigate } from 'react-router-dom';
+import openDatabase ,{ getElementos } from "../API/IndexDB";
 
 export const VentanaNotaVenta = () => {
   const navigate = useNavigate()
   const [fecha, setFecha] = useState();
   const { listaVenta, setListaVenta } = useContext(Context);
   const [status, setStatus] = useState({ message: "", error: false });
+
+  useEffect(() => {
+    openDatabase();
+    getElementos().then(res => {
+      console.log(res);
+      setListaVenta(res)});
+  }, []);
 
   let total = 0;
   let list = listaVenta.map((item) => {

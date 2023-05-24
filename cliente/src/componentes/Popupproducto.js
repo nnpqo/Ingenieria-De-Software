@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Boton } from "./Boton";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-
 import "../estilos/popupproducto.css";
 import flechaderecha from "../imagenes/flecha-derecha.svg";
 import flechaizquierda from "../imagenes/flecha-izquierda.svg";
@@ -15,6 +14,12 @@ import { agregarMovil, modificarMovil, obtenerMoviles } from "../API/productos";
 import { mdiConsoleNetworkOutline } from "@mdi/js";
 import { Context } from "../Context/Context";
 import { Mensaje3 } from "./Aviso";
+import openDatabase, {
+  agregarElemento,
+  eliminarElemento,
+  actualizarElemento,
+  getElementos,
+} from "../API/IndexDB";
 
 export const Popupproducto = (props) => {
   const [descripcion, setDescripcion] = useState(true);
@@ -131,10 +136,18 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
   const [men, setMensaje] = useState("");
   const [error, setError] = useState(false);
 
+  const { listaVenta, setListaVenta } = useContext(Context);
+
   let contador = 0;
   const list = [];
   if (lista) {
     lista?.map((item) => {
+      let vendido = false;
+      listaVenta?.map((item2) => {
+        if (item.imei === item2.imei) {
+          vendido = true;
+        }
+      });
       contador = contador + 1;
       list.push(
         <FilaProducto
@@ -144,6 +157,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
           precio={precio}
           item={item}
           contador={contador}
+          vendido = {vendido}
         />
       );
     });
@@ -178,7 +192,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
         setMensaje(result.data.message);
         console.log(result);
         setError(result.data.error);
-        if (!error) {
+        if (!result.data.error) {
           lista.push({ imei: imei, color: color, id_modelo: id_modelo });
         }
       });
@@ -314,12 +328,13 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
 
 const FilaProducto = (props) => {
   const [modificar, setModificar] = useState(false);
-  const [comprar, setComprar] = useState(false);
+  const [comprar, setComprar] = useState(props.vendido);
   const [datos, setDatos] = useState({});
-  const { listaVenta } = useContext(Context);
+  const { listaVenta, setListaVenta } = useContext(Context);
   const [errorImei, setErrorImei] = useState(false);
   const [color, setColor] = useState("");
   const [errorColor, setErrorColor] = useState(false);
+
 
   const modificarProducto = () => {
     const imei = document.getElementById(props.item.imei + "imei");
@@ -330,8 +345,11 @@ const FilaProducto = (props) => {
     color.value = props.item.color;
     color.disabled = false;
     color.value = props.item.color;
+    imei.placeholder = "";
+    color.placeholder = "";
     setModificar(true);
   };
+
   const aceptarCancelar = (aceptar) => {
     return new Promise((resolve, reject) => {
       const imei = document.getElementById(props.item.imei + "imei");
@@ -340,9 +358,12 @@ const FilaProducto = (props) => {
       imei.disabled = true;
       color.disabled = true;
       setModificar(false);
-      if (aceptar) {
+      if (aceptar && !errorColor && !errorImei) {
         props.item.imei = imei.value;
         props.item.color = color.value;
+      } else {
+        setErrorColor(false);
+        setErrorImei(false);
       }
       color.value = "";
       imei.value = "";
@@ -352,10 +373,12 @@ const FilaProducto = (props) => {
         imei: props.item.imei,
         color: props.item.color,
       };
-
+      imei.placeholder = props.item.imei;
+      color.placeholder = props.item.color;
       resolve(result);
     });
   };
+
   const agregarALista = () => {
     const producto = {
       ruta: props.ruta,
@@ -366,19 +389,21 @@ const FilaProducto = (props) => {
       color: props.item.color,
       id: props.item.id,
     };
+    agregarElemento(producto);
     listaVenta.push(producto);
     setComprar(true);
     console.log(listaVenta);
   };
+
   const handleImeiChange = (event) => {
     const imei = event.target.value;
-
     if (imei.length !== 15) {
       setErrorImei(true); // Mostrar mensaje de error si el IMEI no tiene 15 dígitos
     } else {
       setErrorImei(false); // Limpiar el mensaje de error si el IMEI tiene 15 dígitos
     }
   };
+
   const handleColorChange = (event) => {
     const inputValue = event.target.value;
     const validCharacters = /^[A-Za-z]+$/;
@@ -436,13 +461,14 @@ const FilaProducto = (props) => {
                   aceptarCancelar(true).then((res) => {
                     console.log(res);
                     modificarMovil(res);
+                    actualizarElemento(res);
                     setModificar(false);
                     document.getElementById(
                       props.item.imei + "imei"
-                    ).disabled = false;
+                    ).disabled = true;
                     document.getElementById(
                       props.item.imei + "color"
-                    ).disabled = false;
+                    ).disabled = true;
                   });
                 }}
               >

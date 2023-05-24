@@ -3,13 +3,22 @@ import samsung from "../imagenes/samsung_g.jpg";
 import "../estilos/VentanaMostrarVenta.css";
 import x from "../imagenes/cruz-peque.svg";
 import { Link } from "react-router-dom";
-import { useState,useContext } from "react";
+import { useState,useContext, useEffect } from "react";
 import { Aviso, Aviso4 } from "./Aviso";
 import cruz from "../imagenes/cruz-peque.svg";
 import { Context } from "../Context/Context"; 
+import openDatabase ,{ eliminarElemento, getElementos, limpiarTabla } from "../API/IndexDB";
 export const VentanaMostrarVenta = () => {
-  const {listaVenta,setListaVenta} =useContext(Context)
-  
+  const {listaVenta, setListaVenta} =useContext(Context)
+
+  useEffect(() => {
+    openDatabase();
+    getElementos().then(res => {
+      console.log(res);
+      setListaVenta(res)});
+  }, []);
+
+  console.log(listaVenta)
   let total = 0;
   let list = listaVenta.map((item) => {
     total += Number(item.precio);
@@ -56,6 +65,7 @@ export const VentanaMostrarVenta = () => {
             bt2Estilo={"botonNo"}
             bt1Funcion={() => {
               setListaVenta(listaVenta.filter((elemento) => elemento.imei !== item.imei));
+              eliminarElemento(item.id);
             }}
           />
         </div>
@@ -96,6 +106,7 @@ export const VentanaMostrarVenta = () => {
                   bt1Estilo={"botonSi"}
                   bt1Funcion={() => {
                     setListaVenta([]);
+                    limpiarTabla();
                   }}
                   bt2Nombre={"No"}
                   bt2Estilo={"botonNo"}

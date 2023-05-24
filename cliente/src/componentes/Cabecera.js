@@ -4,6 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import { Busqueda } from "./Busqueda";
 import { useContext, useState } from "react";
 import retrato from "../imagenes/retrato.jpg"
+import { limpiarTabla } from "../API/IndexDB";
 
 export const Cabecera = (props) => {
   return (
@@ -41,6 +42,7 @@ export const Cabecera = (props) => {
           title = {"Cerrar sesión"}
           onClick={()=>{
             localStorage.removeItem('token');
+            limpiarTabla();
             window.location.reload();
           }}
         >

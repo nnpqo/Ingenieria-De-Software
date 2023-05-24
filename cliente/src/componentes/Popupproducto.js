@@ -209,7 +209,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
   };
   const handleColorChange = (event) => {
     const inputValue = event.target.value;
-    const validCharacters = /^[A-Za-z]+$/;
+    const validCharacters = /^[A-Za-z\s]+$/;
     const isValidLength = inputValue.length >= 3 && inputValue.length <= 15;
 
     if (isValidLength) {
@@ -406,7 +406,7 @@ const FilaProducto = (props) => {
 
   const handleColorChange = (event) => {
     const inputValue = event.target.value;
-    const validCharacters = /^[A-Za-z]+$/;
+    const validCharacters = /^[A-Za-z\s]+$/;
     const isValidLength = inputValue.length >= 3 && inputValue.length <= 15;
 
     if (isValidLength) {

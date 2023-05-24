@@ -81,7 +81,7 @@ export const VentanaFormulario = (props) => {
       />
       <br />
       <div className="etiqueta_precio">
-        <ComboBox nombre={"Etiquetas"} opciones={etiquetas} id={"etiqueta"} />
+        <ComboBox nombre={"Etiquetas"} opciones={etiquetas} id={"etiqueta2"} />
         <CajaTexto
           nombre={"Cambiar precio"}
           id={"precio"}
@@ -105,7 +105,7 @@ export const VentanaFormulario = (props) => {
       <TextArea nombre={"Descripción*"} id={"descripcion"} max={200} min={10} />
       <br />
       <div className="etiqueta_precio">
-        <ComboBox nombre={"Etiqueta*"} opciones={etiquetas} id={"etiqueta"} />
+        <ComboBox nombre={"Etiqueta*"} opciones={etiquetas} id={"etiqueta2"} />
         <CajaTexto
           nombre={"Precio*"}
           id={"precio"}

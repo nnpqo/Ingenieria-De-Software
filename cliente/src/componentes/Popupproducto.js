@@ -435,7 +435,7 @@ const FilaProducto = (props) => {
         {modificar ? (
           <>
             <td>
-                <Mensaje3
+                {/* <Mensaje3
                   nombre=" ✔ "
                   estilos={"modificar-aceptar"}
                   funcion={() => {
@@ -453,8 +453,8 @@ const FilaProducto = (props) => {
                   }}
                   mensaje={"modificado correctamente"}
                   error={true}
-                />
-              {/* <button
+                />  */}
+                <button
                 className="modificar-aceptar"
                 onClick={() => {
                   aceptarCancelar(true).then((res) => {
@@ -472,7 +472,7 @@ const FilaProducto = (props) => {
               >
                 {" "}
                 ✔
-              </button> */}
+              </button> 
             </td>
             <td>
             <Aviso

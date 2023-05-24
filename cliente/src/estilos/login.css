@@ -184,6 +184,22 @@
   display: none;
 }
 
+.MensLoginblanco {
+  color: #ffffff;
+}
+
+.MensLoginamarillo {
+  color: #fce40d;
+}
+
+.MensLoginnaranja {
+  color: #fe6302;
+}
+
+.MensLoginrojo {
+  color: #ff2e00;
+}
+
 .acceder {
   position: relative;
   display: inline-block;

@@ -14,7 +14,7 @@ import { agregarEtiqueta } from "../API/etiquetas";
 import { agregarMovil, modificarMovil, obtenerMoviles } from "../API/productos";
 import { mdiConsoleNetworkOutline } from "@mdi/js";
 import { Context } from "../Context/Context";
-import { Mensaje3 } from "./Aviso";
+import { Mensaje3,Aviso } from "./Aviso";
 
 export const Popupproducto = (props) => {
   const [descripcion, setDescripcion] = useState(true);
@@ -293,14 +293,19 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
               </td>
 
               <td>
-                <button
-                  className="cancelarPP"
-                  onClick={() => {
+              <Aviso
+                  image={cruz}
+                  estiloImagen={"contBotones"}
+                  mensaje="¿Está seguro de cancelar el registro?"
+                  estilos={"cancelarPP"}
+                  bt1Nombre={"Sí"}
+                  bt1Estilo={"botonSi"}
+                  bt1Funcion={() => {
                     setAniadir(false);
                   }}
-                >
-                  <img className="contBotones" src={cruz}></img>{" "}
-                </button>
+                  bt2Nombre={"No"}
+                  bt2Estilo={"botonNo"}
+                />
               </td>
             </>
           ) : (
@@ -430,7 +435,26 @@ const FilaProducto = (props) => {
         {modificar ? (
           <>
             <td>
-              <button
+                <Mensaje3
+                  nombre=" ✔ "
+                  estilos={"modificar-aceptar"}
+                  funcion={() => {
+                    aceptarCancelar(true).then((res) => {
+                      console.log(res);
+                      modificarMovil(res);
+                      setModificar(false);
+                      document.getElementById(
+                        props.item.imei + "imei"
+                      ).disabled = false;
+                      document.getElementById(
+                        props.item.imei + "color"
+                      ).disabled = false;
+                    });
+                  }}
+                  mensaje={"modificado correctamente"}
+                  error={true}
+                />
+              {/* <button
                 className="modificar-aceptar"
                 onClick={() => {
                   aceptarCancelar(true).then((res) => {
@@ -448,17 +472,22 @@ const FilaProducto = (props) => {
               >
                 {" "}
                 ✔
-              </button>
+              </button> */}
             </td>
             <td>
-              <button
-                className="cancelarPP"
-                onClick={() => {
-                  aceptarCancelar(false);
-                }}
-              >
-                <img className="contBotones" src={cruz}></img>{" "}
-              </button>
+            <Aviso
+                  image={cruz}
+                  estiloImagen={"contBotones"}
+                  mensaje="¿Está seguro de descartar los cambios?"
+                  estilos={"cancelarPP"}
+                  bt1Nombre={"Sí"}
+                  bt1Estilo={"botonSi"}
+                  bt1Funcion={() => {
+                    aceptarCancelar(false);
+                  }}
+                  bt2Nombre={"No"}
+                  bt2Estilo={"botonNo"}
+                />
             </td>
           </>
         ) : comprar ? (

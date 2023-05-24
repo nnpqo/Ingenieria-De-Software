@@ -18,6 +18,7 @@ export const Aviso = (props) => {
         ) : (
           <button className={props.estilos}>
             <h2>{props.nombre}</h2>
+            <img className={props.estiloImagen}  src={props.image}></img>
           </button>
         )
       }
@@ -322,6 +323,50 @@ export const Aviso4 = (props) => {
               }}
             />
             </Link>
+            {props.bt2Nombre && (
+              <Boton
+                nombre={props.bt2Nombre}
+                estilos={props.bt2Estilo}
+                funcion={close}
+              />
+            )}
+          </div>
+        </>
+      )}
+    </Popup>
+  );
+};
+
+export const AvisoConfirmacion = (props) => {
+  const {visible, setVisible} = useContext(Context)
+  return (
+    <Popup
+      trigger={
+        props.trigger ? (
+          props.trigger
+        ) : (
+          <button className={props.estilos}>
+            <h2>{props.nombre}</h2>
+          </button>
+        )
+      }
+      modal
+      nested
+      className="aviso"
+    >
+      {(close) => (
+        <>
+          {props.titulo && <h1 className="titulo">{props.titulo}</h1>}
+          {props.mensaje && <p className="mensaje">{props.mensaje}</p>}
+          {props.extra}
+          <div className="botonesAviso">
+            <Mensaje3
+              nombre={props.bt1Nombre}
+              mensaje={props.mensaje2}
+              estilos={props.bt1Estilo}
+              funcion={props.funcion}
+              error={props.error}
+            />
             {props.bt2Nombre && (
               <Boton
                 nombre={props.bt2Nombre}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { CajaTexto } from "./CajaTexto";
-import { Aviso4, Mensaje3 } from "./Aviso";
+import { Aviso4, AvisoConfirmacion } from "./Aviso";
 import "../estilos/VentanaNotaVenta.css";
 import { Context } from "../Context/Context";
 import { vender } from "../API/productos";
@@ -99,13 +99,18 @@ export const VentanaNotaVenta = () => {
                 <div className="res-abajo">
                   <td id="resultado-2">{total} Bs</td>
                 </div>
-              </tr>
+              </tr> 
             </tfoot>
           </table>
           <div className="cont-botones">
-            <Mensaje3
+            <AvisoConfirmacion //antes estaba con mensaje3
               nombre="VENDER"
               estilos={"guardar"}
+              mensaje="¿Está seguro de realizar la venta?"
+              bt1Nombre={"Sí"}
+              bt1Estilo={"botonSi"}
+              bt2Nombre={"No"}
+              bt2Estilo={"botonNo"}
               funcion={() => {
                 if (
                   document.getElementById("notaVenta").value === "" ||
@@ -124,8 +129,9 @@ export const VentanaNotaVenta = () => {
 
                 }
               }}
-              mensaje={status.message}
+              mensaje2={status.message}
               error={status.error}
+            
             />
             <Aviso4
               nombre="CANCELAR"

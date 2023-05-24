@@ -9,7 +9,7 @@ export const Boton = (props) => {
         {props.ico !== undefined && <Icon path={props.ico} size={1} />}
         {props.nombre}
       </h2>
-      <img src={props.image}></img>
+      <img  src={props.image}></img>
     </button>
   );
 };

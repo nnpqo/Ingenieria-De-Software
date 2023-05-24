@@ -8,7 +8,7 @@ import { agregarEtiqueta } from "../API/etiquetas";
 import arriba from "../imagenes/iconoArriba.svg";
 import abajo from "../imagenes/iconoAbajo.svg";
 
-import { prueba } from "./VentanaPrincipal";
+import { prueba } from "./VentanaPrincipal"; 
 import { Context } from "../Context/Context";
 
 export const Categoria = (props) => {
@@ -126,7 +126,7 @@ const Etiqueta = (props) => {
       <input
         type="checkbox"
         className={props.checked}
-        id={props.nombre}
+          id={props.nombre}  //AQUI ESTA EL ERROR DE NO MOSTRAR LA ETIQUETA CON NOMBRE ETIQUETA
         //checked={props.isCheckd}
         onChange={handleChange}
       />

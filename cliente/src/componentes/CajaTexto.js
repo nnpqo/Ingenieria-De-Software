@@ -7,13 +7,33 @@ export const CajaTexto = (props) => {
   const [isValid, setIsValid] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
+  const handlePriceInput = (event) => {
+    const inputValue = event.target.value.trim(); 
+  
+    if (!isNaN(inputValue) && inputValue !== '') {
+      const numericValue = parseInt(inputValue, 10); 
+      event.target.value = (numericValue >= 1) ? numericValue.toString() : '';
+    }
+  };
+
   const handleInput = (event) => {
     setErrorMsg(event.target.validationMessage); // Actualiza el estado 'errorMsg' con el mensaje de error proporcionado por el navegador
     setIsValid(event.target.validity.valid); // Actualiza el estado 'isValid'
     const aux = props.id;
     if (aux === "precio" || aux === "Cambiar precio") {
+      event.target.value = event.target.value.trim();
       if (event.target.value.trim() === '') {
         setErrorMsg(`El campo es requerido`); // Establece un mensaje de error personalizado indicando el nombre del campo que falló
+      } else if (!isNaN(event.target.value) && event.target.value !== '') {
+        const numericValue = parseInt(event.target.value, 10);
+        event.target.value = (numericValue >= 1) ? numericValue.toString() : ''; 
+        if(numericValue === 0){
+          setErrorMsg("El campo es requerido");
+          setIsValid(false) 
+        } else {
+          setErrorMsg();
+          setIsValid(true)
+        }
       } else  if (isNaN(event.target.value)) {
         setErrorMsg("El valor ingresado debe ser un número"); // Si no hay errores de validación, establece 'errorMsg' en una cadena vacía
       } else if(event.target.value.includes('.')){

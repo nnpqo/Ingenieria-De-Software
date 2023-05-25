@@ -38,7 +38,6 @@ export const Login = (props) => {
       square.remove();
     }, 5000);
   }
-
   useEffect(() => {
     intervalId = setInterval(createSquare, 150);
     return () => clearInterval(intervalId);
@@ -69,7 +68,10 @@ export const Login = (props) => {
             maxLength={15}
             minLength={3}
             required="required"
-            onChange={(e) => setUsuario(e.target.value)}
+            onChange={(e) => {
+              let string =e.target.value;
+              e.target.value=string.trim();
+              setUsuario(e.target.value)}}
           />
           <label className="labelLogin">Nombre de Usuario</label>
         </div>

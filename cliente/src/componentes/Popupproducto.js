@@ -182,12 +182,12 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
   const aniadirProducto = () => {
     const imei = document.getElementById("aniadirImei").value;
     const color = document.getElementById("aniadirColor").value;
-    console.log(color.length ,imei.length)
-    const validar =color.length < 3 || color.length >15;
-    console.log(imei.length !== 15 || validar );
-    if (imei.length !== 15 ||validar) {
+    console.log(color.length, imei.length);
+    const validar = color.length < 3 || color.length > 15;
+    console.log(imei.length !== 15 || validar);
+    if (imei.length !== 15 || validar) {
       setErrorImei(true);
-      setErrorColor(true)
+      setErrorColor(true);
     } else {
       setErrorImei(false);
       setErrorColor(false);
@@ -345,8 +345,7 @@ const FilaProducto = (props) => {
   const [errorColor, setErrorColor] = useState(false);
   const [men, setMen] = useState("");
   const [error, setError] = useState(false);
-  const [mensajeError,setMensaje]=useState("");
-
+  const [mensajeError, setMensaje] = useState("");
 
   const modificarProducto = () => {
     const imei = document.getElementById(props.item.imei + "imei");
@@ -409,7 +408,7 @@ const FilaProducto = (props) => {
 
   const handleImeiChange = (event) => {
     const imei = event.target.value;
-    console.log("aaaa")
+    console.log("aaaa");
     if (imei.length !== 15) {
       setErrorImei(true); // Mostrar mensaje de error si el IMEI no tiene 15 dígitos
     } else {
@@ -420,25 +419,31 @@ const FilaProducto = (props) => {
   const handleColorChange = (event) => {
     const inputValue = event.target.value;
     const input = document.getElementById(props.item.imei + "color");
-    const validCharacters = /^[A-Za-z\s]+$/;
+    const validCharacters = /^[ A-Za-z\s]+$/;
     const isValidLength = input.value.length >= 3 && input.value.length <= 15;
     console.log(isValidLength);
-    if (isValidLength && input.value!="") {
+    if (isValidLength) {
       if (validCharacters.test(inputValue)) {
         setColor(inputValue);
-        setErrorColor(false)
+        setErrorColor(false);
         setMensaje("");
       } else {
         setColor(inputValue);
         setErrorColor(true);
         setMensaje("El color solo debe contener letras.");
       }
-    } else {
-      setColor(inputValue);
-      setErrorColor(true);
-      setMensaje("El color debe tener entre 3 y 15 caracteres.");
+    }else{
+      if (inputValue.length === 0) {
+        setErrorColor(true);
+        setMensaje("El campo es obligatorio"); // Mostrar mensaje de error si el color no tiene 3 o15 dígitos
+      } else {
+        setErrorColor(true); // Limpiar el mensaje de error si el color tiene 3 o15 dígitos
+        setMensaje("El color debe tener entre 3 y 15 caracteres.")
+      }
     }
+    
   };
+  
   return (
     <>
       <tr id={props.item.imei} className="fila">

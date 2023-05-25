@@ -1,5 +1,5 @@
 .pr-content {
-  background-color: #1A2F5B;
+  background-color: #1a2f5b;
   display: flex;
   border-radius: 10px;
   border: 3px solid #0e84c7 !important;
@@ -9,7 +9,7 @@
   width: 730px;
 }
 
-.contenido-encabezado{
+.contenido-encabezado {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -33,7 +33,6 @@
   width: 93%;
   justify-content: center;
   align-items: center;
-  
 }
 .med {
   display: flex;
@@ -45,7 +44,6 @@
   word-wrap: break-word;
   height: 95%;
   justify-content: space-between;
-
 }
 
 .imagenpop {
@@ -57,14 +55,13 @@
 .centreado1 {
   display: flex;
   flex-direction: column;
-   justify-content: center;
+  justify-content: center;
   /* align-items: center;  */
   border-radius: 15px;
   border: 2px solid #0e84c7;
   padding: 10px;
   width: 90%;
   height: 45%;
-  
 }
 
 .marca {
@@ -80,7 +77,6 @@
   padding: 10px;
   width: 90%;
   height: 45%;
-
 }
 .cate {
   display: flex;
@@ -90,7 +86,7 @@
   width: 40%;
   height: 95%;
   overflow: auto;
-  padding-top : 10px; 
+  padding-top: 10px;
 }
 
 .cate p {
@@ -123,7 +119,7 @@
   margin-left: 90%;
   margin-bottom: 40%;
 }
-.contenedor-cruzanimado{
+.contenedor-cruzanimado {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,7 +141,7 @@
 .rightleft {
   height: 4px;
   width: 30px;
-  display:flex;
+  display: flex;
   position: absolute;
   background-color: white;
   border-radius: 2px;
@@ -162,7 +158,7 @@
   background-color: #ff2e00;
 }
 
-.descripcion{
+.descripcion {
   word-wrap: break-word;
   white-space: pre-wrap;
   /*Estilos para scroll*/
@@ -170,21 +166,20 @@
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  
 }
-.boton-flecha{
-  background-color:transparent;
+.boton-flecha {
+  background-color: transparent;
   border-radius: 20px;
   width: 15%;
   height: 52%;
-  border: 2px solid #0E84C7;
+  border: 2px solid #0e84c7;
   display: flex;
 }
-.mostrar-pro{
+.mostrar-pro {
   font-size: 80%;
 }
-.icono-f{
-  border:none;
+.icono-f {
+  border: none;
 }
 .icono-f:hover {
   -webkit-border-radius: 50%;
@@ -204,7 +199,7 @@ input[type="number"]::-webkit-outer-spin-button {
   transition: transform 0.5s ease-in-out;
 }
 
-.pp2{
+.pp2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -212,51 +207,48 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 90%;
   height: 350px;
 }
-.mens123{
-  
-
+.mens123 {
 }
 .errorMensaje {
   color: red;
   font-size: 12px;
   margin-top: 5px;
 }
-.bt-anadir{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    width: 110px;
-    border-radius: 30px;
-    border: 2px solid #0E84C7; /* borde */
-    background-color: #284073;
-    color: white;
-    height: 40px;
-    align-self: self-start;
-    padding: 5px;
+.bt-anadir {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 110px;
+  border-radius: 30px;
+  border: 2px solid #0e84c7; /* borde */
+  background-color: #284073;
+  color: white;
+  height: 40px;
+  align-self: self-start;
+  padding: 5px;
 }
-.icono-agregar{
+.icono-agregar {
   display: flex;
   margin-left: 7px;
 }
-#tabla{
+#tabla {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 80%;
-
 }
 
-#tabla thead{
+#tabla thead {
   height: 40px;
   display: flex;
   flex-direction: row;
-  border-radius:13px;
+  border-radius: 13px;
   align-items: center;
   width: 100%;
   margin-top: 10px;
 }
 
-#tabla thead th{
+#tabla thead th {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -265,17 +257,15 @@ input[type="number"]::-webkit-outer-spin-button {
   text-align: center;
 }
 
-.lista{
+.lista {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   height: 100%;
+}
 
-  }
-  
-.ele{
- 
-  background-color: #1A2F5B;
+.ele {
+  background-color: #1a2f5b;
   color: white;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -288,44 +278,44 @@ input[type="number"]::-webkit-outer-spin-button {
   border-collapse: separate;
   /* border-spacing: 0px 5px; */
 }
-  #lista-tabla::-webkit-scrollbar {
-    width: 10px; /* Ajusta el ancho según sea necesario */
-  }
-  
-  #lista-tabla::-webkit-scrollbar-thumb {
-    background-color: #FFFFFF; /* Cambia "blue" al color deseado */
-  }
-  
-  #lista-tabla::-webkit-scrollbar-track {
-    background-color: #989696; /* Cambia "lightgray" al color deseado */
-  }
-  
-  #lista-tabla::-webkit-scrollbar-thumb:hover {
-    background-color: #FFFFFF; /* Cambia "darkblue" al color deseado para el estado hover */
-  }
-  
-.color{
-  background-color: #1A2F5B;
-  border:none;
+#lista-tabla::-webkit-scrollbar {
+  width: 10px; /* Ajusta el ancho según sea necesario */
+}
+
+#lista-tabla::-webkit-scrollbar-thumb {
+  background-color: #ffffff; /* Cambia "blue" al color deseado */
+}
+
+#lista-tabla::-webkit-scrollbar-track {
+  background-color: #989696; /* Cambia "lightgray" al color deseado */
+}
+
+#lista-tabla::-webkit-scrollbar-thumb:hover {
+  background-color: #ffffff; /* Cambia "darkblue" al color deseado para el estado hover */
+}
+
+.color {
+  background-color: #1a2f5b;
+  border: none;
   color: white;
   font-size: 17px;
   text-align: center;
   width: 200px;
   margin-right: 5px;
   padding-top: 5px; /* Espaciado de 20 píxeles en la parte superior */
-  padding-bottom: 5px; /* Espaciado de 20 píxeles en la parte inferior */   
+  padding-bottom: 5px; /* Espaciado de 20 píxeles en la parte inferior */
 }
-.pre{ 
-  border: 2px solid #0E84C7; /* borde */
+.pre {
+  border: 2px solid #0e84c7; /* borde */
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-left: none;
   width: 155px;
 }
-.imei{
-  background-color: #1A2F5B;
+.imei {
+  background-color: #1a2f5b;
   font-size: 17px;
-  border: 2px solid #0E84C7; /* borde */
+  border: 2px solid #0e84c7; /* borde */
   color: white;
   text-align: center;
   width: 240px;
@@ -333,15 +323,15 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-top: 5px; /* Espaciado de 20 píxeles en la parte superior */
   padding-bottom: 5px; /* Espaciado de 20 píxeles en la parte inferior */
 }
-.imei::placeholder{
+.imei::placeholder {
   color: white;
 }
-.color::placeholder{
-  color:white;
+.color::placeholder {
+  color: white;
 }
 
-.numero{
-  border: 2px solid #0E84C7; /* borde */
+.numero {
+  border: 2px solid #0e84c7; /* borde */
   border-top-left-radius: 8px; /* borde redondo superior izquierdo */
   border-bottom-left-radius: 8px;
   border-right: none;
@@ -349,94 +339,90 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 17px;
   padding-top: 5px; /* Espaciado de 20 píxeles en la parte superior */
   padding-bottom: 5px; /* Espaciado de 20 píxeles en la parte inferior */
-   
 }
-.vacioEle{
-  border: 2px solid #0E84C7; /* borde */
+.vacioEle {
+  border: 2px solid #0e84c7; /* borde */
   border-top-left-radius: 8px; /* borde redondo superior izquierdo */
   border-bottom-left-radius: 8px;
   border-right: none;
-  /* width: 110px; */
+  width: 55px;
   height: 33px;
   font-size: 25px;
 }
-.h{
+.h {
   display: flex;
   flex-direction: column;
-  
+
   flex-grow: 1;
   width: 100%;
 }
-.o{
+.o {
   width: 80px;
-  border: 1px solid #0655FF;
+  border: 1px solid #0655ff;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-right: none;
-  background-color: #0655FF;
+  background-color: #0655ff;
 }
-.m1{
-  border: 1px solid #0655FF;
+.m1 {
+  border: 1px solid #0655ff;
   width: 341px;
-  background-color: #0655FF;
+  background-color: #0655ff;
 }
-.m2{
-  border: 1px solid #0655FF;
+.m2 {
+  border: 1px solid #0655ff;
   width: 200px;
-  background-color: #0655FF;
+  background-color: #0655ff;
 }
-.m3{
-  
-  border: 1px solid #0655FF;
+.m3 {
+  border: 1px solid #0655ff;
   width: 20%;
-  background-color: #0655FF;
+  background-color: #0655ff;
 }
-.n{
-  border:4px solid #0655FF;
+.n {
+  border: 4px solid #0655ff;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-left: none;
-  background-color: #0655FF;
+  background-color: #0655ff;
   width: 20%;
 }
-.fila{
+.fila {
   justify-content: space-around;
 }
-.a1{
+.a1 {
   /* text-align: center;  */
 }
-.palabras{
+.palabras {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.anadirp{
-  display:flex;
+.anadirp {
+  display: flex;
   margin-left: 20px;
   flex-direction: row;
   align-items: start;
   justify-content: end;
 }
-.modificar-aceptar{
-  /* display: flex;
-  flex-direction: column;  */
+.modificar-aceptar {
+  /* display: flex;  */
   color: white;
-  background-color: #0C95FA;
+  background-color: #0c95fa;
   border-radius: 5px;
   /* border: 2px solid #0C95FA; */
   width: 75px;
   height: 33px;
   justify-content: center;
-  font-size: x-large;
+  font-size: 25px;
   cursor: pointer;
   justify-content: space-between;
   margin-right: 5px;
   border: none;
-  
 }
-.vender-cancelar{
+.vender-cancelar {
   color: white;
-  background-color: #0DC832;
+  background-color: #0dc832;
   border: 2px solid #0dc832a9;
   border-radius: 5px;
   width: 79px;
@@ -444,8 +430,8 @@ input[type="number"]::-webkit-outer-spin-button {
   cursor: pointer;
   border: none;
 }
-.cancelarPP{
-  background-color: #F3450F;
+.cancelarPP {
+  background-color: #f3450f;
   border: 2px solid #dd3116;
   border-radius: 5px;
   width: 79px;
@@ -453,28 +439,28 @@ input[type="number"]::-webkit-outer-spin-button {
   cursor: pointer;
   border: none;
 }
-.bt-anadir{
+.bt-anadir {
   display: flex;
   justify-content: left;
   color: white;
-  background-color: #1A2F5B;
+  background-color: #1a2f5b;
   cursor: pointer;
 }
-.contenedor-izquierda{
+.contenedor-izquierda {
   display: flex;
   width: 15%;
 }
-.contBotones{
+.contBotones {
   height: 23px;
   width: 23px;
 }
-.IcoA{
+.IcoA {
   display: flex;
   height: 30px;
   width: 30px;
   margin-top: 1.2px;
 }
-.IcoA:hover{
+.IcoA:hover {
   height: 30px;
   width: 30px;
   border: none;
@@ -484,8 +470,7 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-box-shadow: 0px 0px 7px 7px #0e84c7;
   transform: rotate(360deg);
   -webkit-transform: rotate(360deg);
-  transition: transform 0.5s ease-in-out; 
-  
+  transition: transform 0.5s ease-in-out;
 }
 
 .ele input::placeholder {
@@ -496,6 +481,11 @@ input[type="number"]::-webkit-outer-spin-button {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  background-color: #1A2F5B;
+  background-color: #1a2f5b;
+}
 
+.estiloNombre {
+  height: 23px;
+  width: 23px;
+  justify-content: center;
 }

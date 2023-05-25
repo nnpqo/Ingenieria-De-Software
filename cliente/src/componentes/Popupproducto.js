@@ -441,7 +441,6 @@ const FilaProducto = (props) => {
         setMensaje("El color debe tener entre 3 y 15 caracteres.")
       }
     }
-    
   };
   
   return (

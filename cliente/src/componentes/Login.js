@@ -189,7 +189,19 @@ export const Login = (props) => {
             Acceder
           </Link>
         </div>
-        <p>te quetan {intentos} restantes</p>
+        <div
+          className={`MensLogin${
+            intentos === 3
+              ? "blanco"
+              : intentos === 2
+              ? "amarillo"
+              : intentos === 1
+              ? "naranja"
+              : "rojo"
+          }`}
+        >
+          Te quedan {intentos} intentos
+        </div>
       </div>
     </section>
   );

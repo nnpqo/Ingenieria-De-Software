@@ -213,6 +213,8 @@
   transition: 0.5s;
   margin-top: 20px;
   letter-spacing: 3px;
+  background: none;
+  border: none;
 }
 
 .login-form-cont .acceder:hover {
@@ -277,8 +279,9 @@
   animation-delay: 0.75s;
 }
 
-.mens-login {
+.mens-error {
   color: #ff2e00;
+  font-size: 15px;
 }
 
 @keyframes animabt3 {

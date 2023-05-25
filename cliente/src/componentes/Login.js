@@ -12,12 +12,36 @@ export const Login = (props) => {
   let intervalId = null;
   const [usuario, setUsuario] = useState("");
   const [contrasenia, setContrasenia] = useState("");
+  const [intentos,setIntentos]=useState()
 
+
+  const MAX_INTENTOS_FALLIDOS = 0;
+  const TIEMPO_BLOQUEO = 10000;
+  
+  
+  
+  useEffect(()=>{
+    const intentoslS = parseInt (localStorage.getItem("intentos"));
+    console.log("intentos primero"+intentoslS)
+    setIntentos(intentoslS)
+  })
   const validar = () => {
-    if (usuario === "kevin" && contrasenia === "jdkcell123") {
+    if (intentos === MAX_INTENTOS_FALLIDOS) {
+      
+    } else if (usuario === "kevin" && contrasenia === "jdkcell123") {
       const token = "miTokenDeAutenticacion";
       localStorage.setItem("token", token);
       props.setLogueado(true);
+    }
+    else {
+      localStorage.setItem("intentos",intentos-1);
+      console.log("intentos:"+intentos)
+      if(intentos-1===0){
+        setTimeout(() => {
+          localStorage.setItem("intentos", 3);
+          setIntentos(3)
+        }, TIEMPO_BLOQUEO);
+      }
     }
   };
 
@@ -165,6 +189,7 @@ export const Login = (props) => {
             Acceder
           </Link>
         </div>
+        <p>te quetan {intentos} restantes</p>
       </div>
     </section>
   );

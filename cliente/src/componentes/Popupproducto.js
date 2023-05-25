@@ -157,7 +157,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
           precio={precio}
           item={item}
           contador={contador}
-          vendido = {vendido}
+          vendido={vendido}
         />
       );
     });
@@ -307,7 +307,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
               </td>
 
               <td>
-              <Aviso
+                <Aviso
                   image={cruz}
                   estiloImagen={"contBotones"}
                   mensaje="¿Está seguro de cancelar el registro?"
@@ -339,7 +339,8 @@ const FilaProducto = (props) => {
   const [errorImei, setErrorImei] = useState(false);
   const [color, setColor] = useState("");
   const [errorColor, setErrorColor] = useState(false);
-
+  const [men, setMen] = useState("");
+  const [error, setError] = useState(false);
 
   const modificarProducto = () => {
     const imei = document.getElementById(props.item.imei + "imei");
@@ -416,15 +417,15 @@ const FilaProducto = (props) => {
 
     if (isValidLength) {
       if (validCharacters.test(inputValue)) {
-        setColor(inputValue);
-        setErrorColor("");
+        setErrorColor(inputValue);
+        setColor("");
       } else {
-        setColor(inputValue);
-        setErrorColor("El color solo debe contener letras.");
+        setErrorColor(inputValue);
+        setColor("El color solo debe contener letras.");
       }
     } else {
-      setColor(inputValue);
-      setErrorColor("El color debe tener entre 3 y 15 caracteres.");
+      setErrorColor(inputValue);
+      setColor("El color debe tener entre 3 y 15 caracteres.");
     }
   };
   return (
@@ -455,12 +456,34 @@ const FilaProducto = (props) => {
             disabled
             onChange={handleColorChange}
           ></input>
-          {errorColor && <p className="errorMensaje">{errorColor}</p>}
+          {errorColor && <p className="errorMensaje">{color}</p>}
         </td>
         {modificar ? (
           <>
             <td>
-                {/* <Mensaje3
+              <Mensaje3
+                nombre=" ✔ "
+                estilos={"modificar-aceptar"}
+                funcion={() => {
+                  aceptarCancelar(true).then((res) => {
+                    console.log(res);
+                    modificarMovil(res).then((result) => {
+                      setMen(result.data.message);
+                      setError(result.data.error);
+                    });
+                    setModificar(false);
+                    document.getElementById(
+                      props.item.imei + "imei"
+                    ).disabled = true;
+                    document.getElementById(
+                      props.item.imei + "color"
+                    ).disabled = true;
+                  });
+                }}
+                mensaje={men}
+                error={error}
+              />
+              {/* <Mensaje3
                   nombre=" ✔ "
                   estilos={"modificar-aceptar"}
                   funcion={() => {
@@ -479,41 +502,21 @@ const FilaProducto = (props) => {
                   mensaje={"modificado correctamente"}
                   error={true}
                 />  */}
-                <button
-                className="modificar-aceptar"
-                onClick={() => {
-                  aceptarCancelar(true).then((res) => {
-                    console.log(res);
-                    modificarMovil(res);
-                    actualizarElemento(res);
-                    setModificar(false);
-                    document.getElementById(
-                      props.item.imei + "imei"
-                    ).disabled = true;
-                    document.getElementById(
-                      props.item.imei + "color"
-                    ).disabled = true;
-                  });
-                }}
-              >
-                {" "}
-                ✔
-              </button> 
             </td>
             <td>
-            <Aviso
-                  image={cruz}
-                  estiloImagen={"contBotones"}
-                  mensaje="¿Está seguro de descartar los cambios?"
-                  estilos={"cancelarPP"}
-                  bt1Nombre={"Sí"}
-                  bt1Estilo={"botonSi"}
-                  bt1Funcion={() => {
-                    aceptarCancelar(false);
-                  }}
-                  bt2Nombre={"No"}
-                  bt2Estilo={"botonNo"}
-                />
+              <Aviso
+                image={cruz}
+                estiloImagen={"contBotones"}
+                mensaje="¿Está seguro de descartar los cambios?"
+                estilos={"cancelarPP"}
+                bt1Nombre={"Sí"}
+                bt1Estilo={"botonSi"}
+                bt1Funcion={() => {
+                  aceptarCancelar(false);
+                }}
+                bt2Nombre={"No"}
+                bt2Estilo={"botonNo"}
+              />
             </td>
           </>
         ) : comprar ? (

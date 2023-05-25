@@ -15,7 +15,7 @@ const openDatabase = async () => {
       objectStore.createIndex("modelo", "modelo", { unique: false });
       objectStore.createIndex("precio", "precio", { unique: false });
       objectStore.createIndex("marca", "marca", { unique: false });
-      objectStore.createIndex("imei", "imei", { unique: true });
+      objectStore.createIndex("imei", "imei", { unique: false });
       objectStore.createIndex("color", "color", { unique: false });
       objectStore.createIndex("id", "id", {unique : true});
     }

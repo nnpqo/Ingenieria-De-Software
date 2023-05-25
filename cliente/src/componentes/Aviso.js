@@ -18,7 +18,7 @@ export const Aviso = (props) => {
         ) : (
           <button className={props.estilos}>
             <h2>{props.nombre}</h2>
-            <img className={props.estiloImagen}  src={props.image}></img>
+            <img className={props.estiloImagen} src={props.image}></img>
           </button>
         )
       }
@@ -203,7 +203,7 @@ export const Mensaje = (props) => {
   );
 };
 export const Aviso2 = (props) => {
-  const {visible, setVisible} = useContext(Context)
+  const { visible, setVisible } = useContext(Context);
   return (
     <Popup
       trigger={
@@ -234,7 +234,7 @@ export const Aviso2 = (props) => {
               funcion={() => {
                 {
                   props.bt1Funcion && props.bt1Funcion();
-                  setVisible(!visible)
+                  setVisible(!visible);
                 }
                 close();
               }}
@@ -256,12 +256,16 @@ export const Aviso2 = (props) => {
 export const Mensaje3 = (props) => {
   const [open, setOpen] = useState(false);
   useEffect(() => {
-    if (open) {
-      setTimeout(closeModal, 2000);
-    }
+    // if (open) {
+    //   setTimeout(closeModal, 2000);
+    // }
   }, [open]);
-  const closeModal = () => {setOpen(false);
-  props.setAniadir&&props.setAniadir(!props.aniadir); }
+
+  const closeModal = () => {
+    props.setAniadir && props.setAniadir(!props.aniadir);
+    // setOpen(false);
+  };
+
   return (
     <div>
       <button
@@ -269,7 +273,8 @@ export const Mensaje3 = (props) => {
         className={props.estilos}
         onClick={() => {
           props.funcion();
-          setOpen((o) => !o);
+          console.log("entran")
+          setOpen(true);
         }}
       >
         <h2>{props.nombre}</h2>
@@ -312,16 +317,16 @@ export const Aviso4 = (props) => {
           {props.extra}
           <div className="botonesAviso">
             <Link to="/venta">
-            <Boton
-              nombre={props.bt1Nombre}
-              estilos={props.bt1Estilo}
-              funcion={() => {
-                {
-                  props.bt1Funcion && props.bt1Funcion();
-                }
-                close();
-              }}
-            />
+              <Boton
+                nombre={props.bt1Nombre}
+                estilos={props.bt1Estilo}
+                funcion={() => {
+                  {
+                    props.bt1Funcion && props.bt1Funcion();
+                  }
+                  close();
+                }}
+              />
             </Link>
             {props.bt2Nombre && (
               <Boton
@@ -338,7 +343,7 @@ export const Aviso4 = (props) => {
 };
 
 export const AvisoConfirmacion = (props) => {
-  const {visible, setVisible} = useContext(Context)
+  const { visible, setVisible } = useContext(Context);
   return (
     <Popup
       trigger={

@@ -73,27 +73,30 @@
     color: white;
     font-size: 20px;
     border-bottom: 3px solid #0E84C7; 
-    justify-content: center;
     align-items: center;
 }
 .datosVendedor{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     border: 3px solid #0E84C7;
     border-radius: 10px;
     width: 80%;
     height: 40%;
-    justify-content: center;
+    align-items: center;
     gap: 10%;
 }
 .argumento{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 10%;
+    gap: 10px;
     margin-left: 5%;
 }
 .argumentoFecha{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 90%;
+    gap: 10px;
     margin-left: 12.5%;
 }
 #titulo-producto{

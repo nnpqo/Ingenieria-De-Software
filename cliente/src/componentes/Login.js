@@ -25,12 +25,13 @@ export const Login = (props) => {
   const [sessionError, setErrorSession] = useState("");
 
   const MAX_INTENTOS_FALLIDOS = 0;
-  const TIEMPO_BLOQUEO = 100;
+  const TIEMPO_BLOQUEO = 10000;
 
   useEffect(() => {
     const intentoslS = parseInt(localStorage.getItem("intentos"));
     setIntentos(intentoslS);
   }, [tiempo]);
+
   const validar = () => {
     if (intentos === MAX_INTENTOS_FALLIDOS) {
       // Bloquear inicio de sesión por un período de tiempo
@@ -38,6 +39,7 @@ export const Login = (props) => {
         setTiempo(!tiempo);
         console.log("tiempo" + tiempo);
         localStorage.setItem("intentos", 3);
+        setIntentos(3)
       }, TIEMPO_BLOQUEO);
     } else if (usuario === "kevin" && contrasenia === "jdkcell123") {
       console.log("iniciado")
@@ -48,6 +50,7 @@ export const Login = (props) => {
       navigate("/")
     } else {
       localStorage.setItem("intentos", intentos - 1);
+      setIntentos(intentos-1)
       console.log("intentos:" + intentos);
     }
   };
@@ -73,7 +76,7 @@ export const Login = (props) => {
   useEffect(() => {
     intervalId = setInterval(createSquare, 150);
     return () => clearInterval(intervalId);
-  }, []);
+  }, [intentos]);
 
   const validateUser = (usuario) => {
     if (usuario.length < 3 || usuario.length > 15) {

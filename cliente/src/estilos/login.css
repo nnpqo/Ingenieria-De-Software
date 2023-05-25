@@ -277,8 +277,9 @@
   animation-delay: 0.75s;
 }
 
-.mens-login {
+.mens-error {
   color: #ff2e00;
+  font-size: 15px;
 }
 
 @keyframes animabt3 {

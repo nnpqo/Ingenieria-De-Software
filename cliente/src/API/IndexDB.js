@@ -10,14 +10,14 @@ const openDatabase = async () => {
     const db = event.target.result;
 
     if (!db.objectStoreNames.contains("venta")) {
-      const objectStore = db.createObjectStore("venta");
+      const objectStore = db.createObjectStore("venta", { keyPath: "id" });
       objectStore.createIndex("ruta", "ruta", { unique: false });
       objectStore.createIndex("modelo", "modelo", { unique: false });
       objectStore.createIndex("precio", "precio", { unique: false });
       objectStore.createIndex("marca", "marca", { unique: false });
       objectStore.createIndex("imei", "imei", { unique: false });
       objectStore.createIndex("color", "color", { unique: false });
-      objectStore.createIndex("id", "id", {unique : true});
+      objectStore.createIndex("id", "id", { unique: true });
     }
   };
 

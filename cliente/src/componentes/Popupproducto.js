@@ -186,6 +186,8 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
     const validar = color.length < 3 || color.length > 15;
     console.log(imei.length !== 15 || validar);
     if (imei.length !== 15 || validar) {
+      setError(true);
+      setMensaje("error al guardar");
       setErrorImei(true);
       setErrorColor(true);
     } else {
@@ -230,13 +232,9 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
     }
   };
   const handleKeyDown = (event) => {
-    if (
-      event.key === "e" ||
-      event.key === "+" ||
-      event.key === "-"
-    ) {
+    if (event.key === "e" || event.key === "+" || event.key === "-") {
       event.preventDefault();
-      console.log("entramos?")
+      console.log("entramos?");
     }
   };
   return (
@@ -302,7 +300,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
                     className="color pre"
                     id="aniadirColor"
                     onChange={handleColorChange}
-                    onInput={(e) => limitarDigitos(e.target,15)}
+                    onInput={(e) => limitarDigitos(e.target, 15)}
                   ></input>
                   {errorColor && <p className="errorMensaje">{errorColor}</p>}
                 </div>
@@ -428,13 +426,9 @@ const FilaProducto = (props) => {
     }
   };
   const handleKeyDown = (event) => {
-    if (
-      event.key === "e" ||
-      event.key === "+" ||
-      event.key === "-"
-    ) {
+    if (event.key === "e" || event.key === "+" || event.key === "-") {
       event.preventDefault();
-      console.log("entramos?")
+      console.log("entramos?");
     }
   };
   const handleColorChange = (event) => {
@@ -453,17 +447,17 @@ const FilaProducto = (props) => {
         setErrorColor(true);
         setMensaje("El color solo debe contener letras.");
       }
-    }else{
+    } else {
       if (inputValue.length === 0) {
         setErrorColor(true);
         setMensaje("El campo es obligatorio"); // Mostrar mensaje de error si el color no tiene 3 o15 dígitos
       } else {
         setErrorColor(true); // Limpiar el mensaje de error si el color tiene 3 o15 dígitos
-        setMensaje("El color debe tener entre 3 y 15 caracteres.")
+        setMensaje("El color debe tener entre 3 y 15 caracteres.");
       }
     }
   };
-  
+
   return (
     <>
       <tr id={props.item.imei} className="fila">
@@ -478,8 +472,9 @@ const FilaProducto = (props) => {
             placeholder={props.item.imei}
             onInput={(e) => limitarDigitos(e.target, 15)}
             onChange={handleImeiChange}
+            onKeyDown={handleKeyDown}
             disabled
-            ></input>
+          ></input>
           {errorImei && (
             <p className="errorMensaje">El IMEI debe tener 15 dígitos.</p>
           )}
@@ -491,7 +486,7 @@ const FilaProducto = (props) => {
             placeholder={props.item.color}
             disabled
             onChange={handleColorChange}
-            onInput={(e) => limitarDigitos(e.target,15)}
+            onInput={(e) => limitarDigitos(e.target, 15)}
           ></input>
           {errorColor && <p className="errorMensaje">{mensajeError}</p>}
         </td>

@@ -14,6 +14,9 @@ export const Login = (props) => {
   const [contrasenia, setContrasenia] = useState("");
   const [tiempo, setTiempo] = useState(true);
   const [intentos, setIntentos] = useState();
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+  const errorMens = validate(user, password);
 
   const MAX_INTENTOS_FALLIDOS = 0;
   const TIEMPO_BLOQUEO = 100;
@@ -64,7 +67,13 @@ export const Login = (props) => {
   }, []);
 
   return (
-    <section id="login">
+    <section
+      id="login"
+      onSubmit={(ev) => {
+        ev.preventDefault();
+        /* login(user, password); */
+      }}
+    >
       <div className="login-form-cont">
         <div className="input-grup">
           <div className="titulo">
@@ -85,13 +94,36 @@ export const Login = (props) => {
           <input
             className="inputLogin"
             type="text"
+            name="user"
+            value={user}
+            onChange={(ev) => setUser(ev.target.value)}
             maxLength={15}
             minLength={3}
             required="required"
-            onChange={(e) => setUsuario(e.target.value)}
+            /* onChange={(e) => setUsuario(e.target.value)} */
           />
           <label className="labelLogin">Nombre de Usuario</label>
         </div>
+        <div className="errorMensaje">
+          <div className="fondo">
+            <div className="icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="#ffffff"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm-1.5-5.009c0-.867.659-1.491 1.491-1.491.85 0 1.509.624 1.509 1.491 0 .867-.659 1.509-1.509 1.509-.832 0-1.491-.642-1.491-1.509zM11.172 6a.5.5 0 0 0-.499.522l.306 7a.5.5 0 0 0 .5.478h1.043a.5.5 0 0 0 .5-.478l.305-7a.5.5 0 0 0-.5-.522h-1.655z"
+                  fill="#ff2e00"
+                />
+              </svg>
+            </div>
+          </div>
+          &nbsp; &nbsp; &nbsp; &nbsp;{errorMens}
+        </div>
+        {/* <p>{errorMens}</p> */}
         <div className="input-grup">
           <div class="icon">
             <img src={candado} />
@@ -165,14 +197,37 @@ export const Login = (props) => {
           <input
             id="contrasenia"
             className="inputLogin"
+            name="password"
+            type="password"
+            value={password}
+            onChange={(ev) => setPassword(ev.target.value)}
             maxLength={16}
             minLength={8}
-            type="password"
             required="required"
-            onChange={(e) => setContrasenia(e.target.value)}
+            /*  onChange={(e) => setContrasenia(e.target.value)} */
           />
           <label className="labelLogin">Contraseña</label>
         </div>
+        <div className="errorMensaje">
+          <div className="fondo">
+            <div className="icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="#ffffff"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm-1.5-5.009c0-.867.659-1.491 1.491-1.491.85 0 1.509.624 1.509 1.491 0 .867-.659 1.509-1.509 1.509-.832 0-1.491-.642-1.491-1.509zM11.172 6a.5.5 0 0 0-.499.522l.306 7a.5.5 0 0 0 .5.478h1.043a.5.5 0 0 0 .5-.478l.305-7a.5.5 0 0 0-.5-.522h-1.655z"
+                  fill="#ff2e00"
+                />
+              </svg>
+            </div>
+          </div>
+          &nbsp; &nbsp; &nbsp; &nbsp;{errorMens}
+        </div>
+        {/* <p>{errorMens}</p> */}
         <div className="input-grup">
           <Link className="acceder" to="/" onClick={validar}>
             <span></span>
@@ -198,4 +253,17 @@ export const Login = (props) => {
       </div>
     </section>
   );
+};
+
+/* const login = (user, password) => {
+  if (user === "kevin" && password === "jdkcell") alert("login correcto");
+  else alert("login incorrecto");
+}; */
+const validate = (user, password) => {
+  if (user.length < 3 || user.length > 15) {
+    return "Usuario tiene que ser de 3 a 15 caracteres";
+  }
+  if (password.length < 8 || password.length > 16) {
+    return "La contraseña tiene que ser de 8 a 16 caracteres";
+  }
 };

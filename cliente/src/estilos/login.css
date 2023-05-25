@@ -213,6 +213,8 @@
   transition: 0.5s;
   margin-top: 20px;
   letter-spacing: 3px;
+  background: none;
+  border: none;
 }
 
 .login-form-cont .acceder:hover {

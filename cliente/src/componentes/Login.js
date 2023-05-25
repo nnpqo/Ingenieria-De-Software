@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 import "../estilos/login.css";
 import usuarioimg from "../imagenes/usuario.svg";
 import candado from "../imagenes/candado.svg";
+import { useNavigate } from "react-router-dom";
 
 export const Login = (props) => {
   const [mostrarOjo, setMostrarOjo] = useState(false);
   const [mostrarOjoc, setMostrarOjoc] = useState(true);
-
+  const navigate = useNavigate()
   let intervalId = null;
   const [usuario, setUsuario] = useState("");
   const [contrasenia, setContrasenia] = useState("");
@@ -16,7 +17,12 @@ export const Login = (props) => {
   const [intentos, setIntentos] = useState();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const errorMens = validate(user, password);
+  const [errorUser, setErrorUser] = useState(false);
+  const [errorPass, setErrorPass] = useState(false);
+  const [errorMesU, setErrorMen] = useState("");
+  const [errorMesP, setErrorMesP] = useState("");
+  const [session, setSession] = useState(false);
+  const [sessionError, setErrorSession] = useState("");
 
   const MAX_INTENTOS_FALLIDOS = 0;
   const TIEMPO_BLOQUEO = 100;
@@ -34,9 +40,12 @@ export const Login = (props) => {
         localStorage.setItem("intentos", 3);
       }, TIEMPO_BLOQUEO);
     } else if (usuario === "kevin" && contrasenia === "jdkcell123") {
+      console.log("iniciado")
       const token = "miTokenDeAutenticacion";
       localStorage.setItem("token", token);
       props.setLogueado(true);
+      setSession(true);
+      navigate("/")
     } else {
       localStorage.setItem("intentos", intentos - 1);
       console.log("intentos:" + intentos);
@@ -66,6 +75,33 @@ export const Login = (props) => {
     return () => clearInterval(intervalId);
   }, []);
 
+  const validateUser = (usuario) => {
+    if (usuario.length < 3 || usuario.length > 15) {
+      setErrorUser(true);
+      setSession(false);
+      setErrorMen("Usuario tiene que ser de 3 a 15 caracteres");
+    } else {
+      setErrorUser(false);
+    }
+  };
+
+  const validatePass = (contrasenia) => {
+    if (contrasenia.length < 8 || contrasenia.length > 16) {
+      setErrorPass(true);
+      setSession(false);
+      setErrorMesP("La contraseña tiene que ser de 8 a 16 caracteres");
+    } else {
+      setErrorPass(false);
+    }
+  };
+
+  const validateSession = () => {
+    if (usuario !== "kevin" || contrasenia !== "jdkcell123") {
+      console.log("contraseña errornea")
+      setSession(true);
+      setErrorSession("Usuario o contraseña incorrectas");
+    }
+  };
   return (
     <section
       id="login"
@@ -95,8 +131,11 @@ export const Login = (props) => {
             className="inputLogin"
             type="text"
             name="user"
-            value={user}
-            onChange={(ev) => setUser(ev.target.value)}
+            value={usuario}
+            onChange={(ev) => {
+              setUsuario(ev.target.value);
+              validateUser(ev.target.value);
+            }}
             maxLength={15}
             minLength={3}
             required="required"
@@ -104,7 +143,7 @@ export const Login = (props) => {
           />
           <label className="labelLogin">Nombre de Usuario</label>
         </div>
-        <p className="mens-error">{errorMens}</p>
+        {errorUser ? <p className="mens-error">{errorMesU}</p> : <></>}
         <div className="input-grup">
           <div class="icon">
             <img src={candado} />
@@ -180,8 +219,11 @@ export const Login = (props) => {
             className="inputLogin"
             name="password"
             type="password"
-            value={password}
-            onChange={(ev) => setPassword(ev.target.value)}
+            value={contrasenia}
+            onChange={(ev) => {
+              setContrasenia(ev.target.value);
+              validatePass(ev.target.value);
+            }}
             maxLength={16}
             minLength={8}
             required="required"
@@ -189,16 +231,28 @@ export const Login = (props) => {
           />
           <label className="labelLogin">Contraseña</label>
         </div>
-        <p className="mens-error">{errorMens}</p>
+        {errorPass ? <p className="mens-error">{errorMesP}</p> : <></>}
+        <br/>
+        {session ? <p className="mens-error">{sessionError}</p> : <></>}
         <div className="input-grup">
-          <Link className="acceder" to="/" onClick={validar}>
+        
+          <button
+            className="acceder"
+            
+            onClick={() => {
+              validateSession();
+              validar();
+              
+            }}
+          >
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             Acceder
-          </Link>
+          </button>
         </div>
+        
         <div
           className={`MensLogin${
             intentos === 3
@@ -221,18 +275,3 @@ export const Login = (props) => {
   if (user === "kevin" && password === "jdkcell") alert("login correcto");
   else alert("login incorrecto");
 }; */
-const validate = (user, password) => {
-  if (user.length < 3 || user.length > 15) {
-    return "Usuario tiene que ser de 3 a 15 caracteres";
-  }
-  if (password.length < 8 || password.length > 16) {
-    return "La contraseña tiene que ser de 8 a 16 caracteres";
-  }
-  if (user !== "kevin") {
-    return "El usuario es incorrecto";
-  }
-
-  if (password !== "jdkcell") {
-    return "La contraseña es incorrecta";
-  }
-};

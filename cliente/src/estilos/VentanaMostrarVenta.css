@@ -154,6 +154,10 @@
     align-items: center;
     gap: 10%;
 }
+
+.inferior a {
+  text-decoration: none;
+}
 .superior{
     width: 100%;
     height: 55%;
@@ -302,6 +306,7 @@
     font-size: 11px;
     padding-left: 50px;
     padding-right: 50px;
+
   }
 
   .inferior .guardar{
@@ -312,3 +317,6 @@
   font-size: 11px;
 }
   
+.seguir-venta a {
+  text-decoration: none;
+}

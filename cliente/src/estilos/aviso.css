@@ -17,8 +17,8 @@
 .aviso-content {
   background-color: #0655ff;
   display: flex;
-  justify-items: center;
-  flex-direction: column;
+  justify-content: center;
+  flex-direction: row;
   text-align: center;
   align-content: center;
   border-radius: 7px;
@@ -57,6 +57,9 @@
   border: none;
   padding: 1.5%;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .botonNo {
   background-color: #ff2e00;
@@ -69,6 +72,9 @@
   border: none;
   padding: 1.5%;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .mensaje {
   color: white;

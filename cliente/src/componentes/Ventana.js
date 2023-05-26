@@ -56,7 +56,7 @@ export const VentanaFormulario = (props) => {
             document.getElementById("precio").value = pro.precio;
             document.getElementById("previsualizar").src =
               process.env.REACT_APP_API_URL + pro.ruta;
-            document.getElementById("etiqueta").value = pro.marca;
+            document.getElementById("etiqueta2").value = pro.marca;
           });
         }}
         vacio={

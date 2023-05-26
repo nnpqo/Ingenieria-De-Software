@@ -21,11 +21,11 @@ VALUES
     ('ZTE',1);
 
 
-INSERT INTO modelos_dispositivos_moviles (id, nombre, descripcion, ruta_imagen) 
+INSERT INTO modelos_dispositivos_moviles (id, nombre, descripcion, ruta_imagen, precio_venta_sugerido) 
 values 
-    ('1','galaxy s22 ultra', 'descripcion prueba','/images/s22u.jpeg'),
-    ('2','galaxy a71', 'descripcion prueba', '/images/a71.jpeg'),
-    ('3','Tab s7 Fe', 'descripcion prueba','/images/s7fe.jpeg'),
+    ('1','galaxy s22 ultra', 'descripcion prueba','/images/s22u.jpeg', '8500'),
+    ('2','galaxy a71', 'descripcion prueba', '/images/a71.jpeg', '1800'),
+    ('3','Tab s7 Fe', 'descripcion prueba','/images/s7fe.jpeg', ''),
     ('4','galaxy z flip4','descripcion prueba','/images/zflip4.jpeg' ),
     ('5','galaxy s20 ultra','descripcion prueba','/images/s20u.jpeg' ),
     ('6','tab s6 lite', 'descripcion prueba','/images/s22u.jpeg'),
@@ -72,7 +72,7 @@ insert into etiqueta_modelo (id_etiqueta, id_modelo_dispositivo) values
 
 INSERT INTO dispositivo_movil (imei,color,id_modelo_dispositivo)
 VALUES
-  (840885677841700,"blue spacial",5),
+  (840885677841700,"blue spacial",5 ),
   (538291255355636,"blue spacial",11),
   (599402486562176,"indigo",11),
   (964572737123614,"yellow",2),

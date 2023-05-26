@@ -277,7 +277,7 @@ export const Mensaje3 = (props) => {
           setOpen(true);
         }}
       >
-        <div className={props.estiloNombre}>{props.nombre}</div>
+        <h2 className={props.estiloNombre}>{props.nombre}</h2>
       </button>
       <Popup
         className={props.error ? "mensaje3E" : "mensaje3"}

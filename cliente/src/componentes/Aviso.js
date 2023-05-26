@@ -256,14 +256,14 @@ export const Aviso2 = (props) => {
 export const Mensaje3 = (props) => {
   const [open, setOpen] = useState(false);
   useEffect(() => {
-    // if (open) {
-    //   setTimeout(closeModal, 2000);
-    // }
+     if (open) {
+       setTimeout(closeModal, 2000);
+     }
   }, [open]);
 
   const closeModal = () => {
     props.setAniadir && props.setAniadir(!props.aniadir);
-    // setOpen(false);
+     setOpen(false);
   };
 
   return (
@@ -277,7 +277,7 @@ export const Mensaje3 = (props) => {
           setOpen(true);
         }}
       >
-        <div className={props.estiloNombre}>{props.nombre}</div>
+        <h2 className={props.estiloNombre}>{props.nombre}</h2>
       </button>
       <Popup
         className={props.error ? "mensaje3E" : "mensaje3"}

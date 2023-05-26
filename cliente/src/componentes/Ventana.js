@@ -121,7 +121,7 @@ export const VentanaFormulario = (props) => {
   const actualizarListaCompra = () => {
     const modelo = document.getElementById("modelo").value;
     const nombre = document.getElementById("nombreModelo").value.trim();
-    const etiqueta = document.getElementById("etiqueta").value;
+    const etiqueta = document.getElementById("etiqueta2").value;
     const imagen = document.getElementById("image").files;
     const precio = document.getElementById("precio").value;
     const rutaImg = imagen[0] ? "/images/" + imagen[0].name : "";

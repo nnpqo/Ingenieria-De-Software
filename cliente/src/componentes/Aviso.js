@@ -278,6 +278,7 @@ export const Mensaje3 = (props) => {
         }}
       >
         <h2 className={props.estiloNombre}>{props.nombre}</h2>
+        <img className={props.estiloImagen} src={props.image}></img>
       </button>
       <Popup
         className={props.error ? "mensaje3E" : "mensaje3"}

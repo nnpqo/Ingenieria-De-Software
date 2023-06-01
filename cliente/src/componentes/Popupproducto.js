@@ -9,6 +9,7 @@ import iconoAgregar from "../imagenes/iconoAgregar.svg";
 import imgVender from "../imagenes/imgVender.svg";
 import lapiz from "../imagenes/lapiz.svg";
 import cruz from "../imagenes/cruz.svg";
+import palomita from "../imagenes/marca-de-verificacion.svg";
 import { agregarEtiqueta } from "../API/etiquetas";
 import { agregarMovil, modificarMovil, obtenerMoviles } from "../API/productos";
 import { mdiConsoleNetworkOutline } from "@mdi/js";
@@ -307,7 +308,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
               </td>
               <td>
                 <Mensaje3
-                  nombre=" ✔ "
+                  nombre=" "
                   estilos={"modificar-aceptar"}
                   funcion={() => {
                     console.log("hola");
@@ -317,7 +318,10 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
                   error={error}
                   setAniadir={setAniadir}
                   aniadir={aniadir}
-                />
+                  image={palomita}
+                  estiloImagen={"contBotones"}
+                ></Mensaje3>
+                  {/* <img className="contBotones" src={palomita}></img> */}
               </td>
 
               <td>
@@ -404,7 +408,7 @@ const FilaProducto = (props) => {
     const producto = {
       ruta: props.ruta,
       modelo: props.modelo,
-      precio: props.precio,
+      precio: props.precio_venta_sugerido,
       marca: props.marca,
       imei: props.item.imei,
       color: props.item.color,
@@ -494,7 +498,7 @@ const FilaProducto = (props) => {
           <>
             <td>
               <Mensaje3
-                nombre=" ✔ "
+                nombre=" "
                 estilos={"modificar-aceptar"}
                 funcion={() => {
                   aceptarCancelar(true).then((res) => {
@@ -514,7 +518,9 @@ const FilaProducto = (props) => {
                 }}
                 mensaje={men}
                 error={error}
-              />
+                image={palomita}
+                estiloImagen={"contBotones"}
+              ></Mensaje3>
               {/* <Mensaje3
                   nombre=" ✔ "
                   estilos={"modificar-aceptar"}

@@ -237,6 +237,13 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
       console.log("entramos?");
     }
   };
+  const handlePaste = (e) => {
+    e.preventDefault();
+    const pastedText = e.clipboardData.getData("text/plain");
+    const cleanedText = pastedText.replace(/[e+]/gi, ""); // Eliminar 'e' y '+'
+    document.execCommand("insertText", false, cleanedText);
+  };
+  
   return (
     <div className="pp2">
       <button
@@ -285,6 +292,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
                     onKeyDown={handleKeyDown}
                     onChange={handleImeiChange}
                     onInput={(e) => limitarDigitos(e.target, 15)}
+                    onPaste={handlePaste}
                   ></input>
                   {errorImei && (
                     <p className="errorMensaje">
@@ -431,11 +439,17 @@ const FilaProducto = (props) => {
       console.log("entramos?");
     }
   };
+  const handlePaste = (e) => {
+    e.preventDefault();
+    const pastedText = e.clipboardData.getData("text/plain");
+    const cleanedText = pastedText.replace(/[e+]/gi, ""); // Eliminar 'e' y '+'
+    document.execCommand("insertText", false, cleanedText);
+  };  
   const handleColorChange = (event) => {
     const inputValue = event.target.value;
     const input = document.getElementById(props.item.imei + "color");
     const validCharacters = /^[ A-Za-z\s]+$/;
-    const isValidLength = input.value.length >= 3 && input.value.length <= 15;
+    const isValidLength = input.value.length >= 3 && input.value.length <= 15;    
     console.log(isValidLength);
     if (isValidLength) {
       if (validCharacters.test(inputValue)) {
@@ -471,6 +485,7 @@ const FilaProducto = (props) => {
             id={props.item.imei + "imei"}
             placeholder={props.item.imei}
             onInput={(e) => limitarDigitos(e.target, 15)}
+            onPaste={handlePaste}
             onChange={handleImeiChange}
             onKeyDown={handleKeyDown}
             disabled

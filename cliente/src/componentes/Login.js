@@ -57,6 +57,7 @@ export const Login = (props) => {
 
   function createSquare() {
     const section = document.querySelector("section");
+    section.className = "square-container"
     const square = document.createElement("span");
     square.classList.add("burbuja");
     var size = Math.random() * 20;
@@ -64,8 +65,9 @@ export const Login = (props) => {
     square.style.width = 20 + size + "px";
     square.style.height = 20 + size + "px";
 
-    square.style.top = Math.random() * window.innerHeight + "px";
-    square.style.left = Math.random() * window.innerWidth + "px";
+    square.style.top = Math.random() * (window.innerHeight - 20)+ "px";
+    square.style.left = Math.random() * (window.innerWidth-50) + "px";
+    console.log(window.innerHeight + "," + window.innerWidth)
 
     section.appendChild(square);
     setTimeout(() => {

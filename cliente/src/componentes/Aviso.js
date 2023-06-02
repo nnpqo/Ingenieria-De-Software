@@ -255,6 +255,7 @@ export const Aviso2 = (props) => {
 
 export const Mensaje3 = (props) => {
   const [open, setOpen] = useState(false);
+
   useEffect(() => {
      if (open) {
        setTimeout(closeModal, 2000);
@@ -262,8 +263,8 @@ export const Mensaje3 = (props) => {
   }, [open]);
 
   const closeModal = () => {
-    props.setAniadir && props.setAniadir(!props.aniadir);
      setOpen(false);
+     props?.fun2();
   };
 
   return (
@@ -272,13 +273,12 @@ export const Mensaje3 = (props) => {
         type="button"
         className={props.estilos}
         onClick={() => {
-          props.funcion();
-          console.log("entran")
+          props?.funcion();
           setOpen(true);
         }}
       >
         <h2 className={props.estiloNombre}>{props.nombre}</h2>
-        <img className={props.estiloImagen} src={props.image}></img>
+        <img className={props.estiloImagen} src={props.image} alt={"imagen"}></img>
       </button>
       <Popup
         className={props.error ? "mensaje3E" : "mensaje3"}

@@ -244,7 +244,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
     const cleanedText = pastedText.replace(/[e+]/gi, ""); // Eliminar 'e' y '+'
     document.execCommand("insertText", false, cleanedText);
   };
-  
+
   return (
     <div className="pp2">
       <button
@@ -329,7 +329,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
                   image={palomita}
                   estiloImagen={"contBotones"}
                 ></Mensaje3>
-                  {/* <img className="contBotones" src={palomita}></img> */}
+                {/* <img className="contBotones" src={palomita}></img> */}
               </td>
 
               <td>
@@ -374,6 +374,7 @@ const FilaProducto = (props) => {
     const color = document.getElementById(props.item.imei + "color");
     imei.disabled = false;
     imei.value = props.item.imei;
+    console.log(imei.value);
     color.disabled = false;
     color.value = props.item.color;
     color.disabled = false;
@@ -387,16 +388,17 @@ const FilaProducto = (props) => {
     return new Promise((resolve, reject) => {
       const imei = document.getElementById(props.item.imei + "imei");
       const color = document.getElementById(props.item.imei + "color");
-      console.log(imei);
+      console.log(imei.value);
       imei.disabled = true;
       color.disabled = true;
-      setModificar(false);
       if (aceptar && !errorColor && !errorImei) {
         props.item.imei = imei.value;
         props.item.color = color.value;
       } else {
         setErrorColor(false);
         setErrorImei(false);
+        setMen("Error al modificar el producto");
+        setError(true);
       }
       color.value = "";
       imei.value = "";
@@ -430,7 +432,6 @@ const FilaProducto = (props) => {
 
   const handleImeiChange = (event) => {
     const imei = event.target.value;
-    console.log("aaaa");
     if (imei.length !== 15) {
       setErrorImei(true); // Mostrar mensaje de error si el IMEI no tiene 15 dígitos
     } else {
@@ -448,12 +449,12 @@ const FilaProducto = (props) => {
     const pastedText = e.clipboardData.getData("text/plain");
     const cleanedText = pastedText.replace(/[e+]/gi, ""); // Eliminar 'e' y '+'
     document.execCommand("insertText", false, cleanedText);
-  };  
+  };
   const handleColorChange = (event) => {
     const inputValue = event.target.value;
     const input = document.getElementById(props.item.imei + "color");
     const validCharacters = /^[ A-Za-z\s]+$/;
-    const isValidLength = input.value.length >= 3 && input.value.length <= 15;    
+    const isValidLength = input.value.length >= 3 && input.value.length <= 15;
     console.log(isValidLength);
     if (isValidLength) {
       if (validCharacters.test(inputValue)) {
@@ -519,17 +520,15 @@ const FilaProducto = (props) => {
                   aceptarCancelar(true).then((res) => {
                     console.log(res);
                     modificarMovil(res).then((result) => {
-                      setMen(result.data.message);
-                      setError(result.data.error);
+                      if (!errorColor && !errorImei) {
+                        setMen(result.data.message);
+                        setError(result.data.error);
+                      }
                     });
-                    setModificar(false);
-                    document.getElementById(
-                      props.item.imei + "imei"
-                    ).disabled = true;
-                    document.getElementById(
-                      props.item.imei + "color"
-                    ).disabled = true;
                   });
+                }}
+                fun2={() => {
+                  setModificar(false);
                 }}
                 mensaje={men}
                 error={error}
@@ -566,6 +565,7 @@ const FilaProducto = (props) => {
                 bt1Estilo={"botonSi"}
                 bt1Funcion={() => {
                   aceptarCancelar(false);
+                  setModificar(false);
                 }}
                 bt2Nombre={"No"}
                 bt2Estilo={"botonNo"}

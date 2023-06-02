@@ -1,4 +1,6 @@
 #login {
+  background-image: url(https://www.tuexpertomovil.com/wp-content/uploads/2021/07/los-37-mejores-fondos-de-pantalla-para-el-iphone-12-12-mini-y-12-pro.jpg);
+  background-size: cover;
   background-color: #071432;
   width: 90%;
   height: 90vh;
@@ -111,7 +113,7 @@
 
 .input-grup {
   position: relative;
-  margin: 7%;
+  margin: 6%;
   display: flex;
   align-items: center;
   /* width: 250px; */

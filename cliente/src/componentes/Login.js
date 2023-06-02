@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export const Login = (props) => {
   const [mostrarOjo, setMostrarOjo] = useState(false);
   const [mostrarOjoc, setMostrarOjoc] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   let intervalId = null;
   const [usuario, setUsuario] = useState("");
   const [contrasenia, setContrasenia] = useState("");
@@ -39,23 +39,23 @@ export const Login = (props) => {
         setTiempo(!tiempo);
         console.log("tiempo" + tiempo);
         localStorage.setItem("intentos", 3);
-        setIntentos(3)
+        setIntentos(3);
       }, TIEMPO_BLOQUEO);
     } else if (usuario === "kevin" && contrasenia === "jdkcell123") {
-      console.log("iniciado")
+      console.log("iniciado");
       const token = "miTokenDeAutenticacion";
       localStorage.setItem("token", token);
       props.setLogueado(true);
       setSession(true);
-      navigate("/")
+      navigate("/");
     } else {
       localStorage.setItem("intentos", intentos - 1);
-      setIntentos(intentos-1)
+      setIntentos(intentos - 1);
       console.log("intentos:" + intentos);
     }
   };
 
-  function createSquare() {
+  /*   function createSquare() {
     const section = document.querySelector("section");
     section.className = "square-container"
     const square = document.createElement("span");
@@ -77,7 +77,7 @@ export const Login = (props) => {
   useEffect(() => {
     intervalId = setInterval(createSquare, 150);
     return () => clearInterval(intervalId);
-  }, [intentos]);
+  }, [intentos]); */
 
   const validateUser = (usuario) => {
     if (usuario.length < 3 || usuario.length > 15) {
@@ -101,7 +101,7 @@ export const Login = (props) => {
 
   const validateSession = () => {
     if (usuario !== "kevin" || contrasenia !== "jdkcell123") {
-      console.log("contraseña errornea")
+      console.log("contraseña errornea");
       setSession(true);
       setErrorSession("Usuario o contraseña incorrectas");
     }
@@ -236,17 +236,14 @@ export const Login = (props) => {
           <label className="labelLogin">Contraseña</label>
         </div>
         {errorPass ? <p className="mens-error">{errorMesP}</p> : <></>}
-        <br/>
+        <br />
         {session ? <p className="mens-error">{sessionError}</p> : <></>}
         <div className="input-grup">
-        
           <button
             className="acceder"
-            
             onClick={() => {
               validateSession();
               validar();
-              
             }}
           >
             <span></span>
@@ -256,7 +253,7 @@ export const Login = (props) => {
             Acceder
           </button>
         </div>
-        
+
         <div
           className={`MensLogin${
             intentos === 3

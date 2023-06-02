@@ -73,8 +73,6 @@ export const setModeloDispositivo = () => {
   return instancia
     .post("/setModelo", datos)
     .then((res) => {
-      /* alert(res.data.message); */
-
       if (!res.data.error) {
         borrar();
       }

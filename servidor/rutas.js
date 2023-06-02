@@ -294,23 +294,30 @@ router.get("/getProductos/:modelo", (req, res) => {
     if (error) {
       res.send({ message: "Error al obtener moviles.", error: true });
     } else {
-      res.json({ dispositivos: results })
+      res.json({ dispositivos: results });
     }
   });
 });
 
 router.put("/ventas/:id", (req, res) => {
-  const id = req.params.id; 
+  const id = req.params.id;
 
   const sql = "update dispositivo_movil set vendido = 1 where id = ?";
-  db.query(sql,[id], (error, results, fields) => {
-    if(error) {
-      res.send({message: "Error al vender", error : true}); 
-    }else{
-      res.send({messege: "Vendido correctamente", error :false})
+  db.query(sql, [id], (error, results, fields) => {
+    if (error) {
+      res.send({ message: "Error al vender", error: true });
+    } else {
+      res.send({ messege: "Vendido correctamente", error: false });
     }
+  });
+});
 
-  })
-}) 
+router.get("/credenciales/:user/:pass", (req, res) => {
+  const user = req.params.user;
+  const pass = req.params.pass;
+  const result = user === "kevin" && pass === "jdkcell123";
+  console.log(result);
+  res.send(result);
+});
 
 module.exports = router;

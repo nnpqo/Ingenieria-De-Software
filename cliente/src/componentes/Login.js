@@ -5,6 +5,7 @@ import "../estilos/login.css";
 import usuarioimg from "../imagenes/usuario.svg";
 import candado from "../imagenes/candado.svg";
 import { useNavigate } from "react-router-dom";
+import { getUsuario } from "../API/login";
 
 export const Login = (props) => {
   const [mostrarOjo, setMostrarOjo] = useState(false);
@@ -15,14 +16,13 @@ export const Login = (props) => {
   const [contrasenia, setContrasenia] = useState("");
   const [tiempo, setTiempo] = useState(true);
   const [intentos, setIntentos] = useState();
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
   const [errorUser, setErrorUser] = useState(false);
   const [errorPass, setErrorPass] = useState(false);
   const [errorMesU, setErrorMen] = useState("");
   const [errorMesP, setErrorMesP] = useState("");
   const [session, setSession] = useState(false);
   const [sessionError, setErrorSession] = useState("");
+  const [valido, setValido] = useState(false);
 
   const MAX_INTENTOS_FALLIDOS = 0;
   const TIEMPO_BLOQUEO = 10000;
@@ -33,6 +33,8 @@ export const Login = (props) => {
   }, [tiempo]);
 
   const validar = () => {
+    getUsuario({ user: usuario, pass: contrasenia }).then(res => setValido(res));
+    
     if (intentos === MAX_INTENTOS_FALLIDOS) {
       // Bloquear inicio de sesión por un período de tiempo
       setTimeout(() => {
@@ -41,7 +43,7 @@ export const Login = (props) => {
         localStorage.setItem("intentos", 3);
         setIntentos(3);
       }, TIEMPO_BLOQUEO);
-    } else if (usuario === "kevin" && contrasenia === "jdkcell123") {
+    } else if (valido) {
       console.log("iniciado");
       const token = "miTokenDeAutenticacion";
       localStorage.setItem("token", token);
@@ -57,7 +59,7 @@ export const Login = (props) => {
 
   function createSquare() {
     const section = document.querySelector("section");
-    section.className = "square-container"
+    section.className = "square-container";
     const square = document.createElement("span");
     square.classList.add("burbuja");
     var size = Math.random() * 20;
@@ -65,9 +67,9 @@ export const Login = (props) => {
     square.style.width = 20 + size + "px";
     square.style.height = 20 + size + "px";
 
-    square.style.top = Math.random() * (window.innerHeight - 20)+ "px";
-    square.style.left = Math.random() * (window.innerWidth-50) + "px";
-    console.log(window.innerHeight + "," + window.innerWidth)
+    square.style.top = Math.random() * (window.innerHeight - 20) + "px";
+    square.style.left = Math.random() * (window.innerWidth - 50) + "px";
+    console.log(window.innerHeight + "," + window.innerWidth);
 
     section.appendChild(square);
     setTimeout(() => {
@@ -77,7 +79,7 @@ export const Login = (props) => {
   useEffect(() => {
     intervalId = setInterval(createSquare, 150);
     return () => clearInterval(intervalId);
-  }, [intentos]); 
+  }, [intentos]);
 
   const validateUser = (usuario) => {
     if (usuario.length < 3 || usuario.length > 15) {
@@ -100,7 +102,7 @@ export const Login = (props) => {
   };
 
   const validateSession = () => {
-    if (usuario !== "kevin" || contrasenia !== "jdkcell123") {
+    if (!valido) {
       console.log("contraseña errornea");
       setSession(true);
       setErrorSession("Usuario o contraseña incorrectas");

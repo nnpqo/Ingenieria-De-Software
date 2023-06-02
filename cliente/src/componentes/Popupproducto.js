@@ -187,7 +187,7 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
     console.log(imei.length !== 15 || validar);
     if (imei.length !== 15 || validar) {
       setError(true);
-      setMensaje("error al guardar");
+      setMensaje("Error al guardar");
       setErrorImei(true);
       setErrorColor(true);
     } else {

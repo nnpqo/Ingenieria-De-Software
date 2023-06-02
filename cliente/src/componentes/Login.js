@@ -55,7 +55,7 @@ export const Login = (props) => {
     }
   };
 
-  /*   function createSquare() {
+  function createSquare() {
     const section = document.querySelector("section");
     section.className = "square-container"
     const square = document.createElement("span");
@@ -77,7 +77,7 @@ export const Login = (props) => {
   useEffect(() => {
     intervalId = setInterval(createSquare, 150);
     return () => clearInterval(intervalId);
-  }, [intentos]); */
+  }, [intentos]); 
 
   const validateUser = (usuario) => {
     if (usuario.length < 3 || usuario.length > 15) {

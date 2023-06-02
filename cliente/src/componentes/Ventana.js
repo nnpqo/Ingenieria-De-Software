@@ -34,7 +34,6 @@ export const VentanaFormulario = (props) => {
     getNombreModeloDispositivos().then((nombres) => setmodelos(nombres));
   }, []);
 
-  //const etiquetas = ["xiaomi", "samsumg"];
   const opcionesModificar = (
     <div className="formulario">
       <ComboBox

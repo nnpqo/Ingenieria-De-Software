@@ -418,7 +418,7 @@ const FilaProducto = (props) => {
     const producto = {
       ruta: props.ruta,
       modelo: props.modelo,
-      precio: props.precio_venta_sugerido,
+      precio: props.precio,
       marca: props.marca,
       imei: props.item.imei,
       color: props.item.color,

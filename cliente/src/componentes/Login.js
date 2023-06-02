@@ -33,28 +33,29 @@ export const Login = (props) => {
   }, [tiempo]);
 
   const validar = () => {
-    getUsuario({ user: usuario, pass: contrasenia }).then(res => setValido(res));
-    
-    if (intentos === MAX_INTENTOS_FALLIDOS) {
-      // Bloquear inicio de sesión por un período de tiempo
-      setTimeout(() => {
-        setTiempo(!tiempo);
-        console.log("tiempo" + tiempo);
-        localStorage.setItem("intentos", 3);
-        setIntentos(3);
-      }, TIEMPO_BLOQUEO);
-    } else if (valido) {
-      console.log("iniciado");
-      const token = "miTokenDeAutenticacion";
-      localStorage.setItem("token", token);
-      props.setLogueado(true);
-      setSession(true);
-      navigate("/");
-    } else {
-      localStorage.setItem("intentos", intentos - 1);
-      setIntentos(intentos - 1);
-      console.log("intentos:" + intentos);
-    }
+    getUsuario({ user: usuario, pass: contrasenia }).then((res) => {
+      setValido(res);
+      if (intentos === MAX_INTENTOS_FALLIDOS) {
+        // Bloquear inicio de sesión por un período de tiempo
+        setTimeout(() => {
+          setTiempo(!tiempo);
+          console.log("tiempo" + tiempo);
+          localStorage.setItem("intentos", 3);
+          setIntentos(3);
+        }, TIEMPO_BLOQUEO);
+      } else if (res) {
+        console.log("iniciado");
+        const token = "miTokenDeAutenticacion";
+        localStorage.setItem("token", token);
+        props.setLogueado(true);
+        setSession(true);
+        navigate("/");
+      } else {
+        localStorage.setItem("intentos", intentos - 1);
+        setIntentos(intentos - 1);
+        console.log("intentos:" + intentos);
+      }
+    });
   };
 
   function createSquare() {
@@ -102,11 +103,14 @@ export const Login = (props) => {
   };
 
   const validateSession = () => {
-    if (!valido) {
-      console.log("contraseña errornea");
-      setSession(true);
-      setErrorSession("Usuario o contraseña incorrectas");
-    }
+    getUsuario({ user: usuario, pass: contrasenia }).then((res) => {
+      if (!res) {
+        console.log("contraseña errornea");
+        setSession(true);
+        setErrorSession("Usuario o contraseña incorrectas");
+      }
+    })
+    
   };
   return (
     <section

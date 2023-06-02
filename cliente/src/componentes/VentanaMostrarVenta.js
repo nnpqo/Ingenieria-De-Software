@@ -2,7 +2,7 @@ import { Boton } from "./Boton";
 import samsung from "../imagenes/samsung_g.jpg";
 import "../estilos/VentanaMostrarVenta.css";
 import x from "../imagenes/cruz-peque.svg";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { useState,useContext, useEffect } from "react";
 import { Aviso, Aviso4 } from "./Aviso";
 import cruz from "../imagenes/cruz-peque.svg";
@@ -10,6 +10,7 @@ import { Context } from "../Context/Context";
 import openDatabase ,{ eliminarElemento, getElementos, limpiarTabla } from "../API/IndexDB";
 export const VentanaMostrarVenta = () => {
   const {listaVenta, setListaVenta} =useContext(Context)
+  const navigate = useNavigate();
 
   useEffect(() => {
     openDatabase();
@@ -84,9 +85,10 @@ export const VentanaMostrarVenta = () => {
           <div className="listaVenta">{list}</div>
           <div className="parteIzq">
             <div className="seguir-venta">
-              <Link to="/">
-                <Boton nombre="SEGUIR VENDIENDO" estilos="guardar" />
-              </Link>
+                <Boton nombre="SEGUIR VENDIENDO" estilos="guardar" funcion={()=>{
+                    navigate("/");
+                    window.location.reload();
+                }}/>
             </div>
             <div className="contenedor-total">
               <div className="superior">

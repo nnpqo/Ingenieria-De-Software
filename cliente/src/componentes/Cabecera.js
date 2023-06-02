@@ -1,17 +1,17 @@
 import { Boton } from "./Boton";
 import "../estilos/cabecera.css";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet , useNavigate} from "react-router-dom";
 import { Busqueda } from "./Busqueda";
 import { useContext, useState } from "react";
 import retrato from "../imagenes/retrato.jpg"
 import { limpiarTabla } from "../API/IndexDB";
 
 export const Cabecera = (props) => {
+  const navigate = useNavigate();
   return (
     <>
       <header className="cabecera">
         <div className="home">
-          <Link to="/">
             <Boton
               nombre={
                 <>
@@ -20,9 +20,13 @@ export const Cabecera = (props) => {
                   <span>{}</span>
                 </>
               }
+              funcion = {()=>{
+                navigate("/");     
+                window.location.reload();
+              }}
               estilos={"boton-navbar"}
             />
-          </Link>
+         
         </div>
         <Busqueda
           visible={props.barra}

@@ -6,7 +6,7 @@ import { Context } from "../Context/Context";
 import { vender } from "../API/productos";
 import { inputArtificial } from "./Ventana";
 import { Navigate, useNavigate } from 'react-router-dom';
-import openDatabase ,{ getElementos } from "../API/IndexDB";
+import openDatabase ,{ getElementos,limpiarTabla } from "../API/IndexDB";
 
 export const VentanaNotaVenta = () => {
   const navigate = useNavigate()
@@ -130,6 +130,7 @@ export const VentanaNotaVenta = () => {
                   completarVenta().then((result) => {
                     setStatus({ message: "¡Venta exitosa!", error: false });
                     setListaVenta([]);
+                    limpiarTabla();
                     setTimeout(()=>{
                         navigate("/")
                     },2000)

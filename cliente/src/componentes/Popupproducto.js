@@ -201,9 +201,11 @@ const ContenidoTabla = ({ ruta, marca, precio, id_modelo, nombre }) => {
         setError(result.data.error);
         if (!result.data.error) {
           lista.push({ imei: imei, color: color, id_modelo: id_modelo });
+          setAniadir(false);
         }
       });
     }
+
   };
 
   const handleImeiChange = (event) => {

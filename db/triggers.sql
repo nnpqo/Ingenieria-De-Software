@@ -64,6 +64,9 @@ begin
     if not (new.color REGEXP '^[ a_zA-Z]+$'  and length(new.color) >= '3' and length(new.color) <= '15')
         then SIGNAL SQLSTATE '45000'
         set MESSAGE_TEXT = "El campo 'nombre' no cumple el formato requerido" ;
+    elseif not (new.imei > 0)
+        then SIGNAL SQLSTATE '45000'
+        set MESSAGE_TEXT = "El campo 'imei' no cumple el formato requerido";
     end if;
 end 
 $$
@@ -75,6 +78,9 @@ begin
     if not (new.color REGEXP '^[ a_zA-Z]+$'  and length(new.color) >= '3' and length(new.color) <= '15')
         then SIGNAL SQLSTATE '45000'
         set MESSAGE_TEXT = "El campo 'nombre' no cumple el formato requerido" ;
+    elseif not (new.imei > 0)
+        then SIGNAL SQLSTATE '45000'
+        set MESSAGE_TEXT = "El campo 'imei' no cumple el formato requerido";
     end if;
 end 
 $$

@@ -264,7 +264,7 @@ export const Mensaje3 = (props) => {
 
   const closeModal = () => {
      setOpen(false);
-     props?.fun2();
+     if(props.fun2){props.fun2();} 
   };
 
   return (
@@ -278,7 +278,7 @@ export const Mensaje3 = (props) => {
         }}
       >
         <h2 className={props.estiloNombre}>{props.nombre}</h2>
-        <img className={props.estiloImagen} src={props.image} alt={"imagen"}></img>
+        {props.image && <img className={props.estiloImagen} src={props.image} alt={"imagen"}></img>}
       </button>
       <Popup
         className={props.error ? "mensaje3E" : "mensaje3"}
